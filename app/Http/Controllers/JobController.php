@@ -13,7 +13,8 @@ use Auth;
 class JobController extends Controller
 {
 
-    public function __construct(){
+    public function __construct()
+    {
 
         $this->middleware('auth');
         $this->checkRole('Talent');
@@ -29,43 +30,47 @@ class JobController extends Controller
         //
     }
 
-    public function talentCare(){
+    public function talentCare()
+    {
         $jobs = Job::where('talent_user_id', Auth::user()->id)->get();
-        $actions = Action::where('sender_id' , null)->where('receiver_id', Auth::user()->id)->with(['message','job','projectRequest'])->get();
+        $actions = Action::where('sender_id', null)->where('receiver_id', Auth::user()->id)->with(['message', 'job', 'projectRequest'])->get();
         // dd($jobs);
         return view('pages.talent.talent-care')->with('actions', $actions)->with('jobs', $jobs);
     }
 
-    public function jobDetail(){
-        $jobs = Job::where('talent_user_id', Auth::guard()->user()->id)->with('contract')->orderBy('job_id','DESC')->get();
-        
-        if(sizeof($jobs)){
-            $job =  $jobs[0];
+    public function jobDetail()
+    {
+        $jobs = Job::where('talent_user_id', Auth::guard()->user()->id)->with('contract')->orderBy('job_id', 'DESC')->get();
+
+        if (sizeof($jobs)) {
+            $job = $jobs[0];
             $actions = Action::where('job_id', $job->job_id)->with('message')->with('sender')->get();
             // dd($actions);
             // dd($job);
             return view('pages.talent.job-details')->with('job', $job)->with('jobs', $jobs)->with('actions', $actions);
         }
-        
+
         return redirect()->route('talent.pending');
     }
 
-    public function jobDetails($id){
-        $jobs = Job::where('talent_user_id', Auth::guard()->user()->id)->with(['contract','talent','client','actions'])->orderBy('job_id','DESC')->get();
+    public function jobDetails($id)
+    {
+        $jobs = Job::where('talent_user_id', Auth::guard()->user()->id)->with(['contract', 'talent', 'client', 'actions'])->orderBy('job_id', 'DESC')->get();
 
-        if($id != null){
-            $job = Job::with(['contract','talent','client','actions'])->find($id);
-        }else{
+        if ($id != null) {
+            $job = Job::with(['contract', 'talent', 'client', 'actions'])->find($id);
+        } else {
             $job = $jobs[0];
         }
-        
+
         $milestones = Milestone::where('contract_id', $job->contract->id)->get();
         $actions = Action::where('job_id', $job->job_id)->with('message')->with('sender')->get();
         // dd($job->talent['talent']->photo);
         return view('pages.talent.job-details')->with('job', $job)->with('jobs', $jobs)->with('actions', $actions)->with('milestones', $milestones);
     }
 
-    public function acceptRequest(Request $request){
+    public function acceptRequest(Request $request)
+    {
 
         $projectRequest = ProjectRequest::where('job_id', $request->job_id)->where('user_id', Auth::user()->id)->update([
             'status' => 'ACCEPTED'
@@ -86,7 +91,8 @@ class JobController extends Controller
         return redirect()->route('talent.job.details', $request->job_id);
     }
 
-    public function rejectRequest(Request $request){
+    public function rejectRequest(Request $request)
+    {
 
         $projectRequest = ProjectRequest::where('job_id', $request->job_id)->where('user_id', Auth::user()->id)->update([
             'status' => 'REJECTED'

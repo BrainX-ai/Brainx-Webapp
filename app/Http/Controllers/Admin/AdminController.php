@@ -20,31 +20,34 @@ class AdminController extends Controller
         $this->checkRole('Admin');
     }
 
-    public function users(){
-        $users = User::with('talent')->where('role','Talent')->get();
+    public function users()
+    {
+        $users = User::with('talent')->where('role', 'Talent')->get();
 
         return view('pages.admin.users')->with('users', $users);
     }
-    public function clients(){
-        $users = User::with('client')->where('role','Client')->get();
+    public function clients()
+    {
+        $users = User::with('client')->where('role', 'Client')->get();
 
         return view('pages.admin.clients')->with('users', $users);
     }
 
-   
+
 
     public function userDetails($id)
-    {   
-        
+    {
+
         $id = decrypt($id);
-        $title = ['Experience','Education'];
+        $title = ['Experience', 'Education'];
 
         $user = User::with('talent')->find($id);
 
         return view('pages.admin.talent-details')->with('user', $user);
     }
 
-    public function  updateStatus(Request $request){
+    public function updateStatus(Request $request)
+    {
 
         $talent = Talent::find($request->talent_id);
         $talent->status = $request->status;
@@ -53,8 +56,9 @@ class AdminController extends Controller
         return redirect()->route('admin.users');
     }
 
-    public function feedbacks(){
-        $feedbacks = Feedback::orderBy('id','DESC')->get();
+    public function feedbacks()
+    {
+        $feedbacks = Feedback::orderBy('id', 'DESC')->get();
 
         return view('pages.admin.feedbacks')->with('feedbacks', $feedbacks);
     }
@@ -134,7 +138,7 @@ class AdminController extends Controller
         $id = decrypt($id);
         $jobs = Job::where('client_id', $id)->delete();
         $client = Client::where('user_id', $id)->delete();
-        if($client){
+        if ($client) {
             $user = User::where('id', $id)->delete();
         }
 

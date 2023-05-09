@@ -18,17 +18,18 @@ class AuthController extends Controller
     
     public function login(Request $request){
 
-        // dd($request->email);
+        
         $user = User::where('email', $request->email)->where('role', 'Admin')->first();
         if($user){
         
         if (Hash::check($request->password, $user->password)) {
-            // dd($user);
+            
             Auth::login($user);
             return redirect()->route('admin.dashboard');
         }
     }
         return redirect()->route("admin.login.form");
+        
 
     }
 
