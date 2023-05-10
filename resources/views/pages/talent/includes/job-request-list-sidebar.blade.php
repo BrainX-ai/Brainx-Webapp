@@ -28,7 +28,7 @@
         
     </div>
     @foreach ($jobs as $job)
-                
+    @if($job->isAccepted->status == 'ACCEPTED')
     <div class="chat-header border-bottom mb-4" style="z-index: -99;">
     <div class="media d-flex">
         <div class="media-img-wrap flex-shrink-0 me-3">
@@ -43,6 +43,7 @@
     </a>
     </div>
     </div>
+    @endif
     @endforeach
     
     

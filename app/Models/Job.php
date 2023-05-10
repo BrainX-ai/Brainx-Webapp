@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Auth;
 
 class Job extends Model
 {
@@ -25,6 +26,12 @@ class Job extends Model
 
     public function contract(){
         return $this->hasOne(Contract::class,'job_id','job_id')->with('milestones')->latest();
+    }
+
+    public function isAccepted(){
+        
+        return $projectRequest = $this->hasOne(ProjectRequest::class,'job_id')->where('user_id', Auth::user()->id)->latest();
+       
     }
 
     /**

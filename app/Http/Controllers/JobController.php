@@ -32,7 +32,8 @@ class JobController extends Controller
 
     public function talentCare()
     {
-        $jobs = Job::where('talent_user_id', Auth::user()->id)->get();
+        $jobs = Job::where('talent_user_id', Auth::user()->id)->with('isAccepted')->get();
+
         $actions = Action::where('sender_id', null)->where('receiver_id', Auth::user()->id)->with(['message', 'job', 'projectRequest'])->get();
         // dd($jobs);
         return view('pages.talent.talent-care')->with('actions', $actions)->with('jobs', $jobs);
