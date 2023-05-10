@@ -48,13 +48,28 @@ class ContractController extends Controller
             'fixed_price'=> $request->fixed_price,
             'service_fee'=> $request->service_fee,
             'talent_receive'=> $request->talent_receive,
-            'job_id'=> $request->job_id
+            'job_id'=> $request->job_id,
+            'hourly_rate' => $request->hourly_rate,
+            'hours_per_week' => $request->hours_per_week,
+            'client_deposit' => $request->client_deposit,
+            'duration' => $request->duration
+
         ]);
         $milestones = [];
+        if($request->contract_type == 'fixed'){
         foreach($request->milestone as $index => $milestone){
             array_push($milestones, [
                 'caption' => $milestone,
                 'amount' => $request->milestone_value[$index],
+                'contract_id' => $contract->id
+            ]);
+        }
+        }else{
+            
+            for($i = 0; $i < (int)$request->duration; $i++)
+            array_push($milestones, [
+                'caption' => $i+1,
+                'amount' => $request->client_deposit,
                 'contract_id' => $contract->id
             ]);
         }
@@ -74,6 +89,14 @@ class ContractController extends Controller
             'sender_id' => Auth::user()->id
         ]);
 
+        return redirect()->route('talent.job.details', $request->job_id);
+    }
+
+    public function endContract(Request $request){
+        $contract = Contract::where('id',$request->contract_id)->update([
+           'status' => 'ENDED'
+        ]);
+        
         return redirect()->route('talent.job.details', $request->job_id);
     }
 

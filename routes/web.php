@@ -38,6 +38,7 @@ Route::get('/build-profile', 'App\http\controllers\TalentProfileController@index
 Route::get('/talent-care', 'App\http\controllers\JobController@talentCare')->name('talent.care');
 Route::post('/submit-profile','App\http\controllers\TalentProfileController@store')->name('submit.profile');
 Route::post('/submit-contract','App\http\controllers\ContractController@store')->name('submit.contract');
+Route::post('/end-contract','App\http\controllers\ContractController@endContract')->name('end.contract');
 Route::post('/add-experience','App\http\controllers\TalentProfileController@addExperience')->name('add.experience');
 Route::post('/add-education','App\http\controllers\TalentProfileController@addEducation')->name('add.education');
 Route::post('/accept-request','App\http\controllers\JobController@acceptRequest')->name('accept.request');

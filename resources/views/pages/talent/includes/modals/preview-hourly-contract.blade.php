@@ -140,7 +140,7 @@
                                     <div class="media-img-wrap flex-shrink-0 me-3">
                                         <div class="avatar ">
                                             <img src="{{ $job->talent->talent->photo }}" alt="User Image"
-                                                class="avatar-img rounded-circle">
+                                                class="avatar-img rounded-circle" />
                                         </div>
                                     </div>
                                     <div class="media-body flex-grow-1">
@@ -154,7 +154,7 @@
                         </div>
 
                         <div class="mt-4 mb-5">
-                            <h5>Fixed price ${{ $job->contract->fixed_price }}</h5>
+                            <h5>Hourly rate ${{ $job->contract->fixed_price }}</h5>
                         </div>
                         @foreach ($job->contract->milestones as $index => $milestone)
                             <div class="mt-4 mb-5">
@@ -178,8 +178,9 @@
 
                     </div>
                     <div class="card-footer pb-2 border-0 text-end">
-
-                        <button type="submit" class="btn btn-primary"> End contract</button>
+                        
+                        <button type="button" class="btn btn-primary" @if($job->contract->status == 'ENDED') disabled @endif data-bs-toggle="modal" data-bs-target="#end-contract"> End contract</button>
+                    
                     </div>
                 </div>
 

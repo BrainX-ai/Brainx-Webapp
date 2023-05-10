@@ -82,11 +82,15 @@ ul li{
 </div>
 <!-- /Page Content -->
 
+@if($job->contract != null)
+    @include('pages.talent.includes.modals.preview-fixed-contract')
+    @include('pages.talent.includes.modals.end-contract')
+@endif
 
-@include('pages.talent.includes.modals.preview-contract')
 <form action="{{ route('submit.contract') }}" method="POST">
     @csrf
     @include('pages.talent.includes.modals.create-contract')
-    @include('pages.talent.includes.modals.review-contract')    
+    @include('pages.talent.includes.modals.review-fixed-contract')    
+    @include('pages.talent.includes.modals.review-hourly-contract')    
 </form>
 @endsection

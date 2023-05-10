@@ -61,7 +61,7 @@ top: 350%;
 left: 0;
 transform: translateY(-50%);
 height: 4px;
-width: 50%;
+width: 0%;  /* need to be dynamic */
 z-index: -1;
 transition: 0.4s ease;
 }
@@ -91,7 +91,7 @@ background-color: var(--line-border-fill);
 }
 </style>
 		<!-- The Modal -->
-		<div class="modal fade custom-modal" id="review-contract">
+		<div class="modal fade custom-modal" id="review-hourly-contract">
 			<div class="modal-dialog modal-lg modal-dialog-centered">
 				<div class="modal-content">
 
@@ -109,14 +109,14 @@ background-color: var(--line-border-fill);
                                         
                                         <div class="form-group">
                                             <h5 for="">Contract name</h5>
-                                            <p id="contract_name">
-                                                asdfsdfadsfdsf
+                                            <p id="contract_name_hourly">
+                                                {{ $job->job_title }}
                                             </p>
                                         </div>
                                         <div class="form-group">
                                             <h5 for="">Description</h5>
-                                            <p id="description">
-
+                                            <p id="description_hourly">
+                                                {{ $job->job_description }}
                                             </p>
                                         </div>
 
@@ -131,7 +131,7 @@ background-color: var(--line-border-fill);
                                                 <div class="media d-flex">
                                                     <div class="media-img-wrap flex-shrink-0 me-3">
                                                         <div class="avatar avatar-online">
-                                                            <img src="assets/img/BrainX/logo-outline.svg" alt="User Image" class="avatar-img rounded-circle">
+                                                            <img src="/assets/img/BrainX/logo-outline.svg" alt="User Image" class="avatar-img rounded-circle">
                                                         </div>
                                                     </div>
                                                     <div class="media-body flex-grow-1">
@@ -145,29 +145,17 @@ background-color: var(--line-border-fill);
                                         </div>
 
                                         <div class="mt-4">
-                                            <h5>Fixed price  $1000</h5>
+                                            <h5>Hourly rate  $<span id="hourly_rate_in_review"></span></h5>
                                         </div>
                                         
-                                        <div class="mt-4">
-                                            <h6>Milestone 1: $5000</h6>
-                                            <p>collect data</p>
-                                            <div class="progress-container">
-                                                <div class="progress" id="progress"></div>
-                                                    <div class="circle active"></div>
-                                                    <div class="circle active"></div>
-                                                    <div class="circle"></div>
-                                                </div>
-                                                <div class="progress-container-text">
-                                                    <div class="circle-text border-0 ">Deposited</div>
-                                                    <div class="circle-text border-0">Approved</div>
-                                                    <div class="circle-text border-0">Paid</div>
-                                                </div>
+                                        <div id="hourly_contract_milestone">
+                                            
                                         </div>
                                         
                                         
                                     </div>
                                 <div class="card-footer pb-2 border-0 text-end">
-                                    <button type="button" class="btn btn-outline-primary ps-4 pe-4 me-3" data-bs-toggle="modal" data-bs-target="#create-conntract">Back</button>
+                                    <button type="button" class="btn btn-outline-primary ps-4 pe-4 me-3" data-bs-toggle="modal" data-bs-target="#create-contract">Back</button>
                                     <button type="submit"  class="btn btn-primary"  > Send</button>
                                 </div>
                             </div>
