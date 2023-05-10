@@ -64,10 +64,10 @@ class JobController extends Controller
             $job = $jobs[0];
         }
 
-        $milestones = Milestone::where('contract_id', $job->contract->id)->get();
+        // $milestones = Milestone::where('contract_id', $job->contract->id)->get();
         $actions = Action::where('job_id', $job->job_id)->with('message')->with('sender')->get();
         // dd($job->talent['talent']->photo);
-        return view('pages.talent.job-details')->with('job', $job)->with('jobs', $jobs)->with('actions', $actions)->with('milestones', $milestones);
+        return view('pages.talent.job-details')->with('job', $job)->with('jobs', $jobs)->with('actions', $actions);
     }
 
     public function acceptRequest(Request $request)
