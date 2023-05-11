@@ -56,12 +56,14 @@
          <!-- Main Wrapper -->
 		<div class="main-wrapper">
 			@if (Request::is('/') || Request::is('talent') || Request::is('terms-of-service') || Request::is('privacy-policy') )
-			@include('includes.header')
+				@include('includes.header')
 			@else
-			@include('pages.talent.includes.header')
+				@include('pages.talent.includes.header')
 			@endif
             @yield('content')
-			@include('includes.footer')
+			@if (Request::is('/') || Request::is('talent') || Request::is('terms-of-service') || Request::is('privacy-policy') )
+				@include('includes.footer')
+			@endif
         </div>
 
         <!-- jQuery -->

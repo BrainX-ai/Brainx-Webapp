@@ -136,7 +136,7 @@
                                 <strong>Skills: </strong>
                                  @php
                                  if($experience->skills != null)
-                                     echo implode(', ', json_decode($experience->skills));
+                                     echo $experience->skills;
                                  @endphp
 
                             </div>

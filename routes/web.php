@@ -44,6 +44,10 @@ Route::post('/add-education','App\http\controllers\TalentProfileController@addEd
 Route::post('/accept-request','App\http\controllers\JobController@acceptRequest')->name('accept.request');
 Route::post('/reject-request','App\http\controllers\JobController@rejectRequest')->name('reject.request');
 
+// chat routes
+
+Route::post('/send-message','App\http\controllers\MessageController@sendMessage')->name('send.message');
+
 
 Route::prefix('/client')->as('client.')->group(function () {
     

@@ -81,7 +81,7 @@
 			@include('pages.client.includes.header')
 			
             @yield('content')
-			@include('includes.footer')
+			
         </div>
 
         <!-- jQuery -->

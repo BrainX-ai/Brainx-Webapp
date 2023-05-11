@@ -30,7 +30,7 @@ class JobController extends Controller
     }
 
     public function jobDetails($id){
-        $jobs = Job::where('client_id', Auth::guard()->user()->id)->orderBy('job_id','DESC')->get();
+        $jobs = Job::where('client_id', Auth::guard()->user()->id)->with(['contract'])->orderBy('job_id','DESC')->get();
         if($id != null){
             $job = Job::with('actions')->find($id);
         }else if(sizeof($jobs)){

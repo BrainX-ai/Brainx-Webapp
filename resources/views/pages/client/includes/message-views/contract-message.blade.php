@@ -9,9 +9,9 @@
             </div>
         </div>
         <div class="media-body flex-grow-1">
-            <div class="user-name"> {{ ($action->sender_id == Auth::user()->id)? Auth::user()->name: $action->client->name }} </div>
+            <div class="user-name"> {{ ($action->sender_id == Auth::user()->id)? Auth::user()->name: $action->sender->name }} </div>
             <div class="user-status"> {{ $action->message->message }} </div>
-            <a href="" data-bs-toggle="modal" data-bs-target="#preview-contract">View the contract</a>
+            <a href="" data-bs-toggle="modal" data-bs-target="#preview-{{ $job->contract->contract_type }}-contract">View the contract</a>
         </div>
     </div>
     

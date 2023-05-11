@@ -29,7 +29,11 @@ class Contract extends Model
         'fixed_price',
         'service_fee',
         'talent_receive',
-        'job_id'
+        'job_id',
+        'hours_per_week',
+        'duration',
+        'hourly_rate',
+        'client_deposit'
 
     ];
 }

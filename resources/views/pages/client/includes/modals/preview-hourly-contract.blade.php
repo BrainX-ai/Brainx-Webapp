@@ -154,22 +154,19 @@
                         </div>
 
                         <div class="mt-4 mb-5">
-                            <h5>Hourly rate ${{ $job->contract->fixed_price }}/hr</h5>
+                            <h5>Hourly rate  ${{ $job->contract->hourly_rate }}/hr</h5>
                         </div>
                         @foreach ($job->contract->milestones as $index => $milestone)
-                            <div class="mt-4 mb-5">
-                                <h6>Milestone {{ $index + 1 }}: ${{ $milestone->amount }}</h6>
-                                <p>{{ $milestone->caption }}</p>
-                                <div class="progress-container">
-                                    <div class="progress" id="progress"></div>
-                                    <div class="circle {{ $milestone->deposited ? 'active' : '' }}"></div>
-                                    <div class="circle {{ $milestone->approved ? 'active' : '' }}"></div>
-                                    <div class="circle {{ $milestone->paid ? 'active' : '' }}"></div>
+                            <div class="mt-4 mb-5 row">
+                                <div class="col-md-6">
+                                    <h6>Week {{ $milestone->caption  }}: {{ $job->contract->hours_per_week }} hr</h6>
+                                  
                                 </div>
-                                <div class="progress-container-text">
-                                    <div class="circle-text border-0 ">Deposited</div>
-                                    <div class="circle-text border-0">Approved</div>
-                                    <div class="circle-text border-0">Paid</div>
+                                <div class="col-md-3">
+                                    <button class="btn btn-primary">Deposit</button>
+                                </div>
+                                <div class="col-md-3">
+                                    <button class="btn btn-primary">Approve</button>
                                 </div>
                             </div>
                         @endforeach
@@ -178,9 +175,10 @@
 
                     </div>
                     <div class="card-footer pb-2 border-0 text-end">
-                        
-                        <button type="button" class="btn btn-primary" @if($job->contract->status == 'ENDED') disabled @endif data-bs-toggle="modal" data-bs-target="#end-contract"> End contract</button>
-                    
+
+                        <button type="button" class="btn btn-primary" @if ($job->contract->status == 'ENDED') disabled @endif
+                            data-bs-toggle="modal" data-bs-target="#end-contract"> End contract</button>
+
                     </div>
                 </div>
 

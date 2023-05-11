@@ -37,6 +37,13 @@ ul li{
 -ms-flex-align: center;
 /* align-items: center; */
 }
+
+.chat-container {
+  height: calc(100vh - 200px); /* Set the height of the container */
+  overflow-y: scroll; /* Enable vertical scrolling */
+  border: 1px solid #ccc; /* Add a border to the container */
+  padding: 10px; /* Add some padding to the container */
+}
 </style>
 
 <!-- Content -->
@@ -54,24 +61,43 @@ ul li{
                         <div class="border-bottom pb-4 text-end">
                             <button class="btn btn-primary" type="button" data-bs-target="#create-contract" data-bs-toggle="modal"> Create contract</button>
                         </div>
-                        @foreach ($actions as $action)
-                            <div class="mb-4">
-                                @if((Auth::user()->id == $action->sender_id || Auth::user()->id == $action->receiver_id) )
-                                    @if($action->action_type == 'MESSAGE_WITH_MY_REQUEST')
-                                        @include('pages.talent.includes.message-views.message-from-system')
+                        <div class="chat-container">
+                            
+                            @foreach ($actions as $action)
+                                <div class="mb-4">
+                                    @if((Auth::user()->id == $action->sender_id || Auth::user()->id == $action->receiver_id) )
+                                        @if($action->action_type == 'MESSAGE_WITH_MY_REQUEST')
+                                            @include('pages.talent.includes.message-views.message-from-system')
+                                        @endif
+                                        @if($action->action_type == 'CONTRACT')
+                                            @include('pages.talent.includes.message-views.contract-message')
+                                        @endif
+                                        @if($action->action_type == 'ACCEPTENCE_MESSAGE')
+                                            @include('pages.talent.includes.message-views.acceptence-message')
+                                        @endif
+                                        
                                     @endif
-                                    @if($action->action_type == 'CONTRACT')
-                                        @include('pages.talent.includes.message-views.contract-message')
-                                    @endif
-                                    @if($action->action_type == 'ACCEPTENCE_MESSAGE')
-                                        @include('pages.talent.includes.message-views.acceptence-message')
-                                    @endif
-                                    
-                                @endif
-                            </div>
+                                </div>
+                            @endforeach
 
-                        @endforeach
                         
+                        </div>
+                        <div class="chat-footer">
+                            <div class="input-group">
+                                <div class="avatar">
+                                    <img src="assets/img/img-05.jpg" alt="User Image" class="avatar-img rounded-circle">
+                                </div>
+                                <input type="text" class="input-msg-send form-control" placeholder="Reply...">
+                                <div class="btn-file btn">
+                                    <i class="far fa-grin fa-1x"></i>
+                                </div>
+                                <div class="btn-file btn">
+                                    <i class="fa fa-paperclip"></i>
+                                    <input type="file">
+                                </div>
+                                <button type="button" class="btn btn-primary msg-send-btn rounded-pill"><i class="fab fa-telegram-plane"></i></button>
+                            </div>
+                        </div>
                     <!-- /Chat Right -->
                     
                 </div>				
@@ -83,7 +109,11 @@ ul li{
 <!-- /Page Content -->
 
 @if($job->contract != null)
-    @include('pages.talent.includes.modals.preview-fixed-contract')
+    @if($job->contract->contract_type == 'fixed')
+        @include('pages.talent.includes.modals.preview-fixed-contract')
+    @else
+        @include('pages.talent.includes.modals.preview-hourly-contract')
+    @endif
     @include('pages.talent.includes.modals.end-contract')
 @endif
 

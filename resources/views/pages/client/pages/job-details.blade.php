@@ -43,8 +43,7 @@ center; */
     margin-right: 0%;
 }
 </style>
-<form action="{{ route('client.job.create') }}" method="POST" enctype="multipart/form-data">
-    @csrf
+
 <!-- Content -->
 <div class="content ">
     <div class="container-fluid">
@@ -59,6 +58,7 @@ center; */
                     <div class="chat-cont-right chat-scrol" style="z-index: 99; ">
                         
                         @foreach ($actions as $action)
+                            <div class="mb-4">
 
                             @if(Auth::user()->id == ($action->sender_id || $action->receiver_id) && $action->action_type == 'MESSAGE_WITH_MY_REQUEST')
                                 @include('pages.client.includes.message-views.message-from-system')
@@ -69,7 +69,8 @@ center; */
                             @if((Auth::user()->id == $action->sender_id || Auth::user()->id == $action->receiver_id) && $action->action_type == 'ACCEPTENCE_MESSAGE')
                                 @include('pages.client.includes.message-views.acceptence-message')
                             @endif
-                           
+                        </div>
+
                         @endforeach
                         
                     <!-- /Chat Right -->
@@ -80,6 +81,15 @@ center; */
     </div>
 </div>	
 <!-- /Page Content -->
+
+@if($job->contract != null)
+    @if($job->contract->contract_type == 'fixed')
+        @include('pages.client.includes.modals.preview-fixed-contract')
+    @else
+        @include('pages.client.includes.modals.preview-hourly-contract')
+    @endif
+    @include('pages.talent.includes.modals.end-contract')
+@endif
 
 @include('pages.client.includes.modals.my-request')
 @endsection

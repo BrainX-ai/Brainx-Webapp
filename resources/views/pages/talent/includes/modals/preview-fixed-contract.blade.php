@@ -99,7 +99,7 @@
     }
 </style>
 <!-- The Modal -->
-<div class="modal fade custom-modal" id="preview-contract">
+<div class="modal fade custom-modal" id="preview-fixed-contract">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
 

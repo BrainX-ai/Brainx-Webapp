@@ -97,7 +97,7 @@ class ContractController extends Controller
            'status' => 'ENDED'
         ]);
         
-        return redirect()->route('talent.job.details', $request->job_id);
+        return redirect()->back();
     }
 
     /**
