@@ -19,7 +19,7 @@ class Action extends Model
     }
 
     public function job(){
-        return $this->belongsTo(Job::class, 'job_id','job_id')->with('contract');
+        return $this->belongsTo(Job::class, 'job_id','job_id')->with(['contract','talent','client']);
     }
 
     public function projectRequest(){

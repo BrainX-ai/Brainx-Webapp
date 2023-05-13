@@ -5,13 +5,19 @@
     <div class="media d-flex">
         <div class="media-img-wrap flex-shrink-0">
             <div class="avatar ">
-                <img src="/assets/img/BrainX/logo-outline.svg" alt="User Image" class="avatar-img rounded-circle">
+                @if ($action->sender_id == Auth::user()->id)
+                    
+                <img src="/assets/img/BrainX/AI-focused-profile.png" alt="User Image" class="avatar-img rounded-circle">
+                @else
+
+                <img src="{{ $action->job->talent->talent->photo }}" alt="User Image" class="avatar-img rounded-circle">
+                @endif
             </div>
         </div>
         <div class="media-body flex-grow-1">
-            <div class="user-name">Client care </div>
-            <div class="user-status">Welcome to BrainX! Please kindly let us know your detailed request clearly so our AI expert can match you to a suitable talent. </div>
-            <div><strong>1/3. Headline</strong><b class="pb-1"> *</b></div>
+            
+            <div class="user-name">{{ $action->sender->name }}</div>
+            <div class="message"> {{ $action->message->message }} </div>
         </div>
     </div>
     

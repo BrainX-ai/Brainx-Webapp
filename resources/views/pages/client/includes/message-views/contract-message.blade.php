@@ -5,13 +5,22 @@
     <div class="media d-flex">
         <div class="media-img-wrap flex-shrink-0">
             <div class="avatar ">
-                <img src="/assets/img/BrainX/logo-outline.svg" alt="User Image" class="avatar-img rounded-circle">
+                @if ($action->sender_id == Auth::user()->id)
+                    
+                <img src="/assets/img/BrainX/AI-focused-profile.png" alt="User Image" class="avatar-img rounded-circle">
+                @else
+
+                <img src="{{ $action->job->talent->talent->photo }}" alt="User Image" class="avatar-img rounded-circle">
+                @endif
+                
             </div>
         </div>
         <div class="media-body flex-grow-1">
+            <div class="d-flex">
             <div class="user-name"> {{ ($action->sender_id == Auth::user()->id)? Auth::user()->name: $action->sender->name }} </div>
             <div class="user-status"> {{ $action->message->message }} </div>
-            <a href="" data-bs-toggle="modal" data-bs-target="#preview-{{ $job->contract->contract_type }}-contract">View the contract</a>
+            </div>
+            <a href=""  data-bs-toggle="modal" data-bs-target="#preview-{{ $job->contract->contract_type }}-contract">View the contract</a>
         </div>
     </div>
     

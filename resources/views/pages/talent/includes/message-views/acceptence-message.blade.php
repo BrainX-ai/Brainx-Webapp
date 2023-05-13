@@ -5,7 +5,13 @@
     <div class="media d-flex">
         <div class="media-img-wrap flex-shrink-0">
             <div class="avatar ">
-                <img src="/assets/img/BrainX/logo-outline.svg" alt="User Image" class="avatar-img rounded-circle">
+                @if ($action->sender_id == Auth::user()->id)
+                <img src="{{ $action->job->talent->talent->photo }}" alt="User Image" class="avatar-img rounded-circle">
+                
+                @else
+                <img src="/assets/img/BrainX/AI-focused-profile.png" alt="User Image" class="avatar-img rounded-circle">
+                
+                @endif
             </div>
         </div>
         <div class="media-body flex-grow-1">

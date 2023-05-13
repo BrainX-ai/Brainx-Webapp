@@ -130,13 +130,14 @@ background-color: var(--line-border-fill);
                                                 </a> --}}
                                                 <div class="media d-flex">
                                                     <div class="media-img-wrap flex-shrink-0 me-3">
-                                                        <div class="avatar avatar-online">
-                                                            <img src="/assets/img/BrainX/logo-outline.svg" alt="User Image" class="avatar-img rounded-circle">
+                                                        <div class="avatar ">
+                                                            <img src="{{ $job->talent->talent->photo }}" alt="User Image" class="avatar-img rounded-circle">
                                                         </div>
                                                     </div>
+                                                    
                                                     <div class="media-body flex-grow-1">
-                                                        <h6 class="mt-2">Tawsif Khan</h6>
-                                                        <strong>Phd in AI</strong>
+                                                        <h6 class="mt-2">{{ $job->talent->name }}</h6>
+                                                        <strong>{{ $job->talent->talent->standout_job_title }}</strong>
                                                     </div>
                                                 </div>
                                                 

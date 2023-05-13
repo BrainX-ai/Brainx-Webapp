@@ -43,6 +43,8 @@
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
 
         <!-- Scripts -->
+
+		@vite(['resources/js/app.js'])
 <style>
 	.footer{
 		position: relative;;
@@ -122,5 +124,6 @@
 		@yield('feedback-js')
 		@yield('invitation-js')
 		@yield('post-new-js')
+		@yield('chat-js')
     </body>
 </html>

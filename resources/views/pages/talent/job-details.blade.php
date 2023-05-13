@@ -98,7 +98,8 @@
                                             <i class="fa fa-paperclip"></i>
                                             <input type="file">
                                         </div>
-                                        <input type="hidden" name="receiver_id" value="{{ $job->client_id }}" id="job_id"/>
+                                        <input type="hidden" value="{{ $job->job_id }}" id="job_id"/>
+                                        <input type="hidden" name="receiver_id" value="{{ $job->client_id }}" id="receiver_id"/>
                                         <input type="text" class="input-msg-send form-control" name="message" id="message"
                                             placeholder="Reply...">
 

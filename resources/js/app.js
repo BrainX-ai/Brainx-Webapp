@@ -9,7 +9,7 @@ $(document).ready(function(){
             method: 'POST',
             url: '/send-message',
             data: {
-                
+                receiver_id: $('#receiver_id').val(),
                 message: $('#message').val(),
                 job_id: $('#job_id').val()
             },
