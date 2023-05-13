@@ -174,7 +174,7 @@
 
 
                     </div>
-                    <div class="card-footer pb-2 border-0 text-end">
+                    <div class="card-footer pb-2 border-0 text-end d-none">
 
                         <button type="button" class="btn btn-primary" @if ($job->contract->status == 'ENDED') disabled @endif
                             data-bs-toggle="modal" data-bs-target="#end-contract"> End contract</button>

@@ -67,7 +67,7 @@
                             <tr class="fixed_box">
                                 <td>
                                     <strong>Fixed price</strong>
-                                    <p>Set your hourly rate for this contract</p>
+                                    <p>Total budget for this contract</p>
                                 </td>
                                 <td>
 
@@ -81,14 +81,14 @@
                             <tr class="hourly_box">
                                 <td>
                                     <strong>Your hourly rate</strong>
-                                    <p>Total budget for this contract</p>
+                                    <p>Set your hourly rate for this contract</p>
                                 </td>
                                 <td>
 
                                     <div class="input-group">
                                         <span class="input-group-text">$</span>
                                         <input type="number" name="hourly_rate" class="form-control"
-                                            onkeyup="update(this)" value="{{ Auth::user()->talent->hourly_rate }}"/>
+                                            onkeyup="update(this)" />
                                     </div>
                                 </td>
                             </tr>
@@ -102,7 +102,7 @@
 
                                     <div class="input-group">
                                         <span class="input-group-text">$</span>
-                                        <input type="number" name="service_fee" readonly id="service_fee" value="{{ Auth::user()->talent->hourly_rate * 0.2}}"
+                                        <input type="number" name="service_fee" readonly id="service_fee" 
                                             class="form-control" />
                                     </div>
                                 </td>
@@ -117,7 +117,7 @@
 
                                     <div class="input-group">
                                         <span class="input-group-text">$</span>
-                                        <input type="number" name="talent_receive" readonly id="talent_receive" value="{{ Auth::user()->talent->hourly_rate - (Auth::user()->talent->hourly_rate * 0.2) }}"
+                                        <input type="number" name="talent_receive" readonly id="talent_receive" 
                                             class="form-control" />
                                     </div>
                                 </td>
@@ -141,7 +141,7 @@
 
                                     <div class="input-group">
                                         <span class="input-group-text">$</span>
-                                        <input type="number" data-symbol="€" name="client_deposit" readonly value="{{ Auth::user()->talent->hourly_rate * $job->hours_per_week }}"
+                                        <input type="number" data-symbol="€" name="client_deposit" readonly 
                                             class="form-control currency" />
                                     </div>
                                 </td>
@@ -171,7 +171,7 @@
 
                                         <div class="input-group">
                                             <span class="input-group-text">$</span>
-                                            <input type="text" class="form-control" name="milestone_value[]">
+                                            <input type="number" class="form-control" name="milestone_value[]">
                                         </div>
                                     </td>
                                 </tr>
@@ -186,7 +186,7 @@
 
                                         <div class="input-group">
                                             <span class="input-group-text">$</span>
-                                            <input type="text" class="form-control" name="milestone_value[]">
+                                            <input type="number" class="form-control" name="milestone_value[]">
                                         </div>
                                     </td>
                                 </tr>
@@ -218,7 +218,7 @@
         function milestoneRow() {
             counter++;
             return '<tr><td><strong>Milestone ' + counter +
-                '</strong><input type="text" class="form-control" name="milestone[]"/></td><td><br><div class="input-group"><span class="input-group-text">$</span><input type="text" class="form-control"  name="milestone_value[]"></div></td></tr>'
+                '</strong><input type="text" class="form-control" name="milestone[]"/></td><td><br><div class="input-group"><span class="input-group-text">$</span><input type="number" class="form-control"  name="milestone_value[]"></div></td></tr>'
         }
 
         function addMilestone() {
@@ -264,7 +264,7 @@
                     data.text = texts[i].value
                     data.value = values[i].value
 
-                    $('#fixed_contract').append(getMilestoneRow(data))
+                    $('#fixed_contract').append(getMilestoneRow(data, i+1))
                 }
                 $('#review-fixed-contract').modal('toggle');
             }else{
@@ -303,18 +303,16 @@
                                             </div>`
         }
 
-        function getMilestoneRow(data) {
-            return `<div class="mt-4 pb-4"><h6>Milestone ` + counter + `: $` + data.value + `</h6>
+        function getMilestoneRow(data, index) {
+            return `<div class="mt-4 pb-4"><h6>Milestone ` + index + `: $` + data.value + `</h6>
                                             <p>` + data.text + `</p>
                                             <div class="progress-container">
                                                 <div class="progress" id="progress"></div>
-                                                    <div class="circle "></div>
                                                     <div class="circle "></div>
                                                     <div class="circle"></div>
                                             </div>
                                             <div class="progress-container-text">
                                                 <div class="circle-text border-0 ">Deposited</div>
-                                                <div class="circle-text border-0">Approved</div>
                                                 <div class="circle-text border-0">Paid</div>
                                             </div>
                                         </div>`;
