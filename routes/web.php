@@ -46,7 +46,7 @@ Route::post('/reject-request','App\http\controllers\JobController@rejectRequest'
 
 // chat routes
 
-Route::post('/send-message','App\http\controllers\MessageController@sendMessage')->name('send.message');
+Route::post('/send-message','App\http\controllers\ChatController@sendMessage')->name('send.message');
 
 
 Route::prefix('/client')->as('client.')->group(function () {

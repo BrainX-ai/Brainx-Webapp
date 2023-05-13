@@ -45,8 +45,8 @@
                         </div>
                         <div class="form-group">
                             <label for="" class="h4">Description</label>
-                            <input type="text" name="description" class="form-control" onkeyup="updateContractDescription(this)"
-                                value="{{ $job->job_description }}">
+                            <textarea type="text" name="description" class="form-control" rows="5" onkeyup="updateContractDescription(this)"
+                                > {{ strip_tags($job->job_description) }} </textarea>
                         </div>
 
                         <div class="form-group">

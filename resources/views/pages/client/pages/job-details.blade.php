@@ -57,6 +57,9 @@ center; */
                     <!-- Chat Right -->
                     <div class="chat-cont-right chat-scrol" style="z-index: 99; ">
                         
+                        <div class="chat-container" >
+
+                            <div id="messages">
                         @foreach ($actions as $action)
                             <div class="mb-4">
 
@@ -72,7 +75,25 @@ center; */
                         </div>
 
                         @endforeach
-                        
+                            </div>
+                    </div>
+                    <div class="chat-footer">
+                        <form action="" method="POST">
+                        <div class="input-group">
+                                <div class="btn-file btn">
+                                    <i class="fa fa-paperclip"></i>
+                                    <input type="file">
+                                </div>
+                                <input type="hidden" name="receiver_id" value="{{ $job->client_id }}" id="job_id"/>
+                                <input type="text" class="input-msg-send form-control" name="message" id="message"
+                                    placeholder="Reply...">
+
+                                <button type="button" class="btn btn-primary msg-send-btn rounded-pill" id="send_message"><i
+                                        class="fab fa-telegram-plane"></i></button>
+                            
+                        </div>
+                    </form>
+                    </div>
                     <!-- /Chat Right -->
                     
                 </div>				

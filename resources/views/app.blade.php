@@ -4,6 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
+		<meta name="csrf-token" content="{{ csrf_token() }}"/>
         <title inertia>{{ config('app.name', 'BrainX') }}</title>
 
         <!-- Favicon -->
@@ -42,6 +43,8 @@
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
 
         <!-- Scripts -->
+
+		@vite(['resources/js/app.js'])
 
     </head>
     <body class="home-page bg-one">
@@ -91,10 +94,19 @@
 		<!-- Custom JS -->
 		<script src="/assets/js/script.js"></script>
 
+		<script>
+			$.ajaxSetup({
+				headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+			})
+		</script>
+
 		@yield('custom-js')
 		@yield('feedback-js')
 		@yield('invitation-js')
 		@yield('add-milestone-js')
 		@yield('is-email-exist-js')
+		@yield('chat-js')
     </body>
 </html>

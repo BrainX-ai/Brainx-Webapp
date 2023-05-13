@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="csrf-token" content="{{ csrf_token() }}"/>
 
         <title inertia>{{ config('app.name', 'BrainX') }}</title>
 
@@ -108,6 +109,14 @@
 		
 		<!-- Custom JS -->
 		<script src="/assets/js/script.js"></script>
+
+		<script>
+			$.ajaxSetup({
+				headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+			})
+		</script>
 
 		@yield('custom-js')
 		@yield('feedback-js')

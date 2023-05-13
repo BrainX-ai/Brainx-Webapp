@@ -19,6 +19,7 @@
         "laravel/tinker": "^2.7",
         "pelago/emogrifier": "5.0.0",
         "phpoffice/phpword": "^1.0",
+        "pusher/pusher-php-server": "^7.2",
         "tightenco/ziggy": "^1.0",
         "torann/geoip": "^3.0"
     },

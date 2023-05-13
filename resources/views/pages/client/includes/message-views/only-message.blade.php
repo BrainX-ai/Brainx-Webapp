@@ -4,7 +4,7 @@
     </a>
     <div class="media d-flex">
         <div class="media-img-wrap flex-shrink-0">
-            <div class="avatar avatar-online">
+            <div class="avatar ">
                 <img src="/assets/img/BrainX/logo-outline.svg" alt="User Image" class="avatar-img rounded-circle">
             </div>
         </div>

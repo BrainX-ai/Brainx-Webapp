@@ -135,8 +135,8 @@ background-color: var(--line-border-fill);
                                                         </div>
                                                     </div>
                                                     <div class="media-body flex-grow-1">
-                                                        <h6 class="mt-2">Tawsif Khan</h6>
-                                                        <strong>Phd in AI</strong>
+                                                        <h6 class="mt-2">{{ $job->talent->name }}</h6>
+                                                        <strong>{{ $job->talent->standout_job_title }}</strong>
                                                     </div>
                                                 </div>
                                                 

@@ -154,7 +154,7 @@
                         </div>
 
                         <div class="mt-4 mb-5">
-                            <h5>Hourly rate ${{ $job->contract->fixed_price }}/hr</h5>
+                            <h5>Hourly rate  ${{ $job->contract->fixed_price }}/hr</h5>
                         </div>
                         @foreach ($job->contract->milestones as $index => $milestone)
                             <div class="mt-4 mb-5">
