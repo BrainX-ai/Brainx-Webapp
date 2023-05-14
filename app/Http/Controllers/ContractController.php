@@ -57,21 +57,23 @@ class ContractController extends Controller
         ]);
         $milestones = [];
         if($request->contract_type == 'fixed'){
-        foreach($request->milestone as $index => $milestone){
-            array_push($milestones, [
-                'caption' => $milestone,
-                'amount' => $request->milestone_value[$index],
-                'contract_id' => $contract->id
-            ]);
-        }
+            foreach($request->milestone as $index => $milestone){
+                if($milestone != null && $request->milestone_value[$index] == null){
+                    array_push($milestones, [
+                        'caption' => $milestone,
+                        'amount' => $request->milestone_value[$index],
+                        'contract_id' => $contract->id
+                    ]);
+                }
+            }
         }else{
-            
-            for($i = 0; $i < (int)$request->duration; $i++)
-            array_push($milestones, [
-                'caption' => $i+1,
-                'amount' => $request->client_deposit,
-                'contract_id' => $contract->id
-            ]);
+            for($i = 0; $i < (int)$request->duration; $i++){
+                array_push($milestones, [
+                    'caption' => $i+1,
+                    'amount' => $request->client_deposit,
+                    'contract_id' => $contract->id
+                ]);
+            }
         }
         
         $milestone = Milestone::insert($milestones);
