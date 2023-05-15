@@ -14,7 +14,9 @@ $(document).ready(function(){
                 job_id: $('#job_id').val()
             },
             success: function(res) {
-                console.log(res);
+                if(res.status === 'ok'){
+                    $('#message').val('')
+                }
             }
         })
     });

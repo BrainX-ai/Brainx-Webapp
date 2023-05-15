@@ -13,8 +13,9 @@
 .skills .form-group label{
     margin-left: 5px;
 }
+
 .chat-cont-right{
-    min-height: calc(100vh - 200px);
+    min-height: calc(100vh - 10px);
     /* overflow-y: hidden; */
 }
 
