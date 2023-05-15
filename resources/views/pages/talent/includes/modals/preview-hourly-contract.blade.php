@@ -159,7 +159,7 @@
                         @foreach ($job->contract->milestones as $index => $milestone)
                             <div class="mt-4 mb-5 row">
                                 <div class="col-md-6">
-                                    <h6>Week {{ $index + 1 }}: ${{ $job->contract->hours_per_week }}</h6>
+                                    <h6>Week {{ $index + 1 }}: {{ $job->contract->hours_per_week }} hr</h6>
 
                                 </div>
                                 <div class="col-md-6">

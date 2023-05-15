@@ -18,13 +18,15 @@ class ChatMessage implements ShouldBroadcast
     public $message;
     public $job_id;
     public $receiver_id;
+    public $photo;
 
-    public function __construct($username, $message, $job_id, $receiver_id)
+    public function __construct($username, $message, $job_id, $receiver_id, $photo)
     {
         $this->job_id = $job_id;
         $this->username = $username;
         $this->message = $message;
         $this->receiver_id = $receiver_id;
+        $this->photo = $photo;
     }
 
     /**

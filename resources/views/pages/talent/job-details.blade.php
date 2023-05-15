@@ -42,7 +42,7 @@
         }
 
         .chat-container {
-            height: calc(100vh - 300px);
+            height: calc(100vh - 270px);
             /* Set the height of the container */
             overflow-y: scroll;
             /* Enable vertical scrolling */
@@ -100,6 +100,7 @@
                                         </div>
                                         <input type="hidden" value="{{ $job->job_id }}" id="job_id"/>
                                         <input type="hidden" name="receiver_id" value="{{ $job->client_id }}" id="receiver_id"/>
+                                        <input type="hidden" name="photo" value="{{ $job->talent->talent->photo }}" id="photo" />
                                         <input type="text" class="input-msg-send form-control" name="message" id="message"
                                             placeholder="Reply...">
 

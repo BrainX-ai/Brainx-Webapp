@@ -39,7 +39,7 @@
             -webkit-box-align: center;
             -ms-flex-align: center;
             /* align-items:
-    center; */
+        center; */
         }
 
         .chat-cont-left {
@@ -90,8 +90,8 @@
                                                 @include('pages.client.includes.message-views.acceptence-message')
                                             @endif
                                             @if ($action->action_type == 'ONLY_MESSAGE')
-                                            @include('pages.client.includes.message-views.only-message')
-                                        @endif
+                                                @include('pages.client.includes.message-views.only-message')
+                                            @endif
                                         </div>
                                     @endforeach
                                 </div>
@@ -104,9 +104,10 @@
                                             <i class="fa fa-paperclip"></i>
                                             <input type="file">
                                         </div>
-                                        <input type="hidden" value="{{ $job->job_id }}" id="job_id"/>
+                                        <input type="hidden" value="{{ $job->job_id }}" id="job_id" />
                                         <input type="hidden" name="receiver_id" value="{{ $job->talent_user_id }}"
                                             id="receiver_id" />
+                                        <input type="hidden" name="photo" value="/assets/img/BrainX/AI-focused-profile.png" id="photo" />
                                         <input type="text" class="input-msg-send form-control" name="message"
                                             id="message" placeholder="Reply...">
 

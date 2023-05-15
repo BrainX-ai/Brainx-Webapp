@@ -14,13 +14,13 @@
         </a> --}}
         <div class="media d-flex">
             <div class="media-img-wrap flex-shrink-0 me-3">
-                <div class="avatar avatar-online">
+                <div class="avatar ">
                     <img src="/assets/img/BrainX/logo-outline.svg" alt="User Image" class="avatar-img rounded-circle">
                 </div>
             </div>
             <a href="{{ route('talent.care') }}">
             <div class="media-body flex-grow-1">
-                <h3 class="mt-2">Talent care </h3>
+                <h5 class="mt-3 ">Talent care </h5>
             </div>
             </a>
         </div>
@@ -32,13 +32,14 @@
     <div class="chat-header border-bottom mb-4" style="z-index: -99;">
     <div class="media d-flex">
         <div class="media-img-wrap flex-shrink-0 me-3">
-            <div class="avatar avatar-online">
+            <div class="avatar ">
                 <img src="/assets/img/BrainX/AI-focused-profile.png" alt="User Image" class="avatar-img rounded-circle">
             </div>
         </div>
         <a href="{{ route('talent.job.detail', $job->job_id) }}">
         <div class="media-body flex-grow-1">
-            <h3 class="mt-2">{{ $job->client->name }} </h3>
+            <h5 class="mt-0">{{ $job->client->name }} </h5>
+            <p>{{ $job->job_title }}</p>
         </div>
     </a>
     </div>

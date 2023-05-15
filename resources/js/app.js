@@ -4,11 +4,11 @@ import './bootstrap';
 $(document).ready(function(){
     
     $(document).on('click','#send_message', function(e) {
-        
         $.ajax({
             method: 'POST',
             url: '/send-message',
             data: {
+                photo: $('#photo').attr('value'),
                 receiver_id: $('#receiver_id').val(),
                 message: $('#message').val(),
                 job_id: $('#job_id').val()
@@ -34,8 +34,8 @@ window.Echo.channel('chat').listen('.chatmessage', function(e){
         </a>
         <div class="media d-flex">
             <div class="media-img-wrap flex-shrink-0">
-                <div class="avatar avatar-online">
-                    <img src="/assets/img/BrainX/logo-outline.svg" alt="User Image" class="avatar-img rounded-circle">
+                <div class="avatar ">
+                    <img src="`+e.photo+`" alt="User Image" class="avatar-img rounded-circle">
                 </div>
             </div>
             <div class="media-body flex-grow-1">
