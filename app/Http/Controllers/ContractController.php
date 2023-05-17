@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use Illuminate\Http\Request;
 use App\Models\Contract;
 use App\Models\Action;
@@ -40,65 +41,73 @@ class ContractController extends Controller
      */
     public function store(Request $request)
     {
-       
-        $contract = Contract::create([
-            'contract_name' => $request->contract_name,
-            'description'=> $request->description,
-            'contract_type'=> $request->contract_type,
-            'fixed_price'=> $request->fixed_price,
-            'service_fee'=> $request->service_fee,
-            'talent_receive'=> $request->talent_receive,
-            'job_id'=> $request->job_id,
-            'hourly_rate' => $request->hourly_rate,
-            'hours_per_week' => $request->hours_per_week,
-            'client_deposit' => $request->client_deposit,
-            'duration' => $request->duration
 
-        ]);
-        $milestones = [];
-        if($request->contract_type == 'fixed'){
-            foreach($request->milestone as $index => $milestone){
-                if($milestone != null && $request->milestone_value[$index] == null){
+        try {
+
+            $contract = Contract::create([
+                'contract_name' => $request->contract_name,
+                'description' => $request->description,
+                'contract_type' => $request->contract_type,
+                'fixed_price' => $request->fixed_price,
+                'service_fee' => $request->service_fee,
+                'talent_receive' => $request->talent_receive,
+                'job_id' => $request->job_id,
+                'hourly_rate' => $request->hourly_rate,
+                'hours_per_week' => $request->hours_per_week,
+                'client_deposit' => $request->client_deposit,
+                'duration' => $request->duration
+
+            ]);
+            $milestones = [];
+            if ($request->contract_type == 'fixed') {
+                foreach ($request->milestone as $index => $milestone) {
+                    if ($milestone != null && $request->milestone_value[$index] == null) {
+                        array_push($milestones, [
+                            'caption' => $milestone,
+                            'amount' => $request->milestone_value[$index],
+                            'contract_id' => $contract->id
+                        ]);
+                    }
+                }
+            } else {
+                for ($i = 0; $i < (int) $request->duration; $i++) {
                     array_push($milestones, [
-                        'caption' => $milestone,
-                        'amount' => $request->milestone_value[$index],
+                        'caption' => $i + 1,
+                        'amount' => $request->client_deposit,
                         'contract_id' => $contract->id
                     ]);
                 }
             }
-        }else{
-            for($i = 0; $i < (int)$request->duration; $i++){
-                array_push($milestones, [
-                    'caption' => $i+1,
-                    'amount' => $request->client_deposit,
-                    'contract_id' => $contract->id
-                ]);
-            }
+
+            $milestone = Milestone::insert($milestones);
+            $job = Job::find($request->job_id);
+            $action = Action::create([
+                'job_id' => $job->job_id,
+                'sender_id' => Auth::user()->id,
+                // sender id 0 means it is auto generated or sent by admin
+                'action_type' => 'CONTRACT',
+                'receiver_id' => $job->client_id
+            ]);
+
+            $message = Message::create([
+                'action_id' => 1055,//$action->id,
+                'message' => 'Created a contract',
+                'sender_id' => Auth::user()->id
+            ]);
+
+            return redirect()->route('talent.job.details', $request->job_id);
+
+        } catch (Exception $e) {
+            dd($e->getMessage());
         }
-        
-        $milestone = Milestone::insert($milestones);
-        $job = Job::find($request->job_id);
-        $action = Action::create([
-            'job_id' => $job->job_id,
-            'sender_id' => Auth::user()->id, // sender id 0 means it is auto generated or sent by admin
-            'action_type' => 'CONTRACT',
-            'receiver_id' => $job->client_id
-        ]);
-
-        $message = Message::create([
-            'action_id' => $action->id,
-            'message' => 'Created a contract',
-            'sender_id' => Auth::user()->id
-        ]);
-
-        return redirect()->route('talent.job.details', $request->job_id);
     }
 
-    public function endContract(Request $request){
-        $contract = Contract::where('id',$request->contract_id)->update([
-           'status' => 'ENDED'
+    public function endContract(Request $request)
+    {
+        $contract = Contract::where('id', $request->contract_id)->update([
+            'status' => 'ENDED'
         ]);
-        
+
         return redirect()->back();
     }
 

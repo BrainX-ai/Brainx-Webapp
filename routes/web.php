@@ -47,6 +47,7 @@ Route::post('/reject-request','App\http\controllers\JobController@rejectRequest'
 // chat routes
 
 Route::post('/send-message','App\http\controllers\ChatController@sendMessage')->name('send.message');
+Route::post('/upload-chat-file', 'App\http\controllers\ChatController@uploadChatFile')->name('upload.chat.file');
 
 
 Route::prefix('/client')->as('client.')->group(function () {

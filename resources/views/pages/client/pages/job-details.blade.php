@@ -98,7 +98,6 @@
                                 <div id="focus"></div>
                             </div>
                             <div class="chat-footer">
-                                <form action="" method="POST">
                                     <div class="input-group">
                                         <div class="btn-file btn">
                                             <i class="fa fa-paperclip"></i>
@@ -115,7 +114,6 @@
                                             id="send_message"><i class="fab fa-telegram-plane"></i></button>
 
                                     </div>
-                                </form>
                             </div>
                             <!-- /Chat Right -->
 
