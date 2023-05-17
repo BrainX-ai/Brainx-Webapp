@@ -90,7 +90,7 @@ class ContractController extends Controller
             ]);
 
             $message = Message::create([
-                'action_id' => 1055,//$action->id,
+                'action_id' => $action->id,
                 'message' => 'Created a contract',
                 'sender_id' => Auth::user()->id
             ]);
