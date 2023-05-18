@@ -92,6 +92,9 @@
                                             @if ($action->action_type == 'ONLY_MESSAGE')
                                                 @include('pages.client.includes.message-views.only-message')
                                             @endif
+                                            @if ($action->action_type == 'ONLY_MESSAGE_WITH_FILE')
+                                                @include('pages.client.includes.message-views.message-with-file')
+                                            @endif
                                         </div>
                                     @endforeach
                                 </div>
@@ -99,9 +102,9 @@
                             </div>
                             <div class="chat-footer">
                                     <div class="input-group">
-                                        <div class="btn-file btn">
+                                        <div class="btn-file btn d-none">
                                             <i class="fa fa-paperclip"></i>
-                                            <input type="file">
+                                            <input type="file" name="file" id="file" onchange="sendFile()">
                                         </div>
                                         <input type="hidden" value="{{ $job->job_id }}" id="job_id" />
                                         <input type="hidden" name="receiver_id" value="{{ $job->talent_user_id }}"
@@ -112,7 +115,6 @@
 
                                         <button type="button" class="btn btn-primary msg-send-btn rounded-pill"
                                             id="send_message"><i class="fab fa-telegram-plane"></i></button>
-
                                     </div>
                             </div>
                             <!-- /Chat Right -->
@@ -141,6 +143,38 @@
                 document.getElementById('focus').scrollIntoView();
 
             })
+
+            function sendFile() {
+            // Get the selected file
+            var files = $('#file')[0].files;
+            
+            if (files.length > 0) {
+                var fd = new FormData();
+
+                // Append data 
+                fd.append('file', files[0]);
+                fd.append('receiver_id', $('#receiver_id').val());
+                fd.append('photo', $('#photo').val());
+                fd.append('job_id', $('#job_id').val());
+
+
+                // AJAX request 
+                $.ajax({
+                    url: '{{ route('upload.chat.file') }}',
+                    method: 'post',
+                    data: fd,
+                    contentType: false,
+                    processData: false,
+                    dataType: 'json',
+                    success: function(response) {
+
+                    },
+                    error: function(response) {
+                        console.log("error : " + JSON.stringify(response));
+                    }
+                });
+            }
+        }
         </script>
     @endsection
 @endsection

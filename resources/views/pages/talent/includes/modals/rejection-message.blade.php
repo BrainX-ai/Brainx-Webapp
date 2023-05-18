@@ -32,7 +32,7 @@
                                         
                                         <div class="form-group">
                                             <label for="" class="h4">Why you rejected this chance?</label>
-                                            <textarea name="message" class="form-control" id="" cols="30" rows="10" placeholder="please kindly tell us why you rejected so we can match you to clients better."></textarea>
+                                            <textarea name="message" class="form-control" id="" cols="30" rows="10" placeholder="Please kindly tell us why you rejected so we can match you to clients better."></textarea>
                                         </div>
                                         
                                     </div>

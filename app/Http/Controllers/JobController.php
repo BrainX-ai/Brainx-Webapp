@@ -45,7 +45,7 @@ class JobController extends Controller
 
         if (sizeof($jobs)) {
             $job = $jobs[0];
-            $actions = Action::where('job_id', $job->job_id)->with('message')->with('sender')->get();
+            $actions = Action::where('job_id', $job->job_id)->with('message')->with('sender')->with('file')->get();
             // dd($actions);
             // dd($job);
             return view('pages.talent.job-details')->with('job', $job)->with('jobs', $jobs)->with('actions', $actions);
@@ -65,8 +65,8 @@ class JobController extends Controller
         }
 
         // $milestones = Milestone::where('contract_id', $job->contract->id)->get();
-        $actions = Action::where('job_id', $job->job_id)->with('message')->with('sender')->get();
-        // dd($job->talent['talent']->photo);
+        $actions = Action::where('job_id', $job->job_id)->with('message')->with('sender')->with('file')->get();
+        // dd($actions);
         return view('pages.talent.job-details')->with('job', $job)->with('jobs', $jobs)->with('actions', $actions);
     }
 

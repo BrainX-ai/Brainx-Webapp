@@ -21,6 +21,14 @@ class JobController extends Controller
         
         return view('pages.admin.projects')->with('jobs', $jobs)->with('talents', $talents);
     }
+
+    public function details($id){
+        $job = Job::with(['project_requests','contract','talent'])->find($id);
+      
+        if($job){
+            return view('pages.admin.project-details')->with('job', $job);
+        }
+    }
     
     public function assignTalent(Request $request){
 

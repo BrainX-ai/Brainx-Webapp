@@ -26,6 +26,10 @@ class Action extends Model
         return $this->hasOne(ProjectRequest::class,'action_id','id');
     }
 
+    public function file(){
+        return $this->hasOne(File::class, 'action_id','id');
+    }
+
     protected $fillable = [
         'job_id',
         'sender_id',

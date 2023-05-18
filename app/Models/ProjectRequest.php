@@ -9,6 +9,10 @@ class ProjectRequest extends Model
 {
     use HasFactory;
 
+    public function talent(){
+        return $this->belongsTo(User::class,'user_id','id');
+    }
+
       /**
      * The attributes that are mass assignable.
      *

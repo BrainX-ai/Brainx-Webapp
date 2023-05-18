@@ -85,31 +85,13 @@
                                                 @if ($action->action_type == 'ONLY_MESSAGE')
                                                     @include('pages.talent.includes.message-views.only-message')
                                                 @endif
+                                                @if ($action->action_type == 'ONLY_MESSAGE_WITH_FILE')
+                                                    @include('pages.talent.includes.message-views.message-with-file')
+                                                @endif
                                             @endif
                                         </div>
                                     @endforeach
-                                    <div class="chat-header border-0">
-                                        <a id="back_user_list" href="javascript:void(0)" class="back-user-list">
-                                            <i class="material-icons">chevron_left</i>
-                                        </a>
-                                        <div class="media d-flex">
-                                            <div class="media-img-wrap flex-shrink-0">
-                                                <div class="avatar ">
-                                                    <img src="` +
-                                                e.photo +
-                                                `" alt="User Image" class="avatar-img rounded-circle">
-                                                </div>
-                                            </div>
-                                            <div class="media-body flex-grow-1">
-                                                <div class="user-name">` +
-                                                e.username +
-                                                `</div>
-                                                <div class="message">` +
-                                                e.message +
-                                                `</div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    
                                 </div>
                                 <div class="progress">
                                     <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger"
@@ -121,13 +103,11 @@
                             </div>
                             <div class="chat-footer">
                                 <div class="input-group">
-                                    <form id="fileUploadForm" method="POST" enctype="multipart/form-data">
-                                        @csrf
-                                        <div class="btn-file btn">
+                                    
+                                        <div class="btn-file btn d-none">
                                             <i class="fa fa-paperclip"></i>
                                             <input type="file" name="file" id="file" onchange="sendFile()">
                                         </div>
-                                    </form>
                                     <input type="hidden" value="{{ $job->job_id }}" id="job_id" />
                                     <input type="hidden" name="receiver_id" value="{{ $job->client_id }}"
                                         id="receiver_id" />
@@ -177,7 +157,7 @@
         function sendFile() {
             // Get the selected file
             var files = $('#file')[0].files;
-            alert('File selected')
+            
             if (files.length > 0) {
                 var fd = new FormData();
 
@@ -187,8 +167,6 @@
                 fd.append('photo', $('#photo').val());
                 fd.append('job_id', $('#job_id').val());
 
-                // Hide alert 
-                // $('#responseMsg').hide();
 
                 // AJAX request 
                 $.ajax({
@@ -207,6 +185,7 @@
                 });
             }
         }
+
     </script>
 @endsection
 @endsection

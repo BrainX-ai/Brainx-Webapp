@@ -12,7 +12,7 @@ use Auth;
 class ChatController extends Controller
 {
     public function sendMessage(Request $request){
-        event(new ChatMessage(Auth::user()->name, $request->message, $request->job_id, $request->receiver_id, $request->photo));
+        event(new ChatMessage(Auth::user()->name, $request->message, $request->job_id, $request->receiver_id, $request->photo, 'text'));
 
         $this->storeChatMessage($request);
 
@@ -58,19 +58,29 @@ class ChatController extends Controller
  
        $name = time().'.'.request()->file->getClientOriginalExtension();
   
-       $request->file->move(public_path('uploads'), $name);
+       $request->file->move(public_path('storage'), $name);
      
         $file = File::create([
-            'file_name' => $name,
+            'file_name' => $request->file('file')->getClientOriginalName(),
             'file_extension' => $request->file('file')->getClientOriginalExtension(),
             'file_type' => $request->file('file')->getClientMimeType(),
-            'file_url' => '/assets/uploads/'.$name,
+            'file_url' => $name,
             'action_id' => $action->id
             // 'file_size' => $request->file('file')->getSize(),
         ]);
 
-        return response()->json(['status' => 'ok'], 200);
-  
-        
+        event(new ChatMessage(Auth::user()->name, $file->file_name.'#&*'.$file->id, $request->job_id, $request->receiver_id, $request->photo, 'file'));
+
+
+        return response()->json(['status' => 'ok','message' => $name], 200);        
+    }
+
+    public function downloadFile(Request $request){
+
+        $file = File::find($request->file_id);
+        $file_path = storage_path('app/public/'. $file->file_url);
+        $headers = array('Content-Type'=> $file->file_type);
+
+        return \Response::download($file_path, $file->file_name, $headers);
     }
 }

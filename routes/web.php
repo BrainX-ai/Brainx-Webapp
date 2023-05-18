@@ -48,6 +48,7 @@ Route::post('/reject-request','App\http\controllers\JobController@rejectRequest'
 
 Route::post('/send-message','App\http\controllers\ChatController@sendMessage')->name('send.message');
 Route::post('/upload-chat-file', 'App\http\controllers\ChatController@uploadChatFile')->name('upload.chat.file');
+Route::get('/download-chat-file/{file_id}', 'App\http\controllers\ChatController@downloadFile')->name('download.chat.file');
 
 
 Route::prefix('/client')->as('client.')->group(function () {
@@ -92,6 +93,7 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
     Route::get('/clients','App\http\controllers\Admin\AdminController@clients')->name('admin.clients');
     Route::get('/clients/delete/{id}','App\http\controllers\Admin\AdminController@destroy')->name('admin.clients.delete');
     Route::get('/projects','App\http\controllers\Admin\JobController@index')->name('admin.projects');
+    Route::get('/project/details/{id}','App\http\controllers\Admin\JobController@details')->name('admin.project.details');
     Route::post('/users/status/update','App\http\controllers\Admin\AdminController@updateStatus')->name('admin.update.users.status');
     Route::get('/categories','App\http\controllers\Admin\SkillController@index')->name('admin.categories');
     Route::post('/category/insert','App\http\controllers\Admin\SkillController@storeCategory')->name('admin.category.insert');

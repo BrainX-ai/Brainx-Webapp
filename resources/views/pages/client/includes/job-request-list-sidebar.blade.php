@@ -9,7 +9,13 @@
     }
     .job-active{
         border-right: 5px solid;
+        
         border-right-color: #0B0D63;
+    }
+    
+    
+    .media:hover{
+        background-color: #efefef82;
     }
 </style>
 <!-- Chat Left -->
@@ -26,15 +32,15 @@
             @endphp
             
             @foreach ($jobs as $index => $job)
+            <a href="{{ route('client.job.details', ['id'=>$job->job_id]) }}">
     <div class="media d-flex @php echo ($index != 0 )?'border-top':'' @endphp pt-3 pb-3 @php echo($selectedJob == $job->job_id)? 'job-active ':'' @endphp  ">
         
-        <a href="{{ route('client.job.details', ['id'=>$job->job_id]) }}">
         <div class="media-body flex-grow-1">
             <h5 class="mt-2  "><span class="me-2">&#183;</span>
                 <span>{{ substr($job->job_title,0,80).((strlen($job->job_title)>80)?'...':'') }}</span> </h5>
         </div>
-        </a>
     </div>
+</a>
     @endforeach
             
         </div>

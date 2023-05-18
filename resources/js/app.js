@@ -30,9 +30,11 @@ $(document).ready(function () {
 window.Echo.channel("chat").listen(".chatmessage", function (e) {
     let job_id = $("#job_id").val();
     if (job_id == parseInt(e.job_id)) {
-        console.log(job_id);
+
+        if(e.messageType == "text"){
+
         $("#messages").append(
-            `<div class="chat-header border-0">
+            `<div class="mb-4"><div class="chat-header border-0">
         <a id="back_user_list" href="javascript:void(0)" class="back-user-list">
             <i class="material-icons">chevron_left</i>
         </a>
@@ -53,8 +55,36 @@ window.Echo.channel("chat").listen(".chatmessage", function (e) {
                 `</div>
             </div>
         </div>
-    </div>`
+    </div></div>`
+        
         );
+    }else if(e.messageType == "file"){
+
+        let data = e.message.split("#&*")
+
+        $('#messages').append(`<div class="mb-4"><div class="chat-header border-0">
+        <a id="back_user_list" href="javascript:void(0)" class="back-user-list">
+            <i class="material-icons">chevron_left</i>
+        </a>
+        <div class="media d-flex">
+            <div class="media-img-wrap flex-shrink-0">
+                <div class="avatar ">
+                    <img src="`+e.photo+`" alt="User Image" class="avatar-img rounded-circle">
+                </div>
+            </div>
+            <div class="media-body flex-grow-1">
+                <div class="d-flex">
+    
+                    <div class="user-name"> `+e.username+` </div>
+                    <div class="ms-3 user-status"> Send a file</div>
+                </div>
+                <a href="/download-chat-file/`+data[1]+`" class="text-primary fw-bold" target="_blank" download>
+                `+data[0]+`</a>
+            </div>    
+        </div>
+    </div></div>`)
+    }
+    
         document.getElementById("focus").scrollIntoView();
     }
 });

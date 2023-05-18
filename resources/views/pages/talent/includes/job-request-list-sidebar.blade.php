@@ -8,6 +8,10 @@
         border-right: 5px solid;
         border-right-color: #0B0D63;
     }
+
+    .chat-header:hover{
+        background-color: #efefef82;
+    }
 </style>
 <!-- Chat Left -->
 <div class="chat-cont-left">
@@ -34,7 +38,9 @@
     @endphp
     @foreach ($jobs as $job)
         @if ($job->isAccepted->status == 'ACCEPTED')
+        <a href="{{ route('talent.job.details', $job->job_id) }}">
             <div class="chat-header border-bottom mb-0 pt-4 @php echo($selectedJob == $job->job_id)? 'job-active ':'' @endphp" style="z-index: -99;">
+                
                 <div class="media d-flex">
                     <div class="media-img-wrap flex-shrink-0 me-3">
                         <div class="avatar ">
@@ -42,14 +48,13 @@
                                 class="avatar-img rounded-circle">
                         </div>
                     </div>
-                    <a href="{{ route('talent.job.detail', $job->job_id) }}">
                         <div class="media-body flex-grow-1">
                             <h5 class="mt-0">{{ $job->client->name }} </h5>
                             <p>{{ $job->job_title }}</p>
                         </div>
-                    </a>
                 </div>
             </div>
+        </a>
         @endif
     @endforeach
 

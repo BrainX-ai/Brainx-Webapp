@@ -40,25 +40,28 @@
 
                         <div class="form-group">
                             <label for="" class="h4">Contract name</label>
-                            <input type="text" name="contract_name" class="form-control" onkeyup="updateContractName(this)" placeholder="Contract Name" required
-                                value="{{ $job->job_title }}">
+                            <input type="text" name="contract_name" class="form-control"
+                                onkeyup="updateContractName(this)" placeholder="Contract Name" required
+                                value="{{ $job->contract->contract_name | $job->job_title }}">
                         </div>
                         <div class="form-group">
                             <label for="" class="h4">Description</label>
-                            <textarea type="text" name="description" class="form-control" rows="5" onkeyup="updateContractDescription(this)"
-                                > {{ strip_tags($job->job_description) }} </textarea>
+                            <textarea type="text" name="description" class="form-control" rows="5"
+                                onkeyup="updateContractDescription(this)"> {{ strip_tags($job->contract->description) | strip_tags($job->job_description) }} </textarea>
                         </div>
 
                         <div class="form-group">
                             <label for="" class="h4">Contract type</label>
                             <div class="d-flex row">
                                 <label for="hourly" class="col-md-6">
-                                    <input type="radio" name="contract_type" class="me-2 " id="hourly" checked
-                                        onchange="hourlySelected()" value="hourly"/> Hourly rate
+                                    <input type="radio" name="contract_type" class="me-2 " id="hourly"
+                                        @if ($job->contract->contract_type == 'hourly') checked @endif onchange="hourlySelected()"
+                                        value="hourly" /> Hourly rate
                                 </label>
                                 <label for="fixed" class="col-md-6">
                                     <input type="radio" name="contract_type" class="me-2 " id="fixed"
-                                        onchange="fixedSelected()" value="fixed"/> Fixed price
+                                        @if ($job->contract->contract_type == 'fixed') checked @endif onchange="fixedSelected()"
+                                        value="fixed" /> Fixed price
                                 </label>
                             </div>
                         </div>
@@ -102,7 +105,7 @@
 
                                     <div class="input-group">
                                         <span class="input-group-text">$</span>
-                                        <input type="number" name="service_fee" readonly id="service_fee" 
+                                        <input type="number" name="service_fee" readonly id="service_fee"
                                             class="form-control" />
                                     </div>
                                 </td>
@@ -117,7 +120,7 @@
 
                                     <div class="input-group">
                                         <span class="input-group-text">$</span>
-                                        <input type="number" name="talent_receive" readonly id="talent_receive" 
+                                        <input type="number" name="talent_receive" readonly id="talent_receive"
                                             class="form-control" />
                                     </div>
                                 </td>
@@ -129,7 +132,8 @@
                                 </td>
                                 <td>
                                     <input type="number" data-symbol="€" name="hours_per_week"
-                                        class="form-control currency" onkeyup="updateClientDeposit(this)" value="{{ $job->hours_per_week }}"/>
+                                        class="form-control currency" onkeyup="updateClientDeposit(this)"
+                                         />
                                 </td>
                             </tr>
                             <tr class="hourly_box">
@@ -141,7 +145,7 @@
 
                                     <div class="input-group">
                                         <span class="input-group-text">$</span>
-                                        <input type="number" data-symbol="€" name="client_deposit" readonly 
+                                        <input type="number" data-symbol="€" name="client_deposit" readonly
                                             class="form-control currency" />
                                     </div>
                                 </td>
@@ -152,7 +156,8 @@
                                     <p>Number of weeks</p>
                                 </td>
                                 <td>
-                                    <input type="number" name="duration" id="duration" class="form-control" value="{{ $job->duration_in_weeks }}" />
+                                    <input type="number" name="duration" id="duration" class="form-control"
+                                         />
                                 </td>
                             </tr>
                         </table>
@@ -234,7 +239,7 @@
             document.getElementById('description_hourly').innerHTML = el.value
             document.getElementById('description_fixed').innerHTML = el.value
         }
-        
+
         function update(el) {
             document.getElementById('fixed_price_in_review').innerHTML = el.value
             document.getElementById('hourly_rate_in_review').innerHTML = el.value
@@ -264,12 +269,14 @@
                     data.text = texts[i].value
                     data.value = values[i].value
 
-                    $('#fixed_contract').append(getMilestoneRow(data, i+1))
+                    if (data.text && data.value) {
+                        $('#fixed_contract').append(getMilestoneRow(data, i + 1))
+                    }
                 }
                 $('#review-fixed-contract').modal('toggle');
-            }else{
+            } else {
                 $('#hourly_contract_milestone').html('')
-                for(var i = 0; i < document.querySelector('input[name=duration]').value; i++) {
+                for (var i = 0; i < document.querySelector('input[name=duration]').value; i++) {
                     data.index = i + 1
                     data.hour = document.querySelector('input[name=hours_per_week]').value
                     $('#hourly_contract_milestone').append(getHourlyMilestoneRow(data))
@@ -285,9 +292,10 @@
                 'input[name=hourly_rate]').value
         }
 
-        function getHourlyMilestoneRow(data){
+        function getHourlyMilestoneRow(data) {
             return `<div class="mt-4 pb-5 row">
-                                                <h6 class="col-md-6">Week `+data.index+`: <span id="hour">`+data.hour+`</span>hr</h6>
+                                                <h6 class="col-md-6">Week ` + data.index + `: <span id="hour">` + data
+                .hour + `</span>hr</h6>
                                                 <div class="col-md-6">
 
                                                     <div class="progress-container">
@@ -319,8 +327,12 @@
         }
 
         $(document).ready(function(e) {
-
-            hourlySelected()
+            
+            if ($('#hourly').is(':checked')) {
+                hourlySelected()
+            } else {
+                fixedSelected()
+            }
         })
     </script>
 @endsection
