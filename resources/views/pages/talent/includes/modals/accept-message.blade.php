@@ -33,7 +33,8 @@
                                         
                                         <div class="form-group">
                                             <label for="" class="h4">Write a message to your client</label>
-                                            <textarea name="message" class="form-control" id="" cols="30" rows="10" placeholder=" ">Hi! 
+                                            <textarea name="message" class="form-control" id="" cols="30" rows="10" placeholder=" " value="Hi! 
+I’m matched to your request by BrainX’s AI expert. I’ve reviewed your request and I’d like to take it. Thank you and looking forward to working with you.">Hi! 
 I’m matched to your request by BrainX’s AI expert. I’ve reviewed your request and I’d like to take it. Thank you and looking forward to working with you.</textarea>
                                             <input type="hidden" name="job_id" value="{{ $action->job_id }}">
                                         </div>

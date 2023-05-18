@@ -33,6 +33,7 @@
                                         <div class="form-group">
                                             <label for="" class="h4">Why you rejected this chance?</label>
                                             <textarea name="message" class="form-control" id="" cols="30" rows="10" placeholder="Please kindly tell us why you rejected so we can match you to clients better."></textarea>
+                                            <input type="hidden" name="job_id" value="{{ $action->job_id }}">
                                         </div>
                                         
                                     </div>

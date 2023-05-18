@@ -74,7 +74,8 @@ class JobController extends Controller
     {
 
         $projectRequest = ProjectRequest::where('job_id', $request->job_id)->where('user_id', Auth::user()->id)->update([
-            'status' => 'ACCEPTED'
+            'status' => 'ACCEPTED',
+            'message' => $request->message
         ]);
 
         $action = Action::create([
@@ -96,8 +97,10 @@ class JobController extends Controller
     {
 
         $projectRequest = ProjectRequest::where('job_id', $request->job_id)->where('user_id', Auth::user()->id)->update([
-            'status' => 'REJECTED'
+            'status' => 'REJECTED',
+            'message' => $request->message
         ]);
+        
         $job = Job::where('job_id', $request->job_id)->update([
             'talent_user_id' => null
         ]);

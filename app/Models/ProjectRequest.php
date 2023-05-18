@@ -21,6 +21,8 @@ class ProjectRequest extends Model
     protected $fillable = [
         'job_id',
         'user_id',
-        'action_id'
+        'action_id',
+        'message',
+        'status'
     ];
 }
