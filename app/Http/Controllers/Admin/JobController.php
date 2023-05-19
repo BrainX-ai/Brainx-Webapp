@@ -61,7 +61,8 @@ class JobController extends Controller
         try {
             $mailData = [
                 'subject' => 'A request from BrainX’s client',
-                'body' => 'There is a client’s request that matches your profile. Please kindly review if you can take it. If you don’t reply within 24h, we may match this request to another talent.<br/>Thanks! ',
+                'body' => 'There is a client’s request that matches your profile. Please kindly review if you can take it. If you don’t reply within 24h, we may match this request to another talent.
+Thanks! ',
                 'button_text' => 'View client request',
                 'button_url' => route('talent.care'),
                 'receiver' => $receiver->name,

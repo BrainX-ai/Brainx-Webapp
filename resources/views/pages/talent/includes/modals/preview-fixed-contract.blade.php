@@ -124,7 +124,7 @@
                         <div class="form-group">
                             <h5 for="">Description</h5>
                             <p>
-                                {{ $job->contract->description }}
+                                {{ html_entity_decode($job->contract->description) }}
                             </p>
                         </div>
 

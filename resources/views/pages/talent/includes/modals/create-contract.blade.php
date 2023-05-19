@@ -47,7 +47,7 @@
                         <div class="form-group">
                             <label for="" class="h4">Description</label>
                             <textarea type="text" name="description" class="form-control" rows="5"
-                                onkeyup="updateContractDescription(this)"> {{ ($job->contract != null)? strip_tags($job->contract->description) : strip_tags($job->job_description) }} </textarea>
+                                onkeyup="updateContractDescription(this)"> {{ ($job->contract != null)? html_entity_decode($job->contract->description) : html_entity_decode($job->job_description) }} </textarea>
                         </div>
 
                         <div class="form-group">
