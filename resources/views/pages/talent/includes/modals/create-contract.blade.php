@@ -42,12 +42,12 @@
                             <label for="" class="h4">Contract name</label>
                             <input type="text" name="contract_name" class="form-control"
                                 onkeyup="updateContractName(this)" placeholder="Contract Name" required
-                                value="{{ $job->contract->contract_name | $job->job_title }}">
+                                value="{{ ($job->contract != null)?$job->contract->contract_name : $job->job_title }}">
                         </div>
                         <div class="form-group">
                             <label for="" class="h4">Description</label>
                             <textarea type="text" name="description" class="form-control" rows="5"
-                                onkeyup="updateContractDescription(this)"> {{ strip_tags($job->contract->description) | strip_tags($job->job_description) }} </textarea>
+                                onkeyup="updateContractDescription(this)"> {{ ($job->contract != null)? strip_tags($job->contract->description) : strip_tags($job->job_description) }} </textarea>
                         </div>
 
                         <div class="form-group">
@@ -55,12 +55,12 @@
                             <div class="d-flex row">
                                 <label for="hourly" class="col-md-6">
                                     <input type="radio" name="contract_type" class="me-2 " id="hourly"
-                                        @if ($job->contract->contract_type == 'hourly') checked @endif onchange="hourlySelected()"
+                                        @if ($job->contract != null && $job->contract->contract_type == 'hourly') checked @endif onchange="hourlySelected()"
                                         value="hourly" /> Hourly rate
                                 </label>
                                 <label for="fixed" class="col-md-6">
                                     <input type="radio" name="contract_type" class="me-2 " id="fixed"
-                                        @if ($job->contract->contract_type == 'fixed') checked @endif onchange="fixedSelected()"
+                                        @if ($job->contract != null && $job->contract->contract_type == 'fixed') checked @endif onchange="fixedSelected()"
                                         value="fixed" /> Fixed price
                                 </label>
                             </div>

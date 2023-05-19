@@ -60,8 +60,9 @@ class ContractController extends Controller
             ]);
             $milestones = [];
             if ($request->contract_type == 'fixed') {
+                // dd($request->milestone);
                 foreach ($request->milestone as $index => $milestone) {
-                    if ($milestone != null && $request->milestone_value[$index] == null) {
+                    if ($milestone != null && $request->milestone_value[$index] != null) {
                         array_push($milestones, [
                             'caption' => $milestone,
                             'amount' => $request->milestone_value[$index],

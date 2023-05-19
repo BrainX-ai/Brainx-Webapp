@@ -26,6 +26,7 @@ class AdminController extends Controller
 
         return view('pages.admin.users')->with('users', $users);
     }
+
     public function clients()
     {
         $users = User::with('client')->where('role', 'Client')->get();
@@ -33,11 +34,8 @@ class AdminController extends Controller
         return view('pages.admin.clients')->with('users', $users);
     }
 
-
-
     public function userDetails($id)
     {
-
         $id = decrypt($id);
         $title = ['Experience', 'Education'];
 

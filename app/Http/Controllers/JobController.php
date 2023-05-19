@@ -8,7 +8,10 @@ use App\Models\Action;
 use App\Models\Milestone;
 use App\Models\ProjectRequest;
 use App\Models\Message;
+use App\Models\User;
 use Auth;
+use Mail;
+use App\Mail\SendMail;
 
 class JobController extends Controller
 {
@@ -90,6 +93,22 @@ class JobController extends Controller
             'message' => $request->message
         ]);
 
+        $receiver = User::find($action->receiver_id);
+        try {
+            $mailData = [
+                'subject' => 'BrainX’s found an AI talent for you',
+                'body' => 'We have found an AI talent that is suitable to your request. Go to the conversation and view the talent’s profile.',
+                'button_text' => 'Go',
+                'button_url' => route('client.job.details', $request->job_id),
+                'receiver' => $receiver->name,
+                'preheadtext' => 'We have found an AI talent that is suitable to your request'
+            ];
+
+            Mail::to($receiver->email)->send(new SendMail($mailData));
+
+        } catch (\Exception $ex) {
+
+        }
         return redirect()->route('talent.job.details', $request->job_id);
     }
 
@@ -100,10 +119,25 @@ class JobController extends Controller
             'status' => 'REJECTED',
             'message' => $request->message
         ]);
-        
+
         $job = Job::where('job_id', $request->job_id)->update([
             'talent_user_id' => null
         ]);
+
+        try {
+            $mailData = [
+                'subject' => 'Project request rejected',
+                'body' => Auth::user()->name . ' rejected the job request with the following title: "' . $job->job_title . '"',
+                'button_text' => 'Open',
+                'button_url' => route('admin.projects'),
+                'receiver' => 'BrainX Admin',
+                'preheadtext' => Auth::user()->name . ' rejected job request'
+            ];
+
+            Mail::to('support@brainx.biz')->send(new SendMail($mailData));
+        } catch (\Exception $ex) {
+
+        }
 
         return redirect()->back();
     }

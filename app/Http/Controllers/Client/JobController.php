@@ -9,6 +9,8 @@ use App\Models\Message;
 use App\Models\Action;
 use App\Models\User;
 use Auth;
+use Mail;
+use App\Mail\SendMail;
 
 class JobController extends Controller
 {
@@ -83,6 +85,21 @@ class JobController extends Controller
             'message' => 'Thanks for your request! You will be notified via email when our service will be officially operated in May 2023.',
             'sender_id' => NULL
         ]);
+
+        try{
+        $mailData = [
+            'subject' => 'New Project Request',
+            'body' => 'A new project request is created with the following title: "'.$job->job_title.'" <br/> Created by: '.Auth::guard()->user()->name,
+            'button_text' => 'Open',
+            'button_url' => route('admin.projects'),
+            'receiver' => 'BrainX Admin',
+            'preheadtext' => 'A new project request is created.'
+        ];
+        
+        Mail::to('support@brainx.biz')->send(new SendMail($mailData));
+        }catch(\Exception $ex){
+            
+        }
 
         return redirect()->route('client.job.details',['id' => $job->job_id]);
 

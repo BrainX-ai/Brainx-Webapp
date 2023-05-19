@@ -30,7 +30,7 @@
                     <h4>Description</h4>
                     <p>{{ strip_tags($job->job_description) }}</p>
                     <h4>Contract Type</h4>
-                    <p>{{ $job->contract->contract_type }}</p>
+                    <p>{{ $job->job_type | $job->contract->contract_type  }}</p>
                     <a href="" class="text-primary fw-bold" data-bs-toggle="modal" data-bs-target="#preview-{{ $job->contract->contract_type }}-contract">View the contract</a>
                 </div>
             </div>
