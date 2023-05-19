@@ -312,8 +312,9 @@
         }
 
         function getMilestoneRow(data, index) {
-            return `<div class="mt-4 pb-4"><h6>Milestone ` + index + `: $` + data.value + `</h6>
-                                            <p>` + data.text + `</p>
+            return `<div class="mt-4 pb-4 row"> <div class="class="col-md-6""><h6 >Milestone ` + index + `: $` + data.value + `</h6>
+                                            <p>` + data.text + `</p></div>
+                                            <div class="col-md-6">
                                             <div class="progress-container">
                                                 <div class="progress" id="progress"></div>
                                                     <div class="circle "></div>
@@ -322,6 +323,7 @@
                                             <div class="progress-container-text">
                                                 <div class="circle-text border-0 ">Deposited</div>
                                                 <div class="circle-text border-0">Paid</div>
+                                            </div>
                                             </div>
                                         </div>`;
         }

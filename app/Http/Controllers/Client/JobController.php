@@ -42,7 +42,7 @@ class JobController extends Controller
             
         }
         // dd($jobs);
-        $actions = Action::where('job_id', $job->job_id)->with('message')->with('sender')->get();
+        $actions = Action::where('job_id', $job->job_id)->with('message')->with('sender')->with('job')->get();
         // dd($actions);
         return view('pages.client.pages.job-details')->with('job', $job)->with('jobs', $jobs)->with('actions', $actions);
     }

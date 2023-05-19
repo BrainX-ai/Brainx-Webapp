@@ -9,7 +9,7 @@
                     
                 <img src="/assets/img/BrainX/AI-focused-profile.png" alt="User Image" class="avatar-img rounded-circle">
                 @else
-
+                
                 <img src="{{ $action->job->talent->talent->photo }}" alt="User Image" class="avatar-img rounded-circle">
                 @endif
             </div>

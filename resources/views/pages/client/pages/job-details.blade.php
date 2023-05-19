@@ -74,11 +74,11 @@
                                 <div id="messages">
                                     @foreach ($actions as $action)
                                         <div class="mb-4">
-
                                             @if (Auth::user()->id == ($action->sender_id || $action->receiver_id) &&
                                                     $action->action_type == 'MESSAGE_WITH_MY_REQUEST')
                                                 @include('pages.client.includes.message-views.message-from-system')
                                             @endif
+                                            @if($job->talent_user_id != null)
                                             @if (
                                                 (Auth::user()->id == $action->sender_id || Auth::user()->id == $action->receiver_id) &&
                                                     $action->action_type == 'CONTRACT')
@@ -94,6 +94,7 @@
                                             @endif
                                             @if ($action->action_type == 'ONLY_MESSAGE_WITH_FILE')
                                                 @include('pages.client.includes.message-views.message-with-file')
+                                            @endif
                                             @endif
                                         </div>
                                     @endforeach
@@ -126,7 +127,7 @@
         </div>
         <!-- /Page Content -->
 
-        @if ($job->contract != null)
+        @if ($job->contract != null && $job->talent_user_id != null )
             @if ($job->contract->contract_type == 'fixed')
                 @include('pages.client.includes.modals.preview-fixed-contract')
             @else
