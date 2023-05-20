@@ -116,7 +116,7 @@ background-color: var(--line-border-fill);
                                         <div class="form-group">
                                             <h5 for="">Description</h5>
                                             <p id="description_hourly">
-                                                {{ html_entity_decode($job->job_description) }}
+                                                {{ ($job->contract != null)? html_entity_decode(strip_tags($job->contract->description)) : html_entity_decode(strip_tags($job->job_description)) }}
                                             </p>
                                         </div>
 

@@ -47,15 +47,14 @@
                         <div class="form-group">
                             <label for="" class="h4">Description</label>
                             <textarea type="text" name="description" class="form-control" rows="5"
-                                onkeyup="updateContractDescription(this)"> {{ ($job->contract != null)? html_entity_decode($job->contract->description) : html_entity_decode($job->job_description) }} </textarea>
+                                onkeyup="updateContractDescription(this)"> {{ ($job->contract != null)? html_entity_decode(strip_tags($job->contract->description)) : html_entity_decode(strip_tags($job->job_description)) }} </textarea>
                         </div>
 
                         <div class="form-group">
                             <label for="" class="h4">Contract type</label>
                             <div class="d-flex row">
                                 <label for="hourly" class="col-md-6">
-                                    <input type="radio" name="contract_type" class="me-2 " id="hourly"
-                                        @if ($job->contract != null && $job->contract->contract_type == 'hourly') checked @endif onchange="hourlySelected()"
+                                    <input type="radio" name="contract_type" class="me-2 " id="hourly" checked  onchange="hourlySelected()"
                                         value="hourly" /> Hourly rate
                                 </label>
                                 <label for="fixed" class="col-md-6">

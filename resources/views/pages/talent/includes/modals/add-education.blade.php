@@ -54,10 +54,10 @@
                                             <div class="d-flex row">
                                                 <label for="hourly" class="col-md-6">
                                                     
-                                                    <input type="date" name="from" class="me-2 " id="from" placeholder="From"/> 
+                                                    <input type="text" name="from" class="me-2 form-control" id="from" placeholder="From"/> 
                                                 </label>
                                                 <label for="fixed" class="col-md-6">
-                                                    <input type="date" name="to" class="me-2 " id="to" placeholder="To"/> 
+                                                    <input type="text" name="to" class="me-2 form-control " id="to" placeholder="To"/> 
                                                 </label>
                                             </div>
                                         </div>

@@ -125,6 +125,7 @@ class JobController extends Controller
         ]);
 
         try {
+            $job = Job::find($request->job_id);
             $mailData = [
                 'subject' => 'Project request rejected',
                 'body' => Auth::user()->name . ' rejected the job request with the following title: "' . $job->job_title . '"',
