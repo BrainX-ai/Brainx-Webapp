@@ -33,6 +33,8 @@ class LinkedinController extends Controller
                 // dd($talent);
                 if($talent->status == "INCOMPLETE"){
                     return redirect()->route('build.profile')->with(['user'=> $linkedinUser]);
+                }else if($talent->status == "ASSESSMENT_PENDING"){
+                    return redirect()->route('show.profile', encrypt($linkedinUser->id))->with(['user'=> $linkedinUser]);
                 }else{
                     return redirect()->route('talent.care')->with(['user'=> $linkedinUser]);
                     

@@ -31,8 +31,8 @@ Version      : 1.0
 		$('#global-loader');
 		setTimeout(function () {
 			$("#global-loader").fadeOut("slow");
-		}, 100);
-	}, 500);
+		}, 50);
+	}, 300);
 	
 	// Sidebar
 	

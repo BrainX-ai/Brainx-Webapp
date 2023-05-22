@@ -86,7 +86,7 @@ class TalentController extends Controller
 
     public function getProfileBuilder(){
         $user = Auth::guard()->user();
-        dd($categories);
+        
         return redirect('/build-profile')->with(['user'=> $user]);
     }
 

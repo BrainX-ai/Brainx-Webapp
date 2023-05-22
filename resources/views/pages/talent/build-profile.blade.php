@@ -305,7 +305,7 @@ ul li{
                                     </div>
                                 <div class="card-footer border-0">
                                     <button class="btn btn-primary" type="submit">
-                                        Submit for review
+                                        See my profile
                                     </button>
                                 </div>
                             </div>

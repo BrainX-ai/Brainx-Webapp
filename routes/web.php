@@ -43,6 +43,7 @@ Route::post('/add-experience','App\http\controllers\TalentProfileController@addE
 Route::post('/add-education','App\http\controllers\TalentProfileController@addEducation')->name('add.education');
 Route::post('/accept-request','App\http\controllers\JobController@acceptRequest')->name('accept.request');
 Route::post('/reject-request','App\http\controllers\JobController@rejectRequest')->name('reject.request');
+Route::get('/client-view', 'App\http\controllers\TalentProfileController@showTalentProfile')->name('client.view');
 
 // chat routes
 

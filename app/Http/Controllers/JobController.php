@@ -73,8 +73,7 @@ class JobController extends Controller
         return view('pages.talent.job-details')->with('job', $job)->with('jobs', $jobs)->with('actions', $actions);
     }
 
-    public function acceptRequest(Request $request)
-    {
+    public function acceptRequest(Request $request){
 
         $projectRequest = ProjectRequest::where('job_id', $request->job_id)->where('user_id', Auth::user()->id)->update([
             'status' => 'ACCEPTED',
@@ -96,7 +95,7 @@ class JobController extends Controller
         $receiver = User::find($action->receiver_id);
         try {
             $mailData = [
-                'subject' => 'BrainX’s found an AI talent for you',
+                'subject' => 'BrainX found an AI talent for you',
                 'body' => 'We have found an AI talent that is suitable to your request. Go to the conversation and view the talent’s profile.',
                 'button_text' => 'Go',
                 'button_url' => route('client.job.details', $request->job_id),
