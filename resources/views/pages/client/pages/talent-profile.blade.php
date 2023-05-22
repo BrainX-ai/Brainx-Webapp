@@ -70,7 +70,7 @@
                                         @if ($user->talent->brainx_assessment)
                                             <i class="material-icons mb-1">check_circle</i>
                                         @else
-                                            <i class="material-icons mb-1">close</i>
+                                            <i class="material-icons mb-1 text-danger">close</i>
                                         @endif
                                         <span id="assesment">BrainX Skill Assessment</span>
                                     </div>

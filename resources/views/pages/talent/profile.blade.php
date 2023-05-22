@@ -241,7 +241,7 @@
                                 <a href="{{ route('client.view') }}">
                                 <button class="btn btn-primary me-3">Client view</button>
                             </a>
-                                <button class="btn btn-primary me-3" @if (sizeof($user->experiences)==0 || sizeof($user->educations) == 0)
+                                <button class="btn btn-primary me-3" @if (sizeof($user->experiences)==0 || sizeof($user->educations) == 0 || !$user->talent->brainx_assessment)
                                     disabled
                                 @endif>Submit for review</button>
                             </div>

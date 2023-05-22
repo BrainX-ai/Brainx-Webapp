@@ -43,7 +43,7 @@
                                         
                                         
                                     </div>
-                                <div class="card-footer pb-2 border-0 float-right">
+                                <div class="card-footer pb-2 border-0 float-end">
                                     <button type="submit"  class="btn btn-primary" data-bs-dismiss="modal"  > Save</button>
                                 </div>
                             </form>

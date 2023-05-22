@@ -22,7 +22,7 @@
 
 					<!-- Modal Header -->
 					<div class="modal-header ">
-						<h4 class="modal-title text-center w-100">Edit ex famous company</h4>
+						<h4 class="modal-title text-center w-100">Edit company name</h4>
 						<button type="button" class="close" data-bs-dismiss="modal"><span>&times;</span></button>
 					</div>
 
@@ -36,14 +36,14 @@
                                     <div class="card-body ">
                                         
                                         <div class="form-group">
-                                            <label for="" class="h4">Company name</label>
-                                            <input type="text" name="ex_famouse_company" class="form-control" > 
+                                            <label for="" class="h5">Choose the most famous company you're working or worked for</label>
+                                            <input type="text" name="ex_famouse_company" placeholder="Ex/current - company name" class="form-control" > 
                                         </div>
                                        
                                         
                                         
                                     </div>
-                                <div class="card-footer pb-2 border-0 float-right">
+                                <div class="card-footer pb-2 border-0 float-end">
                                     <button type="submit"  class="btn btn-primary" data-bs-dismiss="modal"  > Save</button>
                                 </div>
                             </form>
