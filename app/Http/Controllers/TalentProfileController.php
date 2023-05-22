@@ -115,6 +115,13 @@ class TalentProfileController extends Controller
 
     public function submitForReview(){
 
+
+
+        $user_id = Auth::guard()->user()->id;
+        $talent = Talent::where('user_id', $user_id)->first();
+        $talent->status = 'IN_REVIEW';
+        $talent->save();
+
         $action = Action::create([
             'job_id' => null,
             'sender_id' => null,
@@ -126,6 +133,30 @@ class TalentProfileController extends Controller
             'action_id' => $action->id,
             'message' => 'We’re excited to receive your profile. Please kindly give us time to review your profile. You will be notified via email when you’re accepted. Thank you for joining us!'
         ]);
+    }
+
+    public function updateHourlyRate(Request $request){
+        $user_id = Auth::guard()->user()->id;
+        $talent = Talent::where('user_id', $user_id)->first();
+        $talent->hourly_rate = $request->hourly_rate;
+        $talent->save();
+        return redirect()->route('show.profile', encrypt($user_id));
+    }
+
+    public function updateHoursPerWeek(Request $request){
+        $user_id = Auth::guard()->user()->id;
+        $talent = Talent::where('user_id', $user_id)->first();
+        $talent->hours_per_week = $request->hours_per_week;
+        $talent->save();
+        return redirect()->route('show.profile', encrypt($user_id));
+    }
+
+    public function updateExFamousCompany(Request $request){
+        $user_id = Auth::guard()->user()->id;
+        $talent = Talent::where('user_id', $user_id)->first();
+        $talent->ex_famouse_company = $request->ex_famouse_company;
+        $talent->save();
+        return redirect()->route('show.profile', encrypt($user_id));
     }
 
     public function uploadResume($file)

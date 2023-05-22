@@ -45,6 +45,10 @@ Route::post('/accept-request','App\http\controllers\JobController@acceptRequest'
 Route::post('/reject-request','App\http\controllers\JobController@rejectRequest')->name('reject.request');
 Route::get('/client-view', 'App\http\controllers\TalentProfileController@showTalentProfile')->name('client.view');
 
+Route::post('/update-hourly-rate', 'App\http\controllers\TalentProfileController@updateHourlyRate')->name('updateHourlyRate');
+Route::post('/update-hours-per-week','App\http\controllers\TalentProfileController@updateHoursPerWeek')->name('updateHoursPerWeek');
+Route::post('/update-ex-famous-company','App\http\controllers\TalentProfileController@updateExFamousCompany')->name('updateExFamousCompany');
+
 // chat routes
 
 Route::post('/send-message','App\http\controllers\ChatController@sendMessage')->name('send.message');

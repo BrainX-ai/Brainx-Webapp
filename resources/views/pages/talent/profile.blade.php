@@ -58,16 +58,18 @@
                                     <div class="col-md-4 p-2">
                                         <i class="material-icons mb-1">payments</i>$<span
                                             id="hourly_rate">{{ $user->talent->hourly_rate }}</span>/hour
-                                            <button class="btn " ><i class="material-icons mb-1">edit</i></button>
+                                            <button class="btn "  data-bs-target="#edit-hourly-rate"
+                                            data-bs-toggle="modal"><i class="material-icons mb-1">edit</i></button>
                                     </div>
-                                    @if ($user->talent->ex_famouse_company != null)
+                                    
                                         <div class="col-md-4 p-2">
                                             <i class="material-icons mb-1 me-2">store</i><span
                                                 id="ex-famous-company">{{ $user->talent->ex_famouse_company }}</span>
                                                
-                                            <button class="btn "><i class="material-icons mb-1">edit</i></button>
+                                                <button class="btn "  data-bs-target="#edit-ex-famous-company" 
+                                                data-bs-toggle="modal"><i class="material-icons mb-1">edit</i></button>
                                         </div>
-                                    @endif
+                                    
                                     <div class="col-md-4 p-2">
                                         @if ($user->talent->brainx_assessment)
                                         <i class="material-icons mb-1">check_circle</i>
@@ -80,7 +82,8 @@
                                         <i class="material-icons mb-1">schedule</i> <span
                                             id="hours_of_week">{{ $user->talent->hours_per_week }}</span> hours/week
 
-                                            <button class="btn "><i class="material-icons mb-1">edit</i></button>
+                                            <button class="btn "  data-bs-target="#edit-hours-per-week" 
+                                            data-bs-toggle="modal"><i class="material-icons mb-1">edit</i></button>
                                     </div>
                                     <div class="col-md-4 p-2">
 
@@ -255,4 +258,6 @@
     @include('pages.talent.includes.modals.add-experience')
 
     @include('pages.talent.includes.modals.edit.hourly-rate')
+    @include('pages.talent.includes.modals.edit.hours-per-week')
+    @include('pages.talent.includes.modals.edit.ex-famous-company')
 @endsection

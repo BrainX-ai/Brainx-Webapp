@@ -16,13 +16,13 @@
     }
 </style>
 		<!-- The Modal -->
-		<div class="modal fade custom-modal" id="edit-hourly-rate">
+		<div class="modal fade custom-modal" id="edit-hours-per-week">
 			<div class="modal-dialog modal-lg modal-dialog-centered">
 				<div class="modal-content">
 
 					<!-- Modal Header -->
 					<div class="modal-header ">
-						<h4 class="modal-title text-center w-100">Edit hourly rate</h4>
+						<h4 class="modal-title text-center w-100">Edit hours per week</h4>
 						<button type="button" class="close" data-bs-dismiss="modal"><span>&times;</span></button>
 					</div>
 
@@ -30,17 +30,14 @@
 					<div class="modal-body">
                         
                             <div class="  card m-2 border-0  col-md-12 ">
-                                <form action="{{ route('updateHourlyRate') }}" method="POST">
+                                <form action="{{ route('updateHoursPerWeek') }}" method="POST">
                                     @csrf
 
                                     <div class="card-body ">
                                         
-                                        <div class="form-group ">
-                                            <label for="" class="h4">Rate</label>
-                                            <div class="d-flex">
-
-                                                <input type="number" name="hourly_rate" class="form-control" > <span class="ms-2 mt-2">/hour</span>
-                                            </div>
+                                        <div class="form-group">
+                                            <label for="" class="h4">Hours per week</label>
+                                            <input type="number" name="hours_per_week" class="form-control" >
                                         </div>
                                        
                                         
