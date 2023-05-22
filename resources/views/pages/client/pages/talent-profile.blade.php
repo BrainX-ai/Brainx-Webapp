@@ -74,12 +74,12 @@
                                         @endif
                                         <span id="assesment">BrainX Skill Assessment</span>
                                     </div>
-                                    <div class="col-md-6 p-2">
+                                    <div class="col-md-4 p-2">
 
                                         <i class="material-icons mb-1">schedule</i> <span
                                             id="hours_of_week">{{ $user->talent->hours_per_week }}</span> hours/week
                                     </div>
-                                    <div class="col-md-6 p-2">
+                                    <div class="col-md-4 p-2">
 
                                         <i class="material-icons mb-1">location_on</i> <span
                                             id="country">{{ $user->talent->country }}</span>

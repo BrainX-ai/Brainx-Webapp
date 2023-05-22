@@ -109,7 +109,7 @@ class TalentProfileController extends Controller
 
 
         
-        return $this->show(encrypt($user_id));
+        return redirect()->route('show.profile',encrypt($user_id));
         // return redirect()->route('talent.care');
     }
 
