@@ -39,7 +39,7 @@
             -webkit-box-align: center;
             -ms-flex-align: center;
             /* align-items:
-        center; */
+            center; */
         }
 
         .chat-cont-left {
@@ -78,30 +78,31 @@
                                                     $action->action_type == 'MESSAGE_WITH_MY_REQUEST')
                                                 @include('pages.client.includes.message-views.message-from-system')
                                             @endif
-                                            @if($job->talent_user_id != null)
-                                            @if (
-                                                (Auth::user()->id == $action->sender_id || Auth::user()->id == $action->receiver_id) &&
-                                                    $action->action_type == 'CONTRACT')
-                                                @include('pages.client.includes.message-views.contract-message')
-                                            @endif
-                                            @if (
-                                                (Auth::user()->id == $action->sender_id || Auth::user()->id == $action->receiver_id) &&
-                                                    $action->action_type == 'ACCEPTENCE_MESSAGE')
-                                                @include('pages.client.includes.message-views.acceptence-message')
-                                            @endif
-                                            @if ($action->action_type == 'ONLY_MESSAGE')
-                                                @include('pages.client.includes.message-views.only-message')
-                                            @endif
-                                            @if ($action->action_type == 'ONLY_MESSAGE_WITH_FILE')
-                                                @include('pages.client.includes.message-views.message-with-file')
-                                            @endif
+                                            @if ($job->talent_user_id != null)
+                                                @if (
+                                                    (Auth::user()->id == $action->sender_id || Auth::user()->id == $action->receiver_id) &&
+                                                        $action->action_type == 'CONTRACT')
+                                                    @include('pages.client.includes.message-views.contract-message')
+                                                @endif
+                                                @if (
+                                                    (Auth::user()->id == $action->sender_id || Auth::user()->id == $action->receiver_id) &&
+                                                        $action->action_type == 'ACCEPTENCE_MESSAGE')
+                                                    @include('pages.client.includes.message-views.acceptence-message')
+                                                @endif
+                                                @if ($action->action_type == 'ONLY_MESSAGE')
+                                                    @include('pages.client.includes.message-views.only-message')
+                                                @endif
+                                                @if ($action->action_type == 'ONLY_MESSAGE_WITH_FILE')
+                                                    @include('pages.client.includes.message-views.message-with-file')
+                                                @endif
                                             @endif
                                         </div>
                                     @endforeach
                                 </div>
                                 <div id="focus"></div>
                             </div>
-                            <div class="chat-footer">
+                            @if (sizeof($job->latest_project_request) > 0 && $job->latest_project_request[0]->status == 'ACCEPTED')
+                                <div class="chat-footer">
                                     <div class="input-group">
                                         <div class="btn-file btn d-none">
                                             <i class="fa fa-paperclip"></i>
@@ -110,14 +111,17 @@
                                         <input type="hidden" value="{{ $job->job_id }}" id="job_id" />
                                         <input type="hidden" name="receiver_id" value="{{ $job->talent_user_id }}"
                                             id="receiver_id" />
-                                        <input type="hidden" name="photo" value="/assets/img/BrainX/AI-focused-profile.png" id="photo" />
+                                        <input type="hidden" name="photo"
+                                            value="/assets/img/BrainX/AI-focused-profile.png" id="photo" />
                                         <input type="text" class="input-msg-send form-control" name="message"
                                             id="message" placeholder="Reply...">
 
                                         <button type="button" class="btn btn-primary msg-send-btn rounded-pill"
                                             id="send_message"><i class="fab fa-telegram-plane"></i></button>
                                     </div>
-                            </div>
+                                </div>
+                            @endif
+
                             <!-- /Chat Right -->
 
                         </div>
@@ -127,7 +131,7 @@
         </div>
         <!-- /Page Content -->
 
-        @if ($job->contract != null && $job->talent_user_id != null )
+        @if ($job->contract != null && $job->talent_user_id != null)
             @if ($job->contract->contract_type == 'fixed')
                 @include('pages.client.includes.modals.preview-fixed-contract')
             @else
@@ -146,36 +150,36 @@
             })
 
             function sendFile() {
-            // Get the selected file
-            var files = $('#file')[0].files;
-            
-            if (files.length > 0) {
-                var fd = new FormData();
+                // Get the selected file
+                var files = $('#file')[0].files;
 
-                // Append data 
-                fd.append('file', files[0]);
-                fd.append('receiver_id', $('#receiver_id').val());
-                fd.append('photo', $('#photo').val());
-                fd.append('job_id', $('#job_id').val());
+                if (files.length > 0) {
+                    var fd = new FormData();
+
+                    // Append data 
+                    fd.append('file', files[0]);
+                    fd.append('receiver_id', $('#receiver_id').val());
+                    fd.append('photo', $('#photo').val());
+                    fd.append('job_id', $('#job_id').val());
 
 
-                // AJAX request 
-                $.ajax({
-                    url: '{{ route('upload.chat.file') }}',
-                    method: 'post',
-                    data: fd,
-                    contentType: false,
-                    processData: false,
-                    dataType: 'json',
-                    success: function(response) {
+                    // AJAX request 
+                    $.ajax({
+                        url: '{{ route('upload.chat.file') }}',
+                        method: 'post',
+                        data: fd,
+                        contentType: false,
+                        processData: false,
+                        dataType: 'json',
+                        success: function(response) {
 
-                    },
-                    error: function(response) {
-                        console.log("error : " + JSON.stringify(response));
-                    }
-                });
+                        },
+                        error: function(response) {
+                            console.log("error : " + JSON.stringify(response));
+                        }
+                    });
+                }
             }
-        }
         </script>
     @endsection
 @endsection
