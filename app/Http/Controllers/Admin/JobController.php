@@ -64,7 +64,7 @@ class JobController extends Controller
                 'body' => 'There is a client’s request that matches your profile. Please kindly review if you can take it. If you don’t reply within 24h, we may match this request to another talent.
 Thanks! ',
                 'button_text' => 'View client request',
-                'button_url' => route('talent.care'),
+                'button_url' => 'https://brainx.biz/talent.care',
                 'receiver' => $receiver->name,
                 'preheadtext' => 'There is a client’s request that matches your profile'
             ];
