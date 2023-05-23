@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class JobSkill extends Model
 {
     use HasFactory;
+
+    
 }

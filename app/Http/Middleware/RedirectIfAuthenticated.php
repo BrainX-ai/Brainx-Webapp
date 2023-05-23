@@ -19,6 +19,17 @@ class RedirectIfAuthenticated
      */
     public function handle(Request $request, Closure $next, ...$guards)
     {
+        if(!Auth::check()){
+            return redirect('/');
+        }else{
+            if(Auth::guard()->user()->role == 'Client'){
+                return redirect()->route('client.dashboard');
+            }
+            else if(Auth::guard()->user()->role == 'Talent'){
+                return redirect()->route('talent.pending');
+            }
+        }
+
         $guards = empty($guards) ? [null] : $guards;
 
         foreach ($guards as $guard) {

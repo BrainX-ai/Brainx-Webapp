@@ -98,33 +98,21 @@
   <label class="dropdown-label"><span class="selected-value">Select</span></label>
   
   <div class="dropdown-list">
-    <a href="#" data-toggle="check-all" class="dropdown-option">
+    {{-- <a href="#" data-toggle="check-all" class="dropdown-option">
       Check All  
-    </a>
+    </a> --}}
     
-    <label class="dropdown-option">
-      <input type="checkbox" name="dropdown-group" value="Python" id="1"  onchange="addToList(this)"/>
-      Selection One
-    </label>
+    @foreach ($categories as $category)
+        <label class="dropdown-option"> <strong>  {{ $category->category_name }} </strong></label> 
+        @foreach ($category->skills as $skill)
+        <label class="dropdown-option">
+            <input type="checkbox" name="skills[]"  value="{{ $skill->skill_id }}" id="{{ $skill->skill_name }}"  onchange="addToList(this)"/>
+            {{ $skill->skill_name }}
+        </label>
+      
+        @endforeach
+    @endforeach
     
-    <label class="dropdown-option">
-      <input type="checkbox" name="dropdown-group" value="Java" id="2" onchange="addToList(this)" />
-      Selection Two
-    </label>
-    
-    <label class="dropdown-option">
-      <input type="checkbox" name="dropdown-group" value="Selection 3" />
-      Selection Three
-    </label>
-    
-    <label class="dropdown-option">
-      <input type="checkbox" name="dropdown-group" value="Selection 4" />
-      Selection Four
-    </label>
-    
-    <label class="dropdown-option">
-      <input type="checkbox" name="dropdown-group" value="Selection 5" />
-      Selection Five
-    </label>      
+        
   </div>
 </div>

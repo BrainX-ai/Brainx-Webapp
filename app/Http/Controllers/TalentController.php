@@ -34,7 +34,8 @@ class TalentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
+        
     }
 
     /**
@@ -80,6 +81,13 @@ class TalentController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function getProfileBuilder(){
+        $user = Auth::guard()->user();
+        
+        return redirect('/build-profile')->with(['user'=> $user]);
     }
 
 }

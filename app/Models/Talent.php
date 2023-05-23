@@ -15,6 +15,13 @@ class Talent extends Authenticatable
 
     protected $table = 'talents';
     protected $primaryKey = 'talent_id';
+
+    // protected $appends = ['skill'];
+
+    public function skill(){
+        return $this->hasMany(TalentSkill::class,'talent_id')->with('skill');
+    }
+
     /**
      * The attributes that are mass assignable.
      *
@@ -24,6 +31,8 @@ class Talent extends Authenticatable
         'name',
         'email',
         'password',
+        'photo',
+        'user_id'
     ];
 
     /**
@@ -44,4 +53,7 @@ class Talent extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+
+
 }

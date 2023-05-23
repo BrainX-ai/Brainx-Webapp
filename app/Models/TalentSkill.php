@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class TalentSkill extends Model
 {
     use HasFactory;
+
+    // protected $appends = ['skill_name'];
+
+    public function skill(){
+        return  $this->belongsTo(Skill::class,'skill_id');
+
+    }
+
 }

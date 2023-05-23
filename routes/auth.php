@@ -42,8 +42,8 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('verify-email', [EmailVerificationPromptController::class, '__invoke'])
-        ->name('verification.notice');
+    // Route::get('verify-email', [EmailVerificationPromptController::class, '__invoke'])
+    //     ->name('verification.notice');
 
     Route::get('verify-email/{id}/{hash}', [VerifyEmailController::class, '__invoke'])
         ->middleware(['signed', 'throttle:6,1'])
@@ -61,13 +61,13 @@ Route::middleware('auth')->group(function () {
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
         ->name('logout');
 });
-
+/*
 Route::prefix('admin')->name('admin.')->group(function () {
     Route::middleware('guest:admin')->group(function () {
         Route::get('login', [AdminAuthenticatedSessionController::class, 'create'])
-            ->name('login');
+            ->name('logins');
 
-        Route::post('login', [AdminAuthenticatedSessionController::class, 'store']);
+        Route::post('logins', [AdminAuthenticatedSessionController::class, 'store']);
 
         Route::get('forgot-password', [AdminPasswordResetLinkController::class, 'create'])
             ->name('password.request');
@@ -103,3 +103,4 @@ Route::prefix('admin')->name('admin.')->group(function () {
             ->name('logout');
     });
 });
+*/

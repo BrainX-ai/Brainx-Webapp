@@ -7,9 +7,10 @@ use Auth;
 use Exception;
 use Socialite;
 use App\Models\User;
+use App\Models\Talent;
+use Abraham\TwitterOAuth\TwitterOAuth; 
 
-// oauth2_access_token=AQVhDdTQbWX2ftlyGgEvf4GEmLs7F9-DQOVU7bK-zrGlhr4fEDEtKOqtl9m1frEXW5m39W96xCprnAn3y2ZT0ePJ3aKTBgGPchlJNx8YpzDw7N1uoWC6pcGVOpgFbexEHyGN30CesdxuLKQsBX5TT7vfE1JU9ce3eAJB2ak-V_UT4bupIofN1xTI9oJt8KIZ4ZeeytlY-1djcfhpebafQrSgJZxDqlYWT8fvhQw00HKB5z6HafS7ADVSlb5lVcDsvUEr-ngf0vPRYo4KxlkDjPVflqsdCYD1_wPezS0Loi1X_JV_F_Khjha01HHYChh_AHUGzsq7kMHfIKv_arNZx5KE1MqU5A
-                    //    AQQTpYIT0zijLjCfg-bz7SqIiTuaLCt6ns1BtMwkCuB3lVd4HMABZmMP9oZe4L1vniVMfV0clYpr4tf-nHlsZRcFIKIkiaC4sC8mM0-RmhsmCgUWp6CTGwZOpILoOz7RE8v6aWqXcZ-hEh9n0oLPE-fvT3u-U9kTT7SlCSwEj1p0_B4iYbDAcCuSxQgP5uHYLoZjxNMeMgua_Og4WO4
+
 class LinkedinController extends Controller
 {
     public function linkedinRedirect()
@@ -22,17 +23,25 @@ class LinkedinController extends Controller
         try {
             
             $user = Socialite::driver('linkedin')->user();
-      
+            // dd($user->user['profilePicture']);
             $linkedinUser = User::where('oauth_id', $user->id)->first();
       
             if($linkedinUser){
                 
                 Auth::login($linkedinUser);
-                // dd($linkedinUser);
-                return redirect()->route('build.profile')->with(['user'=> $linkedinUser]);
+                $talent = Talent::where('user_id',$linkedinUser->id)->first();
+                // dd($talent);
+                if($talent->status == "INCOMPLETE"){
+                    return redirect()->route('build.profile')->with(['user'=> $linkedinUser]);
+                }else if($talent->status == "ASSESSMENT_PENDING"){
+                    return redirect()->route('show.profile', encrypt($linkedinUser->id))->with(['user'=> $linkedinUser]);
+                }else{
+                    return redirect()->route('talent.care')->with(['user'=> $linkedinUser]);
+                    
+                }
       
             }else{
-                $user = User::create([
+                $newUser = User::create([
                     'name' => $user->name,
                     'email' => $user->email,
                     'oauth_id' => $user->id,
@@ -40,14 +49,66 @@ class LinkedinController extends Controller
                     'password' => encrypt('admin12345'),
                     'role' => 'Talent'
                 ]);
-     
-                Auth::login($user);
+                $newUser->markEmailAsVerified();
+
+                $talent = Talent::create([
+                    'photo' => $user->user['profilePicture']['displayImage~']['elements'][2]['identifiers'][0]['identifier'],
+                    'user_id' => $newUser->id
+                ]);
+                Auth::login($newUser);
       
-                return redirect('/build-profile');
+                return redirect('/build-profile')->with(['user'=> $newUser]);
             }
      
         } catch (Exception $e) {
-            dd($e->getMessage());
+            dd($e);
         }
     }
+
+    public function s(Request $request)
+{
+    $client_id = '8656iww9kfxvmo';
+    $client_secret = 'FVWSbcWDORf9NAa5';
+    $redirect_uri = 'http://localhost:8000/auth/linkedin/callback';
+
+    $oauth_verifier = $request->get('code');
+
+    $connection = new TwitterOAuth($client_id, $client_secret);
+    $access_token = $connection->oauth('oauth/access_token', array('oauth_verifier' => 'sfasdfds'));
+
+    $access_token_secret = $access_token['oauth_token_secret'];
+    $access_token = $access_token['oauth_token'];
+
+    $connection = new TwitterOAuth($client_id, $client_secret, $access_token, $access_token_secret);
+
+    $params = [
+        'format' => 'json',
+        'type' => 'linkedin-edu',
+        'secure_url' => $request->get('secureUrl'),
+        'response_url' => $request->getRequestUri(),
+        'responsys-id' => $request->get('responsysId'),
+    ];
+
+    $url = 'https://www.linkedin.com/profile/profile-edu-certification-data-extract?' . http_build_query($params);
+
+    $content = $connection->get($url);
+
+    $education = json_decode($content, true)['education'];
+
+    $params = [
+        'format' => 'json',
+        'type' => 'linkedin-expr',
+        'secure_url' => $request->get('secureUrl'),
+        'response_url' => $request->getRequestUri(),
+        'responsys-id' => $request->get('responsysId'),
+    ];
+
+    $url = 'https://www.linkedin.com/profile/profile-expr-data-extract?' . http_build_query($params);
+
+    $content = $connection->get($url);
+
+    $experience = json_decode($content, true)['experience'];
+    dd($experience, $education);
+    // Store the education and experience data in your database or display it on the page
+}
 }

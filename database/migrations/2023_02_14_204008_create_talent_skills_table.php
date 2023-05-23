@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('talent_skills', function (Blueprint $table) {
+
             $table->unsignedBigInteger('talent_id');
             $table->unsignedBigInteger('skill_id');
             $table->unsignedSmallInteger('years')->nullable();

@@ -15,13 +15,12 @@ return new class extends Migration
     {
         Schema::create('talents', function (Blueprint $table) {
             $table->id('talent_id');
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('password');
+            $table->unsignedBigInteger('user_id');
+            $table->string('name')->nullable();
             $table->text('profile_info')->nullable();
-            $table->string('country');
-            $table->string('standout_job_title');
-            $table->integer('experience');
+            $table->string('country')->nullable();
+            $table->string('standout_job_title')->nullable();
+            $table->integer('experience')->nullable();
             $table->text('brief_summary')->nullable();
             $table->decimal('hourly_rate', 8, 2)->nullable();
             $table->integer('hours_per_week')->nullable();
@@ -31,7 +30,14 @@ return new class extends Migration
             $table->string('github')->nullable();
             $table->string('website')->nullable();
             $table->string('photo')->nullable();
+            $table->string('resumePath')->nullable();
+            $table->text('resumeData')->nullable();
+            $table->string('status')->default('INCOMPLETE');
+
             $table->timestamps();
+
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

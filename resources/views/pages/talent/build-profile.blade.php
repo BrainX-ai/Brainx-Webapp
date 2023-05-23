@@ -20,87 +20,31 @@
 ul li{
     padding: 10px 0px;
 }
+
+.chat-header.border-bottom{
+	border-bottom: 1px solid #adaaaa !important;
+    margin-right: -16px;
+}
+
+.chat-window .card{
+    box-shadow: none;
+}
 </style>
+<form action="{{ route('submit.profile') }}" method="POST" enctype="multipart/form-data">
+    @csrf
 <!-- Content -->
 <div class="content ">
     <div class="container-fluid">
-        <h2 class="ps-3">My Clients</h2>
         <div class="row">
             
             <div class="col-md-12">
                 
                 <div class="chat-window">
                  
-                    <!-- Chat Left -->
-                    <div class="chat-cont-left">
-                        
-                        <div class="chat-users-list">
-                            <div class="" style="overflow:visible;">
-                                <div class="chat-header border-bottom mb-4">
-                                    {{-- <a id="back_user_list" href="javascript:void(0)" class="back-user-list">
-                                        <i class="material-icons">chevron_left</i>
-                                    </a> --}}
-                                    <div class="media d-flex">
-                                        <div class="media-img-wrap flex-shrink-0 me-3">
-                                            <div class="avatar avatar-online">
-                                                <img src="assets/img/img-05.jpg" alt="User Image" class="avatar-img rounded-circle">
-                                            </div>
-                                        </div>
-                                        <div class="media-body flex-grow-1">
-                                            <h3 class="mt-2">Talent care </h3>
-                                        </div>
-                                    </div>
-                                    
-                                    
-                                </div>
-                                <div class="card">
-                                    <div class="card-header border-0">
-                                        <div class="card-title">
-                                            Get matched to clients
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        Based on your experience and skills in AI, you will be matched to suitable projects and clients by our experts
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-header border-0">
-                                        <div class="card-title">
-                                           Flexible work
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        Multiple flexible engagements: full-time contract, part-time, hourly, project based. Work anywhere remotely
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-header border-0">
-                                        <div class="card-title">
-                                            AI-focused profile
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        BrainX help you create a standout profile showcasing your experience & skills in AI
-                                    </div>
-                                </div>
-                                <div class="card">
-                                    <div class="card-header border-0">
-                                        <div class="card-title">
-                                            Safe transaction
-                                        </div>
-                                    </div>
-                                    <div class="card-body">
-                                        Start working with clients only after they escrow payment to BrainX
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- /Chat Left -->
-                
+                    @include('pages.talent.includes.motivation-section')
                     <!-- Chat Right -->
-                    <div class="chat-cont-right chat-scrol">
-                        <div class="">
+                    <div class="chat-cont-right chat-scrol" style="z-index: 99; ">
+                        {{-- <div class="">
 
                             <div class="chat-header border-0">
                                 <a id="back_user_list" href="javascript:void(0)" class="back-user-list">
@@ -109,11 +53,12 @@ ul li{
                                 <div class="media d-flex">
                                     <div class="media-img-wrap flex-shrink-0">
                                         <div class="avatar avatar-online">
-                                            <img src="assets/img/img-05.jpg" alt="User Image" class="avatar-img rounded-circle">
+                                            <img src="assets/img/BrainX/logo-outline.svg" alt="User Image" class="avatar-img rounded-circle">
                                         </div>
                                     </div>
                                     <div class="media-body flex-grow-1">
                                         <div class="user-name">Talent care </div>
+                                        <div class="user-status">Welcome to BrainX! Let’s start building your AI profile  </div>
                                         <div><strong>1/5. Import</strong></div>
                                     </div>
                                 </div>
@@ -121,7 +66,7 @@ ul li{
                                 
                             </div>
                             <div class="row">
-                                <div class="col-md-12 text-center mt-4 mb-4">
+                                <div class="col-md-12  mt-5 mb-5 ps-3 ms-4">
                                     <a href="javascript:void(0);" class="btn btn-sm btn-primary " data-bs-toggle="modal" data-bs-target="#add-category">
                                         Import from Linkedin
                                     </a>
@@ -129,8 +74,8 @@ ul li{
                                 </div>
                             </div>
                            
-                        </div>
-                        <div class="section-2 d-none">
+                        </div> --}}
+                        <div class="section-2 ">
 
                             <div class="chat-header border-0">
                                 <a id="back_user_list" href="javascript:void(0)" class="back-user-list">
@@ -139,48 +84,60 @@ ul li{
                                 <div class="media d-flex">
                                     <div class="media-img-wrap flex-shrink-0">
                                         <div class="avatar avatar-online">
-                                            <img src="assets/img/img-05.jpg" alt="User Image" class="avatar-img rounded-circle">
+                                            <img src="assets/img/BrainX/logo-outline.svg" alt="User Image" class="avatar-img rounded-circle">
                                         </div>
                                     </div>
                                     <div class="media-body flex-grow-1">
                                         <div class="user-name">Talent care </div>
-                                        <div><strong>2/5. Intro</strong></div>
+                                        <div class="user-status">Welcome to BrainX! Let’s start building your AI profile  </div>
+                                        <div><strong>1/5. Intro</strong><b class="pb-1"> *</b></div>
                                     </div>
                                 </div>
                                 
                                 
                             </div>
-                            <div class="  card m-2 border-0  col-md-6 offset-md-3">
+                            <div class="  card m-2 border-0  col-md-12 ">
                                 
                                     <div class="card-body text-start">
-                                        <div class="form-group">
-                                            <label for="">
-                                                What is your legal full name?
-                                            </label>
-                                            <input type="text" name="fullName" class="form-control" value="{{ $user->name}}"/>
+                                        <div class="row">
+
+                                        <div class="col-md-7">
+                                            <div class="form-group">
+                                                <label for="">
+                                                    What is your legal full name?
+                                                </label>
+                                                <input type="text" name="name" class="form-control" required onkeyup="setValuetoProfile('name', this.value)" value="{{ $user->name}}"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="">
+                                                    Which country are you from?
+                                                </label>
+                                                @include('includes.countries')
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="">
+                                                    What is your standout job title? (ex: AI engineer...)
+                                                </label>
+                                                <input type="text" name="standout_job_title" class="form-control " required onkeyup="setValuetoProfile('position', this.value)"/>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="">
+                                                    How many years of AI experience do you have?
+                                                </label>
+                                                <input type="number" name="experience" class="form-control" required onkeyup="setValuetoProfile('experience', this.value)"/>
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="">
-                                                Which country are you from?
-                                            </label>
-                                            @include('includes.countries')
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="">
-                                                What is your standout job title? (ex: AI engineer...)
-                                            </label>
-                                            <input type="text" name="fullName" class="form-control"/>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="">
-                                                How many years of AI experience do you have?
-                                            </label>
-                                            <input type="number" name="fullName" class="form-control"/>
+                                        <div class="col-md-5 text-center">
+                                            <div class="avatar avatar-xxl">
+												<img class="avatar-img rounded-circle" alt="User Image" src="{{ $user->talent->photo }}">
+											</div>
                                         </div>
                                     </div>
+
+                                    </div>
                                 
-                                <div class="card-footer border-0">
-                                    <button type="button" class="btn btn-primary" onclick="showSection(document.getElementsByClassName('section-3')[0], this);"> Next</button>
+                                <div class="card-footer border-0 ">
+                                    <button type="button" class="btn btn-primary" onclick="showSection(document.getElementsByClassName('section-3')[0], this,['name','country','standout_job_title','experience']);"> Next</button>
 
                                 </div>
                             </div>
@@ -194,12 +151,12 @@ ul li{
                                 <div class="media d-flex">
                                     <div class="media-img-wrap flex-shrink-0">
                                         <div class="avatar avatar-online">
-                                            <img src="assets/img/img-05.jpg" alt="User Image" class="avatar-img rounded-circle">
+                                            <img src="assets/img/BrainX/logo-outline.svg" alt="User Image" class="avatar-img rounded-circle">
                                         </div>
                                     </div>
                                     <div class="media-body flex-grow-1">
                                         <div class="user-name">Talent care </div>
-                                        <div><strong>3/5. Bio</strong></div>
+                                        <div><strong>2/5. Bio</strong><b class="pb-1"> *</b></div>
                                     </div>
                                 </div>
                                 
@@ -209,21 +166,28 @@ ul li{
                                 
                                     <div class="card-body text-start">
                                         <div class="form-group">
-                                            <textarea name="bio" id="bio" cols="80" rows="5"></textarea>
+                                            <textarea name="bio"  cols="80" rows="5" class="form-control" required  onkeyup="setValuetoProfile('bio', this.value)" placeholder="Please briefly summarize your professional experience in AI"></textarea>
                                         </div>
                                         <div class="form-group">
                                             <label for="">
                                                 Your availability to work on BrainX
                                             </label>
-                                            <select name="availability" id="" class="form-control">
-                                                <option value="1">Available</option>
-                                                <option value="0">Unavailable</option>
+                                            <select name="hours_per_week" id="" required class="form-control" onchange="setValuetoProfile('hours_of_week', this.value)">
+                                                {{-- <option value="0">Not available for now</option> --}}
+                                                <option value="5">5 hours/week</option>
+                                                <option value="10">10 hours/week</option>
+                                                <option value="15">15 hours/week</option>
+                                                <option value="20">20 hours/week</option>
+                                                <option value="25">25 hours/week</option>
+                                                <option value="30">30 hours/week</option>
+                                                <option value="35">35 hours/week</option>
+                                                <option value="40">40 hours/week</option>
                                             </select>
                                         </div>
                                     </div>
                                 
                                 <div class="card-footer border-0">
-                                    <button class="btn btn-primary" type="button" onclick="showSection(document.getElementsByClassName('section-4')[0], this);"> Next</button>
+                                    <button class="btn btn-primary" type="button" onclick="showSection(document.getElementsByClassName('section-4')[0], this,['bio']);"> Next</button>
 
                                 </div>
                             </div>
@@ -237,12 +201,13 @@ ul li{
                                 <div class="media d-flex">
                                     <div class="media-img-wrap flex-shrink-0">
                                         <div class="avatar avatar-online">
-                                            <img src="assets/img/img-05.jpg" alt="User Image" class="avatar-img rounded-circle">
+                                            <img src="assets/img/BrainX/logo-outline.svg" alt="User Image" class="avatar-img rounded-circle">
                                         </div>
                                     </div>
                                     <div class="media-body flex-grow-1">
                                         <div class="user-name">Talent care </div>
-                                        <div><strong>4/5. AI skills</strong></div>
+                                        <div><strong>3/5. Strong AI skills</strong><b class="pb-1"> *</b></div>
+                                        <div class="user-status">Please choose skills that you’re strong at. You’ll be matched to projects or clients that are suitable to your strengths  </div>
                                     </div>
                                 </div>
                                 
@@ -258,7 +223,7 @@ ul li{
                                     
                                     </div>
                                 <div class="card-footer border-0">
-                                    <button class="btn btn-primary" type="button" onclick="showSection(document.getElementsByClassName('section-5')[0], this);"> Next</button>
+                                    <button class="btn btn-primary" type="button" onclick="showSection(document.getElementsByClassName('section-5')[0], this,[]);"> Next</button>
 
                                 </div>
                             </div>
@@ -271,12 +236,12 @@ ul li{
                                 <div class="media d-flex">
                                     <div class="media-img-wrap flex-shrink-0">
                                         <div class="avatar avatar-online">
-                                            <img src="assets/img/img-05.jpg" alt="User Image" class="avatar-img rounded-circle">
+                                            <img src="assets/img/BrainX/logo-outline.svg" alt="User Image" class="avatar-img rounded-circle border-1">
                                         </div>
                                     </div>
                                     <div class="media-body flex-grow-1">
                                         <div class="user-name">Talent care </div>
-                                        <div><strong>5/5. Hourly rate</strong></div>
+                                        <div><strong>4/5. Hourly rate</strong><b class="pb-1"> *</b></div>
                                     </div>
                                 </div>    
                             </div>
@@ -294,60 +259,54 @@ ul li{
                                             <div class="col-md-4">
                                                 <div class="input-group">
 													<span class="input-group-text">$</span>
-													<input type="text" class="form-control">
+													<input type="number" name="hourly_rate" class="form-control" onkeyup="setValuetoProfile('hourly_rate', this.value)"/>
 													<span class="input-group-text">/hour</span>
 												</div>
                                             </div>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-md-8">
-                                                <h4>Listed hourly rate</h4>
-                                                <p>
-                                                    Plus 10% upon your hourly rate. Client will see this rate when you’re matched to a client 
-                                                </p>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="input-group">
-													<span class="input-group-text">$</span>
-													<input type="text" class="form-control" disabled>
-													<span class="input-group-text">/hour</span>
-												</div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-8">
-                                                <h4>Service fee</h4>
-                                                <p>
-                                                    BrainX takes 12% from your hourly rate and 8% from client. It helps us run the platform and get clients for you. 
-                                                </p>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="input-group">
-													<span class="input-group-text">$</span>
-													<input type="text" class="form-control" disabled>
-													<span class="input-group-text">/hour</span>
-												</div>
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-8">
-                                                <h4>You’ll receive</h4>
-
-                                                
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="input-group">
-													<span class="input-group-text">$</span>
-													<input type="text" class="form-control" disabled>
-													<span class="input-group-text">/hour</span>
-												</div>
-                                            </div>
-                                        </div>
-                                        
                                     </div>
                                 <div class="card-footer border-0">
-                                    <button class="btn btn-primary"> Next</button>
+                                    
+                                    <button class="btn btn-primary" type="button" onclick="showSection(document.getElementsByClassName('section-6')[0], this,['hourly_rate']);"> Next</button>
+                                    
+                                </div>
+                            </div>
+                        </div>
 
+                        <div class="section-6 d-none">
+
+                            <div class="chat-header border-0">
+                                <a id="back_user_list" href="javascript:void(0)" class="back-user-list">
+                                    <i class="material-icons">chevron_left</i>
+                                </a>
+                                <div class="media d-flex">
+                                    <div class="media-img-wrap flex-shrink-0">
+                                        <div class="avatar avatar-online">
+                                            <img src="assets/img/BrainX/logo-outline.svg" alt="User Image" class="avatar-img rounded-circle">
+                                        </div>
+                                    </div>
+                                    <div class="media-body flex-grow-1">
+                                        <div class="user-name">Talent care </div>
+                                        <div><strong>5/5. Linkedin </strong><b class="pb-1"> *</b></div>
+                                        <div class="user-status">Please add your LinkedIn profile for our review.   </div>
+                                    </div>
+                                </div>
+                                
+                                
+                            </div>
+
+                            <div class="  card m-2 border-0  col-md-12 ">
+                               
+                                    <div class="card-body text-start">
+
+                                        <input type="text" class="form-control" required name="linkedin_url" />
+                                        
+                                    
+                                    </div>
+                                <div class="card-footer border-0">
+                                    <button class="btn btn-primary" type="submit">
+                                        See my profile
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -361,11 +320,11 @@ ul li{
 </div>	
 <!-- /Page Content -->
 
-
+@include('pages.talent.profile-modal-view')
 		<!-- The Modal -->
 		<div class="modal fade custom-modal" id="add-category">
 			<div class="modal-dialog modal-dialog-centered">
-				<div class="modal-content pb-5 pt-5">
+				<div class="modal-content ">
 
 					<!-- Modal Header -->
 					<div class="modal-header text-center">
@@ -374,7 +333,7 @@ ul li{
 					</div>
 
 					<!-- Modal body -->
-					<div class="modal-body pb-5 pt-5">
+					<div class="modal-body  pt-5">
 						<form>
                             <div class="  card  border-0 text-center col-md-12 ">
                                    
@@ -393,9 +352,11 @@ ul li{
                                             Upload Linkedin PDF
                                         </label>
                                         </div>
+                                        <div id="file-selected"></div>
+
                                     </div>
-                                <div class="card-footer border-0 pb-2 mt-4">
-                                    <button type="button" data-bs-dismiss="modal" class="btn btn-primary" onclick="showSection(document.getElementsByClassName('section-2')[0], this);"> Next</button>
+                                <div class="card-footer border-0  mt-4 col-md-8 offset-md-2 ">
+                                    <button type="button" data-bs-dismiss="modal" class="btn mt-4 btn-primary w-100" onclick="showSection(document.getElementsByClassName('section-2')[0], this);"> Next</button>
 
                                 </div>
                             </div>
@@ -407,8 +368,8 @@ ul li{
 		</div>
 		<!-- /The Modal -->
 
+</form>
 
-        
 @endsection
 
 @section('custom-js')
@@ -515,34 +476,105 @@ ul li{
 function addToList(element){
 
 if(element.checked){
-$('.inserted').before($('<p class="keyword " >' + element.value + '<a class="delete '+element.id+'" onclick="deleteWord(this,\''+element.value+'\')"><i class="fa fa-times" aria-hidden="true"></i></a></p>'));
+    $('#skill-lists').append($('<li class="list-inline-item btn btn-dark">'+element.id+'</li>'))
+$('.inserted').before($('<p class="keyword " >' + element.id + '<a class="delete '+element.value+'" onclick="deleteWord(this,\''+element.value+'\')"><i class="fa fa-times" aria-hidden="true"></i></a></p>'));
 }else{
-    console.log(document.getElementsByClassName(element.id)[0])
-    deleteWord(document.getElementsByClassName(element.id)[0], element.value)
+    
+    deleteWord(document.getElementsByClassName(element.value)[0], element.value)
 }
 }
 
 //Delete a keyword
 function deleteWord(element, value){
-//   var index = allKeywords.indexOf($(element).parent('.keyword').text());
-//   if(index !== -1){                                  
-//     allKeywords.splice(index, 1);
-//   }
+
+    
   $(element).parent('.keyword').remove();
-  var skill = document.querySelector("input[value="+value+"]");
+  var skill = document.querySelector("input[value='"+value+"']");
   skill.checked = false;
 }
 </script>
 
 <script>
 
-    function showSection(el, btn){
+    function showSection(el, btn, names){
 
-        console.log(el)
+        if(names.length > 0 && checkIsset(names)){
         el.classList.remove('d-none')
         btn.disabled= true
         el.scrollIntoView()
+        }else if(names.length == 0 && isSkillChecked()){
+            el.classList.remove('d-none')
+            btn.disabled= true
+            el.scrollIntoView()
+        }
     }
 
+    function checkIsset(names){
+        var isFilled = true;
+        names.forEach(name => {
+            // console.log(document.querySelector('input[name="'+name+'"]').value)
+            let el = document.querySelector('input[name="'+name+'"]');
+            if(el == null){
+                el = document.querySelector('select[name="'+name+'"]');
+                if(el == null){
+                    el = document.querySelector('textarea[name="'+name+'"]');
+                }else{
+                    console.log(el)
+
+                }
+            }
+            if(!el.value){
+                isFilled = false;
+                el.classList.add('is-invalid')
+            }else{
+                el.classList.remove('is-invalid')
+            }
+        })
+        return isFilled
+    }
+
+    function isSkillChecked(){
+        var isChecked = false
+        var skillEls = document.querySelectorAll('input[name="skills[]"]')
+        skillEls.forEach(el => {
+            if(el.checked){
+                isChecked = true
+            }
+        })
+        return isChecked
+    }
+
+</script>
+
+<script>
+
+    function setValuetoProfile(id, value){
+        var el = document.getElementById(id);
+        el.innerHTML = value
+    }
+
+</script>
+
+<script>
+    //on change event listener for #file-select
+document.getElementById("cv").onchange = function() {
+
+//call getFileSelected method
+getFileSelected();
+
+};
+
+function getFileSelected(){
+
+//get the value of the input file element
+var getFileExt = document.getElementById("cv").value.split('.').pop();
+
+if(getFileExt !== "pdf"){
+    document.getElementById("file-selected").innerHTML = '<strong class="text-danger">Please upload a PDF file!</strong>';
+}else{
+    document.getElementById("file-selected").innerHTML = '<strong>PDF Uploaded</strong>';
+
+}
+}
 </script>
 @endsection

@@ -1,4 +1,4 @@
-<select id="country" name="country" class="form-control">
+<select  name="country" class="form-control"  required>
     <option value="">- Select Country -</option>
     <option value="Afghanistan">Afghanistan</option>
     <option value="Åland Islands">Åland Islands</option>

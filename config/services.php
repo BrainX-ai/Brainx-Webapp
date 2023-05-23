@@ -33,6 +33,6 @@ return [
     'linkedin' => [
         'client_id' => '8656iww9kfxvmo',
         'client_secret' => 'FVWSbcWDORf9NAa5',
-        'redirect' => 'http://localhost:8000/auth/linkedin/callback',
+        'redirect' => env('LINKEDIN_REDIRECT_URL','http://localhost:8000/auth/linkedin/callback'),
     ],
 ];
