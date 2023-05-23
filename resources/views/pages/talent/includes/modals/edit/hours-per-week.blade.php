@@ -32,7 +32,6 @@
                             <div class="  card m-2 border-0  col-md-12 ">
                                 <form action="{{ route('updateHoursPerWeek') }}" method="POST">
                                     @csrf
-
                                     <div class="card-body ">
                                         
                                         <div class="form-group">

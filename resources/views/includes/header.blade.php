@@ -10,6 +10,10 @@
    .bar-icon span{
     background-color: #0B0D63;
    }
+
+   .active{
+    text-decoration: underline;
+   }
 </style>
 <!-- Header -->
 <header class="header">
@@ -37,10 +41,10 @@
             </div>
             <ul class="main-nav">
                 <li class="submenu">
-                    <a href="/">For Business </a>
+                    <a href="/" class="@if(Request::is('/')) active @endif">For Business </a>
                 </li>
                 <li class="submenu">
-                    <a href="/talent">For AI Talent</a>
+                    <a href="/talent" class="@if(Request::is('talent')) active @endif">For AI Talent</a>
                 </li> 
                 <li class="has-submenu fade" style="width: 200px">
                 </li>
