@@ -32,6 +32,10 @@ class Job extends Model
         return $this->hasMany(ProjectRequest::class,'job_id')->with('talent');
     }
 
+    public function latest_project_request(){
+        return $this->hasMany(ProjectRequest::class,'job_id')->latest();
+    }
+
     public function isAccepted(){
         
         return $projectRequest = $this->hasOne(ProjectRequest::class,'job_id')->where('user_id', Auth::user()->id)->latest();

@@ -32,16 +32,16 @@ class JobController extends Controller
     }
 
     public function jobDetails($id){
-        $jobs = Job::where('client_id', Auth::guard()->user()->id)->with(['contract'])->orderBy('job_id','DESC')->get();
+        $jobs = Job::where('client_id', Auth::guard()->user()->id)->with(['contract','latest_project_request'])->orderBy('job_id','DESC')->get();
         if($id != null){
-            $job = Job::with('actions')->find($id);
+            $job = Job::with(['contract','latest_project_request','actions'])->find($id);
         }else if(sizeof($jobs)){
             $job = $jobs[0];
         }else{
             return redirect()->route('client.job.new');
             
         }
-        // dd($jobs);
+        // dd($job);
         $actions = Action::where('job_id', $job->job_id)->with('message')->with('sender')->with('job')->get();
         // dd($actions);
         return view('pages.client.pages.job-details')->with('job', $job)->with('jobs', $jobs)->with('actions', $actions);
@@ -49,13 +49,14 @@ class JobController extends Controller
 
     public function jobDetail(){
         
-        $jobs = Job::where('client_id', Auth::guard()->user()->id)->orderBy('job_id','DESC')->get();
+        $jobs = Job::where('client_id', Auth::guard()->user()->id)->with(['contract','latest_project_request'])->orderBy('job_id','DESC')->get();
         if(sizeof($jobs)){
             $actions = Action::where('job_id', $jobs[0]->job_id)->with('message')->with('sender')->get();
             // dd($actions);
         }else{
             return redirect()->route('client.job.new');
         }
+        // dd($jobs[0]);
         return view('pages.client.pages.job-details')->with('job', $jobs[0])->with('jobs', $jobs)->with('actions', $actions);
     }
 

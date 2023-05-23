@@ -144,7 +144,7 @@
 				</div>
 			</section>
 			<!-- /Home Banner -->
-
+			@if (false)
 			<section class="section developer">
 				<div class="container">
 					<div class="row">
@@ -167,8 +167,6 @@
 									<div class="freelance-specific">AI Engineer</div>
 									<div class="freelance-specific">Ex-Google</div>
 									
-									
-									
 								</div>
 							</div>
 						</div>
@@ -176,6 +174,8 @@
 					</div>
 				</div>
 			</section>
+			@endif
+			
             <section class="section about-project great-about pb-1">
                 <div class="about-position">
                     <div class="container">
