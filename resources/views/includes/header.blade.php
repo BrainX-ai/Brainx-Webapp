@@ -11,7 +11,7 @@
     background-color: #0B0D63;
    }
 
-   .active{
+   .active-page{
     text-decoration: underline;
    }
 </style>
@@ -41,10 +41,10 @@
             </div>
             <ul class="main-nav">
                 <li class="submenu">
-                    <a href="/" class="@if(Request::is('/')) active @endif">For Business </a>
+                    <a href="/" class="@if(Request::is('/')) active-page @endif">For Business </a>
                 </li>
                 <li class="submenu">
-                    <a href="/talent" class="@if(Request::is('talent')) active @endif">For AI Talent</a>
+                    <a href="/talent" class="@if(Request::is('talent')) active-page @endif">For AI Talent</a>
                 </li> 
                 <li class="has-submenu fade" style="width: 200px">
                 </li>
