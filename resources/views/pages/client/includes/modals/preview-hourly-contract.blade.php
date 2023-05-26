@@ -162,11 +162,14 @@
                                     <h6>Week {{ $milestone->caption  }}: {{ $job->contract->hours_per_week }} hr</h6>
                                   
                                 </div>
+                                
                                 <div class="col-md-3">
-                                    <button class="btn btn-primary">Deposit</button>
+                                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#request-invoice" onclick="requestInvoice({{ $milestone->id }}, {{ $job->job_id }},'INVOICE_REQUESTED','Confirm deposit request from BrainX.')"
+                                        @if($milestone->deposited ) disabled @endif>Deposit</button>
                                 </div>
                                 <div class="col-md-3">
-                                    <button class="btn btn-primary">Approve</button>
+                                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#request-invoice" onclick="requestInvoice({{ $milestone->id }}, {{ $job->job_id }},'APPROVED','Do you want to approve the deposit?')"
+                                        @if ($milestone->approved || $milestone->paid) disabled @endif>Approve</button>
                                 </div>
                             </div>
                         @endforeach

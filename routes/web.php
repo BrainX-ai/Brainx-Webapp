@@ -70,6 +70,8 @@ Route::prefix('/client')->as('client.')->middleware(['auth','verified'])->group(
     Route::get('/job-details/{id}','App\http\controllers\Client\JobController@jobDetails')->name('job.details'); 
     Route::get('/job-detail','App\http\controllers\Client\JobController@jobDetail')->name('job.detail');    
     Route::get('/view-talent-profile/{id}', 'App\http\controllers\Client\JobController@showTalentProfile')->name('show.profile');
+    Route::post('/request-invoice', 'App\http\controllers\Client\JobController@requestInvoice')->name('requestInvoice');
+    Route::post('/approve-deposit', 'App\http\controllers\Client\JobController@approveDeposit')->name('approveDeposit');
 });
 
 
@@ -81,6 +83,8 @@ Route::domain('admin.' . env('APP_URL'))->middleware('auth')->group(function () 
     Route::get('/clients','App\http\controllers\Admin\AdminController@clients')->name('admin.clients');
     Route::get('/clients/delete/{id}','App\http\controllers\Admin\AdminController@destroy')->name('admin.clients.delete');
     Route::get('/projects','App\http\controllers\Admin\JobController@index')->name('admin.projects');
+    Route::get('/project/details/{id}','App\http\controllers\Admin\JobController@details')->name('admin.project.details');
+    Route::post('/update-transaction-status','App\http\controllers\Admin\JobController@updateTransactionStatus')->name('admin.update.transaction.status');
     Route::post('/users/status/update','App\http\controllers\Admin\AdminController@updateStatus')->name('admin.update.users.status');
     Route::get('/categories','App\http\controllers\Admin\SkillController@index')->name('admin.categories');
     Route::post('/category/insert','App\http\controllers\Admin\SkillController@storeCategory')->name('admin.category.insert');
@@ -99,6 +103,7 @@ Route::prefix('/admin')->middleware('auth')->group(function () {
     Route::get('/clients/delete/{id}','App\http\controllers\Admin\AdminController@destroy')->name('admin.clients.delete');
     Route::get('/projects','App\http\controllers\Admin\JobController@index')->name('admin.projects');
     Route::get('/project/details/{id}','App\http\controllers\Admin\JobController@details')->name('admin.project.details');
+    Route::post('/update-transaction-status','App\http\controllers\Admin\JobController@updateTransactionStatus')->name('admin.update.transaction.status');
     Route::post('/users/status/update','App\http\controllers\Admin\AdminController@updateStatus')->name('admin.update.users.status');
     Route::get('/categories','App\http\controllers\Admin\SkillController@index')->name('admin.categories');
     Route::post('/category/insert','App\http\controllers\Admin\SkillController@storeCategory')->name('admin.category.insert');

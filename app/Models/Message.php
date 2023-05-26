@@ -13,6 +13,5 @@ class Message extends Model
         'action_id',
         'sender_id',
         'message'
-
     ];
 }

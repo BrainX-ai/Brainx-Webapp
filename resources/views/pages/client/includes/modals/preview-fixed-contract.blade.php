@@ -25,6 +25,10 @@
         height: auto;
     }
 
+    button:disabled{
+        color: grey !important;
+    }
+
     .progress-container {
         display: flex;
         justify-content: space-between;
@@ -164,12 +168,22 @@
                                     <p>{{ $milestone->caption }}</p>
                                 </div>
                                 <div class="col-md-3">
-                                    <button class="btn btn-primary">Deposit</button>
+                                    <button class="btn btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#request-invoice"
+                                        onclick="requestInvoice({{ $milestone->id }}, {{ $job->job_id }},'INVOICE_REQUESTED','Confirm deposit request from BrainX.')"
+                                        @if($milestone->deposited ) disabled @endif> @php
+                                            echo ($milestone->deposited) ?  'Deposited':'Deposit'
+                                        @endphp </button>
                                 </div>
                                 <div class="col-md-3">
-                                    <button class="btn btn-primary">Approve</button>
+                                    <button class="btn btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#request-invoice"
+                                        onclick="requestInvoice({{ $milestone->id }}, {{ $job->job_id }},'APPROVED','Do you want to approve the deposit?')"
+                                        @if ($milestone->approved || $milestone->paid) disabled @endif>@php
+                                        echo ($milestone->paid) ?  'Paid':(($milestone->approved)? 'Approve':'Approve');
+                                    @endphp </button>
                                 </div>
-                                
+
                             </div>
                         @endforeach
 
@@ -178,8 +192,9 @@
                     </div>
                     <div class="card-footer pb-2 border-0 text-end d-none">
 
-                        <button type="button" class="btn btn-primary" @if($job->contract->status == 'ENDED') disabled @endif data-bs-toggle="modal" data-bs-target="#end-contract"> End contract</button>
-                    
+                        <button type="button" class="btn btn-primary" @if ($job->contract->status == 'ENDED') disabled @endif
+                            data-bs-toggle="modal" data-bs-target="#end-contract"> End contract</button>
+
                     </div>
                 </div>
 

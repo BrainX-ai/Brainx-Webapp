@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Milestone;
 use Illuminate\Http\Request;
 use App\Models\Job;
 use App\Models\User;
 use App\Models\ProjectRequest;
 use App\Models\Action;
 use App\Models\Message;
+use App\Models\Transaction;
 use Mail;
 use App\Mail\SendMail;
 
@@ -32,6 +34,28 @@ class JobController extends Controller
         if ($job) {
             return view('pages.admin.project-details')->with('job', $job);
         }
+    }
+
+    public function updateTransactionStatus(Request $request){
+        $transaction = Transaction::find($request->transaction_id)->update([
+            'status' => $request->status
+        ]);
+
+        if($request->status == 'DEPOSITED' || $request->status == 'CREATED_INVOICE' || $request->status == 'INVOICE_REQUESTED'){
+            Milestone::where('id',$request->milestone_id)->update([
+                'deposited' => true
+            ]);
+        }else if($request->status == 'APPROVED') {
+            Milestone::where('id',$request->milestone_id)->update([
+                'approved' => true
+            ]);
+        }else if($request->status == 'RELEASED') {
+            Milestone::where('id',$request->milestone_id)->update([
+                'paid' => true
+            ]);
+        }
+
+        return redirect()->back();
     }
 
     public function assignTalent(Request $request)

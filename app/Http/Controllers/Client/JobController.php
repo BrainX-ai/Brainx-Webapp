@@ -8,6 +8,8 @@ use App\Models\Job;
 use App\Models\Message;
 use App\Models\Action;
 use App\Models\User;
+use App\Models\Transaction;
+use App\Models\Milestone;
 use Auth;
 use Mail;
 use App\Mail\SendMail;
@@ -35,15 +37,17 @@ class JobController extends Controller
         $jobs = Job::where('client_id', Auth::guard()->user()->id)->with(['contract','latest_project_request'])->orderBy('job_id','DESC')->get();
         if($id != null){
             $job = Job::with(['contract','latest_project_request','actions'])->find($id);
+            if($job == null){
+                abort(404);
+            }
         }else if(sizeof($jobs)){
             $job = $jobs[0];
         }else{
             return redirect()->route('client.job.new');
-            
         }
-        // dd($job);
+        // dd(sizeof($job->contract->milestones[0]->transactions));
         $actions = Action::where('job_id', $job->job_id)->with('message')->with('sender')->with('job')->get();
-        // dd($actions);
+        
         return view('pages.client.pages.job-details')->with('job', $job)->with('jobs', $jobs)->with('actions', $actions);
     }
 
@@ -104,6 +108,55 @@ class JobController extends Controller
 
         return redirect()->route('client.job.details',['id' => $job->job_id]);
 
+    }
+
+    public function requestInvoice(Request $request){
+
+        $transaction = Transaction::create([
+            'job_id' => $request->job_id,
+            'milestone_id' => $request->milestone_id,
+            'status' => $request->status
+        ]);
+
+        if($request->status == 'DEPOSITED' || $request->status == 'CREATED_INVOICE' || $request->status == 'INVOICE_REQUESTED'){
+            Milestone::where('id',$request->milestone_id)->update([
+                'deposited' => true
+            ]);
+        }else if($request->status == 'APPROVED') {
+            Milestone::where('id',$request->milestone_id)->update([
+                'approved' => true
+            ]);
+        }else if($request->status == 'RELEASED') {
+            Milestone::where('id',$request->milestone_id)->update([
+                'paid' => true
+            ]);
+        }
+
+        return redirect()->route('client.job.details', ['id' => $request->job_id]);
+    }
+
+    public function approveDeposit(Request $request){
+        $transaction = Transaction::create([
+            'job_id' => $request->job_id,
+            'milestone_id' => $request->milestone_id,
+            'status' => 'APPROVED'
+        ]);
+
+        if($request->status == 'DEPOSITED' || $request->status == 'CREATED_INVOICE' || $request->status == 'INVOICE_REQUESTED'){
+            Milestone::where('id',$request->milestone_id)->update([
+                'deposited' => true
+            ]);
+        }else if($request->status == 'APPROVED') {
+            Milestone::where('id',$request->milestone_id)->update([
+                'approved' => true
+            ]);
+        }else if($request->status == 'RELEASED') {
+            Milestone::where('id',$request->milestone_id)->update([
+                'paid' => true
+            ]);
+        }
+
+        return redirect()->route('client.job.details', ['id' => $request->job_id]);
     }
 
     public function showTalentProfile($id)
