@@ -141,6 +141,8 @@
         @endif
 
         @include('pages.client.includes.modals.my-request')
+        @include('pages.client.includes.modals.request-invoice')
+        @include('pages.client.includes.modals.confirm-approval')
 
     @section('chat-js')
         <script>
@@ -179,6 +181,16 @@
                         }
                     });
                 }
+            }
+        </script>
+
+        <script>
+            function requestInvoice(milestone_id, job_id, status,message){
+
+                $('#milestone_job_id').val(job_id);
+                $('#milestone_id').val(milestone_id);
+                $('#transaction_status').val(status);
+                $('#confirmation-message-box').html(message)
             }
         </script>
     @endsection

@@ -144,7 +144,7 @@
 				</div>
 			</section>
 			<!-- /Home Banner -->
-			@if (false)
+			@if (true)
 			<section class="section developer">
 				<div class="container">
 					<div class="row">

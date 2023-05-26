@@ -30,61 +30,116 @@
                     <h4>Description</h4>
                     <p>{{ strip_tags($job->job_description) }}</p>
                     <h4>Contract Type</h4>
-                    <p>{{ $job->job_type | $job->contract->contract_type  }}</p>
-                    <a href="" class="text-primary fw-bold" data-bs-toggle="modal" data-bs-target="#preview-{{ $job->contract->contract_type }}-contract">View the contract</a>
+                    <p>{{ $job->job_type | $job->contract->contract_type }}</p>
+                    <a href="" class="text-primary fw-bold" data-bs-toggle="modal"
+                        data-bs-target="#preview-{{ $job->contract->contract_type }}-contract">View the contract</a>
                 </div>
             </div>
             <div class="card">
                 <div class="card-body">
                     <div class="table-responsive mt-4">
                         <h4>Project requests</h4>
-                    <table class="table table-striped">
-                        <thead>
-                            <th>
-                                Talent
-                            </th>
-                            <th>
-                                Message
-                            </th>
-                            <th>
-                                Response
-                            </th>
-                            <th>
-                                Sent at
-                            </th>
-                            <th>
-                                Updated at
-                            </th>
-                        </thead>
-                        <tbody>
-                            @foreach ($job->project_requests as $request)
-                            <tr>
-                                <td>{{ $request->talent->name }} <br/>
-                                    {{ $request->talent->email }}</td>
-                                <td>
-                                    {{ $request->message }}
-                                </td>
-                                <td>
-                                    {{ $request->status }}
-                                </td>
-                                <td>
-                                    {{ $request->created_at }}
-                                </td>
-                                <td>
-                                    {{ $request->updated_at }}
-                                </td>
-                            </tr>
-                                
-                            @endforeach
-                        </tbody>
-                    </table>
+                        <table class="table table-striped">
+                            <thead>
+                                <th>
+                                    Talent
+                                </th>
+                                <th>
+                                    Message
+                                </th>
+                                <th>
+                                    Response
+                                </th>
+                                <th>
+                                    Sent at
+                                </th>
+                                <th>
+                                    Updated at
+                                </th>
+                            </thead>
+                            <tbody>
+                                @foreach ($job->project_requests as $request)
+                                    <tr>
+                                        <td>{{ $request->talent->name }} <br />
+                                            {{ $request->talent->email }}</td>
+                                        <td>
+                                            {{ $request->message }}
+                                        </td>
+                                        <td>
+                                            {{ $request->status }}
+                                        </td>
+                                        <td>
+                                            {{ $request->created_at }}
+                                        </td>
+                                        <td>
+                                            {{ $request->updated_at }}
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
-                    
+
+            <div class="card">
+                <div class="card-body">
+                    <h4>Transactions</h4>
+
+                    <table class="table">
+                        <thead>
+                            <th>
+                                Milestone Name
+                            </th>
+                            <th>
+                                Amount
+                            </th>
+                            <th>
+                                Status
+                            </th>
+                            <th>
+                                Change Status
+                            </th>
+                        </thead>
+                        <tbody>
+                            @foreach ($job->contract->milestones as $milestone)
+                                @foreach ($milestone->transactions as $transaction)
+                                    <tr>
+                                        <td>
+                                            {{ $milestone->caption }}
+                                        </td>
+                                        <td>
+                                            {{ $milestone->amount }}
+                                        </td>
+                                        <td>
+                                            {{ $transaction->status }}
+                                        </td>
+                                        <td>
+                                            <form action="{{ route('admin.update.transaction.status') }}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="milestone_id" value="{{ $milestone->id }}">
+                                                <input type="hidden" name="transaction_id" value="{{ $transaction->transaction_id }}">
+                                                <select name="status" id="" onchange="this.form.submit()" class="form-control">
+                                                    <option value="">-Select status-</option>
+                                                    <option value="CREATED_INVOICE">Created invoice</option>
+                                                    <option value="INVOICE_REQUESTED">Invoice requested</option>
+                                                    <option value="DEPOSITED">Deposited</option>
+                                                    <option value="APPROVED">Approved</option>
+                                                    <option value="RELEASED">Released</option>
+                                                </select>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
+
         </div>
+    </div>
+    </div>
 
     </div>
 @section('custom-js')

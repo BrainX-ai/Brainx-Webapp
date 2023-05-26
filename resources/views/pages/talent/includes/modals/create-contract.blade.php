@@ -168,14 +168,14 @@
                                 <tr>
                                     <td>
                                         <strong>Milestone 1</strong>
-                                        <input type="text" class="form-control" name="milestone[]" />
+                                        <input type="text" class="form-control" name="milestone[]" id="milestone-caption-1"/>
                                     </td>
                                     <td>
                                         <br>
 
                                         <div class="input-group">
                                             <span class="input-group-text">$</span>
-                                            <input type="number" class="form-control" name="milestone_value[]">
+                                            <input type="number" class="form-control" name="milestone_value[]" id="milestone-value-1" />
                                         </div>
                                     </td>
                                 </tr>
@@ -199,8 +199,7 @@
 
                     </div>
                     <div class="card-footer pb-2 border-0 text-end">
-                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"
-                            data-bs-toggle="modal" data-bs-target="#review-contract" onclick="updateReviewPage()">
+                        <button type="button" class="btn btn-primary"  onclick="updateReviewPage()">
                             Next</button>
                     </div>
 
@@ -260,6 +259,10 @@
         function updateReviewPage() {
             var data = {}
             if (document.getElementById('fixed').checked) {
+                if($('#milestone-caption-1').val() == '' || $('#milestone-value-1').val() == ''){
+                   
+                    return false;
+                }
 
                 $('#fixed_contract').html('')
                 var texts = document.querySelectorAll('input[name="milestone[]"]')
@@ -272,6 +275,7 @@
                         $('#fixed_contract').append(getMilestoneRow(data, i + 1))
                     }
                 }
+                $('#create-contract').modal('hide');
                 $('#review-fixed-contract').modal('toggle');
             } else {
                 $('#hourly_contract_milestone').html('')
@@ -280,7 +284,7 @@
                     data.hour = document.querySelector('input[name=hours_per_week]').value
                     $('#hourly_contract_milestone').append(getHourlyMilestoneRow(data))
                 }
-
+                $('#create-contract').modal('hide');
                 $('#review-hourly-contract').modal('toggle');
 
             }
@@ -311,7 +315,7 @@
         }
 
         function getMilestoneRow(data, index) {
-            return `<div class="mt-4 pb-4 row"> <div class="class="col-md-6""><h6 >Milestone ` + index + `: $` + data.value + `</h6>
+            return `<div class="mt-4 pb-4 row"> <div class="col-md-6"><h6 >Milestone ` + index + `: $` + data.value + `</h6>
                                             <p>` + data.text + `</p></div>
                                             <div class="col-md-6">
                                             <div class="progress-container">
