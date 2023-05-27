@@ -38,6 +38,9 @@
                                         <input type="hidden" id="job_id" name="job_id" value="">
                                         <select name="talent_id" id="" class="form-control">
                                             @foreach ($talents as $talent)
+                                            @if ($talent->talent->status == 'PUBLISHED')
+                                                
+                    
                                                 <option value="{{ $talent->id }}">
                                                     <div class="table-avatar user-profile">
                                                         {{-- <a href="profile.html"><img class="avatar-img rounded-circle " src="{{ $user->talent->photo }}" alt="User Image"></a> --}}
@@ -47,7 +50,7 @@
                                                         </div>	
                                                     </div>
                                                 </option>
-                                                
+                                            @endif                            
                                             @endforeach
                                         </select>
                                         

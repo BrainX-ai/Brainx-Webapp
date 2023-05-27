@@ -86,9 +86,8 @@
                                             </div>	
                                         </td>
                                         <td class="text-end three-dots">
-                                            <button  class="btn btn-info" onclick="assignJobId({{ $job->job_id }});">Assign Talent</button>
-                                            <a data-bs-toggle="modal" data-bs-target="#project-{{ $job->job_id }}" class="btn btn-primary">View</a>
-                                            @include('pages.admin.includes.modals.my-request');
+                                            
+                                            
                                             <a href="{{ route('admin.project.details', $job->job_id) }}" class="btn btn-light">Details</a>
                                         </td>
                                     </tr>
@@ -102,14 +101,5 @@
     </div>
     
 </div>
-@section('custom-js')
-<script>
-    function assignJobId(id){
-        $('#talent-list').modal('toggle');
-        document.getElementById('job_id').value = id;
-    }
-</script>
-@endsection
 
-@include('pages.admin.includes.modals.asign-talent')
 @endsection
