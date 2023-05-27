@@ -96,7 +96,7 @@ class JobController extends Controller
             'subject' => 'New Project Request',
             'body' => 'A new project request is created with the following title: "'.$job->job_title.'" <br/> Created by: '.Auth::guard()->user()->name,
             'button_text' => 'Open',
-            'button_url' => route('admin.projects'),
+            'button_url' => 'https://admin.brainx.biz/project/details/'.$job->job_id,
             'receiver' => 'BrainX Admin',
             'preheadtext' => 'A new project request is created.'
         ];
@@ -132,6 +132,22 @@ class JobController extends Controller
             ]);
         }
 
+        try{
+            $mailData = [
+                'subject' => 'Invoice Request from Client',
+                'body' => 'You got an invoice request from the client. Click the button to navigate to the project details.',
+                'button_text' => 'Open',
+                'button_url' => 'https://admin.brainx.biz/project/details/'.$request->job_id,
+                'receiver' => 'BrainX Admin',
+                'preheadtext' => 'A new invoice request has been created'
+            ];
+            
+            Mail::to('support@brainx.biz')->send(new SendMail($mailData));
+            }catch(\Exception $ex){
+                
+            }
+
+
         return redirect()->route('client.job.details', ['id' => $request->job_id]);
     }
 
@@ -155,6 +171,21 @@ class JobController extends Controller
                 'paid' => true
             ]);
         }
+
+        try{
+            $mailData = [
+                'subject' => 'Client APPROVED a payment',
+                'body' => 'CLient approved a payment of a milestone. Please release the money to the talenta account',
+                'button_text' => 'Open',
+                'button_url' => 'https://admin.brainx.biz/project/details/'.$request->job_id,
+                'receiver' => 'BrainX Admin',
+                'preheadtext' => 'Please the payment to the talenta account'
+            ];
+            
+            Mail::to('support@brainx.biz')->send(new SendMail($mailData));
+            }catch(\Exception $ex){
+                
+            }
 
         return redirect()->route('client.job.details', ['id' => $request->job_id]);
     }

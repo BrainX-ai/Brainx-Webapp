@@ -29,10 +29,11 @@ class JobController extends Controller
 
     public function details($id)
     {
+        $talents = User::where('role', 'Talent')->with('talent')->get();
         $job = Job::with(['project_requests', 'contract', 'talent'])->find($id);
 
         if ($job) {
-            return view('pages.admin.project-details')->with('job', $job);
+            return view('pages.admin.project-details')->with('job', $job)->with('talents', $talents);
         }
     }
 
@@ -99,7 +100,7 @@ Thanks! ',
 
         }
 
-        return redirect()->route("admin.projects");
+        return redirect()->back();
 
     }
 }

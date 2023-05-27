@@ -127,7 +127,7 @@ class JobController extends Controller
             $job = Job::find($request->job_id);
             $mailData = [
                 'subject' => 'Project request rejected',
-                'body' => Auth::user()->name . ' rejected the job request with the following title: "' . $job->job_title . '"',
+                'body' => Auth::user()->name . ' rejected the job request with the following title: "' . $job->job_title . '"<br> Reason: "' . $request->message,
                 'button_text' => 'Open',
                 'button_url' => route('admin.projects'),
                 'receiver' => 'BrainX Admin',
