@@ -39,7 +39,7 @@
             -webkit-box-align: center;
             -ms-flex-align: center;
             /* align-items:
-            center; */
+                center; */
         }
 
         .chat-cont-left {
@@ -185,12 +185,17 @@
         </script>
 
         <script>
-            function requestInvoice(milestone_id, job_id, status,message){
+            function requestInvoice(milestone_id, job_id) {
 
-                $('#milestone_job_id').val(job_id);
-                $('#milestone_id').val(milestone_id);
-                $('#transaction_status').val(status);
-                $('#confirmation-message-box').html(message)
+                alert(job_id)
+                $('#milestone_deposit_job_id').val(job_id);
+                $('#milestone_deposit_id').val(milestone_id);
+            }
+
+            function approvePayment(milestone_id, job_id) {
+
+                $('#milestone_approval_job_id').val(job_id);
+                $('#milestone_approval_id').val(milestone_id);
             }
         </script>
     @endsection

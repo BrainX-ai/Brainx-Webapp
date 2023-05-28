@@ -156,6 +156,9 @@
                         <div class="mt-4 mb-5">
                             <h5>Hourly rate  ${{ $job->contract->hourly_rate }}/hr</h5>
                         </div>
+                        @php
+                            $counter = 0;
+                        @endphp
                         @foreach ($job->contract->milestones as $index => $milestone)
                             <div class="mt-4 mb-5 row">
                                 <div class="col-md-6">
@@ -164,12 +167,12 @@
                                 </div>
                                 
                                 <div class="col-md-3">
-                                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#request-invoice" onclick="requestInvoice({{ $milestone->id }}, {{ $job->job_id }},'INVOICE_REQUESTED','Confirm deposit request from BrainX.')"
-                                        @if($milestone->deposited ) disabled @endif>Deposit</button>
+                                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#request-invoice" onclick="requestInvoice({{ $milestone->id }}, {{ $job->job_id }})"
+                                        @if($counter++ != $job->contract->milestone_counter) disabled @endif>Deposit</button>
                                 </div>
                                 <div class="col-md-3">
-                                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#request-invoice" onclick="requestInvoice({{ $milestone->id }}, {{ $job->job_id }},'APPROVED','Do you want to approve the deposit?')"
-                                        @if ($milestone->approved || $milestone->paid) disabled @endif>Approve</button>
+                                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#approve-deposit" onclick="approvePayment({{ $milestone->id }}, {{ $job->job_id }})"
+                                        @if ($counter++ != $job->contract->milestone_counter) disabled @endif>Approve</button>
                                 </div>
                             </div>
                         @endforeach
