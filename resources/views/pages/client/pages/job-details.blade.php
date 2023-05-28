@@ -187,7 +187,6 @@
         <script>
             function requestInvoice(milestone_id, job_id) {
 
-                alert(job_id)
                 $('#milestone_deposit_job_id').val(job_id);
                 $('#milestone_deposit_id').val(milestone_id);
             }
