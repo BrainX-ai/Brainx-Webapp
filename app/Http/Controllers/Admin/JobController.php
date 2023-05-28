@@ -31,7 +31,7 @@ class JobController extends Controller
     {
         $talents = User::where('role', 'Talent')->with('talent')->get();
         $job = Job::with(['project_requests', 'contract', 'talent'])->find($id);
-
+        // dd($job);
         if ($job) {
             return view('pages.admin.project-details')->with('job', $job)->with('talents', $talents);
         }

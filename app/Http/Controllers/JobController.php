@@ -134,7 +134,7 @@ class JobController extends Controller
                 'preheadtext' => Auth::user()->name . ' rejected job request'
             ];
 
-            Mail::to('support@brainx.biz')->send(new SendMail($mailData));
+            Mail::to('talent@brainx.biz')->send(new SendMail($mailData));
         } catch (\Exception $ex) {
 
         }
