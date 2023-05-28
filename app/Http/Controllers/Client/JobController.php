@@ -102,7 +102,7 @@ class JobController extends Controller
             'preheadtext' => 'A new project request is created.'
         ];
         
-        Mail::to('support@brainx.biz')->send(new SendMail($mailData));
+        Mail::to('talent@brainx.biz')->send(new SendMail($mailData));
         }catch(\Exception $ex){
             
         }
@@ -145,7 +145,7 @@ class JobController extends Controller
                 'preheadtext' => 'A new invoice request has been created'
             ];
             
-            Mail::to('support@brainx.biz')->send(new SendMail($mailData));
+            Mail::to('talent@brainx.biz')->send(new SendMail($mailData));
             }catch(\Exception $ex){
                 
             }
@@ -187,7 +187,7 @@ class JobController extends Controller
                 'preheadtext' => 'Please the payment to the talenta account'
             ];
             
-            Mail::to('support@brainx.biz')->send(new SendMail($mailData));
+            Mail::to('talent@brainx.biz')->send(new SendMail($mailData));
             }catch(\Exception $ex){
                 
             }

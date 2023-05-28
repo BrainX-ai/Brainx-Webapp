@@ -34,7 +34,7 @@
                     <h4>Description</h4>
                     <p>{{ strip_tags($job->job_description) }}</p>
                     <h4>Contract Type</h4>
-                    <p>{{ $job->job_type | $job->contract->contract_type }}</p>
+                    <p>{{ $job->job_type | (!is_null($job->contract)?$job->contract->contract_type:'N/A') }}</p>
                     @if ($job->job_type != 'Outsource AI projects')
                         <div class="col-md-6 pb-3">
                             <strong>Duration: </strong> <span class="h6">{{ $job->duration_in_weeks }} weeks</span>
@@ -138,6 +138,8 @@
                             </th>
                         </thead>
                         <tbody>
+                            @if (!is_null($job->contract) && !is_null($job->contract->milestones))
+                                
                             @foreach ($job->contract->milestones as $milestone)
                                 @foreach ($milestone->transactions as $transaction)
                                     <tr>
@@ -170,6 +172,8 @@
                                     </tr>
                                 @endforeach
                             @endforeach
+
+                            @endif
                         </tbody>
                     </table>
                 </div>
@@ -240,7 +244,7 @@
 
 @include('pages.admin.includes.modals.asign-talent')
 {{-- @include('pages.admin.includes.modals.asign-talent') --}}
-@if ($job->talent != null)
+@if ($job->talent != null && !is_null($job->contract))
     @include('pages.talent.includes.modals.preview-fixed-contract')
     @include('pages.talent.includes.modals.preview-hourly-contract')
 @endif
