@@ -160,6 +160,9 @@
                         <div class="mt-4 mb-5">
                             <h5>Fixed price ${{ $job->contract->fixed_price }}</h5>
                         </div>
+                        @php
+                            $counter = 0;
+                        @endphp
                         @foreach ($job->contract->milestones as $index => $milestone)
                             <div class="mt-4 mb-5 row">
                                 <div class="col-md-6">
@@ -170,31 +173,26 @@
                                 <div class="col-md-3">
                                     <button class="btn btn-primary" data-bs-toggle="modal"
                                         data-bs-target="#request-invoice"
-                                        onclick="requestInvoice({{ $milestone->id }}, {{ $job->job_id }},'INVOICE_REQUESTED','Confirm deposit request from BrainX.')"
-                                        @if($milestone->deposited ) disabled @endif> @php
+                                        onclick="requestInvoice({{ $milestone->id }}, {{ $job->job_id }})"
+                                        @if($counter++ != $job->contract->milestone_counter) disabled @endif> @php
                                             echo ($milestone->deposited) ?  'Deposited':'Deposit'
                                         @endphp </button>
                                 </div>
                                 <div class="col-md-3">
                                     <button class="btn btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#request-invoice"
-                                        onclick="requestInvoice({{ $milestone->id }}, {{ $job->job_id }},'APPROVED','Do you want to approve the deposit?')"
-                                        @if ($milestone->approved || $milestone->paid) disabled @endif>@php
-                                        echo ($milestone->paid) ?  'Paid':(($milestone->approved)? 'Approve':'Approve');
+                                        data-bs-target="#approve-deposit"
+                                        onclick="approvePayment({{ $milestone->id }}, {{ $job->job_id }})"
+                                        @if ($counter++ != $job->contract->milestone_counter) disabled @endif>@php
+                                        echo ($milestone->paid) ?  'Paid':(($milestone->approved)? 'Approved':'Approve');
                                     @endphp </button>
                                 </div>
 
                             </div>
                         @endforeach
-
-
-
                     </div>
                     <div class="card-footer pb-2 border-0 text-end d-none">
-
                         <button type="button" class="btn btn-primary" @if ($job->contract->status == 'ENDED') disabled @endif
                             data-bs-toggle="modal" data-bs-target="#end-contract"> End contract</button>
-
                     </div>
                 </div>
 

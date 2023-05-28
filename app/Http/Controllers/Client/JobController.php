@@ -10,6 +10,7 @@ use App\Models\Action;
 use App\Models\User;
 use App\Models\Transaction;
 use App\Models\Milestone;
+use App\Models\Contract;
 use Auth;
 use Mail;
 use App\Mail\SendMail;
@@ -132,6 +133,8 @@ class JobController extends Controller
             ]);
         }
 
+        $contract = Contract::where('job_id',$request->job_id)->increment('milestone_counter');
+
         try{
             $mailData = [
                 'subject' => 'Invoice Request from Client',
@@ -155,7 +158,7 @@ class JobController extends Controller
         $transaction = Transaction::create([
             'job_id' => $request->job_id,
             'milestone_id' => $request->milestone_id,
-            'status' => 'APPROVED'
+            'status' => $request->status
         ]);
 
         if($request->status == 'DEPOSITED' || $request->status == 'CREATED_INVOICE' || $request->status == 'INVOICE_REQUESTED'){
@@ -171,6 +174,8 @@ class JobController extends Controller
                 'paid' => true
             ]);
         }
+
+        $contract = Contract::where('job_id',$request->job_id)->increment('milestone_counter');
 
         try{
             $mailData = [
