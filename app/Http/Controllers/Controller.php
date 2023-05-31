@@ -18,6 +18,15 @@ class Controller extends BaseController
         $this->role = $role;
         $this->middleware(function ($request, $next) {  
             if (Auth::user()->role != $this->role) {
+                if($this->role == 'Talent'){
+                    return redirect()->route('pages.index');
+                }
+                if($this->role == 'Client'){
+                    return redirect()->route('pages.business');
+                }
+                if($this->role == 'Admin'){
+                    return redirect()->route('admin.login.form');
+                }
                 abort(404);
             }
                 return $next($request);

@@ -88,7 +88,8 @@ class JobController extends Controller
 
         $message = Message::create([
             'action_id' => $action->id,
-            'message' => 'Thanks for your request! You will be notified via email when our service will be officially operated in May 2023.',
+            'message' => 'Our AI expert will review your request and match you to a suitable AI talent. You will be notified via email when we find one for you. Thank for your request!
+                  ',
             'sender_id' => NULL
         ]);
 
@@ -104,7 +105,7 @@ class JobController extends Controller
         
         Mail::to('talent@brainx.biz')->send(new SendMail($mailData));
         }catch(\Exception $ex){
-            
+            dd($ex->getMessage());
         }
 
         return redirect()->route('client.job.details',['id' => $job->job_id]);
@@ -119,7 +120,7 @@ class JobController extends Controller
             'status' => $request->status
         ]);
 
-        if($request->status == 'DEPOSITED' || $request->status == 'CREATED_INVOICE' || $request->status == 'INVOICE_REQUESTED'){
+        if($request->status == 'DEPOSITED' ){
             Milestone::where('id',$request->milestone_id)->update([
                 'deposited' => true
             ]);

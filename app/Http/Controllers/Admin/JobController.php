@@ -42,7 +42,7 @@ class JobController extends Controller
             'status' => $request->status
         ]);
 
-        if($request->status == 'DEPOSITED' || $request->status == 'CREATED_INVOICE' || $request->status == 'INVOICE_REQUESTED'){
+        if($request->status == 'DEPOSITED' ){
             Milestone::where('id',$request->milestone_id)->update([
                 'deposited' => true
             ]);
