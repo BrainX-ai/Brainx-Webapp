@@ -18,10 +18,10 @@ use App\Http\Controllers\LinkedinController;
 
 Route::get('/talent', function () {
     return view('pages.index');
-});
+})->name('talent.home');
 Route::get('/', function () {
     return view('pages.business');
-});
+})->name('home');
 Route::get('/privacy-policy', function () {
     return view('pages.privacy');
 });

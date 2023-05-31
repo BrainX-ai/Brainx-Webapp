@@ -7,6 +7,7 @@ use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Throwable;
+use Illuminate\Support\Facades\Session;
 
 class Handler extends ExceptionHandler
 {
@@ -60,14 +61,21 @@ class Handler extends ExceptionHandler
      */
     protected function unauthenticated($request, AuthenticationException $exception): JsonResponse|RedirectResponse
     {
+        
         $guard = collect($exception->guards())->first();
-        $route = match ($guard) {
-            'admin' => 'admin.login',
-            default => 'login',
+        $route = match (session('role')) {
+            'Admin' => 'admin.login.form',
+            'Client' => 'home',
+            'Talent' => 'talent.home',
+            default => 'home'
         };
 
+        // Session::forget('role');
+        
         return $request->expectsJson()
             ? response()->json(['message' => $exception->getMessage()], 401)
             : redirect()->guest(route($route));
+
+            
     }
 }

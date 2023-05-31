@@ -19,8 +19,9 @@ class RedirectIfAuthenticated
      */
     public function handle(Request $request, Closure $next, ...$guards)
     {
+        
         if(!Auth::check()){
-            return redirect('/');
+            // return redirect('/');
         }else{
             if(Auth::guard()->user()->role == 'Client'){
                 return redirect()->route('client.dashboard');
@@ -35,11 +36,11 @@ class RedirectIfAuthenticated
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
                 $redirectRoute = $guard === 'admin' ? RouteServiceProvider::ADMIN_HOME : RouteServiceProvider::HOME;
-
+                
                 return redirect($redirectRoute);
             }
         }
-
+        // dd($request->getPathInfo());
         return $next($request);
     }
 }

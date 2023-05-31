@@ -16,19 +16,28 @@ class Controller extends BaseController
 
     public function checkRole($role){
         $this->role = $role;
+
+        session(['role' => $role]);
+        if(Auth::user() == null){
+
+            if($this->role == 'Talent'){
+                // dd("talent");
+                return redirect('/talent');
+            }
+            if($this->role == 'Client'){
+                return redirect('/');
+            }
+            if($this->role == 'Admin'){
+                return redirect()->route('admin.login.form');
+            }
+        }
         $this->middleware(function ($request, $next) {  
+            
             if (Auth::user()->role != $this->role) {
-                if($this->role == 'Talent'){
-                    return redirect()->route('pages.index');
-                }
-                if($this->role == 'Client'){
-                    return redirect()->route('pages.business');
-                }
-                if($this->role == 'Admin'){
-                    return redirect()->route('admin.login.form');
-                }
+                
                 abort(404);
             }
+            
                 return $next($request);
             });
     }
