@@ -18,9 +18,8 @@ class JobController extends Controller
 
     public function __construct()
     {
-
-        $this->middleware('auth');
         $this->checkRole('Talent');
+        $this->middleware('auth');
     }
 
     /**

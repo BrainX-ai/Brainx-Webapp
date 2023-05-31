@@ -32,9 +32,9 @@
                     <h4>Title</h4>
                     <p>{{ $job->job_title }}</p>
                     <h4>Description</h4>
-                    <p>{{ strip_tags($job->job_description) }}</p>
+                    <p>{{ str_replace("&#39;","'",strip_tags(html_entity_decode($job->job_description))) }}</p>
                     <h4>Contract Type</h4>
-                    <p>{{ $job->job_type | (!is_null($job->contract)?$job->contract->contract_type:'N/A') }}</p>
+                    <p>{{ (!is_null($job->contract) ? (($job->contract->contract_type == 'hourly')?'Hourly rate':'Fixed price') : $job->job_type ) }}</p>
                     @if ($job->job_type != 'Outsource AI projects')
                         <div class="col-md-6 pb-3">
                             <strong>Duration: </strong> <span class="h6">{{ $job->duration_in_weeks }} weeks</span>
@@ -81,41 +81,42 @@
                             </div>
                             <div class="col-md-6 mb-2">
                                 <h6>Payment Method</h6>
-                                <h5 class="text-primary">{{ $job->client->client->country == 'Vietnam' ? 'Bank Transfer':'Payoneer' }}</h5>
+                                <h5 class="text-primary">
+                                    {{ $job->client->client->country == 'Vietnam' ? 'Bank Transfer' : 'Payoneer' }}</h5>
                             </div>
                         </div>
                     </div>
                 </div>
                 @if ($job->talent != null)
-                    
-                <div class="col-md-6">
+                    <div class="col-md-6">
 
-                    <div class="card">
-                        <div class="card-header">
-                            <h4 class="card-title ps-3">
-                                Talent Information
-                            </h4>
-                        </div>
-                        <div class="card-body row">
-                            <div class="col-md-6 mb-2">
-                                <h6>Name</h6>
-                                <h5>{{ $job->talent->name }}</h5>
+                        <div class="card">
+                            <div class="card-header">
+                                <h4 class="card-title ps-3">
+                                    Talent Information
+                                </h4>
                             </div>
-                            <div class="col-md-6 mb-2">
-                                <h6>Email</h6>
-                                <h5>{{ $job->talent->email }}</h5>
-                            </div>
-                            <div class="col-md-6 mb-2">
-                                <h6>Country</h6>
-                                <h5>{{ $job->talent->talent->country }}</h5>
-                            </div>
-                            <div class="col-md-6 mb-2">
-                                <h6>Payment Method</h6>
-                                <h5 class="text-primary">{{ $job->client->client->country == 'Vietnam' ? 'Bank Transfer':'Payoneer' }}</h5>
+                            <div class="card-body row">
+                                <div class="col-md-6 mb-2">
+                                    <h6>Name</h6>
+                                    <h5>{{ $job->talent->name }}</h5>
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <h6>Email</h6>
+                                    <h5>{{ $job->talent->email }}</h5>
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <h6>Country</h6>
+                                    <h5>{{ $job->talent->talent->country }}</h5>
+                                </div>
+                                <div class="col-md-6 mb-2">
+                                    <h6>Payment Method</h6>
+                                    <h5 class="text-primary">
+                                        {{ $job->client->client->country == 'Vietnam' ? 'Bank Transfer' : 'Payoneer' }}</h5>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 @endif
             </div>
             <div class="card">
@@ -139,40 +140,42 @@
                         </thead>
                         <tbody>
                             @if (!is_null($job->contract) && !is_null($job->contract->milestones))
-                                
-                            @foreach ($job->contract->milestones as $milestone)
-                                @foreach ($milestone->transactions as $transaction)
-                                    <tr>
-                                        <td>
-                                            {{ $milestone->caption }}
-                                        </td>
-                                        <td>
-                                            {{ $milestone->amount }}
-                                        </td>
-                                        <td>
-                                            {{ $transaction->status }}
-                                        </td>
-                                        <td>
-                                            <form action="{{ route('admin.update.transaction.status') }}" method="POST">
-                                                @csrf
-                                                <input type="hidden" name="milestone_id" value="{{ $milestone->id }}">
-                                                <input type="hidden" name="transaction_id"
-                                                    value="{{ $transaction->transaction_id }}">
-                                                <select name="status" id="" onchange="this.form.submit()"
-                                                    class="form-control">
-                                                    <option value="">-Select status-</option>
-                                                    <option value="CREATED_INVOICE">Created invoice</option>
-                                                    <option value="INVOICE_REQUESTED">Invoice requested</option>
-                                                    <option value="DEPOSITED">Deposited</option>
-                                                    <option value="APPROVED">Approved</option>
-                                                    <option value="RELEASED">Released</option>
-                                                </select>
-                                            </form>
-                                        </td>
-                                    </tr>
+                                @foreach ($job->contract->milestones as $milestone)
+                                    @foreach ($milestone->transactions as $transaction)
+                                        <tr>
+                                            <td>
+                                                {{ $milestone->caption }}
+                                            </td>
+                                            <td>
+                                                {{ $milestone->amount }}
+                                            </td>
+                                            <td>
+                                                {{ $transaction->status }}
+                                            </td>
+                                            <td>
+                                                <form action="{{ route('admin.update.transaction.status') }}"
+                                                    method="POST">
+                                                    @csrf
+                                                    <input type="hidden" name="milestone_id" value="{{ $milestone->id }}">
+                                                    <input type="hidden" name="transaction_id"
+                                                        value="{{ $transaction->transaction_id }}">
+                                                    <select name="status" id="" onchange="this.form.submit()"
+                                                        class="form-control">
+                                                        <option value="">-Select status-</option>
+                                                        @if ($transaction->status == 'INVOICE_REQUESTED' || $transaction->status == 'CREATED_INVOICE')
+                                                            <option value="CREATED_INVOICE">Created invoice</option>
+                                                            <option value="INVOICE_REQUESTED">Invoice requested</option>
+                                                            <option value="DEPOSITED">Deposited</option>
+                                                        @else
+                                                            <option value="APPROVED">Approved</option>
+                                                            <option value="RELEASED">Released</option>
+                                                        @endif
+                                                    </select>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 @endforeach
-                            @endforeach
-
                             @endif
                         </tbody>
                     </table>
