@@ -24,7 +24,9 @@ padding: 0.5rem;
                                        <h4 class="mt-4">Request description</h4>
                                        <p>
                                         <div class="border p-3 h6">
-                                        {!! $job->job_description !!}
+                                            <p>
+                                                {{ str_replace("&#39;","'",html_entity_decode(strip_tags($job->description)))  }}
+                                            </p>
                                         </div>
                                        </p>
                                        <div class="row mt-4">

@@ -124,7 +124,7 @@
                         <div class="form-group">
                             <h5 for="">Description</h5>
                             <p>
-                                {{ html_entity_decode(strip_tags($job->contract->description)) }}
+                                {{ str_replace("&#39;","'",html_entity_decode(strip_tags($job->contract->description))) }}
                             </p>
                         </div>
 
