@@ -268,7 +268,7 @@
 								<div class="great-content">
 									<h4>No 1st month salary</h4>
 									<p>
-										BrainX doesn’t get any fee from business clients like HR agencies.
+										BrainX doesn’t get any fee from business clients like HR agencies. <br>&nbsp;
 									</p>
 								</div>
 							</div>
@@ -287,12 +287,12 @@
 						<div class="col-xl-6 col-md-6">
 							<div class="great-blk aos boxes-shadow" data-aos="fade-up">
 								<div class="great-icon">
-									<img src="assets/img/BrainX/Superviseforprojectsuccess.png"  alt="">
+									<img src="assets/img/BrainX/Safe-transaction.png"  alt="">
 								</div>
 								<div class="great-content">
-									<h4>Supervise for project success</h4>
+									<h4>Safe transaction</h4>
 									<p>
-										An AI expert is assigned to monitor the remote collaboration between you and the matched talent. Join in when needed.
+										Only pay your talents after you approve their work via our deposit service. <br>&nbsp;
 									</p>
 								</div>
 							</div>
