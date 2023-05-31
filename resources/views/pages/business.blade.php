@@ -144,7 +144,7 @@
 				</div>
 			</section>
 			<!-- /Home Banner -->
-			@if (true)
+			@if (false)
 			<section class="section developer">
 				<div class="container">
 					<div class="row">
@@ -266,9 +266,9 @@
 									<img src="assets/img/BrainX/GlobalnetworkofAItalents.png"  alt="">
 								</div>
 								<div class="great-content">
-									<h4>Global network of AI talents</h4>
+									<h4>No 1st month salary</h4>
 									<p>
-										BrainX connects remote AI talents to one platform in order to meet the high demand from businesses.
+										BrainX doesn’t get any fee from business clients like HR agencies.
 									</p>
 								</div>
 							</div>
