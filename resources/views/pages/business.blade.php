@@ -263,7 +263,7 @@
 						<div class="col-xl-6 col-md-6">
 							<div class="great-blk aos boxes-shadow" data-aos="fade-up">
 								<div class="great-icon">
-									<img src="assets/img/BrainX/GlobalnetworkofAItalents.png"  alt="">
+									<img src="assets/img/BrainX/No-1st-month-salary.png"  alt="">
 								</div>
 								<div class="great-content">
 									<h4>No 1st month salary</h4>
