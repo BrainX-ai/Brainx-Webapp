@@ -125,6 +125,12 @@
 								<a href="{{ route('admin.projects') }}"><i data-feather="clipboard"></i> <span>Projects</span></a>
 							</li>
 							<li>
+								<a href="{{ route('admin.assessment.categories') }}"><i data-feather="clipboard"></i> <span>Assessment Categories</span></a>
+							</li>
+							<li>
+								<a href="{{ route('admin.questions') }}"><i data-feather="clipboard"></i> <span>Questions</span></a>
+							</li>
+							<li>
 								<a href="{{ route('admin.feedbacks') }}"><i data-feather="clipboard"></i> <span>Feedbacks</span></a>
 							</li>
 						</ul>

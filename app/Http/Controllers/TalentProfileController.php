@@ -12,6 +12,7 @@ use App\Models\Experience;
 use App\Models\Education;
 use App\Models\Action;
 use App\Models\Message;
+use App\Models\AssessmentCateory;
 use CV;
 
 class TalentProfileController extends Controller
@@ -19,8 +20,8 @@ class TalentProfileController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
         $this->checkRole('Talent');
+        $this->middleware('auth');
     }
     /**
      * Display a listing of the resource.
@@ -247,8 +248,9 @@ class TalentProfileController extends Controller
 
         $categories = Category::with('skills')->get();
         $user = User::with('talent')->with('experiences')->with('educations')->find($id);
+        $assessmentCategories = AssessmentCateory::all();
 
-        return view('pages.talent.profile')->with('user', $user)->with('categories', $categories);
+        return view('pages.talent.profile')->with('user', $user)->with('categories', $categories)->with('assessmentCategories', $assessmentCategories);
     }
 
 
