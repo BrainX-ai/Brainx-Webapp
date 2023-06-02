@@ -24,10 +24,10 @@ class RedirectIfAuthenticated
             // return redirect('/');
         }else{
             if(Auth::guard()->user()->role == 'Client'){
-                return redirect()->route('client.dashboard');
+                return redirect()->route('client.job.detail');
             }
             else if(Auth::guard()->user()->role == 'Talent'){
-                return redirect()->route('talent.pending');
+                return redirect()->route('talent.care');
             }
         }
 

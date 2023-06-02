@@ -112,7 +112,7 @@
                                 <div class="col-md-6 mb-2">
                                     <h6>Payment Method</h6>
                                     <h5 class="text-primary">
-                                        {{ $job->client->client->country == 'Vietnam' ? 'Bank Transfer' : 'Payoneer' }}</h5>
+                                        {{ ($job->client->client->country == 'Vietnam' || $job->client->client->country == 'Viet Nam') ? 'Bank Transfer' : 'Payoneer' }}</h5>
                                 </div>
                             </div>
                         </div>

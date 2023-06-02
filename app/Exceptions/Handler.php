@@ -70,7 +70,7 @@ class Handler extends ExceptionHandler
             default => 'home'
         };
 
-        // Session::forget('role');
+        Session::forget('role');
         
         return $request->expectsJson()
             ? response()->json(['message' => $exception->getMessage()], 401)

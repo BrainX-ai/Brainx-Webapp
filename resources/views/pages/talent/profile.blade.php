@@ -29,6 +29,9 @@
             font-weight: 700;
             padding: 0px 15px;
         }
+        li {
+            list-style: none;
+        }
     </style>
     <div class="container" style="height: 100%;">
 
@@ -58,23 +61,23 @@
                                     <div class="col-md-4 p-2">
                                         <i class="material-icons mb-1">payments</i>$<span
                                             id="hourly_rate">{{ $user->talent->hourly_rate }}</span>/hour
-                                            <button class="btn "  data-bs-target="#edit-hourly-rate"
+                                        <button class="btn " data-bs-target="#edit-hourly-rate" data-bs-toggle="modal"><i
+                                                class="material-icons mb-1">edit</i></button>
+                                    </div>
+
+                                    <div class="col-md-4 p-2">
+                                        <i class="material-icons mb-1 me-2">store</i><span
+                                            id="ex-famous-company">{{ $user->talent->ex_famouse_company }}</span>
+
+                                        <button class="btn " data-bs-target="#edit-ex-famous-company"
                                             data-bs-toggle="modal"><i class="material-icons mb-1">edit</i></button>
                                     </div>
-                                    
-                                        <div class="col-md-4 p-2">
-                                            <i class="material-icons mb-1 me-2">store</i><span
-                                                id="ex-famous-company">{{ $user->talent->ex_famouse_company }}</span>
-                                               
-                                                <button class="btn "  data-bs-target="#edit-ex-famous-company" 
-                                                data-bs-toggle="modal"><i class="material-icons mb-1">edit</i></button>
-                                        </div>
-                                    
+
                                     <div class="col-md-4 p-2">
                                         @if ($user->talent->brainx_assessment)
-                                        <i class="material-icons mb-1">check_circle</i>
+                                            <i class="material-icons mb-1">check_circle</i>
                                         @else
-                                        <i class="material-icons mb-1 text-danger">close</i>
+                                            <i class="material-icons mb-1 text-danger">close</i>
                                         @endif
                                         <span id="assesment">BrainX Skill Assessment</span>
                                     </div>
@@ -82,7 +85,7 @@
                                         <i class="material-icons mb-1">schedule</i> <span
                                             id="hours_of_week">{{ $user->talent->hours_per_week }}</span> hours/week
 
-                                            <button class="btn "  data-bs-target="#edit-hours-per-week" 
+                                        <button class="btn " data-bs-target="#edit-hours-per-week"
                                             data-bs-toggle="modal"><i class="material-icons mb-1">edit</i></button>
                                     </div>
                                     <div class="col-md-4 p-2">
@@ -147,25 +150,28 @@
                                     Business clients need AI talents who have practical skills to build and productionize ML
                                     apps. Earn the skill badge & unlock other features.
                                 </p>
-                                <div class="row p-5">
-                                    <div class="col-md-6">
+                                <div class="row mt-4">
+                                    <div class="col-md-12">
 
                                         <ul>
-                                            <li>
-                                                <strong>Machine learning</strong> (15')
-                                            </li>
-                                        </ul>
-                                        <button class="btn btn-outline-primary">Prove</button>
-                                    </div>
-                                    <div class="col-md-6">
+                                            @foreach ($assessmentCategories as $assessmentCategory)
+                                                <li >
+                                                    <a class="d-flex justify-content-start" href="{{ route('assessment.init', ['category_id' => $assessmentCategory->id]) }}">
+                                                        <i class="material-icons mb-1 text-danger mt-1 me-2">close</i>
+                                                        <div>
+                                                            <h5>{{ $assessmentCategory->category_name }}</h5>
+                                                            <strong>
+                                                                <p>10 questions</p>
+                                                            </strong>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                            @endforeach
 
-                                        <ul>
-                                            <li>
-                                                <strong>Python</strong> (15')
-                                            </li>
                                         </ul>
-                                        <button class="btn btn-outline-primary">Prove</button>
+
                                     </div>
+
                                 </div>
                             </div>
                         </section>
@@ -177,8 +183,8 @@
                                         <h4 class="text-primary">
                                             Experience
                                         </h4>
-                                        <button class="btn btn-outline-dark btn-rounded" disabled data-bs-target="#add-experience"
-                                            data-bs-toggle="modal">+</button>
+                                        <button class="btn btn-outline-dark btn-rounded" disabled
+                                            data-bs-target="#add-experience" data-bs-toggle="modal">+</button>
                                     </div>
                                     <div class="ms-3">
                                         @foreach ($user->experiences as $experience)
@@ -213,8 +219,8 @@
                                         <h4 class="text-primary">
                                             Education
                                         </h4>
-                                        <button class="btn btn-outline-dark btn-rounded" disabled data-bs-target="#add-education"
-                                            data-bs-toggle="modal">+</button>
+                                        <button class="btn btn-outline-dark btn-rounded" disabled
+                                            data-bs-target="#add-education" data-bs-toggle="modal">+</button>
                                     </div>
                                     <div class="ms-3">
 
@@ -239,11 +245,10 @@
                         <section>
                             <div class="text-end p-5">
                                 <a href="{{ route('client.view') }}">
-                                <button class="btn btn-primary me-3">Client view</button>
-                            </a>
-                                <button class="btn btn-primary me-3" @if (sizeof($user->experiences)==0 || sizeof($user->educations) == 0 || !$user->talent->brainx_assessment)
-                                    disabled
-                                @endif>Submit for review</button>
+                                    <button class="btn btn-primary me-3">Client view</button>
+                                </a>
+                                <button class="btn btn-primary me-3"
+                                    @if (sizeof($user->experiences) == 0 || sizeof($user->educations) == 0 || !$user->talent->brainx_assessment) disabled @endif>Submit for review</button>
                             </div>
                         </section>
 

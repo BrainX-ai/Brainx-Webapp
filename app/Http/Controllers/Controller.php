@@ -18,27 +18,15 @@ class Controller extends BaseController
         $this->role = $role;
 
         session(['role' => $role]);
-        if(Auth::user() == null){
 
-            if($this->role == 'Talent'){
-                // dd("talent");
-                return redirect('/talent');
-            }
-            if($this->role == 'Client'){
-                return redirect('/');
-            }
-            if($this->role == 'Admin'){
-                return redirect()->route('admin.login.form');
-            }
-        }
-        $this->middleware(function ($request, $next) {  
+        $this->middleware(function ($request, $next) {
             
             if (Auth::user()->role != $this->role) {
                 
                 abort(404);
             }
             
-                return $next($request);
-            });
+            return $next($request);
+        });
     }
 }
