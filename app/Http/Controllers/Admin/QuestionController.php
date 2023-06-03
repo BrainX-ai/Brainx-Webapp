@@ -24,6 +24,32 @@ class QuestionController extends Controller
         
         return view('pages.admin.assessment-category')->with('categories', $categories);
     }
+
+    public function editQuestion($id){
+        $question = Question::find($id);
+        $categories = AssessmentCateory::all();
+
+        return view('pages.admin.edit-question')->with('question', $question)->with('categories', $categories);
+
+    }
+
+    public function updateQuestion(Request $request){
+
+
+        $question = Question::find($request->id)->update([
+            'question' => $request->question,
+            'option1' => $request->option1,
+            'option2' => $request->option2,
+            'option3' => $request->option3,
+            'option4' => $request->option4,
+            'answer' => $request->answer,
+            'note' => $request->note,
+            'explanation' => $request->explanation,
+            'assessment_category_id' => $request->assessment_category_id
+        ]);
+
+        return redirect()->route('admin.questions');
+    }
     
     public function store(Request $request){
 

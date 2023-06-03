@@ -33,6 +33,8 @@ class User extends Authenticatable  implements MustVerifyEmail
     function educations(){
         return $this->hasMany(Education::class);
     }
+
+    
     /**
      * The attributes that are mass assignable.
      *

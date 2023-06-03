@@ -6,6 +6,14 @@
         li {
             list-style: none;
         }
+
+        .btn-primary:disabled {
+            color: #000000;
+        }
+
+        #next-link {
+            pointer-events: none;
+        }
     </style>
     <div class="container" style="height: 100%;">
 
@@ -15,74 +23,76 @@
                     <div class="col-md-12">
                         <div class="card">
 
-                                <div class="card-header d-flex justify-content-between">
+                            <div class="card-header d-flex justify-content-between">
 
-                                    <h4>{{ 'Question ' . ($index + 1) . '/10' }}</h4>
-                                    <span>40:15</span>
-                                </div>
-                                <div class="card-body m-3">
-                                    <p>
-                                        {{ $question->question }}
-                                    </p>
-                                    <ul class="ms-3">
-                                        <li>
-                                            <label for="1">
-                                                <input type="radio" name="answer" id="1"
-                                                    value="{{ $question->option1 }}" onchange="onSelectOption(this)"/>
-                                                {{ $question->option1 }}
+                                <h4>{{ 'Question ' . ($index + 1) . '/10' }}</h4>
+                                <span><span id="minutes"></span>: <span id="seconds"></span> </span>
+                            </div>
+                            <div class="card-body m-3">
+                                <p>
+                                    {{ $question->question }}
+                                </p>
+                                <ul class="ms-3">
+                                    <li>
+                                        <label for="1">
+                                            <input type="radio" name="answer" id="1"
+                                                value="{{ $question->option1 }}" onchange="onSelectOption(this)" />
+                                            {{ $question->option1 }}
 
-                                            </label>
+                                        </label>
 
-                                        </li>
-                                        <li>
-                                            <label for="2">
-                                                <input type="radio" name="answer" id="2"
-                                                    value="{{ $question->option2 }}"  onchange="onSelectOption(this)"/>
-                                                {{ $question->option2 }}
+                                    </li>
+                                    <li>
+                                        <label for="2">
+                                            <input type="radio" name="answer" id="2"
+                                                value="{{ $question->option2 }}" onchange="onSelectOption(this)" />
+                                            {{ $question->option2 }}
 
-                                            </label>
+                                        </label>
 
-                                        </li>
-                                        <li>
-                                            <label for="3">
-                                                <input type="radio" name="answer" id="3"
-                                                    value="{{ $question->option3 }}" onchange="onSelectOption(this)"/>
-                                                {{ $question->option3 }}
+                                    </li>
+                                    <li>
+                                        <label for="3">
+                                            <input type="radio" name="answer" id="3"
+                                                value="{{ $question->option3 }}" onchange="onSelectOption(this)" />
+                                            {{ $question->option3 }}
 
-                                            </label>
+                                        </label>
 
-                                        </li>
-                                        <li>
-                                            <label for="4">
-                                                <input type="radio" name="answer" id="4"
-                                                    value="{{ $question->option4 }}" onchange="onSelectOption(this)"/>
-                                                {{ $question->option4 }}
+                                    </li>
+                                    <li>
+                                        <label for="4">
+                                            <input type="radio" name="answer" id="4"
+                                                value="{{ $question->option4 }}" onchange="onSelectOption(this)" />
+                                            {{ $question->option4 }}
 
-                                            </label>
+                                        </label>
 
-                                        </li>
-                                    </ul>
+                                    </li>
+                                </ul>
 
-                                    <div class="mt-5">
-                                        <input type="hidden" name="quiz_question_id" id="quiz_question_id" value="{{ $quiz_question_id }}" />
-                                        @if ($index > 0)
+                                <div class="mt-5">
+                                    <input type="hidden" name="quiz_question_id" id="quiz_question_id"
+                                        value="{{ $quiz_question_id }}" />
+                                    {{-- @if ($index > 0)
                                             <a href="{{ route('assessment.progress', ['index' => $index - 1]) }}">
                                                 <button class="btn btn-primary">Prev</button>
                                             </a>
-                                        @endif
-                                        @if ($index < 2)
-                                        <a href="{{ route('assessment.progress', ['index' => $index + 1]) }}">
-                                            <button class="btn btn-primary">Next</button>
+                                        @endif --}}
+                                    @if ($index < 2)
+                                        <a href="{{ route('assessment.progress', ['index' => $index + 1]) }}"
+                                            id="next-link">
+                                            <button class="btn btn-primary" id="next" disabled>Next</button>
                                         </a>
-                                        @endif
-                                        @if ($index == 2)
+                                    @endif
+                                    @if ($index == 2)
                                         <a href="{{ route('assessment.result') }}">
                                             <button class="btn btn-primary">Finish</button>
                                         </a>
-                                        @endif
-                                        
-                                    </div>
+                                    @endif
+
                                 </div>
+                            </div>
 
                         </div>
                     </div>
@@ -94,6 +104,8 @@
         <script>
             function onSelectOption(el) {
 
+                $('#next-link').css('pointer-events', 'auto');
+                $('#next').attr('disabled', false);
 
                 $.ajax({
                     method: "POST",
@@ -107,11 +119,41 @@
                             window.location.reload();
                         }
                         if (res.status === "ok") {
-                            
+
                         }
                     },
                 });
             }
+
+            function makeTimer() {
+                // var endTime = new Date("29 April 2018 9:56:00 GMT+01:00");
+                var endTime = new Date("{{ $endTime }} UTC");
+                
+                endTime = (Date.parse(endTime) / 1000);
+                var now = new Date();
+                now = (Date.parse(now) / 1000);
+                var timeLeft = endTime - now;
+                var days = Math.floor(timeLeft / 86400);
+                var hours = Math.floor((timeLeft - (days * 86400)) / 3600);
+                var minutes = Math.floor((timeLeft - (days * 86400) - (hours * 3600)) / 60);
+                var seconds = Math.floor((timeLeft - (days * 86400) - (hours * 3600) - (minutes * 60)));
+                if (hours < "10") {
+                    hours = "0" + hours;
+                }
+                if (minutes < "10") {
+                    minutes = "0" + minutes;
+                }
+                if (seconds < "10") {
+                    seconds = "0" + seconds;
+                }
+                $("#minutes").html(minutes);
+                $("#seconds").html(seconds);
+            }
+            setInterval(function() {
+                makeTimer();
+            }, 1000);
+
+            makeTimer()
         </script>
     @endsection
 @endsection

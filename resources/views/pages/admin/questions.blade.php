@@ -96,7 +96,7 @@
                                         <td class="text-end three-dots">
                                             
                                             
-                                            {{-- <a href="{{ route('admin.project.details', $job->job_id) }}" class="btn btn-light">Details</a> --}}
+                                            <a href="{{ route('admin.edit.page.question', $question->id) }}" class="btn btn-light">Edit</a>
                                         </td>
                                     </tr>
                                                           
