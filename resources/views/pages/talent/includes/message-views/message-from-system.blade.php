@@ -26,7 +26,6 @@
 @if($action->action_type == 'MESSAGE_WITH_CLIENT_REQUEST')
     <div class="ms-5 ps-1 mt-1">
         <button class="btn btn-primary ms-4" type="button" data-bs-toggle="modal" data-bs-target="#client-request-{{ $action->id }}">View client's request</button>
-
     </div>
 @endif
 

@@ -32,6 +32,17 @@
         li {
             list-style: none;
         }
+
+        .arrow, .close{
+            font-size: 40px;
+        }
+        .skillset-list{
+            background-color: #fcfcfcae;
+            border-bottom: solid 1px #fcfcfc;
+        }
+        .skillset-list:hover{
+            background-color: #fcfcfc;
+        }
     </style>
     <div class="container" style="height: 100%;">
 
@@ -144,11 +155,11 @@
                         <section>
                             <div class="row border m-5 p-5">
                                 <h4 class="text-primary">
-                                    BrainX skill assessment
+                                    BrainX Skill Assessment
                                 </h4>
                                 <p>
                                     Business clients need AI talents who have practical skills to build and productionize ML
-                                    apps. Earn the skill badge & unlock other features.
+                                    apps. Earn the skill badge & unlock other features. (Developed by our PhD in AI)
                                 </p>
                                 <div class="row mt-4">
                                     <div class="col-md-12">
@@ -156,14 +167,24 @@
                                         <ul>
                                             @foreach ($assessmentCategories as $assessmentCategory)
                                                 <li >
-                                                    <a class="d-flex justify-content-start" href="{{ route('assessment.init', ['category_id' => $assessmentCategory->id]) }}">
-                                                        <i class="material-icons mb-1 text-danger mt-1 me-2">close</i>
+                                                    <a class="d-flex justify-space-between skillset-list pt-2" href="{{ route('assessment.init', ['category_id' => $assessmentCategory->id]) }}">
+                                                        <div class="d-flex justify-content-start">
+
+                                                        @if ($assessmentCategory->result[0]->remarks == 'PASSED')
+                                                        <i class="material-icons mb-1 close text-primary me-2 mt-1">check_circle</i>
+                                                        @else
+
+                                                        <i class="material-icons mb-1 text-danger mt-1 me-2 close">close</i>
+                                                        @endif
+                                                            
                                                         <div>
                                                             <h5>{{ $assessmentCategory->category_name }}</h5>
                                                             <strong>
                                                                 <p>10 questions</p>
                                                             </strong>
                                                         </div>
+                                                    </div>
+                                                        <i class="material-icons mb-1 text-dark mt-1 me-2 arrow">chevron_right</i>
                                                     </a>
                                                 </li>
                                             @endforeach

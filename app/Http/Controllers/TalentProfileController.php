@@ -248,8 +248,8 @@ class TalentProfileController extends Controller
 
         $categories = Category::with('skills')->get();
         $user = User::with('talent')->with('experiences')->with('educations')->find($id);
-        $assessmentCategories = AssessmentCateory::all();
-
+        $assessmentCategories = AssessmentCateory::with('result')->get();
+        // dd($assessmentCategories);
         return view('pages.talent.profile')->with('user', $user)->with('categories', $categories)->with('assessmentCategories', $assessmentCategories);
     }
 

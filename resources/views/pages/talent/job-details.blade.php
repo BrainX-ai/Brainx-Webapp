@@ -101,6 +101,19 @@
                                 <div id="focus"></div>
 
                             </div>
+                            <div>
+                                <ul>
+                                    <li>
+                                        <a href="" class="text-primary fw-bold" type="button" data-bs-toggle="modal" data-bs-target="#client-request-{{ $action->id }}">View request</a>
+
+                                    </li>
+                                    @if ($job->contract != null)
+                                    <li>
+                                        <a href="" class="text-primary fw-bold" data-bs-toggle="modal" data-bs-target="#preview-{{ $action->job->contract->contract_type }}-contract">View contract</a>
+                                    </li>                                        
+                                    @endif
+                                </ul>
+                            </div>
                             <div class="chat-footer">
                                 <div class="input-group">
                                     
@@ -130,7 +143,7 @@
         </div>
     </div>
     <!-- /Page Content -->
-
+    @include('pages.talent.includes.modals.client-request')
     @if ($job->contract != null)
         @if ($job->contract->contract_type == 'fixed')
             @include('pages.talent.includes.modals.preview-fixed-contract')

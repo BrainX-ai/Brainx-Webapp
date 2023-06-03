@@ -8,6 +8,7 @@ use App\Models\QuizQuestions;
 use Illuminate\Http\Request;
 use App\Models\AssessmentCateory;
 use Auth;
+use Carbon\Carbon;
 
 class AssesmentController extends Controller
 {
@@ -30,7 +31,12 @@ class AssesmentController extends Controller
 
         $quiz = Quiz::create([
             'user_id' => Auth::user()->id,
+            'assessment_cateory_id' => $category_id
         ]);
+        // dd();
+        $endTime = ($quiz->created_at->addMinutes(45))->format("d M Y H:m:s");
+        // dd($quiz->created_at, $endTime);
+        session(['endTime' => $endTime]);
         foreach ($questions as $question) {
             QuizQuestions::create([
                 'quiz_id' => $quiz->id,
@@ -51,7 +57,7 @@ class AssesmentController extends Controller
         $quiz_question_id = QuizQuestions::where('question_id', $questions[$index]->id)->first()->id;
 
 
-        return view('pages.talent.question-page')->with('question', $questions[$index])->with('index', $index)->with('quiz_question_id', $quiz_question_id);
+        return view('pages.talent.question-page')->with('question', $questions[$index])->with('index', $index)->with('quiz_question_id', $quiz_question_id)->with('endTime', session('endTime'));
 
     }
 
@@ -79,6 +85,7 @@ class AssesmentController extends Controller
 
         $quiz = Quiz::find($quiz[0]->id);
         $quiz->score = $score;
+        $quiz->remarks = ($score/sizeof($quizQuestions))*100 >= 80 ? 'PASSED' : 'FAILED';
         $quiz->save();
 
         return view('pages.talent.assessment-result')->with('score', $score);

@@ -19,4 +19,6 @@ Route::get('/feedbacks','App\http\controllers\Admin\AdminController@feedbacks')-
 Route::get('/questions','App\http\controllers\Admin\QuestionController@index')->name('admin.questions');
 Route::get('/assessment-categories','App\http\controllers\Admin\QuestionController@categories')->name('admin.assessment.categories');
 Route::post('/add-questions','App\http\controllers\Admin\QuestionController@store')->name('admin.add.question');
+Route::post('/edit-question','App\http\controllers\Admin\QuestionController@updateQuestion')->name('admin.update.question');
+Route::get('/question/edit/{id}','App\http\controllers\Admin\QuestionController@editQuestion')->name('admin.edit.page.question');
 Route::post('/add-assessment-category','App\http\controllers\Admin\QuestionController@storeAssessmentCategory')->name('admin.add.assessment.category');
