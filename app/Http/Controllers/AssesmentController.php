@@ -34,7 +34,7 @@ class AssesmentController extends Controller
             'assessment_cateory_id' => $category_id
         ]);
         // dd();
-        $endTime = ($quiz->created_at->addMinutes(1)->format("d F Y H:i:s"));
+        $endTime = ($quiz->created_at->addMinutes(45)->format("d F Y H:i:s"));
         
         session(['endTime' => $endTime]);
         foreach ($questions as $question) {
