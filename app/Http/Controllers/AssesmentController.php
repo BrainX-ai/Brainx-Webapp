@@ -33,7 +33,7 @@ class AssesmentController extends Controller
             'user_id' => Auth::user()->id,
             'assessment_cateory_id' => $category_id
         ]);
-        // dd();
+        
         $endTime = ($quiz->created_at->addMinutes(45)->format("d F Y H:i:s"));
         
         session(['endTime' => $endTime]);

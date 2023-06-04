@@ -102,7 +102,7 @@
 
                             </div>
                             <div>
-                                <ul>
+                                <ul style="display: none;">
                                     <li>
                                         <a href="" class="text-primary fw-bold" type="button" data-bs-toggle="modal" data-bs-target="#client-request-{{ $action->id }}">View request</a>
 
@@ -143,7 +143,7 @@
         </div>
     </div>
     <!-- /Page Content -->
-    @include('pages.talent.includes.modals.client-request')
+    {{-- @include('pages.talent.includes.modals.client-request') --}}
     @if ($job->contract != null)
         @if ($job->contract->contract_type == 'fixed')
             @include('pages.talent.includes.modals.preview-fixed-contract')
