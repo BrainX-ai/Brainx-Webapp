@@ -85,7 +85,7 @@
                                     </div>
 
                                     <div class="col-md-4 p-2">
-                                        @if ($user->talent->brainx_assessment)
+                                        @if (sizeof($assessmentCategories[0]->result) && $assessmentCategories[0]->result[0]->remarks == 'PASSED')
                                             <i class="material-icons mb-1">check_circle</i>
                                         @else
                                             <i class="material-icons mb-1 text-danger">close</i>
@@ -167,10 +167,15 @@
                                         <ul>
                                             @foreach ($assessmentCategories as $assessmentCategory)
                                                 <li >
+                                                    @if (sizeof($assessmentCategory->result) == 0)
                                                     <a class="d-flex justify-space-between skillset-list pt-2" href="{{ route('assessment.init', ['category_id' => $assessmentCategory->id]) }}">
+                                                    @else
+                                                    <a class="d-flex justify-space-between skillset-list pt-2" >
+                                                        @endif
+                                                    
                                                         <div class="d-flex justify-content-start">
 
-                                                        @if ($assessmentCategory->result[0]->remarks == 'PASSED')
+                                                        @if (sizeof($assessmentCategory->result) && $assessmentCategory->result[0]->remarks == 'PASSED')
                                                         <i class="material-icons mb-1 close text-primary me-2 mt-1">check_circle</i>
                                                         @else
 
@@ -184,7 +189,11 @@
                                                             </strong>
                                                         </div>
                                                     </div>
+                                                    @if (sizeof($assessmentCategory->result) && $assessmentCategory->result[0]->remarks == 'FAILED')
+                                                     <div><span class="badge bg-danger">Unsuccessful</span></div>
+                                                    @else
                                                         <i class="material-icons mb-1 text-dark mt-1 me-2 arrow">chevron_right</i>
+                                                    @endif
                                                     </a>
                                                 </li>
                                             @endforeach

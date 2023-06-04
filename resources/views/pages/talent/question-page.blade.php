@@ -14,6 +14,11 @@
         #next-link {
             pointer-events: none;
         }
+        .prevent-select {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
     </style>
     <div class="container" style="height: 100%;">
 
@@ -21,6 +26,11 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
+                        <div>
+                            <p>
+                                Do not click back button on browser. If so, you will be considered as unsuccessfull.
+                            </p>
+                        </div>
                         <div class="card">
 
                             <div class="card-header d-flex justify-content-between">
@@ -28,8 +38,8 @@
                                 <h4>{{ 'Question ' . ($index + 1) . '/10' }}</h4>
                                 <span><span id="minutes"></span>: <span id="seconds"></span> </span>
                             </div>
-                            <div class="card-body m-3">
-                                <p>
+                            <div class="card-body m-3 prevent-select">
+                                <p >
                                     {{ $question->question }}
                                 </p>
                                 <ul class="ms-3">
@@ -40,7 +50,6 @@
                                             {{ $question->option1 }}
 
                                         </label>
-
                                     </li>
                                     <li>
                                         <label for="2">
@@ -148,11 +157,15 @@
                 }
                 $("#minutes").html(minutes);
                 $("#seconds").html(seconds);
+
+                if(minutes <= "00" && seconds <= "00"){
+                    window.location.href = "{{ route('assessment.result') }}"
+                }
             }
             setInterval(function() {
                 makeTimer();
             }, 1000);
-
+            document.addEventListener('contextmenu', event => event.preventDefault());
             makeTimer()
         </script>
     @endsection

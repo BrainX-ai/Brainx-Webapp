@@ -30,7 +30,7 @@
                                     <li>Internet needed
                                     </li>
                                     <li>
-                                        No retake
+                                        One shot, no retake
                                     </li>
                                 </ul>
 

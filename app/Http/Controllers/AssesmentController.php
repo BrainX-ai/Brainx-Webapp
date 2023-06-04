@@ -23,7 +23,7 @@ class AssesmentController extends Controller
     public function generateQuestions($category_id)
     {
 
-        $questions = Question::where('assessment_category_id', $category_id)->limit(10)->get();
+        $questions = Question::where('assessment_category_id', $category_id)->inRandomOrder()->limit(10)->get();
 
         session([
             'questions' => $questions
@@ -34,8 +34,8 @@ class AssesmentController extends Controller
             'assessment_cateory_id' => $category_id
         ]);
         // dd();
-        $endTime = ($quiz->created_at->addMinutes(45))->format("d M Y H:m:s");
-        // dd($quiz->created_at, $endTime);
+        $endTime = ($quiz->created_at->addMinutes(1)->format("d F Y H:i:s"));
+        
         session(['endTime' => $endTime]);
         foreach ($questions as $question) {
             QuizQuestions::create([
@@ -49,8 +49,6 @@ class AssesmentController extends Controller
 
     public function getQuestion($index)
     {
-
-        
 
         $questions = session('questions');
         
@@ -74,7 +72,7 @@ class AssesmentController extends Controller
     {
 
         $quiz = Quiz::where('user_id', Auth::user()->id)->latest()->get();
-        // dd($quiz);
+        
         $quizQuestions = QuizQuestions::where('quiz_id', $quiz[0]->id)->with('question')->get();
         $score = 0;
         foreach ($quizQuestions as $quizQuestion) {
