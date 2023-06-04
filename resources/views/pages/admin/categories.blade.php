@@ -34,7 +34,9 @@
                             <tr>
                                 <td>{{ $category->category_id }}</td>
                                 <td>{{ $category->category_name }}</td>
-                                <td></td>
+                                <td>
+                                    <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#edit-category" onclick="replaceCategory('{{ $category->category_id }}', '{{ $category->category_name }}')">Edit</button>
+                                </td>
                             </tr>                                
                             @endforeach
                         </tbody>
@@ -46,5 +48,19 @@
     
 </div>
 @include('pages.admin.includes.modals.add-category')
+@include('pages.admin.includes.modals.edit-category')
+
+@section('custom-js')
+    <script>
+
+        function replaceCategory(id, category_name) {
+
+            $('#category_id').val(id);
+            $('#category_name').val(category_name);
+
+        }
+
+    </script>
+@endsection
 
 @endsection

@@ -11,8 +11,10 @@ Route::post('/update-transaction-status','App\http\controllers\Admin\JobControll
 Route::post('/users/status/update','App\http\controllers\Admin\AdminController@updateStatus')->name('admin.update.users.status');
 Route::get('/categories','App\http\controllers\Admin\SkillController@index')->name('admin.categories');
 Route::post('/category/insert','App\http\controllers\Admin\SkillController@storeCategory')->name('admin.category.insert');
+Route::post('/category/update','App\http\controllers\Admin\SkillController@updateCategory')->name('admin.category.edit');
 Route::get('/skills','App\http\controllers\Admin\SkillController@skills')->name('admin.skills');
 Route::post('/skill/insert','App\http\controllers\Admin\SkillController@store')->name('admin.skill.insert');
+Route::post('/skill/update','App\http\controllers\Admin\SkillController@updateSkill')->name('admin.skill.edit');
 Route::post('/assign-talent','App\http\controllers\Admin\JobController@assignTalent')->name('admin.assign.talent');
 Route::get('/feedbacks','App\http\controllers\Admin\AdminController@feedbacks')->name('admin.feedbacks');
 
