@@ -1,4 +1,4 @@
-@extends('app')
+@extends('pages.talent.layouts.quiz-app')
 
 @section('content')
 
@@ -24,6 +24,8 @@
 
         <div class="content">
             <div class="container-fluid">
+
+                <h2 class="mb-3 text-center">BrainX Skill Assessment</h2>
                 <div class="row">
                     <div class="col-md-12">
                         <div>
