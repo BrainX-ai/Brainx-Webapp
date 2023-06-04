@@ -56,6 +56,17 @@ class SkillController extends Controller
         return redirect()->route('admin.skills');
     }
 
+    public function updateSkill(Request $request)
+    {
+        $skills = Skill::find($request->id)->update([
+            'category_id' => $request->category_id,
+            'skill_name' => $request->skill_name,
+        ]);
+
+
+        return redirect()->route('admin.skills');
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -66,6 +77,16 @@ class SkillController extends Controller
     {
         // dd($request);
         $categories = Category::create([
+            'category_name' => $request->category_name
+        ]);
+
+        return redirect()->route('admin.categories');
+    }
+
+    public function updateCategory(Request $request)
+    {
+        // dd($request);
+        $categories = Category::find($request->id)->update([
             'category_name' => $request->category_name
         ]);
 

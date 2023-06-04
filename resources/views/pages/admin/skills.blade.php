@@ -36,7 +36,9 @@
                                 <td>{{ $skill->skill_id }}</td>
                                 <td>{{ $skill->skill_name }}</td>
                                 <td>{{ $skill->category->category_name }}</td>
-                                <td></td>
+                                <td>
+                                    <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#edit-skill" onclick="replaceCategory('{{ $skill->skill_id }}', '{{ $skill->skill_name }}')">Edit</button>
+                                </td>
                             </tr>                                
                             @endforeach
                         </tbody>
@@ -48,5 +50,19 @@
     
 </div>
 @include('pages.admin.includes.modals.add-skill')
+@include('pages.admin.includes.modals.edit-skill')
 
+
+@section('custom-js')
+    <script>
+
+        function replaceCategory(id, skill_name) {
+
+            $('#skill_id').val(id);
+            $('#skill_name').val(skill_name);
+
+        }
+
+    </script>
+@endsection
 @endsection
