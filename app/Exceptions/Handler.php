@@ -8,6 +8,7 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 use Throwable;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Redirect;
 
 class Handler extends ExceptionHandler
 {
@@ -63,7 +64,8 @@ class Handler extends ExceptionHandler
     {
         
         $guard = collect($exception->guards())->first();
-        $route = match (session('role')) {
+        $role = session('role');
+        $route = match ($role) {
             'Admin' => 'admin.login.form',
             'Client' => 'home',
             'Talent' => 'talent.home',
@@ -72,10 +74,10 @@ class Handler extends ExceptionHandler
 
         Session::forget('role');
         
+
+        
         return $request->expectsJson()
             ? response()->json(['message' => $exception->getMessage()], 401)
-            : redirect()->guest(route($route));
-
-            
+            : redirect()->guest(route($route));  
     }
 }

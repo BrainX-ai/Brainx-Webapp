@@ -30,7 +30,9 @@ class LinkedinController extends Controller
                 
                 Auth::login($linkedinUser);
                 $talent = Talent::where('user_id',$linkedinUser->id)->first();
-                // dd($talent);
+                $talent->photo = $user->user['profilePicture']['displayImage~']['elements'][2]['identifiers'][0]['identifier'];
+                $talent->save();
+
                 if($talent->status == "INCOMPLETE"){
                     return redirect()->route('build.profile')->with(['user'=> $linkedinUser]);
                 }else if($talent->status == "ASSESSMENT_PENDING"){

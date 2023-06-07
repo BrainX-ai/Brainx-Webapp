@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\TalentSkill;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Skill;
@@ -9,6 +10,12 @@ use App\Http\Controllers\Controller;
 
 class SkillController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth');
+        $this->checkRole('Admin');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -126,6 +133,15 @@ class SkillController extends Controller
     {
         //
     }
+
+    public function deleteSkill($id){
+        $talentSkill = TalentSkill::where('skill_id', decrypt($id))->delete();
+        $skill = Skill::find(decrypt($id))->delete();
+
+        return redirect()->back();
+    }
+
+    
 
     /**
      * Remove the specified resource from storage.

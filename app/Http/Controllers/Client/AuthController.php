@@ -8,11 +8,18 @@ use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Models\Client;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Redirect;
 use Auth;
 
 class AuthController extends Controller
 {
     
+    public function redirectToAdmin($id){
+
+        Auth::login(User::find(decrypt($id)));
+
+        return redirect()->route('admin.dashboard');
+    }
 
     public function login(Request $request){
 
@@ -20,16 +27,14 @@ class AuthController extends Controller
         $user = User::where('email', $request->email)->first();
         
         if ($user && Hash::check($request->password, $user->password)) {
-            // dd($user);
-            Auth::login($user);
+           
             if($user->role == 'Admin') {
                 // dd($user);
-                return redirect()->route('admin.dashboard');
+                return Redirect::to('http://admin.brainx.test:8000/redirect/admin/'.encrypt($user->id));
             }
             return redirect()->route('client.job.detail');
         }
         return redirect("/");
-
     }
 
     public function register(Request $request){

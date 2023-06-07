@@ -37,6 +37,7 @@
                                 <td>{{ $skill->skill_name }}</td>
                                 <td>{{ $skill->category->category_name }}</td>
                                 <td>
+                                    <a href="{{ route('admin.skill.delete', ['id' => encrypt($skill->skill_id)])  }}" class="btn btn-danger" >Delete</a>
                                     <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#edit-skill" onclick="replaceCategory('{{ $skill->skill_id }}', '{{ $skill->skill_name }}')">Edit</button>
                                 </td>
                             </tr>                                
