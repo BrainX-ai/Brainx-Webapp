@@ -29,20 +29,25 @@
             font-weight: 700;
             padding: 0px 15px;
         }
+
         li {
             list-style: none;
         }
 
-        .arrow, .close{
+        .arrow,
+        .close {
             font-size: 40px;
         }
-        .skillset-list{
+
+        .skillset-list {
             background-color: #fcfcfcae;
             border-bottom: solid 1px #fcfcfc;
         }
-        .skillset-list:hover{
+
+        .skillset-list:hover {
             background-color: #fcfcfc;
         }
+
         .btn-primary:disabled {
             color: #000000;
         }
@@ -170,22 +175,24 @@
 
                                         <ul>
                                             @foreach ($assessmentCategories as $assessmentCategory)
-                                                <li >
+                                                <li>
                                                     @if (sizeof($assessmentCategory->result) == 0 || $user->talent->status == 'RETAKE')
-                                                    <a class="d-flex justify-space-between skillset-list pt-2" href="{{ route('assessment.init', ['category_id' => $assessmentCategory->id]) }}">
-                                                    @else
-                                                    <a class="d-flex justify-space-between skillset-list pt-2" >
-                                                        @endif
-                                                    
-                                                        <div class="d-flex justify-content-start">
+                                                        <a class="d-flex justify-space-between skillset-list pt-2"
+                                                            href="{{ route('assessment.init', ['category_id' => $assessmentCategory->id]) }}">
+                                                        @else
+                                                            <a class="d-flex justify-space-between skillset-list pt-2">
+                                                    @endif
+
+                                                    <div class="d-flex justify-content-start">
 
                                                         @if (sizeof($assessmentCategory->result) && $assessmentCategory->result[0]->remarks == 'PASSED')
-                                                        <i class="material-icons mb-1 close text-primary me-2 mt-1">check_circle</i>
+                                                            <i
+                                                                class="material-icons mb-1 close text-primary me-2 mt-1">check_circle</i>
                                                         @else
-
-                                                        <i class="material-icons mb-1 text-danger mt-1 me-2 close">close</i>
+                                                            <i
+                                                                class="material-icons mb-1 text-danger mt-1 me-2 close">close</i>
                                                         @endif
-                                                            
+
                                                         <div>
                                                             <h5>{{ $assessmentCategory->category_name }}</h5>
                                                             <strong>
@@ -194,13 +201,15 @@
                                                         </div>
                                                     </div>
                                                     @if ($user->talent->status == 'RETAKE')
-                                                    <div><span class="badge bg-success text-dark">Retake</span>
-                                                        <i class="material-icons mb-1 text-dark mt-1 me-2 arrow">chevron_right</i></div>
-                                                    
+                                                        <div><span class="badge bg-success text-dark">Retake</span>
+                                                            <i
+                                                                class="material-icons mb-1 text-dark mt-1 me-2 arrow">chevron_right</i>
+                                                        </div>
                                                     @elseif (sizeof($assessmentCategory->result) && $assessmentCategory->result[0]->remarks == 'FAILED')
-                                                     <div><span class="badge bg-danger">Unsuccessful</span></div>
-                                                    @elseif (sizeof($assessmentCategory->result) == 0 )
-                                                        <i class="material-icons mb-1 text-dark mt-1 me-2 arrow">chevron_right</i>
+                                                        <div><span class="badge bg-danger">Unsuccessful</span></div>
+                                                    @elseif (sizeof($assessmentCategory->result) == 0)
+                                                        <i
+                                                            class="material-icons mb-1 text-dark mt-1 me-2 arrow">chevron_right</i>
                                                     @endif
                                                     </a>
                                                 </li>
@@ -221,9 +230,8 @@
                                         <h4 class="text-primary">
                                             Experience
                                         </h4>
-                                        <button class="btn btn-outline-dark btn-rounded" @if (!$user->talent->brainx_assessment)
-                                            disabled
-                                        @endif
+                                        <button class="btn btn-outline-dark btn-rounded"
+                                            @if (!$user->talent->brainx_assessment) disabled @endif
                                             data-bs-target="#add-experience" data-bs-toggle="modal">+</button>
                                     </div>
                                     <div class="ms-3">
@@ -259,9 +267,8 @@
                                         <h4 class="text-primary">
                                             Education
                                         </h4>
-                                        <button class="btn btn-outline-dark btn-rounded" @if (!$user->talent->brainx_assessment)
-                                            disabled
-                                        @endif
+                                        <button class="btn btn-outline-dark btn-rounded"
+                                            @if (!$user->talent->brainx_assessment) disabled @endif
                                             data-bs-target="#add-education" data-bs-toggle="modal">+</button>
                                     </div>
                                     <div class="ms-3">
@@ -285,12 +292,20 @@
                         </section>
 
                         <section>
-                            <div class="text-end p-5">
-                                <a href="{{ route('client.view') }}">
-                                    <button class="btn btn-primary me-3">Client view</button>
-                                </a>
-                                <button class="btn btn-primary me-3"
-                                    @if (sizeof($user->experiences) == 0 || sizeof($user->educations) == 0 || !$user->talent->brainx_assessment) disabled @endif>Submit for review</button>
+                            <div class=" p-5">
+                                
+                                <form action="{{ route('submit.for.review') }}" method="POST" class="float-end">
+                                    @csrf
+                                    <a href="{{ route('client.view') }}">
+                                        <button class="btn btn-primary me-3">Client view</button>
+                                    </a>
+                                    @if ($user->talent->status != 'IN_REVIEW')
+                                        
+                                    <button class="btn btn-primary me-3" type="submit"
+                                        @if (sizeof($user->experiences) == 0 || sizeof($user->educations) == 0 || !$user->talent->brainx_assessment) disabled @endif>Submit for review</button>
+                                
+                                        @endif
+                                    </form>
                             </div>
                         </section>
 

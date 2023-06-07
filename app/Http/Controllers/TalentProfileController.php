@@ -134,6 +134,8 @@ class TalentProfileController extends Controller
             'action_id' => $action->id,
             'message' => 'We’re excited to receive your profile. Please kindly give us time to review your profile. You will be notified via email when you’re accepted. Thank you for joining us!'
         ]);
+
+        return redirect()->back();
     }
 
     public function updateHourlyRate(Request $request){
