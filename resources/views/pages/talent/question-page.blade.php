@@ -90,13 +90,13 @@
                                                 <button class="btn btn-primary">Prev</button>
                                             </a>
                                         @endif --}}
-                                    @if ($index < 2)
+                                    @if ($index < 9)
                                         <a href="{{ route('assessment.progress', ['index' => $index + 1]) }}"
                                             id="next-link">
                                             <button class="btn btn-primary" id="next" disabled>Next</button>
                                         </a>
                                     @endif
-                                    @if ($index == 2)
+                                    @if ($index == 9)
                                         <a href="{{ route('assessment.result') }}">
                                             <button class="btn btn-primary">Finish</button>
                                         </a>

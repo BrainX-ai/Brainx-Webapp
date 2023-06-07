@@ -1,5 +1,7 @@
 <?php
 
+
+
 Route::get('/talent-profile/{id}', 'App\http\controllers\Admin\AdminController@userDetails')->name('admin.show.profile');
 Route::get('/dashboard','App\http\controllers\Admin\DashboardController@index')->name('admin.dashboard');
 Route::get('/users','App\http\controllers\Admin\AdminController@users')->name('admin.users');
@@ -12,9 +14,12 @@ Route::post('/users/status/update','App\http\controllers\Admin\AdminController@u
 Route::get('/categories','App\http\controllers\Admin\SkillController@index')->name('admin.categories');
 Route::post('/category/insert','App\http\controllers\Admin\SkillController@storeCategory')->name('admin.category.insert');
 Route::post('/category/update','App\http\controllers\Admin\SkillController@updateCategory')->name('admin.category.edit');
+
 Route::get('/skills','App\http\controllers\Admin\SkillController@skills')->name('admin.skills');
 Route::post('/skill/insert','App\http\controllers\Admin\SkillController@store')->name('admin.skill.insert');
 Route::post('/skill/update','App\http\controllers\Admin\SkillController@updateSkill')->name('admin.skill.edit');
+Route::get('/skill/delete/{id}','App\http\controllers\Admin\SkillController@deleteSkill')->name('admin.skill.delete');
+
 Route::post('/assign-talent','App\http\controllers\Admin\JobController@assignTalent')->name('admin.assign.talent');
 Route::get('/feedbacks','App\http\controllers\Admin\AdminController@feedbacks')->name('admin.feedbacks');
 

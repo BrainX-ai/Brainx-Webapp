@@ -62,6 +62,8 @@ Route::post('/upload-chat-file', 'App\http\controllers\ChatController@uploadChat
 Route::get('/download-chat-file/{file_id}', 'App\http\controllers\ChatController@downloadFile')->name('download.chat.file');
 
 
+Route::get('/redirect/admin/{id}','App\http\controllers\Client\AuthController@redirectToAdmin')->name('redirectToAdmin');
+
 Route::prefix('/client')->as('client.')->group(function () {
     
     Route::post('/auth/register','App\http\controllers\Client\AuthController@register')->name('register');    

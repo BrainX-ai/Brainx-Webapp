@@ -193,7 +193,7 @@
                                         <a href="javascript:;"><img class="img-fluid" src="assets/img/BrainX/Consult.png" alt=""></a>
                                     </div>
                                     <div class="about-it-content ">
-                                        <h4 >Hire AI contractors</h4>
+                                        <h4 >Hourly rate</h4>
                                         <p>Hire AI contractors for your AI projects within a particular period of time and pay them in hourly rate</p>
                                         
                                     </div>
@@ -205,7 +205,7 @@
                                         <a href="javascript:;"><img class="img-fluid" src="assets/img/BrainX/Development.png" alt=""></a>
                                     </div>
                                     <div class="about-it-content text-left">
-                                        <h4>Outsource AI projects</h4>
+                                        <h4>Fixed price</h4>
                                         <p>
 											Outsource AI projects to freelancers and pay them in a fixed price	
 										</p>

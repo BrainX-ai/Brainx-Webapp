@@ -164,14 +164,14 @@
 
                                             <div class="row">
                                                 <label class="col-md-6">
-                                                    <input type="radio" name="job_type" checked
-                                                        value="Hire remote AI contractor" onclick="show_duration_box()" />
-                                                    Hire remote AI contractor
+                                                    <input type="radio" name="job_type" id="outsource" checked
+                                                        value="Outsource AI projects" onclick="hide_duration_box()" />
+                                                    Fixed price
                                                 </label>
                                                 <label class="col-md-6">
-                                                    <input type="radio" name="job_type" id="outsource"
-                                                        value="Outsource AI projects" onclick="hide_duration_box()" />
-                                                    Outsource AI projects
+                                                    <input type="radio" name="job_type" 
+                                                        value="Hire remote AI contractor" onclick="show_duration_box()" />
+                                                    Hourly rate
                                                 </label>
                                             </div>
                                             <p class="text-muted ai-contractor" id="hire-contractor-message">Hire within a
@@ -392,7 +392,12 @@ Required skills and experience"></textarea>
 
             $('#cke_editor-outsource').addClass('d-none');
 
+
+            
+            hide_duration_box()
         });
+
+        
 
 
         // $('').hide();//('display', 'none');

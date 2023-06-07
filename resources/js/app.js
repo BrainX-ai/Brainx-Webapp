@@ -55,9 +55,7 @@ window.Echo.channel("chat").listen(".chatmessage", function (e) {
                 `</div>
             </div>
         </div>
-    </div></div>`
-        
-        );
+    </div></div>`);
     }else if(e.messageType == "file"){
 
         let data = e.message.split("#&*")
