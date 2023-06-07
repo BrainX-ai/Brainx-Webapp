@@ -157,7 +157,7 @@
                                                     
                                                         <div class="d-flex justify-content-start">
 
-                                                        @if (sizeof($assessmentCategory->result) && $assessmentCategory->result[0]->remarks == 'PASSED')
+                                                        @if ($user->talent->brainx_assessment || (sizeof($assessmentCategory->result) && $assessmentCategory->result[0]->remarks == 'PASSED'))
                                                         <i class="material-icons mb-1 close text-primary me-2 mt-1">check_circle</i>
                                                         @else
 
