@@ -9,6 +9,7 @@ use App\Models\Talent;
 use App\Models\Job;
 use App\Models\Feedback;
 use App\Models\Client;
+use App\Models\AssessmentCateory;
 use Auth;
 
 class AdminController extends Controller
@@ -40,9 +41,10 @@ class AdminController extends Controller
         $title = ['Experience', 'Education'];
 
         $user = User::with(['talent','experiences','educations'])->find($id);
-        // dd($user);
+       
+        $assessmentCategories = AssessmentCateory::with('result')->get();
 
-        return view('pages.admin.talent-details')->with('user', $user);
+        return view('pages.admin.talent-details')->with('user', $user)->with('assessmentCategories', $assessmentCategories);
     }
 
     public function updateStatus(Request $request)

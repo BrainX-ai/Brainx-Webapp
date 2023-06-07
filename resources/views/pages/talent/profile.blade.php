@@ -292,14 +292,14 @@
                         </section>
 
                         <section>
-                            <div class=" p-5">
-                                
+                            <div class="float-end p-5">
+                                <a href="{{ route('client.view') }}">
+                                    <button class="btn btn-primary me-3" type="button">Client view</button>
+                                </a>
                                 <form action="{{ route('submit.for.review') }}" method="POST" class="float-end">
                                     @csrf
-                                    <a href="{{ route('client.view') }}">
-                                        <button class="btn btn-primary me-3">Client view</button>
-                                    </a>
-                                    @if ($user->talent->status != 'IN_REVIEW')
+                                    
+                                    @if ($user->talent->status != 'IN_REVIEW' && $user->talent->status != 'PUBLISHED' && $user->talent->status != 'INCOMPLETE')
                                         
                                     <button class="btn btn-primary me-3" type="submit"
                                         @if (sizeof($user->experiences) == 0 || sizeof($user->educations) == 0 || !$user->talent->brainx_assessment) disabled @endif>Submit for review</button>

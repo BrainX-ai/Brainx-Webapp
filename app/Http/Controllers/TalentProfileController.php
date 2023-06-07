@@ -301,11 +301,9 @@ class TalentProfileController extends Controller
 
     public function showTalentProfile()
     {   
-        
-        
         $assessmentCategories = AssessmentCateory::with('result')->get();
         $user = User::with('talent')->with('experiences')->with('educations')->find(Auth::user()->id);
 
-        return view('pages.client.pages.talent-profile')->with('user', $user)->with('assessmentCategories', $assessmentCategories);
+        return view('pages.talent.client-view')->with('user', $user)->with('assessmentCategories', $assessmentCategories);
     }
 }

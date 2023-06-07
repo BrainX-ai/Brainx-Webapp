@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=0">
-		<title>KofeJob</title>
+		<title>Admin - BrainX</title>
 		
 		<!-- Favicon -->
 		<link rel="shortcut icon" href="assets/img/favicon.png" type="image/x-icon">
