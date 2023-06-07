@@ -89,7 +89,7 @@ class AssesmentController extends Controller
         $quiz->save();
 
         $user = Talent::where('user_id', Auth::user()->id)->first();
-        $user->status = 'IN_REVIEW';
+        $user->status = 'ASSESSMENT_COMPLETED';
         $user->brainx_assessment = $quiz->remarks == 'PASSED' ? 1:0;
         $user->save();
 

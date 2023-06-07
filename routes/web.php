@@ -44,6 +44,7 @@ Route::post('/add-education','App\http\controllers\TalentProfileController@addEd
 Route::post('/accept-request','App\http\controllers\JobController@acceptRequest')->name('accept.request');
 Route::post('/reject-request','App\http\controllers\JobController@rejectRequest')->name('reject.request');
 Route::get('/client-view', 'App\http\controllers\TalentProfileController@showTalentProfile')->name('client.view');
+Route::post('/submit-for-review', 'App\http\controllers\TalentProfileController@submitForReview')->name('submit.for.review');
 
 Route::post('/update-hourly-rate', 'App\http\controllers\TalentProfileController@updateHourlyRate')->name('updateHourlyRate');
 Route::post('/update-hours-per-week','App\http\controllers\TalentProfileController@updateHoursPerWeek')->name('updateHoursPerWeek');
