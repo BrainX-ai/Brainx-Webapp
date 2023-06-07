@@ -6,6 +6,7 @@ use App\Models\Question;
 use App\Models\Quiz;
 use App\Models\QuizQuestions;
 use Illuminate\Http\Request;
+use App\Models\Talent;
 use App\Models\AssessmentCateory;
 use Auth;
 use Carbon\Carbon;
@@ -35,7 +36,7 @@ class AssesmentController extends Controller
         ]);
         
         $endTime = ($quiz->created_at->addMinutes(45)->format("d F Y H:i:s"));
-        
+        session(['quiz_id' => $quiz->id]);
         session(['endTime' => $endTime]);
         foreach ($questions as $question) {
             QuizQuestions::create([
@@ -52,7 +53,7 @@ class AssesmentController extends Controller
 
         $questions = session('questions');
         
-        $quiz_question_id = QuizQuestions::where('question_id', $questions[$index]->id)->first()->id;
+        $quiz_question_id = QuizQuestions::where('question_id', $questions[$index]->id)->where('quiz_id', session('quiz_id'))->first()->id;
 
 
         return view('pages.talent.question-page')->with('question', $questions[$index])->with('index', $index)->with('quiz_question_id', $quiz_question_id)->with('endTime', session('endTime'));
@@ -75,6 +76,7 @@ class AssesmentController extends Controller
         
         $quizQuestions = QuizQuestions::where('quiz_id', $quiz[0]->id)->with('question')->get();
         $score = 0;
+        
         foreach ($quizQuestions as $quizQuestion) {
             if ($quizQuestion->given_answer == $quizQuestion->question->answer) {
                 $score++;
@@ -86,7 +88,12 @@ class AssesmentController extends Controller
         $quiz->remarks = ($score/sizeof($quizQuestions))*100 >= 80 ? 'PASSED' : 'FAILED';
         $quiz->save();
 
-        return view('pages.talent.assessment-result')->with('score', $score);
+        $user = Talent::where('user_id', Auth::user()->id)->first();
+        $user->status = 'IN_REVIEW';
+        $user->brainx_assessment = $quiz->remarks == 'PASSED' ? 1:0;
+        $user->save();
+
+        return view('pages.talent.assessment-result')->with('score', $score)->with('quiz', $quiz);
 
     }
 }

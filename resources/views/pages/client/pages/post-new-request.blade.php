@@ -164,14 +164,15 @@
 
                                             <div class="row">
                                                 <label class="col-md-6">
-                                                    <input type="radio" name="job_type" id="outsource" checked
-                                                        value="Outsource AI projects" onclick="hide_duration_box()" />
-                                                    Fixed price
-                                                </label>
-                                                <label class="col-md-6">
-                                                    <input type="radio" name="job_type" 
+                                                    <input type="radio" name="job_type" checked
                                                         value="Hire remote AI contractor" onclick="show_duration_box()" />
                                                     Hourly rate
+                                                </label>
+
+                                                <label class="col-md-6">
+                                                    <input type="radio" name="job_type" id="outsource" 
+                                                        value="Outsource AI projects" onclick="hide_duration_box()" />
+                                                    Fixed price
                                                 </label>
                                             </div>
                                             <p class="text-muted ai-contractor" id="hire-contractor-message">Hire within a
@@ -179,17 +180,18 @@
                                             <p class="text-muted outsource d-none" id="outsource-message">Outsource AI
                                                 projects to freelancers and pay them in a fixed price</p>
                                             <div class="form-group">
-                                                <textarea name="job_description" rows="5" class="form-control " id="editor"
+                                            
+                                            <textarea name="job_description_outsource" rows="5" class="form-control outsource " id="editor-outsource"
+                                                placeholder="Good details to include: 
+Project description
+Scope of work
+Required skills and experience"></textarea>
+                                                <textarea name="job_description" rows="5" class="form-control  d-none" id="editor"
                                                     placeholder="Good details to include:
 -Job description
 -Job responsibility
 -Job requirement
                                             "></textarea>
-                                                <textarea name="job_description_outsource" rows="5" class="form-control outsource d-none" id="editor-outsource"
-                                                    placeholder="Good details to include: 
-Project description
-Scope of work
-Required skills and experience"></textarea>
                                             </div>
                                             <div class="row" id="hire-AI-contrator">
                                                 <div class="form-group col-md-6">
@@ -367,34 +369,35 @@ Required skills and experience"></textarea>
             $('#cke_editor').addClass('d-none');
             $('.section-4').addClass('d-none');
 
-
-
-
         }
     </script>
     <script src="https://cdn.ckeditor.com/4.21.0/standard-all/ckeditor.js"></script>
 
     {{-- <script src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script> --}}
     <script>
+
         var editor = {};
+        CKEDITOR.replace('editor-outsource', {
+            extraPlugins: 'editorplaceholder',
+            editorplaceholder: `Good details to include: Project description, Scope of work, Required skills and experience`,
+            removeButtons: 'PasteFromWord'
+        });
         CKEDITOR.replace('editor', {
             extraPlugins: 'editorplaceholder',
             editorplaceholder: `Good details to include: Job description, Job responsibility, Job requirement`,
             removeButtons: 'PasteFromWord'
         });
 
-        CKEDITOR.replace('editor-outsource', {
-            extraPlugins: 'editorplaceholder',
-            editorplaceholder: `Good details to include: Project description, Scope of work, Required skills and experience`,
-            removeButtons: 'PasteFromWord'
-        });
+       
+
+        
+
         $(document).ready(function() {
 
             $('#cke_editor-outsource').addClass('d-none');
-
-
             
-            hide_duration_box()
+
+            // hide_duration_box()
         });
 
         

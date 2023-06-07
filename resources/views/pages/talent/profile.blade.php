@@ -43,6 +43,9 @@
         .skillset-list:hover{
             background-color: #fcfcfc;
         }
+        .btn-primary:disabled {
+            color: #000000;
+        }
     </style>
     <div class="container" style="height: 100%;">
 
@@ -85,7 +88,7 @@
                                     </div>
 
                                     <div class="col-md-4 p-2">
-                                        @if (sizeof($assessmentCategories[0]->result) && $assessmentCategories[0]->result[0]->remarks == 'PASSED')
+                                        @if ($user->talent->brainx_assessment)
                                             <i class="material-icons mb-1">check_circle</i>
                                         @else
                                             <i class="material-icons mb-1 text-danger">close</i>
@@ -196,7 +199,7 @@
                                                     
                                                     @elseif (sizeof($assessmentCategory->result) && $assessmentCategory->result[0]->remarks == 'FAILED')
                                                      <div><span class="badge bg-danger">Unsuccessful</span></div>
-                                                    @else
+                                                    @elseif (sizeof($assessmentCategory->result) == 0 )
                                                         <i class="material-icons mb-1 text-dark mt-1 me-2 arrow">chevron_right</i>
                                                     @endif
                                                     </a>
@@ -218,7 +221,9 @@
                                         <h4 class="text-primary">
                                             Experience
                                         </h4>
-                                        <button class="btn btn-outline-dark btn-rounded" disabled
+                                        <button class="btn btn-outline-dark btn-rounded" @if (!$user->talent->brainx_assessment)
+                                            disabled
+                                        @endif
                                             data-bs-target="#add-experience" data-bs-toggle="modal">+</button>
                                     </div>
                                     <div class="ms-3">
@@ -254,7 +259,9 @@
                                         <h4 class="text-primary">
                                             Education
                                         </h4>
-                                        <button class="btn btn-outline-dark btn-rounded" disabled
+                                        <button class="btn btn-outline-dark btn-rounded" @if (!$user->talent->brainx_assessment)
+                                            disabled
+                                        @endif
                                             data-bs-target="#add-education" data-bs-toggle="modal">+</button>
                                     </div>
                                     <div class="ms-3">

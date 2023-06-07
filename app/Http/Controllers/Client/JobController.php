@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\Transaction;
 use App\Models\Milestone;
 use App\Models\Contract;
+use App\Models\AssessmentCateory;
 use Auth;
 use Mail;
 use App\Mail\SendMail;
@@ -201,8 +202,9 @@ class JobController extends Controller
         $id = decrypt($id);
         
         $user = User::with('talent')->with('experiences')->with('educations')->find($id);
+        $assessmentCategories = AssessmentCateory::with('result')->get();
 
-        return view('pages.client.pages.talent-profile')->with('user', $user);
+        return view('pages.client.pages.talent-profile')->with('user', $user)->with('assessmentCategories', $assessmentCategories);
     }
 
 }

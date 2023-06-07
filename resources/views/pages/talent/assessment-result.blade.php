@@ -9,17 +9,22 @@
                 <div class="row">
                     <div class="col-md-12">
 
-                        @if ($score >= 8)
+                        @if ($quiz->remarks == 'PASSED')
                             <div class="card pt-5 pb-5">
                                 <div class="card-body text-center">
 
 
                                     <h4>
                                         Congratulations! <br />
-                                        You've earned the badge
+                                        
                                     </h4>
+                                    <h5 class="mb-5 mt-3">
+                                        You've earned the badge
+                                    </h5>
 
-                                    <button class="btn btn-primary">Go back</button>
+                                    <a href="{{ route('show.profile', encrypt(Auth::guard()->user()->id)) }}" class="mt-5">
+                                        <button class="btn btn-primary">Go back</button>
+                                    </a>
 
                                 </div>
                             </div>
