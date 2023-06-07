@@ -77,6 +77,9 @@
                                                 <option value="PUBLISHED" @if ($user->talent->status == 'PUBLISHED')
                                                     {{ 'selected' }}
                                                 @endif>PUBLISHED</option>
+                                                <option value="RETAKE" @if ($user->talent->status == 'RETAKE')
+                                                    {{ 'selected' }}
+                                                @endif>RETAKE</option>
                                             </select>
                                         </form>
                                             </td>
