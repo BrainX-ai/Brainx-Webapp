@@ -85,6 +85,8 @@
                                 <div class="mt-5">
                                     <input type="hidden" name="quiz_question_id" id="quiz_question_id"
                                         value="{{ $quiz_question_id }}" />
+                                        <input type="hidden" name="quiz_id" id="quiz_id"
+                                            value="{{ session('quiz_id') }}" />
                                     {{-- @if ($index > 0)
                                             <a href="{{ route('assessment.progress', ['index' => $index - 1]) }}">
                                                 <button class="btn btn-primary">Prev</button>
@@ -124,6 +126,7 @@
                     data: {
                         answer: el.value,
                         quiz_question_id: $("#quiz_question_id").val(),
+                        quiz_id: $("#quiz_id").val()
                     },
                     success: function(res, textStatus, htttStatus) {
                         if (htttStatus.status != 200) {
@@ -167,7 +170,7 @@
             setInterval(function() {
                 makeTimer();
             }, 1000);
-            document.addEventListener('contextmenu', event => event.preventDefault());
+            // document.addEventListener('contextmenu', event => event.preventDefault());
             makeTimer()
         </script>
     @endsection
