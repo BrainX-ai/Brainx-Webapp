@@ -39,7 +39,8 @@ class AdminController extends Controller
         $id = decrypt($id);
         $title = ['Experience', 'Education'];
 
-        $user = User::with('talent')->find($id);
+        $user = User::with(['talent','experiences','educations'])->find($id);
+        // dd($user);
 
         return view('pages.admin.talent-details')->with('user', $user);
     }
