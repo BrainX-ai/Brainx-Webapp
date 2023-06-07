@@ -30,8 +30,9 @@ class AuthController extends Controller
            
             if($user->role == 'Admin') {
                 // dd($user);
-                return Redirect::to('http://admin.brainx.test:8000/redirect/admin/'.encrypt($user->id));
+                return Redirect::to(env('URL_SCHEME').'://admin.brainx.'.env('URL_END').'/redirect/admin/'.encrypt($user->id));
             }
+            Auth::login($user);
             return redirect()->route('client.job.detail');
         }
         return redirect("/");

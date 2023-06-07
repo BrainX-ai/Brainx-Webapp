@@ -122,14 +122,14 @@
 					<div id="blog-slider" class="owl-carousel owl-theme blog-slider aos" data-aos="fade-up">
 						<div class="grid-blog blog-two aos" data-aos="fade-up">
 							<div class="banner-img aos text-center" data-aos="fade-up">
-								<img src="assets/img/Tawsif_circle-removebg-preview.jpg" class="img-fluid hero-img" alt="banner">
+								<img src="assets/img/imgpsh_fullsize_anim.png" class="img-fluid hero-img" alt="banner">
 								<div class="blurry">
 
 								</div>
 								<div class="freelance-info text-center">
-									<h3 class="mt-2 text-primary">Tawsif Khan</h3>
-									<h4 class="freelance-specific"><strong>PhD Student in AI - Malaysia</strong></h4>
-									<h6>Two Silver Awards (Malaysian Tech Expo) </h6>
+									<h3 class="mt-2 text-primary">Vinh Dang PhD</h3>
+									<h4 class="freelance-specific"><strong>Senior data scientist - Vietnam</strong></h4>
+									<h6>Current - VNG & RMIT lecturer </h6>
                                 </div>
 							</div>
 						</div>
