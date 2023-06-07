@@ -141,10 +141,6 @@
                                 <h4 class="text-primary">
                                     BrainX Skill Assessment
                                 </h4>
-                                <p>
-                                    Business clients need AI talents who have practical skills to build and productionize ML
-                                    apps. Earn the skill badge & unlock other features. (Developed by our PhD in AI)
-                                </p>
                                 <div class="row mt-4">
                                     <div class="col-md-12">
 
@@ -167,7 +163,7 @@
                                                         <div>
                                                             <h5>{{ $assessmentCategory->category_name }}</h5>
                                                             <strong>
-                                                                <p>10 questions</p>
+                                                                <p>45-min tested topics: Python, ML, Computer Vision, NLP  (Developed by our PhD in AI)</p>
                                                             </strong>
                                                         </div>
                                                     </div>
