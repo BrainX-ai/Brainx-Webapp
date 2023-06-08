@@ -90,7 +90,7 @@
                                         
                                         <td>
                                             <div>
-                                                -
+                                                {{ $question->category->category_name }}
                                             </div>	
                                         </td>
                                         <td class="text-end three-dots">

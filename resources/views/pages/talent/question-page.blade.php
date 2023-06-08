@@ -170,7 +170,7 @@
             setInterval(function() {
                 makeTimer();
             }, 1000);
-            // document.addEventListener('contextmenu', event => event.preventDefault());
+            document.addEventListener('contextmenu', event => event.preventDefault());
             makeTimer()
         </script>
     @endsection
