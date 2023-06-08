@@ -12,9 +12,9 @@ class QuestionController extends Controller
 
     public function index(){
 
-        $questions = Question::all();
+        $questions = Question::with('category')->get();
         $categories = AssessmentCateory::all();
-
+        
         return view('pages.admin.questions')->with('questions', $questions)->with('categories', $categories);
     }
 
@@ -30,11 +30,9 @@ class QuestionController extends Controller
         $categories = AssessmentCateory::all();
 
         return view('pages.admin.edit-question')->with('question', $question)->with('categories', $categories);
-
     }
 
     public function updateQuestion(Request $request){
-
 
         $question = Question::find($request->id)->update([
             'question' => $request->question,

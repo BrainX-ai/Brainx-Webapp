@@ -9,6 +9,10 @@ class Question extends Model
 {
     use HasFactory;
 
+    public function category(){
+        return $this->belongsTo(AssessmentCateory::class,'assessment_category_id');
+    }
+
     protected $fillable = [
         'question',
         'option1',
