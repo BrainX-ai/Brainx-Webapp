@@ -63,20 +63,22 @@
                                             id="hourly_rate">{{ $user->talent->hourly_rate }}</span>/hour
                                     </div>
 
+                                    {{-- Remove this line later --}}
+                                    <div class="col-md-4"></div>
                                     @if ($user->talent->ex_famouse_company != null)
                                         <div class="col-md-4 p-2">
                                             <i class="material-icons mb-1">store</i><span
                                                 id="ex-famous-company">{{ $user->talent->ex_famouse_company }}</span>
                                         </div>
                                     @endif
-                                    <div class="col-md-4 p-2">
+                                    {{-- <div class="col-md-4 p-2">
                                         @if ($user->talent->brainx_assessment)
                                             <i class="material-icons mb-1">check_circle</i>
                                         @else
                                             <i class="material-icons mb-1 text-danger">close</i>
                                         @endif
                                         <span id="assesment">BrainX Skill Assessment</span>
-                                    </div>
+                                    </div> --}}
                                     <div class="col-md-4 p-2">
 
                                         <i class="material-icons mb-1">schedule</i> <span
@@ -136,6 +138,7 @@
                             </div>
                         </section>
 
+                        @if (false)
                         <section>
                             <div class="row border m-5 p-5">
                                 <h4 class="text-primary">
@@ -183,7 +186,7 @@
                                 </div>
                             </div>
                         </section>
-
+@endif
 
                         <section>
                             <div class="row border m-5">
@@ -195,8 +198,8 @@
                                     </div>
                                     <div class="ms-3">
                                         @foreach ($user->experiences as $experience)
-                                            <div class="review-content no-padding">
-                                                <h4 class="text-primary">{{ $experience->title }}</h4>
+                                            <div class="review-content no-padding pt-2">
+                                                <h4 class="text-primary mt-2">{{ $experience->title }}</h4>
                                                 <div class="rating">
                                                     <strong>{{ $experience->company }}</strong><span
                                                         class="ms-2 average-rating">{{ $experience->from }} -
@@ -230,8 +233,8 @@
                                     <div class="ms-3">
 
                                         @foreach ($user->educations as $education)
-                                            <div class="review-content no-padding">
-                                                <h4 class="text-primary">{{ $education->degree }},
+                                            <div class="review-content no-padding pt-2">
+                                                <h4 class="text-primary mt-2">{{ $education->degree }},
                                                     {{ $education->field_of_study }}</h4>
                                                 <div class="rating">
                                                     <strong>{{ $education->school }}</strong><span

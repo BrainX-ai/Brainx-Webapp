@@ -109,5 +109,6 @@
 		@yield('add-milestone-js')
 		@yield('is-email-exist-js')
 		@yield('chat-js')
+		@yield('edit-profile-js')
     </body>
 </html>

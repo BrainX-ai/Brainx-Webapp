@@ -37,11 +37,11 @@
                                         
                                         <div class="form-group">
                                             <label for="" class="h4">Title</label>
-                                            <input type="text" name="title" class="form-control" required>
+                                            <input type="text" name="title" class="form-control" required >
                                         </div>
                                         <div class="form-group">
                                             <label for="" class="h4">Company</label>
-                                            <input type="text" name="company" class="form-control" required>
+                                            <input type="text" name="company" class="form-control" required >
                                         </div>
 
                                         <div class="form-group">
@@ -60,7 +60,7 @@
                                         
                                         <div class="form-group">
                                             <label for="" class="h4">Description</label>
-                                            <textarea type="text" name="description" class="form-control" placeholder="Describe projects or tasks you did "> </textarea>
+                                            <textarea type="text" name="description" class="form-control" placeholder="Describe projects or tasks you did " > </textarea>
                                         </div>
                                         
                                         <div class="form-group">

@@ -214,7 +214,6 @@ class TalentProfileController extends Controller
 
     function addExperience(Request $request)
     {
-
         $experience = Experience::create([
             'title' => $request->title,
             'company' => $request->company,
@@ -230,8 +229,37 @@ class TalentProfileController extends Controller
 
     function addEducation(Request $request)
     {
-
         $experience = Education::create([
+            'degree' => $request->degree,
+            'school' => $request->school,
+            'from' => $request->from,
+            'to' => $request->to,
+            'field_of_study' => $request->field_of_study,
+            'user_id' => Auth::user()->id
+        ]);
+
+        return redirect()->route('show.profile', encrypt(Auth::user()->id));
+    }
+
+    function updateExp(Request $request)
+    {
+        $experience = Experience::find($request->id)->create([
+            'title' => $request->title,
+            'company' => $request->company,
+            'from' => $request->from,
+            'to' => $request->present ? 'Present' : $request->to,
+            'skills' => $request->skills,
+            'description' => $request->description,
+            'user_id' => Auth::user()->id
+        ]);
+
+        return redirect()->route('show.profile', encrypt(Auth::user()->id));
+    }
+
+
+    function updateEdu(Request $request)
+    {
+        $education = Education::find($request->id)->update([
             'degree' => $request->degree,
             'school' => $request->school,
             'from' => $request->from,
