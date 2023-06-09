@@ -20,6 +20,10 @@
             border-radius: .45rem !important;
         }
 
+        .edit{
+            font-size: 25px;
+        }
+
         .d-flex {
             justify-content: space-between;
         }
@@ -116,10 +120,12 @@
                             </div>
                         </div>
                         <section>
-
                             <div class="row border rounded m-5">
                                 <div class="col-md-12 p-5">
-                                    <h4 class="text-primary">Bio</h4>
+                                    <div class="d-flex">
+                                        <h4 class="text-primary pt-2">Bio</h4><button class="btn " data-bs-target="#edit-bio" data-bs-toggle="modal"><i
+                                            class="material-icons mb-1 edit">edit</i></button>
+                                    </div>
                                     <p id="bio" class="p-2">
                                         {{ $user->talent->brief_summary }}
                                     </p>
@@ -137,7 +143,6 @@
                                             foreach ($user->talent->skill as $skill) {
                                                 $skills[$skill->skill->category->category_name][] = $skill->skill->skill_name;
                                             }
-                                            
                                         @endphp
                                         <ul class="row">
                                             @foreach ($skills as $key => $items)
@@ -146,7 +151,7 @@
                                                     <ul class="list-inline">
                                                         @foreach ($items as $item)
                                                             <li
-                                                                class="btn btn-rounded btn-outline-primary list-inline-item">
+                                                                class="btn btn-rounded btn-outline-primary list-inline-item mb-1">
                                                                 {{ $item }}
                                                             </li>
                                                         @endforeach
@@ -321,5 +326,6 @@
 
     @include('pages.talent.includes.modals.edit.hourly-rate')
     @include('pages.talent.includes.modals.edit.hours-per-week')
+    @include('pages.talent.includes.modals.edit.bio')
     @include('pages.talent.includes.modals.edit.ex-famous-company')
 @endsection
