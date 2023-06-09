@@ -5328,6 +5328,12 @@ table.table-inbox tbody tr.checked {
     -ms-flex-align: center;
     align-items: center;
 }
+.user-profile span {
+	display: inline-flex;
+	 -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
 .user-profile h5 a,
 .content-user h5 {
 	margin-bottom: 2px;

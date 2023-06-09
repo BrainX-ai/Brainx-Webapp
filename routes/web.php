@@ -50,6 +50,8 @@ Route::post('/update-hourly-rate', 'App\http\controllers\TalentProfileController
 Route::post('/update-hours-per-week','App\http\controllers\TalentProfileController@updateHoursPerWeek')->name('updateHoursPerWeek');
 Route::post('/update-ex-famous-company','App\http\controllers\TalentProfileController@updateExFamousCompany')->name('updateExFamousCompany');
 Route::post('/update-bio','App\http\controllers\TalentProfileController@updateBio')->name('updateBio');
+Route::post('/update-experience','App\http\controllers\TalentProfileController@updateExp')->name('updateExp');
+Route::post('/update-education','App\http\controllers\TalentProfileController@updateEdu')->name('updateEdu');
 
 Route::get('/assessment/{category_id}', 'App\http\controllers\AssesmentController@assessment')->name('assessment.init');
 Route::get('/quiz-running/{category_id}', 'App\http\controllers\AssesmentController@generateQuestions')->name('assessment.running');

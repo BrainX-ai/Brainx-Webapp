@@ -20,7 +20,7 @@
             border-radius: .45rem !important;
         }
 
-        .edit{
+        .edit {
             font-size: 25px;
         }
 
@@ -34,9 +34,9 @@
             padding: 0px 15px;
         }
 
-        li {
-            list-style: none;
-        }
+        /* li {
+                    list-style: none;
+                } */
 
         .arrow,
         .close {
@@ -62,8 +62,11 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
+                        @if (sizeof($user->experiences) == 0 || sizeof($user->educations) == 0)
+                            <h4 class="mb-5 text-center text-primary">Your profile is incomplete</h4>
+                        @endif
                         @if ($user->talent->status == 'IN_REVIEW')
-                            <h4 class="mb-5 text-center text-primary">This profile is pending for review</h4>
+                            <h4 class="mb-5 text-center text-primary">This profile is in review</h4>
                         @endif
                         <div class="row m-5">
                             <div class="col-md-3 ">
@@ -87,8 +90,9 @@
                                         <button class="btn " data-bs-target="#edit-hourly-rate" data-bs-toggle="modal"><i
                                                 class="material-icons mb-1">edit</i></button>
                                     </div>
-
-                                    <div class="col-md-4 p-2">
+                                    {{-- Remove this line later --}}
+                                    <div class="col-md-4"></div>
+                                    <div class="  col-md-4 p-2">
                                         <i class="material-icons mb-1 me-2">store</i><span
                                             id="ex-famous-company">{{ $user->talent->ex_famouse_company }}</span>
 
@@ -96,14 +100,14 @@
                                             data-bs-toggle="modal"><i class="material-icons mb-1">edit</i></button>
                                     </div>
 
-                                    <div class="col-md-4 p-2">
+                                    {{-- <div class="col-md-4 p-2">
                                         @if ($user->talent->brainx_assessment)
                                             <i class="material-icons mb-1">check_circle</i>
                                         @else
                                             <i class="material-icons mb-1 text-danger">close</i>
                                         @endif
                                         <span id="assesment">BrainX Skill Assessment</span>
-                                    </div>
+                                    </div> --}}
                                     <div class="col-md-4 p-2">
                                         <i class="material-icons mb-1">schedule</i> <span
                                             id="hours_of_week">{{ $user->talent->hours_per_week }}</span> hours/week
@@ -123,8 +127,9 @@
                             <div class="row border rounded m-5">
                                 <div class="col-md-12 p-5">
                                     <div class="d-flex">
-                                        <h4 class="text-primary pt-2">Bio</h4><button class="btn " data-bs-target="#edit-bio" data-bs-toggle="modal"><i
-                                            class="material-icons mb-1 edit">edit</i></button>
+                                        <h4 class="text-primary pt-2">Bio</h4><button class="btn "
+                                            data-bs-target="#edit-bio" data-bs-toggle="modal"><i
+                                                class="material-icons mb-1 edit">edit</i></button>
                                     </div>
                                     <p id="bio" class="p-2">
                                         {{ $user->talent->brief_summary }}
@@ -166,89 +171,97 @@
                             </div>
                         </section>
 
-                        <section>
-                            <div class="row border m-5 p-5">
-                                <h4 class="text-primary">
-                                    BrainX Skill Assessment
-                                </h4>
-                                <p>
-                                    Business clients need AI talents who have practical skills to build and productionize ML
-                                    apps. Earn the skill badge & unlock other features. (Developed by our PhD in AI)
-                                </p>
-                                <div class="row mt-4">
-                                    <div class="col-md-12">
+                        @if (false)
+                            <section>
+                                <div class="row border m-5 p-5">
+                                    <h4 class="text-primary">
+                                        BrainX Skill Assessment
+                                    </h4>
+                                    <p>
+                                        Business clients need AI talents who have practical skills to build and
+                                        productionize ML
+                                        apps. Earn the skill badge & unlock other features. (Developed by our PhD in AI)
+                                    </p>
+                                    <div class="row mt-4">
+                                        <div class="col-md-12">
 
-                                        <ul>
-                                            @foreach ($assessmentCategories as $assessmentCategory)
-                                                <li>
-                                                    @if (sizeof($assessmentCategory->result) == 0 || $user->talent->status == 'RETAKE')
-                                                        <a class="d-flex justify-space-between skillset-list pt-2"
-                                                            href="{{ route('assessment.init', ['category_id' => $assessmentCategory->id]) }}">
-                                                        @else
-                                                            <a class="d-flex justify-space-between skillset-list pt-2">
-                                                    @endif
-
-                                                    <div class="d-flex justify-content-start">
-
-                                                        @if (sizeof($assessmentCategory->result) && $assessmentCategory->result[0]->remarks == 'PASSED')
-                                                            <i
-                                                                class="material-icons mb-1 close text-primary me-2 mt-1">check_circle</i>
-                                                        @else
-                                                            <i
-                                                                class="material-icons mb-1 text-danger mt-1 me-2 close">close</i>
+                                            <ul>
+                                                @foreach ($assessmentCategories as $assessmentCategory)
+                                                    <li>
+                                                        @if (sizeof($assessmentCategory->result) == 0 || $user->talent->status == 'RETAKE')
+                                                            <a class="d-flex justify-space-between skillset-list pt-2"
+                                                                href="{{ route('assessment.init', ['category_id' => $assessmentCategory->id]) }}">
+                                                            @else
+                                                                <a class="d-flex justify-space-between skillset-list pt-2">
                                                         @endif
 
-                                                        <div>
-                                                            <h5>{{ $assessmentCategory->category_name }}</h5>
-                                                            <strong>
-                                                                <p>10 questions</p>
-                                                            </strong>
+                                                        <div class="d-flex justify-content-start">
+
+                                                            @if (sizeof($assessmentCategory->result) && $assessmentCategory->result[0]->remarks == 'PASSED')
+                                                                <i
+                                                                    class="material-icons mb-1 close text-primary me-2 mt-1">check_circle</i>
+                                                            @else
+                                                                <i
+                                                                    class="material-icons mb-1 text-danger mt-1 me-2 close">close</i>
+                                                            @endif
+
+                                                            <div>
+                                                                <h5>{{ $assessmentCategory->category_name }}</h5>
+                                                                <strong>
+                                                                    <p>10 questions</p>
+                                                                </strong>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    @if ($user->talent->status == 'RETAKE')
-                                                        <div><span class="badge bg-success text-dark">Retake</span>
+                                                        @if ($user->talent->status == 'RETAKE')
+                                                            <div><span class="badge bg-success text-dark">Retake</span>
+                                                                <i
+                                                                    class="material-icons mb-1 text-dark mt-1 me-2 arrow">chevron_right</i>
+                                                            </div>
+                                                        @elseif (sizeof($assessmentCategory->result) && $assessmentCategory->result[0]->remarks == 'FAILED')
+                                                            <div><span class="badge bg-danger">Unsuccessful</span></div>
+                                                        @elseif (sizeof($assessmentCategory->result) == 0)
                                                             <i
                                                                 class="material-icons mb-1 text-dark mt-1 me-2 arrow">chevron_right</i>
-                                                        </div>
-                                                    @elseif (sizeof($assessmentCategory->result) && $assessmentCategory->result[0]->remarks == 'FAILED')
-                                                        <div><span class="badge bg-danger">Unsuccessful</span></div>
-                                                    @elseif (sizeof($assessmentCategory->result) == 0)
-                                                        <i
-                                                            class="material-icons mb-1 text-dark mt-1 me-2 arrow">chevron_right</i>
-                                                    @endif
-                                                    </a>
-                                                </li>
-                                            @endforeach
+                                                        @endif
+                                                        </a>
+                                                    </li>
+                                                @endforeach
 
-                                        </ul>
+                                            </ul>
+
+                                        </div>
 
                                     </div>
-
                                 </div>
-                            </div>
-                        </section>
-
+                            </section>
+                        @endif
                         <section>
                             <div class="row border m-5">
                                 <div class="col-md-12 p-5">
-                                    <div class="d-flex">
+                                    <div class="d-flex mb-3">
                                         <h4 class="text-primary">
                                             Experience
                                         </h4>
-                                        <button class="btn btn-outline-dark btn-rounded"
-                                            @if (!$user->talent->brainx_assessment) disabled @endif
-                                            data-bs-target="#add-experience" data-bs-toggle="modal">+</button>
+                                        <button class="btn btn-outline-dark btn-rounded" data-bs-target="#add-experience"
+                                            data-bs-toggle="modal">+</button>
                                     </div>
                                     <div class="ms-3">
                                         @foreach ($user->experiences as $experience)
                                             <div class="review-content no-padding">
-                                                <h4 class="text-primary">{{ $experience->title }}</h4>
+                                                <div class="d-flex">
+
+                                                    <h4 class="text-primary mt-2">{{ $experience->title }}</h4>
+                                                    <button class="btn " data-bs-target="#edit-experience"
+                                                        data-bs-toggle="modal"
+                                                        onclick="editExperience({{ json_encode($experience) }})"><i
+                                                            class="material-icons edit">edit</i></button>
+                                                </div>
                                                 <div class="rating">
                                                     <strong>{{ $experience->company }}</strong><span
                                                         class="ms-2 average-rating">{{ $experience->from }} -
                                                         {{ $experience->to }}</span>
                                                 </div>
-                                                <p class="mb-0"> {{ $experience->description }}</p>
+                                                <p class="mb-3"> {{ $experience->description }}</p>
                                                 <div>
                                                     <strong>Skills: </strong>
                                                     @php
@@ -256,7 +269,6 @@
                                                             echo $experience->skills;
                                                         }
                                                     @endphp
-
                                                 </div>
                                             </div>
                                         @endforeach
@@ -272,16 +284,22 @@
                                         <h4 class="text-primary">
                                             Education
                                         </h4>
-                                        <button class="btn btn-outline-dark btn-rounded"
-                                            @if (!$user->talent->brainx_assessment) disabled @endif
-                                            data-bs-target="#add-education" data-bs-toggle="modal">+</button>
+                                        <button class="btn btn-outline-dark btn-rounded" data-bs-target="#add-education"
+                                            data-bs-toggle="modal">+</button>
                                     </div>
                                     <div class="ms-3">
 
                                         @foreach ($user->educations as $education)
                                             <div class="review-content no-padding">
-                                                <h4 class="text-primary">{{ $education->degree }},
-                                                    {{ $education->field_of_study }}</h4>
+                                                <div class="d-flex">
+                                                    <h4 class="text-primary mt-2">{{ $education->degree }},
+                                                        {{ $education->field_of_study }}</h4>
+                                                        <button class="btn " data-bs-target="#edit-education"
+                                                        data-bs-toggle="modal"
+                                                        onclick="editEducation({{ json_encode($education) }})"><i
+                                                            class="material-icons edit">edit</i></button>
+
+                                                </div>
                                                 <div class="rating">
                                                     <strong>{{ $education->school }}</strong>
                                                     <span class="ms-2 average-rating">({{ $education->from }} -
@@ -303,14 +321,15 @@
                                 </a>
                                 <form action="{{ route('submit.for.review') }}" method="POST" class="float-end">
                                     @csrf
-                                    
-                                    @if ($user->talent->status != 'IN_REVIEW' && $user->talent->status != 'PUBLISHED' && $user->talent->status != 'INCOMPLETE')
-                                        
-                                    <button class="btn btn-primary me-3" type="submit"
-                                        @if (sizeof($user->experiences) == 0 || sizeof($user->educations) == 0 || !$user->talent->brainx_assessment) disabled @endif>Submit for review</button>
-                                
-                                        @endif
-                                    </form>
+
+                                    @if (
+                                        $user->talent->status != 'IN_REVIEW' &&
+                                            $user->talent->status != 'PUBLISHED' &&
+                                            $user->talent->status != 'INCOMPLETE')
+                                        <button class="btn btn-primary me-3" type="submit"
+                                            @if (sizeof($user->experiences) == 0 || sizeof($user->educations) == 0) disabled @endif>Submit for review</button>
+                                    @endif
+                                </form>
                             </div>
                         </section>
 
@@ -328,4 +347,51 @@
     @include('pages.talent.includes.modals.edit.hours-per-week')
     @include('pages.talent.includes.modals.edit.bio')
     @include('pages.talent.includes.modals.edit.ex-famous-company')
+    @include('pages.talent.includes.modals.edit.experience')
+    @include('pages.talent.includes.modals.edit.education')
+
+@section('edit-profile-js')
+    <script>
+        function editExperience(experience) {
+            console.log(experience);
+            if(experience.to == 'Present'){
+
+                document.getElementById('ex-toYear').disabled = true
+                document.getElementById('ex-present').checked = true
+            }else{
+
+                $('#ex-toYear').val(experience.to);
+                document.getElementById('ex-toYear').disabled = false
+            }
+            $('#ex-title').val(experience.title);
+            $('#ex-company').val(experience.company);
+            $('#ex-from').val(experience.from);
+            $('#ex-desc').val(experience.description);
+            $('#ex-skills').val(experience.skills);
+            $('#experience_id').val(experience.id)
+
+        }
+
+        function editEducation(education) {
+            console.log(education);
+           
+            $('#edu-degree').val(education.degree);
+            $('#edu-school').val(education.school);
+            $('#edu-field-of-study').val(education.field_of_study);
+            $('#edu-from').val(education.from);
+            $('#edu-to').val(education.to);
+            $('#education_id').val(education.id)
+
+        }
+
+        function disableExpToDate(el) {
+
+            if (el.checked) {
+                document.getElementById('ex-toYear').disabled = true
+            } else {
+                document.getElementById('ex-toYear').disabled = false
+            }
+        }
+    </script>
+@endsection
 @endsection
