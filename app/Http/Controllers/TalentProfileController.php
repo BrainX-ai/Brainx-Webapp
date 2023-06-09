@@ -243,7 +243,7 @@ class TalentProfileController extends Controller
 
     function updateExp(Request $request)
     {
-        $experience = Experience::find($request->id)->create([
+        $experience = Experience::find($request->id)->update([
             'title' => $request->title,
             'company' => $request->company,
             'from' => $request->from,
