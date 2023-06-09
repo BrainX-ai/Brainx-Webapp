@@ -33,6 +33,7 @@
                                         <th>Linkedin</th>	
                                         <th>Country </th>	
                                         <th>Joined Date</th>	
+                                        <th>BSA</th>
                                         <th>Status</th>	
                                         <th></th>	
                                     </tr>
@@ -63,6 +64,9 @@
                                             {{ $user->talent->country }}
                                         </td>
                                         <td>{{ $user->created_at }}</td>
+                                        <td class="{{ $user->talent->brainx_assessment == 1 ? 'text-success':'text-danger' }}">
+                                            {{ $user->talent->brainx_assessment == 1 ? 'Passed':'Failed' }}
+                                        </td>
                                         <td>
                                             <form action="{{ route('admin.update.users.status') }}" method="POST">
                                                 @csrf
@@ -80,6 +84,12 @@
                                                 <option value="RETAKE" @if ($user->talent->status == 'RETAKE')
                                                     {{ 'selected' }}
                                                 @endif>RETAKE</option>
+                                                <option value="ASSESSMENT_PENDING" @if ($user->talent->status == 'ASSESSMENT_PENDING')
+                                                    {{ 'selected' }}
+                                                @endif>ASSESSMENT_PENDING</option>
+                                                <option value="ASSESSMENT_COMPLETED" @if ($user->talent->status == 'ASSESSMENT_COMPLETED')
+                                                    {{ 'selected' }}
+                                                @endif>ASSESSMENT_COMPLETED</option>
                                             </select>
                                         </form>
                                             </td>

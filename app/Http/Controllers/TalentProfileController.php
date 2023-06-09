@@ -116,8 +116,6 @@ class TalentProfileController extends Controller
 
     public function submitForReview(){
 
-
-
         $user_id = Auth::guard()->user()->id;
         $talent = Talent::where('user_id', $user_id)->first();
         $talent->status = 'IN_REVIEW';
@@ -151,6 +149,7 @@ class TalentProfileController extends Controller
         $talent = Talent::where('user_id', $user_id)->first();
         $talent->hours_per_week = $request->hours_per_week;
         $talent->save();
+
         return redirect()->route('show.profile', encrypt($user_id));
     }
 
@@ -159,18 +158,25 @@ class TalentProfileController extends Controller
         $talent = Talent::where('user_id', $user_id)->first();
         $talent->ex_famouse_company = $request->ex_famouse_company;
         $talent->save();
+
         return redirect()->route('show.profile', encrypt($user_id));
     }
 
-    public function uploadResume($file)
-    {
+    public function updateBio(Request $request){
+        $user_id = Auth::guard()->user()->id;
+        $talent = Talent::where('user_id', $user_id)->first();
+        $talent->brief_summary = $request->bio;
+        $talent->save();
 
+        return redirect()->route('show.profile', encrypt($user_id));
+    }
+
+    public function uploadResume($file){
         $fileName = Auth::guard()->user()->id . time() . '.' . $file->extension();
         // Move uploaded file to a specific location
         $file->move(public_path('resumes'), $fileName);
 
         return $fileName;
-
     }
 
     public function getResumeData($fileName)
