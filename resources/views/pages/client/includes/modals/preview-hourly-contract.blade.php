@@ -148,8 +148,6 @@
                                         <strong>{{ $job->talent->talent->standout_job_title }}</strong>
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
 

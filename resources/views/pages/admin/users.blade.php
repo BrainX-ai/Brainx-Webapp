@@ -74,7 +74,7 @@
                                                     <option value="PUBLISHED"
                                                         @if ($user->talent->status == 'PUBLISHED') {{ 'selected' }} @endif>
                                                         PUBLISHED</option>
-                                                    <option value="RETAKE"
+                                                    {{-- <option value="RETAKE"
                                                         @if ($user->talent->status == 'RETAKE') {{ 'selected' }} @endif>RETAKE
                                                     </option>
                                                     <option value="ASSESSMENT_PENDING"
@@ -82,7 +82,7 @@
                                                         ASSESSMENT_PENDING</option>
                                                     <option value="ASSESSMENT_COMPLETED"
                                                         @if ($user->talent->status == 'ASSESSMENT_COMPLETED') {{ 'selected' }} @endif>
-                                                        ASSESSMENT_COMPLETED</option>
+                                                        ASSESSMENT_COMPLETED</option> --}}
                                                 </select>
                                             </form>
                                         </td>
