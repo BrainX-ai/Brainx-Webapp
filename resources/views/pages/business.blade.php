@@ -253,9 +253,9 @@
 									<img src="assets/img/BrainX/Selective-AI-talents.png"  alt="">
 								</div>
 								<div class="great-content">
-									<h4>Vetted AI talents</h4>
+									<h4>Selective AI talents</h4>
 									<p>
-										All AI talents are tested and reviewed by our AI experts <br>&nbsp;
+										All AI talents are selected carefully with criteria <br>&nbsp;
 									</p>
 								</div>
 							</div>
