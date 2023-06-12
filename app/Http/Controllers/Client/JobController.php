@@ -70,7 +70,7 @@ class JobController extends Controller
 
         $job = Job::create([
             'job_title' => $request->job_title,
-            'job_description' => ($request->job_type == 'Hire remote AI contractor')? $request->job_description:$request->job_description_outsource,
+            'job_description' => ($request->job_type == 'Hourly rate')? $request->job_description:$request->job_description_outsource,
             'job_type' => $request->job_type,
             'duration_in_weeks' => $request->duration_in_weeks,
             'hours_per_week' => $request->hours_per_week,

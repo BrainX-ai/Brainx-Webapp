@@ -37,7 +37,7 @@ padding: 0.5rem;
                                             <div class="col-md-12 pb-3">
                                                 <strong>Type: </strong> <span class="h6">{{ $action->job->job_type }}</span>
                                             </div>
-                                            @if($action->job->job_type != "Outsource AI projects")
+                                            @if($action->job->job_type != "Fixed price")
                                             <div class="col-md-6 pb-3">
                                                 <strong>Duration: </strong> <span class="h6">{{ $action->job->duration_in_weeks }} weeks</span>
                                             </div>

@@ -165,13 +165,13 @@
                                             <div class="row">
                                                 <label class="col-md-6">
                                                     <input type="radio" name="job_type" checked
-                                                        value="Hire remote AI contractor" onclick="show_duration_box()" />
+                                                        value="Hourly rate" onclick="show_duration_box()" />
                                                     Hourly rate
                                                 </label>
 
                                                 <label class="col-md-6">
                                                     <input type="radio" name="job_type" id="outsource" 
-                                                        value="Outsource AI projects" onclick="hide_duration_box()" />
+                                                        value="Fixed price" onclick="hide_duration_box()" />
                                                     Fixed price
                                                 </label>
                                             </div>
