@@ -70,7 +70,7 @@
 								
 								
                                 <h1>
-									Hire freelance AI talents to develop AI applications for your business
+									Hire contract AI talents to develop AI applications for your business
 								</h1>
                                 
 								<p>BrainX is a <b>freelance platform</b> connecting your business to the <b>global network of quality AI talents.</b>   </p>
@@ -194,7 +194,7 @@
                                     </div>
                                     <div class="about-it-content ">
                                         <h4 >Hourly rate</h4>
-                                        <p>Hire AI contractors for your AI projects within a particular period of time and pay them in hourly rate</p>
+                                        <p>Hire remote contract AI talents for fixed periods of time and pay in hourly rate</p>
                                         
                                     </div>
                                 </div>
@@ -242,7 +242,7 @@
 					<div class="row">
 						<div class="col-md-12 col-sm-12 col-12 mx-auto">
 							<div class="section-header section-header-two aos" data-aos="fade-up">
-								<h2 class="header-title">Why hire freelance AI talents on BrainX?</h2>
+								<h2 class="header-title">Why hire contract AI talents on BrainX?</h2>
 							</div>
 						</div>
 					</div>
@@ -253,9 +253,9 @@
 									<img src="assets/img/BrainX/Selective-AI-talents.png"  alt="">
 								</div>
 								<div class="great-content">
-									<h4>Selective AI talents</h4>
+									<h4>Quality AI talents</h4>
 									<p>
-										All AI talents are selected carefully with criteria <br>&nbsp;
+										Access remote talents from famous companies. BrainX selects them carefully with criteria.  <br>&nbsp;
 									</p>
 								</div>
 							</div>
@@ -266,10 +266,21 @@
 									<img src="assets/img/BrainX/No-1st-month-salary.png"  alt="">
 								</div>
 								<div class="great-content">
-									<h4>No 1st month salary</h4>
+									<h4>Save cost</h4>
 									<p>
-										BrainX doesn’t get any fee from business clients like HR agencies. <br>&nbsp;
+										It’s much less expensive to hire contract AI talents vs permanent ones. <strong>BrainX does not charge your business like HR agencies</strong> <br>&nbsp;
 									</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-xl-6 col-md-6">
+							<div class="great-blk aos boxes-shadow" data-aos="fade-up">
+								<div class="great-icon">
+									<img src="assets/img/BrainX/Save-time.png"  alt="">
+								</div>
+								<div class="great-content">
+									<h4>Save time</h4>
+									<p>BrainX tries to match you to a suitable contract talent within 24h. <br>&nbsp;</p>
 								</div>
 							</div>
 						</div>
@@ -279,20 +290,9 @@
 									<img src="assets/img/BrainX/SuitableAItalentstoyourbusiness.png"  alt="">
 								</div>
 								<div class="great-content">
-									<h4>Suitable AI talents to your business</h4>
-									<p>An AI expert will match you to talents who are suitable to your request. <br>&nbsp;</p>
-								</div>
-							</div>
-						</div>
-						<div class="col-xl-6 col-md-6">
-							<div class="great-blk aos boxes-shadow" data-aos="fade-up">
-								<div class="great-icon">
-									<img src="assets/img/BrainX/Safe-transaction.png"  alt="">
-								</div>
-								<div class="great-content">
-									<h4>Safe transaction</h4>
+									<h4>Flexibility</h4>
 									<p>
-										Only pay your talents after you approve their work via our deposit service. <br>&nbsp;
+										Flexible to scale with workloads. No further obligation.  <br>&nbsp;
 									</p>
 								</div>
 							</div>

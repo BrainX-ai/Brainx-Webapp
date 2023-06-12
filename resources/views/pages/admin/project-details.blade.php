@@ -35,7 +35,7 @@
                     <p>{{ str_replace("&#39;","'",strip_tags(html_entity_decode($job->job_description))) }}</p>
                     <h4>Contract Type</h4>
                     <p>{{ (!is_null($job->contract) ? (($job->contract->contract_type == 'hourly')?'Hourly rate':'Fixed price') : $job->job_type ) }}</p>
-                    @if ($job->job_type != 'Outsource AI projects')
+                    @if ($job->job_type != 'Fixed price')
                         <div class="col-md-6 pb-3">
                             <strong>Duration: </strong> <span class="h6">{{ $job->duration_in_weeks }} weeks</span>
                         </div>
