@@ -12,6 +12,7 @@ use App\Models\Action;
 use App\Models\Message;
 use App\Models\Transaction;
 use Mail;
+use Auth;
 use App\Mail\SendMail;
 
 class JobController extends Controller
@@ -37,21 +38,37 @@ class JobController extends Controller
         }
     }
 
-    public function updateTransactionStatus(Request $request){
+    public function updateTransactionStatus(Request $request)
+    {
         $transaction = Transaction::find($request->transaction_id)->update([
             'status' => $request->status
         ]);
 
-        if($request->status == 'DEPOSITED' ){
-            Milestone::where('id',$request->milestone_id)->update([
+        if ($request->status == 'DEPOSITED') {
+            Milestone::where('id', $request->milestone_id)->update([
                 'deposited' => true
             ]);
-        }else if($request->status == 'APPROVED') {
-            Milestone::where('id',$request->milestone_id)->update([
+
+            $transaction = Transaction::with('job')->find($request->transaction_id);
+            
+            $action = Action::create([
+                'job_id' => $transaction->job_id,
+                'sender_id' => $transaction->job->client->id,
+                'action_type' => 'ONLY_MESSAGE',
+                'receiver_id' => $transaction->job->talent->id, // receiver 
+            ]);
+
+            $message = Message::create([
+                'action_id' => $action->id,
+                'message' => 'Deposited the contract',
+                'sender_id' => $transaction->job->client->id
+            ]);
+        } else if ($request->status == 'APPROVED') {
+            Milestone::where('id', $request->milestone_id)->update([
                 'approved' => true
             ]);
-        }else if($request->status == 'RELEASED') {
-            Milestone::where('id',$request->milestone_id)->update([
+        } else if ($request->status == 'RELEASED') {
+            Milestone::where('id', $request->milestone_id)->update([
                 'paid' => true
             ]);
         }

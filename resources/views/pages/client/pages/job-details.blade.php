@@ -102,6 +102,20 @@
                                 <div id="focus"></div>
                             </div>
                             @if (sizeof($job->latest_project_request) > 0 && $job->latest_project_request[0]->status == 'ACCEPTED')
+
+                            <div>
+                                <ul style="display: block;" class="d-flex mb-0">
+                                    <li class="me-5 ms-3">
+                                        <a href="" class="text-primary fw-bold"  data-bs-toggle="modal" data-bs-target="#view-request">View request</a>
+
+                                    </li>
+                                    @if ($job->contract != null)
+                                    <li >
+                                        <a href="" class="text-primary fw-bold" data-bs-toggle="modal" data-bs-target="#preview-{{ $action->job->contract->contract_type }}-contract">View contract</a>
+                                    </li>                                        
+                                    @endif
+                                </ul>
+                            </div>
                                 <div class="chat-footer">
                                     <div class="input-group">
                                         <div class="btn-file btn d-none">
@@ -144,6 +158,7 @@
         @include('pages.client.includes.modals.request-invoice')
         @include('pages.client.includes.modals.confirm-approval')
 
+        @include('includes.modals.client-request')
     @section('chat-js')
         <script>
             $(document).ready(function(e) {
