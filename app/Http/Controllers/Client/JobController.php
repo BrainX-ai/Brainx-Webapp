@@ -162,7 +162,7 @@ class JobController extends Controller
             'milestone_id' => $request->milestone_id,
             'status' => $request->status
         ]);
-
+        $job = Job::with(['client', 'talent'])->find($request->job_id);
         if($request->status == 'DEPOSITED' || $request->status == 'CREATED_INVOICE' || $request->status == 'INVOICE_REQUESTED'){
             Milestone::where('id',$request->milestone_id)->update([
                 'deposited' => true
@@ -178,6 +178,19 @@ class JobController extends Controller
         }
 
         $contract = Contract::where('job_id',$request->job_id)->increment('milestone_counter');
+
+        $action = Action::create([
+            'job_id' => $request->job_id,
+            'sender_id' => Auth::user()->id,
+            'action_type' => 'ONLY_MESSAGE',
+            'receiver_id' => $job->talent->id
+        ]);
+
+        $message = Message::create([
+            'action_id' => $action->id,
+            'message' => 'Approved your work',
+            'sender_id' => Auth::user()->id
+        ]);
 
         try{
             $mailData = [

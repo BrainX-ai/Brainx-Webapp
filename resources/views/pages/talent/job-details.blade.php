@@ -102,13 +102,13 @@
 
                             </div>
                             <div>
-                                <ul style="display: none;">
-                                    <li>
-                                        <a href="" class="text-primary fw-bold" type="button" data-bs-toggle="modal" data-bs-target="#client-request-{{ $action->id }}">View request</a>
+                                <ul style="display: block;" class="d-flex mb-0">
+                                    <li class="me-5 ms-3">
+                                        <a href="" class="text-primary fw-bold" type="button" data-bs-toggle="modal" data-bs-target="#view-request">View request</a>
 
                                     </li>
                                     @if ($job->contract != null)
-                                    <li>
+                                    <li >
                                         <a href="" class="text-primary fw-bold" data-bs-toggle="modal" data-bs-target="#preview-{{ $action->job->contract->contract_type }}-contract">View contract</a>
                                     </li>                                        
                                     @endif
@@ -159,7 +159,8 @@
         @include('pages.talent.includes.modals.review-fixed-contract')
         @include('pages.talent.includes.modals.review-hourly-contract')
     </form>
-
+    
+    @include('includes.modals.client-request')
 @section('chat-js')
     <script>
         $(document).ready(function(e) {
