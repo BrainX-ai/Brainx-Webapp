@@ -52,11 +52,17 @@ class LinkedinController extends Controller
                     'role' => 'Talent'
                 ]);
                 $newUser->markEmailAsVerified();
-
+                try{
                 $talent = Talent::create([
                     'photo' => $user->user['profilePicture']['displayImage~']['elements'][2]['identifiers'][0]['identifier'],
                     'user_id' => $newUser->id
                 ]);
+            }catch(Exception $ex){
+                $talent = Talent::create([
+                    'photo' => '',
+                    'user_id' => $newUser->id
+                ]);
+            }
                 Auth::login($newUser);
       
                 return redirect('/build-profile')->with(['user'=> $newUser]);
