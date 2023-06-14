@@ -38,7 +38,7 @@
                                             <a href="{{ route('admin.show.profile', encrypt($user->id)) }}">
                                                 <div class="table-avatar user-profile">
                                                     <span><img class="avatar-img rounded-circle "
-                                                            src="{{ $user->talent->photo }}" alt="User Image"></span>
+                                                            src="{{ ($user->talent)?$user->talent->photo : '' }}" alt="User Image"></span>
                                                     <div class="ms-1">
                                                         <h5>{{  $user->name  }}</h5>
                                                         <p> {{ $user->email }}</p>
@@ -46,20 +46,25 @@
                                                 </div>
                                             </a>
                                         </td>
-                                        <td>{{ $user->talent->standout_job_title }}</td>
+                                        <td>{{ ($user->talent)?$user->talent->standout_job_title:'' }}</td>
                                         <td class="verify-mail"><i data-feather="linkedin" class="me-1 text-success"></i>
+                                            @if (($user->talent))
+                                                
                                             <a href="{{ $user->talent->linkedin }}" target="_blank"
                                                 class="link-info">Linkedin</a>
+                                            @endif
                                         </td>
                                         <td>
-                                            {{ $user->talent->country }}
+                                            {{ ($user->talent)?$user->talent->country : '' }}
                                         </td>
                                         <td>{{ explode(' ',$user->created_at)[0] }}</td>
                                         <td
-                                            class="{{ $user->talent->brainx_assessment == 1 ? 'text-success' : 'text-danger' }}">
-                                            {{ $user->talent->brainx_assessment == 1 ? 'Passed' : 'Failed' }}
+                                            class="{{ ($user->talent)?($user->talent->brainx_assessment == 1 ? 'text-success' : 'text-danger'):'' }}">
+                                            {{ ($user->talent)? ($user->talent->brainx_assessment == 1 ? 'Passed' : 'Failed'):'' }}
                                         </td>
                                         <td>
+                                            @if ($user->talent)
+                                                
                                             <form action="{{ route('admin.update.users.status') }}" method="POST">
                                                 @csrf
                                                 <input type="hidden" name="talent_id"
@@ -85,12 +90,15 @@
                                                         ASSESSMENT_COMPLETED</option> --}}
                                                 </select>
                                             </form>
+
+                                            @endif
                                         </td>
                                         <td class="text-end three-dots">
 
+                                            @if ($user->talent)
                                             <a href="{{ route('admin.show.profile', encrypt($user->id)) }}"
                                                 class="btn btn-primary">View</a>
-
+                                                @endif
                                             {{-- <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown"><i class="fas fa-ellipsis-v"></i></a>
                                             <div class="dropdown-menu user-menu-list">
                                                 <a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#transaction-category"><img class="me-2 " src="assets/img/icon/icon-01.svg" alt=""> View Details</a>
