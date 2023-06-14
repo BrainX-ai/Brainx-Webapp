@@ -38,7 +38,7 @@
                                         <input type="hidden" id="job_id" name="job_id" value="">
                                         <select name="talent_id" id="" class="form-control">
                                             @foreach ($talents as $talent)
-                                            @if ($talent->talent->status == 'PUBLISHED')
+                                            @if ($talent->talent != null && $talent->talent->status == 'PUBLISHED')
                                                 
                     
                                                 <option value="{{ $talent->id }}">
