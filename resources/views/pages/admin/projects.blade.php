@@ -57,7 +57,7 @@
                                             <div >
                                                 {{-- <a href="profile.html"><img class="avatar-img rounded-circle " src="{{ $user->talent->photo }}" alt="User Image"></a> --}}
                                                 <div>
-                                                    <h5><a href="#">{{ $job->job_title  }}</a></h5>
+                                                    <h5><a  href="{{ route('admin.project.details', $job->job_id) }}">{{ $job->job_title  }}</a></h5>
                                                 
                                                 </div>	
                                             </div>
@@ -78,7 +78,7 @@
                                         <td>
                                             <div>
                                                 @if($job->talent)
-                                                <h5><a href="#">{{ $job->talent->name  }}</a></h5>
+                                                <h5><a href="{{ route('admin.show.profile', encrypt($job->talent->id)) }}">{{ $job->talent->name  }}</a></h5>
                                                 <p>	{{ $job->talent->email }}</p>
                                                 @else
                                                 - 
@@ -88,7 +88,7 @@
                                         <td class="text-end three-dots">
                                             
                                             
-                                            <a href="{{ route('admin.project.details', $job->job_id) }}" class="btn btn-light">Details</a>
+                                            <a href="{{ route('admin.project.details', $job->job_id) }}" class="btn btn-primary">Details</a>
                                         </td>
                                     </tr>
                                                           

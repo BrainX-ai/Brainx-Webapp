@@ -35,7 +35,9 @@
                                 @foreach ($users as $user)
                                     <tr>
                                         <td>
+                                            @if ($user->talent)
                                             <a href="{{ route('admin.show.profile', encrypt($user->id)) }}">
+                                                @endif
                                                 <div class="table-avatar user-profile">
                                                     <span><img class="avatar-img rounded-circle "
                                                             src="{{ ($user->talent)?$user->talent->photo : '' }}" alt="User Image"></span>
@@ -44,7 +46,9 @@
                                                         <p> {{ $user->email }}</p>
                                                     </div>
                                                 </div>
+                                                @if ($user->talent)
                                             </a>
+                                            @endif
                                         </td>
                                         <td>{{ ($user->talent)?$user->talent->standout_job_title:'' }}</td>
                                         <td class="verify-mail"><i data-feather="linkedin" class="me-1 text-success"></i>
