@@ -11,7 +11,22 @@
         </div>
     </div>
     <!-- /Page Header -->
-
+    <div class="col-md-8">
+        <!--/Wizard-->
+        <div class="row">
+            @foreach ($user_stat as $stat)
+            <div class="col-md-4 d-flex">
+                <div class="card wizard-card flex-fill">
+                    <div class="card-body">
+                        <p class="text-primary mt-0 mb-2">{{ $stat->status }}</p>
+                        <h5>{{ $stat->total }}</h5>
+                        <p><a href="{{ route('admin.users.bystatus', $stat->status) }}">view </a></p>
+                    </div>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>	
     <!-- Table -->
     <div class="row">
         <div class="col-lg-12">
@@ -33,6 +48,7 @@
                             </thead>
                             <tbody>
                                 @foreach ($users as $user)
+                                    @if ($user->talent->status == $status || $status == null)
                                     <tr>
                                         <td>
                                             @if ($user->talent)
@@ -114,6 +130,8 @@
                                             </div> --}}
                                         </td>
                                     </tr>
+                                    @endif
+                                    
                                 @endforeach
                             </tbody>
                         </table>

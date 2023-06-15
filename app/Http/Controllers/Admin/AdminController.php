@@ -11,6 +11,7 @@ use App\Models\Feedback;
 use App\Models\Client;
 use App\Models\AssessmentCateory;
 use Auth;
+use DB;
 
 class AdminController extends Controller
 {
@@ -21,11 +22,16 @@ class AdminController extends Controller
         $this->checkRole('Admin');
     }
 
-    public function users()
+    public function users($status = null)
     {
         $users = User::with('talent')->where('role', 'Talent')->get();
+        $user_stat = DB::table('talents')
+                 ->select('status', DB::raw('count(*) as total'))
+                 ->groupBy('status')
+                 ->get();
+                 
 
-        return view('pages.admin.users')->with('users', $users);
+        return view('pages.admin.users')->with('users', $users)->with('user_stat', $user_stat)->with('status', $status);
     }
 
     public function clients()
