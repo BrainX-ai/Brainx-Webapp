@@ -41,7 +41,7 @@
                                     <th>Linkedin</th>
                                     <th>Country </th>
                                     <th>Joined Date</th>
-                                    <th>BSA</th>
+                                    {{-- <th>BSA</th> --}}
                                     <th>Status</th>
                                     <th></th>
                                 </tr>
@@ -78,10 +78,10 @@
                                             {{ ($user->talent)?$user->talent->country : '' }}
                                         </td>
                                         <td>{{ explode(' ',$user->created_at)[0] }}</td>
-                                        <td
+                                        {{-- <td
                                             class="{{ ($user->talent)?($user->talent->brainx_assessment == 1 ? 'text-success' : 'text-danger'):'' }}">
                                             {{ ($user->talent)? ($user->talent->brainx_assessment == 1 ? 'Passed' : 'Failed'):'' }}
-                                        </td>
+                                        </td> --}}
                                         <td>
                                             @if ($user->talent)
                                                 
