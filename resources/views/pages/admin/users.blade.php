@@ -11,19 +11,70 @@
         </div>
     </div>
     <!-- /Page Header -->
-    <div class="col-md-8">
+    <div class="col-md-12">
+        @php
+            $values = ['INCOMPLETE', 'IN_REVIEW', 'PUBLISHED'];
+            $index = 0;
+            $total = 0;
+            foreach ($user_stat as $key => $value) {
+                $total += $value->total;
+            }
+        @endphp
         <!--/Wizard-->
         <div class="row">
-            @foreach ($user_stat as $stat)
-            <div class="col-md-4 d-flex">
+            <div class="col-md-3 d-flex">
                 <div class="card wizard-card flex-fill">
                     <div class="card-body">
-                        <p class="text-primary mt-0 mb-2">{{ $stat->status }}</p>
-                        <h5>{{ $stat->total }}</h5>
-                        <p><a href="{{ route('admin.users.bystatus', $stat->status) }}">view </a></p>
+                        <p class="text-primary mt-0 mb-2">All</p>
+                        <h5>{{ $total }}</h5>
+                        <p><a href="{{ route('admin.users') }}">view </a></p>
                     </div>
                 </div>
             </div>
+            @foreach ($user_stat as $stat)
+                @if($stat->status == $values[$index])
+                    <div class="col-md-3 d-flex">
+                        <div class="card wizard-card flex-fill">
+                            <div class="card-body">
+                                <p class="text-primary mt-0 mb-2">{{ $stat->status }}</p>
+                                <h5>{{ $stat->total }}</h5>
+                                <p><a href="{{ route('admin.users.bystatus', $stat->status) }}">view </a></p>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+            @endforeach
+            @php
+                $index++;
+            @endphp
+            @foreach ($user_stat as $stat)
+                @if($stat->status == $values[$index])
+                    <div class="col-md-3 d-flex">
+                        <div class="card wizard-card flex-fill">
+                            <div class="card-body">
+                                <p class="text-primary mt-0 mb-2">{{ $stat->status }}</p>
+                                <h5>{{ $stat->total }}</h5>
+                                <p><a href="{{ route('admin.users.bystatus', $stat->status) }}">view </a></p>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+            @endforeach
+            @php
+                $index++;
+            @endphp
+            @foreach ($user_stat as $stat)
+                @if($stat->status == $values[$index])
+                    <div class="col-md-3 d-flex">
+                        <div class="card wizard-card flex-fill">
+                            <div class="card-body">
+                                <p class="text-primary mt-0 mb-2">{{ $stat->status }}</p>
+                                <h5>{{ $stat->total }}</h5>
+                                <p><a href="{{ route('admin.users.bystatus', $stat->status) }}">view </a></p>
+                            </div>
+                        </div>
+                    </div>
+                @endif
             @endforeach
         </div>
     </div>	
