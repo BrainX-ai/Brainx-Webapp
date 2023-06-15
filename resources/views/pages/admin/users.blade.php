@@ -78,6 +78,33 @@
             @endforeach
         </div>
     </div>	
+
+    <div class="row">
+        <div class="card col-md-12">
+            <div class="card-body">
+                
+            <strong>
+                What are the criteria to publish an AI talent's profile?
+            </strong>
+            <ol>
+                <li>
+                    <strong>Education: </strong>
+                    >= Bachelor degree (in IT, ML, AI, Date Science)
+                </li>
+                <li>
+                    <strong>Experience: </strong>
+                    2 years in ML, AI field
+                </li>
+                <li>
+                    <strong>Language:</strong>
+                    Good English Communication (read & write at least)
+                </li>
+            </ol>
+
+        </div>
+        </div>
+    </div>
+
     <!-- Table -->
     <div class="row">
         <div class="col-lg-12">
