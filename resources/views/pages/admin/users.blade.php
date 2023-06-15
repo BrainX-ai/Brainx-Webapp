@@ -141,6 +141,7 @@
                                                 <input type="hidden" name="talent_id"
                                                     value="{{ $user->talent->talent_id }}">
                                                 <select name="status" class="form-control" onchange="this.form.submit()">
+                                                    <option value="">- Select status -</option>
                                                     <option value="INCOMPLETE"
                                                         @if ($user->talent->status == 'INCOMPLETE') {{ 'selected' }} @endif>
                                                         INCOMPLETE</option>
