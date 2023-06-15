@@ -4,6 +4,7 @@
 
 Route::get('/talent-profile/{id}', 'App\http\controllers\Admin\AdminController@userDetails')->name('admin.show.profile');
 Route::get('/dashboard','App\http\controllers\Admin\DashboardController@index')->name('admin.dashboard');
+Route::get('/users/{status}','App\http\controllers\Admin\AdminController@users')->name('admin.users.bystatus');
 Route::get('/users','App\http\controllers\Admin\AdminController@users')->name('admin.users');
 Route::get('/clients','App\http\controllers\Admin\AdminController@clients')->name('admin.clients');
 Route::get('/clients/delete/{id}','App\http\controllers\Admin\AdminController@destroy')->name('admin.clients.delete');
