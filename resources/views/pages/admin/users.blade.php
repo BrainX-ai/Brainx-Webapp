@@ -48,7 +48,7 @@
                             </thead>
                             <tbody>
                                 @foreach ($users as $user)
-                                    @if ($user->talent->status == $status || $status == null)
+                                    @if ($user->talent && ($user->talent->status == $status || $status == null))
                                     <tr>
                                         <td>
                                             @if ($user->talent)
