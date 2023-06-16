@@ -47,12 +47,24 @@
                                 <div class="d-flex row">
                                     <label for="hourly" class="col-md-6">
 
-                                        <input type="number" name="from" class="me-2 form-control" id="ex-from"
-                                            placeholder="From" />
+                                            <select name="from" id="ex-from"  class="me-2 form-control" >
+                                                <option value="">- Select Year -</option>
+                                                @for ($i = 1990; $i<= 2023; $i++)
+                                                  <option value="{{ $i }}" >{{ $i }}</option>
+
+                                                @endfor
+                                              </select>
                                     </label>
                                     <label for="fixed" class="col-md-6">
-                                        <input type="number" name="to" class="me-2 form-control" id="ex-toYear"
-                                            placeholder="To" />
+                                        
+                                            <select name="to" id="ex-toYear"  class="me-2 form-control" >
+                                                <option value="">- Select Year -</option>
+                                                @for ($i = 1990; $i<= 2023; $i++)
+                                                  <option value="{{ $i }}" >{{ $i }}</option>
+
+                                                @endfor
+                                                <option value="Present" id="present_edit_option">Present</option>
+                                              </select>
                                         <label for="ex-present"><input type="checkbox" name="ex-present" class=""
                                                 id="ex-present" onchange="disableExpToDate(this)"> Currently working
                                             here.</label>
@@ -85,7 +97,7 @@
 <!-- /The Modal -->
 
 
-@section('custom-js')
+@section('custom-edit-js')
     <script>
         (function($) {
             var CheckboxDropdown = function(el) {
@@ -203,11 +215,12 @@
     </script>
 
     <script>
-        function disableToDate(el) {
+        function disableExpToDate(el) {
 
 
             if (el.checked) {
-                document.getElementById('toYear').disabled = true
+                document.getElementById('ex-toYear').disabled = true
+      document.getElementById('present_edit_option').selected = true
             } else {
 
                 document.getElementById('toYear').disabled = false
