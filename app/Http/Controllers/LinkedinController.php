@@ -30,7 +30,11 @@ class LinkedinController extends Controller
                 
                 Auth::login($linkedinUser);
                 $talent = Talent::where('user_id',$linkedinUser->id)->first();
+                try{
                 $talent->photo = $user->user['profilePicture']['displayImage~']['elements'][2]['identifiers'][0]['identifier'];
+                }catch(Exception $ex){
+                    $talent->photo = '';
+                }
                 $talent->save();
 
                 if($talent->status == "INCOMPLETE"){
