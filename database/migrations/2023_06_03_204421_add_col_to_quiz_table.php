@@ -13,11 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::table('quizzes', function (Blueprint $table) {
-            $table->unsignedBigInteger('assessment_cateory_id');
+        // Schema::table('quizzes', function (Blueprint $table) {
+        //     $table->unsignedBigInteger('assessment_cateory_id');
 
-            $table->foreign('assessment_cateory_id')->references('id')->on('assessment_cateories')->onDelete('cascade');
-        });
+        //     $table->foreign('assessment_cateory_id')->references('id')->on('assessment_cateories')->onDelete('cascade');
+        // });
     }
 
     /**
