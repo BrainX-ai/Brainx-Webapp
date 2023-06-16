@@ -82,24 +82,36 @@
     <div class="row">
         <div class="card col-md-12">
             <div class="card-body">
-                
-            <strong>
-                What are the criteria to publish an AI talent's profile?
-            </strong>
-            <ol>
-                <li>
-                    <strong>Education: </strong>
-                    >= Bachelor degree (in IT, ML, AI, Date Science)
-                </li>
-                <li>
-                    <strong>Experience: </strong>
-                    2 years in ML, AI field
-                </li>
-                <li>
-                    <strong>Language:</strong>
-                    Good English Communication (read & write at least)
-                </li>
-            </ol>
+                <div class="row">
+                    <div class="col-md-12">
+                        <strong>
+                            What are the criteria to publish an AI talent's profile?
+                        </strong>
+                        <ol>
+                            <li>
+                                <strong>Education: </strong>
+                                >= Bachelor degree (in IT, ML, AI, Date Science)
+                            </li>
+                            <li>
+                                <strong>Experience: </strong>
+                                >= 1 years in ML, AI field
+                            </li>
+                            <li>
+                                <strong>Language:</strong>
+                                Good English Communication (read & write at least)
+                            </li>
+                        </ol>
+                    </div>
+                    
+                <div class="col-md-12 mt-3">
+                    <strong>Prioritise talents: </strong>
+                    <ol>
+                        <li>Currently work for or used to work for famous or big companies</li>
+                        <li>Locations from North America, Europe, Australia</li>
+                    </ol>
+ 
+                </div>
+                </div>
 
         </div>
         </div>

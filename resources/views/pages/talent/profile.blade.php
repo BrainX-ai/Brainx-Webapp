@@ -384,14 +384,14 @@
 
         }
 
-        function disableExpToDate(el) {
+        // function disableExpToDate(el) {
 
-            if (el.checked) {
-                document.getElementById('ex-toYear').disabled = true
-            } else {
-                document.getElementById('ex-toYear').disabled = false
-            }
-        }
+        //     if (el.checked) {
+        //         document.getElementById('ex-toYear').disabled = true
+        //     } else {
+        //         document.getElementById('ex-toYear').disabled = false
+        //     }
+        // }
     </script>
 @endsection
 @endsection

@@ -55,10 +55,24 @@
                                             <div class="d-flex row">
                                                 <label for="hourly" class="col-md-6">
                                                     
-                                                    <input type="text" name="from" class="me-2 form-control" id="edu-from" placeholder="From"/> 
+                                                    <select name="from" id="edu-from"  class="me-2 form-control" >
+                                                        <option value="">- Select Year -</option>
+                                                        @for ($i = 1990; $i<= 2023; $i++)
+                                                          <option value="{{ $i }}" >{{ $i }}</option>
+  
+                                                        @endfor
+                                                      </select> 
                                                 </label>
                                                 <label for="fixed" class="col-md-6">
-                                                    <input type="text" name="to" class="me-2 form-control " id="edu-to" placeholder="To"/> 
+                                                    
+                                                    <select name="to" id="edu-to"  class="me-2 form-control" >
+                                                        <option value="">- Select Year -</option>
+                                                        @for ($i = 1990; $i<= 2023; $i++)
+                                                          <option value="{{ $i }}" >{{ $i }}</option>
+  
+                                                        @endfor
+                                                        
+                                                      </select>
                                                 </label>
                                             </div>
                                         </div>

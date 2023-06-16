@@ -49,10 +49,26 @@
                                             <div class="d-flex row">
                                                 <label for="hourly" class="col-md-6">
                                                     
-                                                    <input type="number" name="from" class="me-2 form-control" id="from" placeholder="From" /> 
+                                                  
+
+                                                    <select name="from" id="from"  class="me-2 form-control" >
+                                                      <option value="">- Select Year -</option>
+                                                      @for ($i = 1990; $i<= 2023; $i++)
+                                                        <option value="{{ $i }}" >{{ $i }}</option>
+
+                                                      @endfor
+                                                    </select>
                                                 </label>
                                                 <label for="fixed" class="col-md-6">
-                                                    <input type="number" name="to" class="me-2 form-control" id="toYear" placeholder="To" /> 
+                                                    <select name="to" id="toYear"  class="me-2 form-control" >
+                                                      <option value="">- Select Year -</option>
+                                                      @for ($i = 1990; $i<= 2023; $i++)
+                                                        <option value="{{ $i }}" >{{ $i }}</option>
+
+                                                      @endfor
+                                                      <option value="Present" id="present_option">Present</option>
+                                                    </select>
+
                                                     <label for="present"><input type="checkbox" name="present" class="" id="present" onchange="disableToDate(this)"> Currently working here.</label>
                                                 </label>
                                             </div>
@@ -212,6 +228,7 @@ function deleteWord(element, value){
     
     if(el.checked){
       document.getElementById('toYear').disabled = true
+      document.getElementById('present_option').selected = true
     }else{
 
       document.getElementById('toYear').disabled = false

@@ -53,11 +53,23 @@
                                             <label for="" class="h4">Period</label>
                                             <div class="d-flex row">
                                                 <label for="hourly" class="col-md-6">
-                                                    
-                                                    <input type="text" name="from" class="me-2 form-control" id="from" placeholder="From"/> 
+                                                    <select name="from" id="from"  class="me-2 form-control" >
+                                                        <option value="">- Select Year -</option>
+                                                        @for ($i = 1990; $i<= 2023; $i++)
+                                                          <option value="{{ $i }}" >{{ $i }}</option>
+  
+                                                        @endfor
+                                                      </select>
                                                 </label>
                                                 <label for="fixed" class="col-md-6">
-                                                    <input type="text" name="to" class="me-2 form-control " id="to" placeholder="To"/> 
+                                                    <select name="to" id="to"  class="me-2 form-control" >
+                                                        <option value="">- Select Year -</option>
+                                                        @for ($i = 1990; $i<= 2023; $i++)
+                                                          <option value="{{ $i }}" >{{ $i }}</option>
+  
+                                                        @endfor
+                                                        
+                                                      </select>
                                                 </label>
                                             </div>
                                         </div>
