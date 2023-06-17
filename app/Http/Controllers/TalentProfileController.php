@@ -247,7 +247,7 @@ class TalentProfileController extends Controller
             'title' => $request->title,
             'company' => $request->company,
             'from' => $request->from,
-            'to' => $request->present ? 'Present' : $request->to,
+            'to' => $request->ex_present ? 'Present' : $request->to,
             'skills' => $request->skills,
             'description' => $request->description,
             'user_id' => Auth::user()->id

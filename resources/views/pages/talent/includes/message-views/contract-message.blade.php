@@ -15,10 +15,10 @@
             </div>
         </div>
         <div class="media-body flex-grow-1">
-            <div class="d-flex">
+            <div class="">
 
                 <div class="user-name"> {{ ($action->sender_id == Auth::user()->id)? Auth::user()->name: $action->sender->name }} </div>
-                <div class="ms-3 user-status"> {{ $action->message->message }} </div>
+                <div class=" message"> {{ $action->message->message }} </div>
             </div>
         
             

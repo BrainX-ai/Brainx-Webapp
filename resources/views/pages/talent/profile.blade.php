@@ -358,10 +358,12 @@
 
                 document.getElementById('ex-toYear').disabled = true
                 document.getElementById('ex-present').checked = true
+                document.getElementById('present_edit_option').selected = true
             }else{
 
                 $('#ex-toYear').val(experience.to);
                 document.getElementById('ex-toYear').disabled = false
+                document.getElementById('present_edit_option').selected = false
             }
             $('#ex-title').val(experience.title);
             $('#ex-company').val(experience.company);

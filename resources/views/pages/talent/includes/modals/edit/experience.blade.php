@@ -65,7 +65,7 @@
                                                 @endfor
                                                 <option value="Present" id="present_edit_option">Present</option>
                                               </select>
-                                        <label for="ex-present"><input type="checkbox" name="ex-present" class=""
+                                        <label for="ex-present"><input type="checkbox" name="ex_present" class=""
                                                 id="ex-present" onchange="disableExpToDate(this)"> Currently working
                                             here.</label>
                                     </label>
@@ -220,10 +220,10 @@
 
             if (el.checked) {
                 document.getElementById('ex-toYear').disabled = true
-      document.getElementById('present_edit_option').selected = true
+                document.getElementById('present_edit_option').selected = true
             } else {
 
-                document.getElementById('toYear').disabled = false
+                document.getElementById('ex-toYear').disabled = false
             }
         }
     </script>
