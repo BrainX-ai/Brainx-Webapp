@@ -104,7 +104,7 @@
                             <div>
                                 <ul style="display: block;" class="d-flex mb-0">
                                     <li class="me-5 ms-3">
-                                        <a href="" class="text-primary fw-bold" type="button" data-bs-toggle="modal" data-bs-target="#view-request">View request</a>
+                                        <a href="" class="text-primary fw-bold"  data-bs-toggle="modal" data-bs-target="#view-request">View request</a>
 
                                     </li>
                                     @if ($job->contract != null)

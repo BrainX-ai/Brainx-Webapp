@@ -86,16 +86,16 @@
                                 <div class="banner-img aos text-center">
                                     <div class="text-center ps-5 ms-2">
 
-                                        <img src="assets/img/Tawsif_circle-removebg-preview.jpg" class="img-fluid hero-img"
+                                        <img src="assets/img/imgpsh_fullsize_anim.png" class="img-fluid hero-img"
                                             alt="banner">
 
                                     </div>
                                     <div class="blurry">
                                     </div>
                                     <div class="freelance-info text-center">
-                                        <h3 class="mt-2 text-primary">Tawsif Khan</h3>
-                                        <h4 class="freelance-specific"><strong>PhD Student in AI - Malaysia</strong></h4>
-                                        <h5>Two Silver Awards (Malaysian Tech Expo) </h5>
+                                        <h3 class="mt-2 text-primary">Vinh Dang PhD</h3>
+                                        <h4 class="freelance-specific"><strong>Senior data scientist - Vietnam</strong></h4>
+                                        <h5>Current - VNG & RMIT lecturer </h5>
 
                                     </div>
                                 </div>
