@@ -200,12 +200,12 @@
                 <div class="col-xl-6 col-md-6">
                     <div class="great-blk aos boxes-shadow" data-aos="fade-up">
                         <div class="great-icon">
-                            <img src="assets/img/BrainX/Selective-AI-talents.png" alt="">
+                            <img src="assets/img/BrainX/Privacy-protection.png" alt="">
                         </div>
                         <div class="great-content">
-                            <h4>Quality AI talents</h4>
+                            <h4>Privacy protection</h4>
                             <p>
-                                Access remote talents from famous companies. BrainX selects them carefully with criteria.
+                                BrainX provide data privacy guidelines, contract and a clear process to help you work with talents.
                                 <br>&nbsp;
                             </p>
                         </div>
