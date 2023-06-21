@@ -225,6 +225,20 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="col-xl-6 col-md-6">
+                    <div class="great-blk aos boxes-shadow" data-aos="fade-up">
+                        <div class="great-icon">
+                            <img src="assets/img/BrainX/Selective-AI-talents.png" alt="">
+                        </div>
+                        <div class="great-content">
+                            <h4>Quality AI talents</h4>
+                            <p>
+                                Access remote talents from famous companies. BrainX selects them carefully with criteria.  <br>&nbsp;
+                            </p>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-xl-6 col-md-6">
                     <div class="great-blk aos boxes-shadow" data-aos="fade-up">
                         <div class="great-icon">
@@ -233,19 +247,6 @@
                         <div class="great-content">
                             <h4>Save time</h4>
                             <p>BrainX tries to match you to a suitable contract talent within 24h. <br>&nbsp;</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-md-6">
-                    <div class="great-blk aos boxes-shadow" data-aos="fade-up">
-                        <div class="great-icon">
-                            <img src="assets/img/BrainX/SuitableAItalentstoyourbusiness.png" alt="">
-                        </div>
-                        <div class="great-content">
-                            <h4>Flexibility</h4>
-                            <p>
-                                Flexible to scale with workloads. No further obligation. <br>&nbsp;
-                            </p>
                         </div>
                     </div>
                 </div>

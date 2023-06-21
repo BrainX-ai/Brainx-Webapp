@@ -4,6 +4,11 @@
 
 
     <style>
+            :root {
+        --line-border-fill: #0B0D63;
+        --line-border-empty: #e0e0e0;
+    }
+
         .skills {
             border-bottom: solid 1px rgb(217, 207, 207);
         }
@@ -54,6 +59,79 @@
             padding: 10px;
             /* Add some padding to the container */
         }
+
+        .progress-container {
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        margin-bottom: 20px;
+        max-width: 95%;
+        transform: translateY(-50%);
+        height: 4px;
+        text-align: center;
+        margin-left: 40px;
+    }
+
+    .progress-container-text {
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        margin-bottom: 20px;
+        max-width: 100%;
+        transform: translateY(-50%);
+        height: 4px;
+        color: white;
+    }
+
+    .progress-container::before {
+        content: '';
+        background-color: var(--line-border-empty);
+        position: absolute;
+        top: 350%;
+        left: 0;
+        transform: translateY(-50%);
+        height: 4px;
+        width: 100%;
+        z-index: -1;
+    }
+
+    .progress {
+        background-color: var(--line-border-fill);
+        position: absolute;
+        top: 350%;
+        left: 0;
+        transform: translateY(-50%);
+        height: 4px;
+        z-index: -1;
+        transition: 0.4s ease;
+    }
+
+    .circle {
+        background-color: var(--line-border-empty);
+        color: #fff;
+        border-radius: 50%;
+        height: 30px;
+        width: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.4s ease;
+    }
+
+    .circle-text {
+
+        color: #000;
+        border-radius: 50%;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: 0.4s ease;
+    }
+
+    .circle.active {
+        background-color: var(--line-border-fill);
+    }
     </style>
 
     <!-- Content -->
@@ -68,7 +146,24 @@
                         @include('pages.client.includes.job-request-list-sidebar')
                         <!-- Chat Right -->
                         <div class="chat-cont-right chat-scrol" style="z-index: 99; ">
+                            <div class="mt-4 mb-5 row">
+                                <div class="col-md-12">
 
+                                    <div class="progress-container">
+                                        <div class="progress" id="progress"></div>
+                                        <div class="circle active">1</div>
+                                        <div class="circle active">2</div>
+                                        <div class="circle active">3</div>
+                                        <div class="circle active">4</div>
+                                    </div>
+                                    <div class="progress-container-text mt-4">
+                                        <div class="circle-text border-0 ">Privacy guideline</div>
+                                        <div class="circle-text border-0 me-4">Interview</div>
+                                        <div class="circle-text border-0 me-4">Sign NDA</div>
+                                        <div class="circle-text border-0">Contract</div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="chat-container">
 
                                 <div id="messages">
