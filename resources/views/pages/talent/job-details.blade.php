@@ -117,7 +117,7 @@
                             <div class="chat-footer">
                                 <div class="input-group">
                                     
-                                        <div class="btn-file btn d-none">
+                                        <div class="btn-file btn ">
                                             <i class="fa fa-paperclip"></i>
                                             <input type="file" name="file" id="file" onchange="sendFile()">
                                         </div>

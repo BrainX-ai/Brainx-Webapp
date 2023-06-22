@@ -11,51 +11,83 @@ use App\Models\Feedback;
 use App\Models\Client;
 use App\Models\AssessmentCateory;
 use Auth;
-use DB;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
-
     public function __construct()
     {
         $this->middleware('auth');
         $this->checkRole('Admin');
     }
 
+    /**
+     * users
+     *
+     * @param mixed status
+     *
+     * @return void
+     */
     public function users($status = null)
     {
-        $users = User::with('talent')->where('role', 'Talent')->get();
+        $users = User::with('talent')
+            ->where('role', 'Talent')
+            ->get();
         $user_stat = DB::table('talents')
-                 ->select('status', DB::raw('count(*) as total'))
-                 ->groupBy('status')
-                 ->get();
-                 
+            ->select('status', DB::raw('count(*) as total'))
+            ->groupBy('status')
+            ->get();
 
-        return view('pages.admin.users')->with('users', $users)->with('user_stat', $user_stat)->with('status', $status);
+        return view('pages.admin.users')
+            ->with('users', $users)
+            ->with('user_stat', $user_stat)
+            ->with('status', $status);
     }
 
+    /**
+     * clients
+     *
+     * @return void
+     */
     public function clients()
     {
-        $users = User::with('client')->where('role', 'Client')->get();
+        $users = User::with('client')
+            ->where('role', 'Client')
+            ->get();
 
         return view('pages.admin.clients')->with('users', $users);
     }
 
+    /**
+     * userDetails
+     *
+     * @param mixed id
+     *
+     * @return void
+     */
     public function userDetails($id)
     {
         $id = decrypt($id);
         $title = ['Experience', 'Education'];
 
-        $user = User::with(['talent','experiences','educations'])->find($id);
-       
+        $user = User::with(['talent', 'experiences', 'educations'])->find($id);
+
         $assessmentCategories = AssessmentCateory::with('result')->get();
 
-        return view('pages.admin.talent-details')->with('user', $user)->with('assessmentCategories', $assessmentCategories);
+        return view('pages.admin.talent-details')
+            ->with('user', $user)
+            ->with('assessmentCategories', $assessmentCategories);
     }
 
+    /**
+     * updateStatus
+     *
+     * @param Request request
+     *
+     * @return void
+     */
     public function updateStatus(Request $request)
     {
-
         $talent = Talent::find($request->talent_id);
         $talent->status = $request->status;
         $talent->save();
@@ -63,6 +95,11 @@ class AdminController extends Controller
         return redirect()->route('admin.users');
     }
 
+    /**
+     * feedbacks
+     *
+     * @return void
+     */
     public function feedbacks()
     {
         $feedbacks = Feedback::orderBy('id', 'DESC')->get();

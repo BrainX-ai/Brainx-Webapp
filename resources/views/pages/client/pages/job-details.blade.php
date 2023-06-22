@@ -7,7 +7,7 @@
             :root {
         --line-border-fill: #0B0D63;
         --line-border-empty: #e0e0e0;
-    }
+        }
 
         .skills {
             border-bottom: solid 1px rgb(217, 207, 207);
@@ -70,9 +70,9 @@
         height: 4px;
         text-align: center;
         margin-left: 40px;
-    }
+        }
 
-    .progress-container-text {
+        .progress-container-text {
         display: flex;
         justify-content: space-between;
         position: relative;
@@ -81,9 +81,9 @@
         transform: translateY(-50%);
         height: 4px;
         color: white;
-    }
+        }
 
-    .progress-container::before {
+        .progress-container::before {
         content: '';
         background-color: var(--line-border-empty);
         position: absolute;
@@ -93,9 +93,9 @@
         height: 4px;
         width: 100%;
         z-index: -1;
-    }
+        }
 
-    .progress {
+        .progress {
         background-color: var(--line-border-fill);
         position: absolute;
         top: 350%;
@@ -104,9 +104,9 @@
         height: 4px;
         z-index: -1;
         transition: 0.4s ease;
-    }
+        }
 
-    .circle {
+        .circle {
         background-color: var(--line-border-empty);
         color: #fff;
         border-radius: 50%;
@@ -116,9 +116,9 @@
         align-items: center;
         justify-content: center;
         transition: 0.4s ease;
-    }
+        }
 
-    .circle-text {
+        .circle-text {
 
         color: #000;
         border-radius: 50%;
@@ -127,11 +127,11 @@
         align-items: center;
         justify-content: center;
         transition: 0.4s ease;
-    }
+        }
 
-    .circle.active {
+        .circle.active {
         background-color: var(--line-border-fill);
-    }
+        }
     </style>
 
     <!-- Content -->
@@ -213,7 +213,7 @@
                             </div>
                                 <div class="chat-footer">
                                     <div class="input-group">
-                                        <div class="btn-file btn d-none">
+                                        <div class="btn-file btn ">
                                             <i class="fa fa-paperclip"></i>
                                             <input type="file" name="file" id="file" onchange="sendFile()">
                                         </div>
