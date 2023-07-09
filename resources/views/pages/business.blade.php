@@ -74,10 +74,10 @@
 
 
                         <h1>
-                            Hire contract AI talents to develop AI applications for your business
+                            Develop your AI projects with freelance AI talents
                         </h1>
 
-                        <p>BrainX is a <b>freelance platform</b> connecting your business to the <b>global network of
+                        <p>BrainX is a freelance platform for developing your AI projects with the <b>global network of
                                 quality AI talents.</b> </p>
                         <div id="blog-slider1" class="owl-carousel owl-theme blog-slider aos between-slider"
                             data-aos="fade-up">
@@ -106,19 +106,19 @@
 
                         <span class="open-desktop text-center">
                             <a class="btn" href="#" data-bs-toggle="modal" data-bs-target="#desktop-modal">
-                                <button class="btn btn-primary sub-btn " type="submit">Post a request</button>
+                                <button class="btn btn-primary sub-btn " type="submit">Post a project</button>
                             </a>
                         </span>
 
                         @if (Auth::guard()->user() == null)
                             <a class="btn join-us">
                                 <button class="btn btn-primary sub-btn " data-bs-toggle="modal"
-                                    data-bs-target="#client-signup" type="button">Post a request</button>
+                                    data-bs-target="#client-signup" type="button">Post a project</button>
                             </a>
                         @else
                             <a class="btn join-us">
                                 <button class="btn btn-primary sub-btn " data-bs-toggle="modal"
-                                    data-bs-target="#client-signup" type="button">Post a request</button>
+                                    data-bs-target="#client-signup" type="button">Post a project</button>
                             </a>
                         @endif
                         <div class="col-md-6 col-sm-8 mt-4">
@@ -192,7 +192,7 @@
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-12 mx-auto">
                     <div class="section-header section-header-two aos" data-aos="fade-up">
-                        <h2 class="header-title">Why hire contract AI talents on BrainX?</h2>
+                        <h2 class="header-title">Why BrainX?</h2>
                     </div>
                 </div>
             </div>
@@ -200,12 +200,12 @@
                 <div class="col-xl-6 col-md-6">
                     <div class="great-blk aos boxes-shadow" data-aos="fade-up">
                         <div class="great-icon">
-                            <img src="assets/img/BrainX/Privacy-protection.png" alt="">
+                            <img src="assets/img/BrainX/SuitableAItalentstoyourbusiness.png" alt="">
                         </div>
                         <div class="great-content">
-                            <h4>Privacy protection</h4>
+                            <h4>Collaboration tools</h4>
                             <p>
-                                BrainX provide data privacy guidelines, contract and a clear process to help you work with talents.
+                                BrainX provide privacy guidelines, chat, contract creation and escrow service.
                                 <br>&nbsp;
                             </p>
                         </div>
@@ -234,7 +234,8 @@
                         <div class="great-content">
                             <h4>Quality AI talents</h4>
                             <p>
-                                Access remote talents from famous companies. BrainX selects them carefully with criteria.  <br>&nbsp;
+                                Access remote talents from famous companies. BrainX selects them carefully with criteria.
+                                <br>&nbsp;
                             </p>
                         </div>
                     </div>
@@ -258,18 +259,18 @@
     <section class="great-about text-center">
         <span class="open-desktop pt-0">
             <a class="btn" href="#" data-bs-toggle="modal" data-bs-target="#desktop-modal">
-                <button class="btn btn-primary sub-btn boxes-shadow " type="button">Post a request</button>
+                <button class="btn btn-primary sub-btn boxes-shadow " type="button">Post a project</button>
             </a>
         </span>
         @if (Auth::guard()->user() == null)
             <a class="btn join-us">
                 <button class="btn btn-primary sub-btn boxes-shadow join-us" data-bs-toggle="modal"
-                    data-bs-target="#client-signup" type="button">Post a request</button>
+                    data-bs-target="#client-signup" type="button">Post a project</button>
             </a>
         @else
             <a class="btn join-us">
                 <button class="btn btn-primary sub-btn boxes-shadow join-us" data-bs-toggle="modal"
-                    data-bs-target="#client-signup" type="button">Post a request</button>
+                    data-bs-target="#client-signup" type="button">Post a project</button>
             </a>
         @endif
     </section>
@@ -336,9 +337,9 @@
                             <img src="assets/img/BrainX/1.png" alt="">
                         </div>
                         <div class="great-content">
-                            <h4>Post a request</h4>
+                            <h4>Post a project</h4>
                             <p>
-                                Send your service request to BrainX
+                                Send your AI project to our AI experts
                             </p>
                         </div>
                     </div>
@@ -350,7 +351,7 @@
                         </div>
                         <div class="great-content">
                             <h4>Review</h4>
-                            <p>An AI expert reviews your request</p>
+                            <p>An AI expert reviews your project</p>
                         </div>
                     </div>
                 </div>
@@ -362,7 +363,7 @@
                         <div class="great-content">
                             <h4>Match</h4>
                             <p>
-                                The AI expert matches you to a suitable AI talent
+                                The AI expert matches your project to a suitable AI talent
                             </p>
                         </div>
                     </div>
