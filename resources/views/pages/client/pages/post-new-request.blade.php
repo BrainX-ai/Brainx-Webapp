@@ -118,7 +118,7 @@
                                                 <div class="col-md-10">
                                                     <div class="form-group">
                                                         <label for="">
-                                                            Write a short headline for your request
+                                                            Write a short headline for your project
                                                         </label>
                                                         <input type="text" name="job_title" class="form-control" required
                                                             placeholder="Ex: who needed for what kind of AI project" />
@@ -164,14 +164,14 @@
 
                                             <div class="row">
                                                 <label class="col-md-6">
-                                                    <input type="radio" name="job_type" checked
-                                                        value="Hourly rate" onclick="show_duration_box()" />
+                                                    <input type="radio" name="job_type" checked value="Hourly rate"
+                                                        onclick="show_duration_box()" />
                                                     Hourly rate
                                                 </label>
 
                                                 <label class="col-md-6">
-                                                    <input type="radio" name="job_type" id="outsource" 
-                                                        value="Fixed price" onclick="hide_duration_box()" />
+                                                    <input type="radio" name="job_type" id="outsource" value="Fixed price"
+                                                        onclick="hide_duration_box()" />
                                                     Fixed price
                                                 </label>
                                             </div>
@@ -180,9 +180,9 @@
                                             <p class="text-muted outsource d-none" id="outsource-message">Outsource AI
                                                 projects to freelancers and pay them in a fixed price</p>
                                             <div class="form-group">
-                                            
-                                            <textarea name="job_description_outsource" rows="5" class="form-control outsource " id="editor-outsource"
-                                                placeholder="Good details to include: 
+
+                                                <textarea name="job_description_outsource" rows="5" class="form-control outsource " id="editor-outsource"
+                                                    placeholder="Good details to include: 
 Project description
 Scope of work
 Required skills and experience"></textarea>
@@ -274,7 +274,7 @@ Required skills and experience"></textarea>
 
                                         <div class="card-footer border-0 ps-2 pt-5">
                                             <button class="btn btn-primary" type="submit">
-                                                Post my request
+                                                Post my project
                                             </button>
                                         </div>
                                     </div>
@@ -375,32 +375,31 @@ Required skills and experience"></textarea>
 
     {{-- <script src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script> --}}
     <script>
-
         var editor = {};
         CKEDITOR.replace('editor-outsource', {
             extraPlugins: 'editorplaceholder',
-            editorplaceholder: `Good details to include: Project description, Scope of work, Required skills and experience`,
+            editorplaceholder: `Good details to include: project details, scope of work, required skills and experience`,
             removeButtons: 'PasteFromWord'
         });
         CKEDITOR.replace('editor', {
             extraPlugins: 'editorplaceholder',
-            editorplaceholder: `Good details to include: Job description, Job responsibility, Job requirement`,
+            editorplaceholder: `Good details to include: project details, scope of work, required skills and experience`,
             removeButtons: 'PasteFromWord'
         });
 
-       
 
-        
+
+
 
         $(document).ready(function() {
 
             $('#cke_editor-outsource').addClass('d-none');
-            
+
 
             // hide_duration_box()
         });
 
-        
+
 
 
         // $('').hide();//('display', 'none');

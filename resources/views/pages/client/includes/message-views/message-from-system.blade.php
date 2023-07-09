@@ -9,23 +9,24 @@
             </div>
         </div>
         <div class="media-body flex-grow-1">
-            
-            @if ($action->sender_id == NULL)
-                <div class="user-name">Client care </div>               
+
+            @if ($action->sender_id == null)
+                <div class="user-name">Client care </div>
             @else
-                <div class="user-name">{{ $action->sender->name }} </div>               
+                <div class="user-name">{{ $action->sender->name }} </div>
             @endif
 
             <div class="user-status">{{ $action->message->message }}</div>
         </div>
     </div>
-    
-    
+
+
 </div>
 
-@if($action->action_type == 'MESSAGE_WITH_MY_REQUEST')
+@if ($action->action_type == 'MESSAGE_WITH_MY_REQUEST')
     <div class="ms-5 ps-1 mt-3">
-        <button class="btn btn-primary ms-4" type="button" data-bs-toggle="modal" data-bs-target="#my-request">My request</button>
+        <button class="btn btn-primary ms-4" type="button" data-bs-toggle="modal" data-bs-target="#my-request">My
+            project</button>
 
     </div>
 @endif

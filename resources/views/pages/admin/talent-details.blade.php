@@ -120,19 +120,18 @@
                                         <ul class="row">
                                             @foreach ($skills as $key => $items)
                                                 @if (sizeof($items))
-                                                <li class="col-md-6 mt-3">
-                                                    <h5>{{ $key }}</h5>
-                                                    <ul id="skill-lists" class="list-inline">
-                                                        @foreach ($items as $item)
-                                                            <li
-                                                                class="btn btn-rounded btn-outline-primary list-inline-item">
-                                                                {{ $item }}
-                                                            </li>
-                                                        @endforeach
-                                                    </ul>
-                                                </li> 
+                                                    <li class="col-md-6 mt-3">
+                                                        <h5>{{ $key }}</h5>
+                                                        <ul id="skill-lists" class="list-inline">
+                                                            @foreach ($items as $item)
+                                                                <li
+                                                                    class="btn btn-rounded btn-outline-primary list-inline-item">
+                                                                    {{ $item }}
+                                                                </li>
+                                                            @endforeach
+                                                        </ul>
+                                                    </li>
                                                 @endif
-                                               
                                             @endforeach
                                         </ul>
 
@@ -141,57 +140,61 @@
 
                             </div>
                         </section>
+                        @if (false)
+                            <section>
+                                <div class="row border m-5">
+                                    <h4 class="text-primary">
+                                        Assessment Tests
+                                    </h4>
+                                    <div class="card">
+                                        <div class="row mt-4">
+                                            <div class="col-md-12">
 
-                        <section>
-                            <div class="row border m-5">
-                                <h4 class="text-primary">
-                                    Assessment Tests
-                                </h4>
-                                <div class="card">
-                                    <div class="row mt-4">
-                                        <div class="col-md-12">
-    
-                                            <ul>
-                                                @foreach ($assessmentCategories as $assessmentCategory)
-                                                    <li >
-                                                        
-                                                        <div class="d-flex justify-space-between skillset-list pt-2" >
-                                                           
-                                                        
-                                                            <div class="d-flex justify-content-start">
-    
-                                                            @if ($user->talent->brainx_assessment || (sizeof($assessmentCategory->result) && $assessmentCategory->result[0]->remarks == 'PASSED'))
-                                                            <i class="material-icons mb-1 close text-primary me-2 mt-1">check_circle</i>
-                                                            @else
-    
-                                                            <i class="material-icons mb-1 text-danger mt-1 me-2 close">close</i>
-                                                            @endif
-                                                                
-                                                            <div>
-                                                                <h5>{{ $assessmentCategory->category_name }}</h5>
-                                                                <strong>
-                                                                    <p>45-min tested topics: Python, ML, Computer Vision, NLP  (Developed by our PhD in AI)</p>
-                                                                </strong>
+                                                <ul>
+                                                    @foreach ($assessmentCategories as $assessmentCategory)
+                                                        <li>
+
+                                                            <div class="d-flex justify-space-between skillset-list pt-2">
+
+
+                                                                <div class="d-flex justify-content-start">
+
+                                                                    @if (
+                                                                        $user->talent->brainx_assessment ||
+                                                                            (sizeof($assessmentCategory->result) && $assessmentCategory->result[0]->remarks == 'PASSED'))
+                                                                        <i
+                                                                            class="material-icons mb-1 close text-primary me-2 mt-1">check_circle</i>
+                                                                    @else
+                                                                        <i
+                                                                            class="material-icons mb-1 text-danger mt-1 me-2 close">close</i>
+                                                                    @endif
+
+                                                                    <div>
+                                                                        <h5>{{ $assessmentCategory->category_name }}</h5>
+                                                                        <strong>
+                                                                            <p>45-min tested topics: Python, ML, Computer
+                                                                                Vision, NLP (Developed by our PhD in AI)</p>
+                                                                        </strong>
+                                                                    </div>
+                                                                </div>
+
+                                                                @if (sizeof($assessmentCategory->result) && $assessmentCategory->result[0]->remarks == 'FAILED')
+                                                                    <div><span class="badge bg-danger">Unsuccessful</span>
+                                                                    </div>
+                                                                @endif
                                                             </div>
-                                                        </div>
-                                                        
-                                                        @if (sizeof($assessmentCategory->result) && $assessmentCategory->result[0]->remarks == 'FAILED')
-                                                         <div><span class="badge bg-danger">Unsuccessful</span></div>
-                                                        
-                                                        @endif
-                                                        </div>
-                                                    </li>
-                                                @endforeach
-    
-                                            </ul>
-    
+                                                        </li>
+                                                    @endforeach
+
+                                                </ul>
+
+                                            </div>
+
                                         </div>
-    
                                     </div>
                                 </div>
-                            </div>
-                        </section>
-
+                            </section>
+                        @endif
                         <section>
                             <div class="row border m-5">
                                 <div class="col-md-12 p-5">

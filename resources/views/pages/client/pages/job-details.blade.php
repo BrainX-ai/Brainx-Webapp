@@ -4,10 +4,10 @@
 
 
     <style>
-            :root {
-        --line-border-fill: #0B0D63;
-        --line-border-empty: #e0e0e0;
-    }
+        :root {
+            --line-border-fill: #0B0D63;
+            --line-border-empty: #e0e0e0;
+        }
 
         .skills {
             border-bottom: solid 1px rgb(217, 207, 207);
@@ -44,7 +44,7 @@
             -webkit-box-align: center;
             -ms-flex-align: center;
             /* align-items:
-                center; */
+                    center; */
         }
 
         .chat-cont-left {
@@ -61,77 +61,77 @@
         }
 
         .progress-container {
-        display: flex;
-        justify-content: space-between;
-        position: relative;
-        margin-bottom: 20px;
-        max-width: 95%;
-        transform: translateY(-50%);
-        height: 4px;
-        text-align: center;
-        margin-left: 40px;
-    }
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-bottom: 20px;
+            max-width: 95%;
+            transform: translateY(-50%);
+            height: 4px;
+            text-align: center;
+            margin-left: 40px;
+        }
 
-    .progress-container-text {
-        display: flex;
-        justify-content: space-between;
-        position: relative;
-        margin-bottom: 20px;
-        max-width: 100%;
-        transform: translateY(-50%);
-        height: 4px;
-        color: white;
-    }
+        .progress-container-text {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            margin-bottom: 20px;
+            max-width: 100%;
+            transform: translateY(-50%);
+            height: 4px;
+            color: white;
+        }
 
-    .progress-container::before {
-        content: '';
-        background-color: var(--line-border-empty);
-        position: absolute;
-        top: 350%;
-        left: 0;
-        transform: translateY(-50%);
-        height: 4px;
-        width: 100%;
-        z-index: -1;
-    }
+        .progress-container::before {
+            content: '';
+            background-color: var(--line-border-empty);
+            position: absolute;
+            top: 350%;
+            left: 0;
+            transform: translateY(-50%);
+            height: 4px;
+            width: 100%;
+            z-index: -1;
+        }
 
-    .progress {
-        background-color: var(--line-border-fill);
-        position: absolute;
-        top: 350%;
-        left: 0;
-        transform: translateY(-50%);
-        height: 4px;
-        z-index: -1;
-        transition: 0.4s ease;
-    }
+        .progress {
+            background-color: var(--line-border-fill);
+            position: absolute;
+            top: 350%;
+            left: 0;
+            transform: translateY(-50%);
+            height: 4px;
+            z-index: -1;
+            transition: 0.4s ease;
+        }
 
-    .circle {
-        background-color: var(--line-border-empty);
-        color: #fff;
-        border-radius: 50%;
-        height: 30px;
-        width: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: 0.4s ease;
-    }
+        .circle {
+            background-color: var(--line-border-empty);
+            color: #fff;
+            border-radius: 50%;
+            height: 30px;
+            width: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.4s ease;
+        }
 
-    .circle-text {
+        .circle-text {
 
-        color: #000;
-        border-radius: 50%;
-        height: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: 0.4s ease;
-    }
+            color: #000;
+            border-radius: 50%;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.4s ease;
+        }
 
-    .circle.active {
-        background-color: var(--line-border-fill);
-    }
+        .circle.active {
+            background-color: var(--line-border-fill);
+        }
     </style>
 
     <!-- Content -->
@@ -146,7 +146,7 @@
                         @include('pages.client.includes.job-request-list-sidebar')
                         <!-- Chat Right -->
                         <div class="chat-cont-right chat-scrol" style="z-index: 99; ">
-                            <div class="mt-4 mb-5 row">
+                            {{-- <div class="mt-4 mb-5 row">
                                 <div class="col-md-12">
 
                                     <div class="progress-container">
@@ -163,7 +163,7 @@
                                         <div class="circle-text border-0">Contract</div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="chat-container">
 
                                 <div id="messages">
@@ -197,23 +197,25 @@
                                 <div id="focus"></div>
                             </div>
                             @if (sizeof($job->latest_project_request) > 0 && $job->latest_project_request[0]->status == 'ACCEPTED')
+                                <div>
+                                    <ul style="display: block;" class="d-flex mb-0">
+                                        <li class="me-5 ms-3">
+                                            <a href="" class="text-primary fw-bold" data-bs-toggle="modal"
+                                                data-bs-target="#view-request">View request</a>
 
-                            <div>
-                                <ul style="display: block;" class="d-flex mb-0">
-                                    <li class="me-5 ms-3">
-                                        <a href="" class="text-primary fw-bold"  data-bs-toggle="modal" data-bs-target="#view-request">View request</a>
-
-                                    </li>
-                                    @if ($job->contract != null)
-                                    <li >
-                                        <a href="" class="text-primary fw-bold" data-bs-toggle="modal" data-bs-target="#preview-{{ $action->job->contract->contract_type }}-contract">View contract</a>
-                                    </li>                                        
-                                    @endif
-                                </ul>
-                            </div>
+                                        </li>
+                                        @if ($job->contract != null)
+                                            <li>
+                                                <a href="" class="text-primary fw-bold" data-bs-toggle="modal"
+                                                    data-bs-target="#preview-{{ $action->job->contract->contract_type }}-contract">View
+                                                    contract</a>
+                                            </li>
+                                        @endif
+                                    </ul>
+                                </div>
                                 <div class="chat-footer">
                                     <div class="input-group">
-                                        <div class="btn-file btn d-none">
+                                        <div class="btn-file btn ">
                                             <i class="fa fa-paperclip"></i>
                                             <input type="file" name="file" id="file" onchange="sendFile()">
                                         </div>
