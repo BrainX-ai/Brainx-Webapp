@@ -163,7 +163,7 @@
             </div>
             <div id="developers-slider" class="owl-carousel owl-theme developers-slider aos" data-aos="fade-up">
                 @foreach ($talents as $talent)
-                    @if ($talent->talent->status == 'PUBLISHED')
+                    @if (isset($talent->talent) && $talent->talent->status == 'PUBLISHED')
                         <div class="freelance-widget">
                             <div class="freelance-content">
 
