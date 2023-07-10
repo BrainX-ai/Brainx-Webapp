@@ -3204,7 +3204,7 @@ html.menu-opened body header:before {
 }
 .developer {
 	position: relative;
-    padding: 80px 0 50px;
+    padding: 60px 0 0px;
     background-image: url(../../assets/img/bg/bg-15.png);
     background-repeat: no-repeat, no-repeat;
     background-position: right center;
