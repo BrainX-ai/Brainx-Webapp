@@ -176,7 +176,9 @@
                                 <div class="freelance-info">
                                     <h3><a href="developer-details.html"> {{ $talent->name }} </a></h3>
                                     <div class="freelance-specific">{{ $talent->talent->standout_job_title }}</div>
-                                    <div class="freelance-specific">{{ $talent->talent->ex_famouse_company }}</div>
+                                    <div class="text-bold"><strong>{{ (int) $talent->talent->hourly_rate }}$/hour</strong>
+                                    </div>
+                                    <div class="freelance-specific">{{ $talent->talent->country }}</div>
 
                                 </div>
                             </div>
