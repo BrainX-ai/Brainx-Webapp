@@ -205,8 +205,8 @@
                         <div class="great-content">
                             <h4>Collaboration tools</h4>
                             <p>
-                                BrainX provide privacy guidelines, chat, contract creation and escrow service.
-                                <br>&nbsp;
+                                BrainX provide chat, contract creation and escrow service.
+                                <br>&nbsp;<br>&nbsp;
                             </p>
                         </div>
                     </div>
@@ -219,8 +219,8 @@
                         <div class="great-content">
                             <h4>Save cost</h4>
                             <p>
-                                It’s much less expensive to hire contract AI talents vs permanent ones. <strong>BrainX does
-                                    not charge your business like HR agencies</strong> <br>&nbsp;
+                                It’s much cheaper to hire freelance AI talents than permanent ones. And no charge for
+                                clients. <br>&nbsp;
                             </p>
                         </div>
                     </div>
@@ -234,7 +234,7 @@
                         <div class="great-content">
                             <h4>Quality AI talents</h4>
                             <p>
-                                Access remote talents from famous companies. BrainX selects them carefully with criteria.
+                                Access remote talents globally. BrainX selects them carefully with criteria.
                                 <br>&nbsp;
                             </p>
                         </div>
@@ -247,7 +247,7 @@
                         </div>
                         <div class="great-content">
                             <h4>Save time</h4>
-                            <p>BrainX tries to match you to a suitable contract talent within 24h. <br>&nbsp;</p>
+                            <p>BrainX tries to match your project to a suitable AI talent within 24h. <br>&nbsp;</p>
                         </div>
                     </div>
                 </div>
@@ -339,7 +339,7 @@
                         <div class="great-content">
                             <h4>Post a project</h4>
                             <p>
-                                Send your AI project to our AI experts
+                                Send your AI project to our AI experts <br>&nbsp;
                             </p>
                         </div>
                     </div>
@@ -351,7 +351,7 @@
                         </div>
                         <div class="great-content">
                             <h4>Review</h4>
-                            <p>An AI expert reviews your project</p>
+                            <p>An AI expert reviews your project <br>&nbsp;</p>
                         </div>
                     </div>
                 </div>
