@@ -6,23 +6,23 @@
         <div class="media-img-wrap flex-shrink-0">
             <div class="avatar ">
                 @if ($action->sender_id == Auth::user()->id)
-                    
-                <img src="/assets/img/BrainX/AI-focused-profile.png" alt="User Image" class="avatar-img rounded-circle">
+                    <img src="/assets/img/BrainX/AI-focused-profile.png" alt="User Image"
+                        class="avatar-img rounded-circle">
                 @else
-
-                <img src="{{ $action->job->talent->talent->photo }}" alt="User Image" class="avatar-img rounded-circle">
+                    <img src="{{ $action->job->talent->talent->photo }}" alt="User Image"
+                        class="avatar-img rounded-circle">
                 @endif
-                
+
             </div>
         </div>
         <div class="media-body flex-grow-1">
-            <div class="d-flex">
-            <div class="user-name"> {{ ($action->sender_id == Auth::user()->id)? Auth::user()->name: $action->sender->name }} </div>
-            <div class="ms-3 user-status"> {{ $action->message->message }} </div>
-            </div>
-            
+            <div class="user-name">
+                {{ $action->sender_id == Auth::user()->id ? Auth::user()->name : $action->sender->name }} </div>
+            <div class="message"> {{ $action->message->message }} </div>
+
+
         </div>
     </div>
-    
-    
+
+
 </div>
