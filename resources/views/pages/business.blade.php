@@ -153,7 +153,7 @@
         </div>
     </section>
     <!-- /Home Banner -->
-    @if (false)
+    @if (1)
         <section class="section developer">
             <div class="container">
                 <div class="row">
@@ -162,24 +162,27 @@
                     </div>
                 </div>
                 <div id="developers-slider" class="owl-carousel owl-theme developers-slider aos" data-aos="fade-up">
-                    <div class="freelance-widget">
-                        <div class="freelance-content">
+                    @foreach ($talents as $talent)
+                        @if ($talent->talent->status == 'PUBLISHED')
+                            <div class="freelance-widget">
+                                <div class="freelance-content">
 
-                            <div class="freelance-img">
-                                <a href="developer-details.html">
-                                    <img src="https://media.licdn.com/dms/image/D5603AQHaDemYa2QfJw/profile-displayphoto-shrink_400_400/0/1673269388874?e=1690416000&v=beta&t=Id5G-6-LSsjMGG62nGt-u2R63qbeVKApRVo7ZUASGoI"
-                                        alt="User Image">
-                                    <span class="verified"><i class="fas fa-check-circle"></i></span>
-                                </a>
-                            </div>
-                            <div class="freelance-info">
-                                <h3><a href="developer-details.html">Tawsif Khan</a></h3>
-                                <div class="freelance-specific">AI Engineer</div>
-                                <div class="freelance-specific">Ex-Google</div>
+                                    <div class="freelance-img">
+                                        <a href="developer-details.html">
+                                            <img src="{{ $talent->talent->photo }}" alt="User Image">
+                                            <span class="verified"><i class="fas fa-check-circle"></i></span>
+                                        </a>
+                                    </div>
+                                    <div class="freelance-info">
+                                        <h3><a href="developer-details.html"> {{ $talent->name }} </a></h3>
+                                        <div class="freelance-specific">{{ $talent->talent->standout_job_title }}</div>
+                                        <div class="freelance-specific">{{ $talent->talent->ex_famouse_company }}</div>
 
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
+                        @endif
+                    @endforeach
 
                 </div>
             </div>
