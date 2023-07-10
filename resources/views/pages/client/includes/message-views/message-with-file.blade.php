@@ -21,8 +21,8 @@
                     {{ $action->sender_id == Auth::user()->id ? Auth::user()->name : $action->sender->name }} </div>
                 <div class="ms-3 user-status"> Send a file</div>
             </div>
-            <a href="{{ route('download.chat.file', $action->file->id) }}" class="text-primary fw-bold"
-                target="_blank">{{ $action->file->file_name }}</a>
+            <a href="{{ route('download.chat.file', $action->file->id) }}" class="text-primary fw-bold" target="_blank"
+                download>{{ $action->file->file_name }}</a>
         </div>
     </div>
 </div>
