@@ -153,41 +153,41 @@
         </div>
     </section>
     <!-- /Home Banner -->
-    @if (1)
-        <section class="section developer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 col-sm-12 col-12 mx-auto">
 
-                    </div>
-                </div>
-                <div id="developers-slider" class="owl-carousel owl-theme developers-slider aos" data-aos="fade-up">
-                    @foreach ($talents as $talent)
-                        @if ($talent->talent->status == 'PUBLISHED')
-                            <div class="freelance-widget">
-                                <div class="freelance-content">
-
-                                    <div class="freelance-img">
-                                        <a href="developer-details.html">
-                                            <img src="{{ $talent->talent->photo }}" alt="User Image">
-                                            <span class="verified"><i class="fas fa-check-circle"></i></span>
-                                        </a>
-                                    </div>
-                                    <div class="freelance-info">
-                                        <h3><a href="developer-details.html"> {{ $talent->name }} </a></h3>
-                                        <div class="freelance-specific">{{ $talent->talent->standout_job_title }}</div>
-                                        <div class="freelance-specific">{{ $talent->talent->ex_famouse_company }}</div>
-
-                                    </div>
-                                </div>
-                            </div>
-                        @endif
-                    @endforeach
+    <section class="section developer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-12 mx-auto">
 
                 </div>
             </div>
-        </section>
-    @endif
+            <div id="developers-slider" class="owl-carousel owl-theme developers-slider aos" data-aos="fade-up">
+                @foreach ($talents as $talent)
+                    @if ($talent->talent->status == 'PUBLISHED')
+                        <div class="freelance-widget">
+                            <div class="freelance-content">
+
+                                <div class="freelance-img">
+                                    <a href="developer-details.html">
+                                        <img src="{{ $talent->talent->photo }}" alt="User Image">
+                                        <span class="verified"><i class="fas fa-check-circle"></i></span>
+                                    </a>
+                                </div>
+                                <div class="freelance-info">
+                                    <h3><a href="developer-details.html"> {{ $talent->name }} </a></h3>
+                                    <div class="freelance-specific">{{ $talent->talent->standout_job_title }}</div>
+                                    <div class="freelance-specific">{{ $talent->talent->ex_famouse_company }}</div>
+
+                                </div>
+                            </div>
+                        </div>
+                    @endif
+                @endforeach
+
+            </div>
+        </div>
+    </section>
+
 
     <!-- Great About -->
     <section class="section great-about about-project">
