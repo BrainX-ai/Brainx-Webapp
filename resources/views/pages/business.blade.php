@@ -98,8 +98,7 @@
                             Build your AI products with global freelance AI talents
                         </h1>
 
-                        <p>BrainX is a freelance platform for developing your AI projects with the global network of
-                            quality AI talents.</p>
+                        <p>BrainX is a global freelance platform for building your AI products with quality AI talents.</p>
                         <div id="blog-slider1" class="owl-carousel owl-theme blog-slider aos between-slider"
                             data-aos="fade-up">
 

@@ -56,7 +56,7 @@
 
                         <p>BrainX is a freelance platform for developing your AI projects with the <b> global network of
                                 quality
-                                AI talents. </p>
+                                AI talents.</b> </p>
                         <span class="open-desktop">
 
                             <a class="btn" href="#" data-bs-toggle="modal" data-bs-target="#desktop-modal">
