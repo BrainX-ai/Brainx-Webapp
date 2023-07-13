@@ -61,6 +61,27 @@
                 display: block;
             }
         }
+
+        .sub-btn-demo {
+            /* background: #0B0D63; */
+            border-radius: 50px !important;
+            font-weight: bold;
+            border: 1px solid #0B0D63;
+            height: 52px;
+            margin: 9px;
+            margin-left: 0px;
+            font-size: 16px;
+            line-height: 18px;
+            padding: 10px 30px;
+            /* color: #fff; */
+            min-width: 172px;
+            transition: all 0.5s ease;
+            -moz-transition: all 0.5s ease;
+            -o-transition: all 0.5s ease;
+            -ms-transition: all 0.5s ease;
+            -webkit-transition: all 0.5s ease;
+            box-shadow: 3px 3px 3px #a2a2b5;
+        }
     </style>
     <!-- Start Navigation -->
 
@@ -74,11 +95,11 @@
 
 
                         <h1>
-                            Develop your AI projects with freelance AI talents
+                            Build your AI products with global freelance AI talents
                         </h1>
 
-                        <p>BrainX is a freelance platform for developing your AI projects with the <b>global network of
-                                quality AI talents.</b> </p>
+                        <p>BrainX is a freelance platform for developing your AI projects with the global network of
+                            quality AI talents.</p>
                         <div id="blog-slider1" class="owl-carousel owl-theme blog-slider aos between-slider"
                             data-aos="fade-up">
 
@@ -121,6 +142,11 @@
                                     data-bs-target="#client-signup" type="button">Post a project</button>
                             </a>
                         @endif
+                        <a class="btn join-us" href="https://calendly.com/hector-tan-brainx/brainx-discovery"
+                            target="_blank">
+                            <button class="btn btn-outline-primary sub-btn-demo " data-bs-toggle="modal"
+                                data-bs-target="#client-signup" type="button">Book a demo</button>
+                        </a>
                         <div class="col-md-6 col-sm-8 mt-4">
                             <img class="w-100" src="assets/img/BrainX/ms-badge.png" alt="">
                         </div>
