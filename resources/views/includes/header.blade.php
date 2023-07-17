@@ -15,6 +15,11 @@
     .active-page {
         text-decoration: underline;
     }
+
+    .img-fluid {
+        max-width: 70% !important;
+        height: auto;
+    }
 </style>
 <!-- Header -->
 <header class="header">
@@ -28,7 +33,8 @@
                 </span>
             </a>
             <a href="/" class="navbar-brand logo">
-                <img src="assets/img/BrainX_logo.png" class="img-fluid" alt="Logo">
+                <img src="assets/img/BrainX_logo.png" class="img-fluid" alt="Logo"><br>
+                <span class="h6">Sponsored by Microsoft</span>
             </a>
         </div>
         <div class="main-menu-wrapper">
@@ -48,7 +54,7 @@
                 </li>
             </ul>
         </div>
-        <ul class="nav header-navbar-rht reg-head pe-5">
+        <ul class="nav header-navbar-rht reg-head pt-3 pe-5">
 
             <li class="submenu">
                 <a href="/" class="@if (Request::is('/')) active-page @endif">For Business </a>
