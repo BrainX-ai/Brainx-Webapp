@@ -34,7 +34,7 @@
             </a>
             <a href="/" class="navbar-brand logo">
                 <img src="assets/img/BrainX_logo.png" class="img-fluid" alt="Logo"><br>
-                <span class="h6">Sponsored by Microsoft</span>
+                <span class="h6 p-2">Sponsored by Microsoft</span>
             </a>
         </div>
         <div class="main-menu-wrapper">

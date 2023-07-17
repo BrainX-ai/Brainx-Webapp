@@ -898,7 +898,7 @@ Version      : 1.0
             items: 5,
             margin: 30,
             dots: false,
-            nav: true,
+            nav: false,
             smartSpeed: 2000,
             autoplay: true,
             loop: true,

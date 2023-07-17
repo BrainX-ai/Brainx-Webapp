@@ -144,14 +144,15 @@
                         @endif
 
                         <div class="col-md-12 mt-4 ">
-                            <button class="btn rounded-pill btn-outline-dark m-1 shadow">AI API integration</button>
-                            <button class="btn rounded-pill btn-outline-dark m-1 shadow ">ChatGPT for customer
+                            <button class="btn btn-sm rounded-pill btn-outline-dark m-1 shadow">AI API integration</button>
+                            <button class="btn btn-sm rounded-pill btn-outline-dark m-1 shadow ">ChatGPT for customer
                                 service</button>
-                            <button class="btn rounded-pill btn-outline-dark m-1 shadow">Chatbot</button>
-                            <button class="btn rounded-pill btn-outline-dark m-1 shadow">GenerativeAI langualge
+                            <button class="btn btn-sm rounded-pill btn-outline-dark m-1 shadow">Chatbot</button>
+                            <button class="btn btn-sm rounded-pill btn-outline-dark m-1 shadow">GenerativeAI language
                                 tutor</button>
-                            <button class="btn rounded-pill btn-outline-dark m-1  shadow">Employee face recognition</button>
-                            <button class="btn rounded-pill btn-outline-dark m-1 shadow">Model customization</button>
+                            <button class="btn btn-sm rounded-pill btn-outline-dark m-1  shadow">Employee face
+                                recognition</button>
+                            <button class="btn btn-sm rounded-pill btn-outline-dark m-1 shadow">Model customization</button>
                         </div>
                     </div>
                 </div>
