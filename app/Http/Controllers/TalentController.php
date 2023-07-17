@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\AssessmentCateory;
+use App\Models\User;
 
 class TalentController extends Controller
 {
@@ -34,8 +36,6 @@ class TalentController extends Controller
      */
     public function store(Request $request)
     {
-        
-        
     }
 
     /**
@@ -84,10 +84,20 @@ class TalentController extends Controller
     }
 
 
-    public function getProfileBuilder(){
+    public function getProfileBuilder()
+    {
         $user = Auth::guard()->user();
-        
-        return redirect('/build-profile')->with(['user'=> $user]);
+
+        return redirect('/build-profile')->with(['user' => $user]);
     }
 
+    public function showTalentProfile($id)
+    {
+        $id = decrypt($id);
+
+        $user = User::with('talent')->with('experiences')->with('educations')->find($id);
+        $assessmentCategories = []; //AssessmentCateory::with('result')->get();
+
+        return view('pages.client.pages.talent-profile')->with('user', $user)->with('assessmentCategories', $assessmentCategories);
+    }
 }

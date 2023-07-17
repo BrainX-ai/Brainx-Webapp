@@ -34,6 +34,7 @@ Route::get('/terms-of-service', function () {
 });
 Route::get('/pending', 'App\http\controllers\TalentProfileController@showPendingPage')->name('talent.pending');
 
+Route::get('/view-talent-profile/{id}', 'App\http\controllers\TalentController@showTalentProfile')->name('show.talent.profile');
 
 Route::get('/job-details/{id}', 'App\http\controllers\JobController@jobDetails')->name('talent.job.details');
 Route::get('/job-details', 'App\http\controllers\JobController@jobDetail')->name('talent.job.detail');

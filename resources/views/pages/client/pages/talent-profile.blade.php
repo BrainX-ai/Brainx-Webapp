@@ -29,6 +29,7 @@
             font-weight: 700;
             padding: 0px 15px;
         }
+
         li {
             list-style: none;
         }
@@ -69,14 +70,14 @@
                                                 id="ex-famous-company">{{ $user->talent->ex_famouse_company }}</span>
                                         </div>
                                     @endif
-                                    <div class="col-md-4 p-2">
+                                    {{-- <div class="col-md-4 p-2">
                                         @if ($user->talent->brainx_assessment)
                                             <i class="material-icons mb-1">check_circle</i>
                                         @else
                                             <i class="material-icons mb-1 text-danger">close</i>
                                         @endif
                                         <span id="assesment">BrainX Skill Assessment</span>
-                                    </div>
+                                    </div> --}}
                                     <div class="col-md-4 p-2">
 
                                         <i class="material-icons mb-1">schedule</i> <span
@@ -108,7 +109,7 @@
                                     <h4 class="text-primary">Strength points</h4>
                                     <div class="col-md-12 p-2">
                                         @php
-                                        $skills = [];
+                                            $skills = [];
                                             foreach ($user->talent->skill as $skill) {
                                                 $skills[$skill->skill->category->category_name][] = $skill->skill->skill_name;
                                             }
@@ -136,54 +137,58 @@
                             </div>
                         </section>
 
-                        <section>
-                            <div class="row border m-5 p-5">
-                                <h4 class="text-primary">
-                                    BrainX Skill Assessment
-                                </h4>
-                                <div class="row mt-4">
-                                    <div class="col-md-12">
+                        @if (false)
+                            <section>
+                                <div class="row border m-5 p-5">
+                                    <h4 class="text-primary">
+                                        BrainX Skill Assessment
+                                    </h4>
+                                    <div class="row mt-4">
+                                        <div class="col-md-12">
 
-                                        <ul>
-                                            @foreach ($assessmentCategories as $assessmentCategory)
-                                                <li >
-                                                    
-                                                    <div class="d-flex justify-space-between skillset-list pt-2" >
-                                                       
-                                                    
-                                                        <div class="d-flex justify-content-start">
+                                            <ul>
+                                                @foreach ($assessmentCategories as $assessmentCategory)
+                                                    <li>
 
-                                                        @if ($user->talent->brainx_assessment || (sizeof($assessmentCategory->result) && $assessmentCategory->result[0]->remarks == 'PASSED'))
-                                                        <i class="material-icons mb-1 close text-primary me-2 mt-1">check_circle</i>
-                                                        @else
+                                                        <div class="d-flex justify-space-between skillset-list pt-2">
 
-                                                        <i class="material-icons mb-1 text-danger mt-1 me-2 close">close</i>
-                                                        @endif
-                                                            
-                                                        <div>
-                                                            <h5>{{ $assessmentCategory->category_name }}</h5>
-                                                            <strong>
-                                                                <p>45-min tested topics: Python, ML, Computer Vision, NLP  (Developed by our PhD in AI)</p>
-                                                            </strong>
+
+                                                            <div class="d-flex justify-content-start">
+
+                                                                @if (
+                                                                    $user->talent->brainx_assessment ||
+                                                                        (sizeof($assessmentCategory->result) && $assessmentCategory->result[0]->remarks == 'PASSED'))
+                                                                    <i
+                                                                        class="material-icons mb-1 close text-primary me-2 mt-1">check_circle</i>
+                                                                @else
+                                                                    <i
+                                                                        class="material-icons mb-1 text-danger mt-1 me-2 close">close</i>
+                                                                @endif
+
+                                                                <div>
+                                                                    <h5>{{ $assessmentCategory->category_name }}</h5>
+                                                                    <strong>
+                                                                        <p>45-min tested topics: Python, ML, Computer
+                                                                            Vision, NLP (Developed by our PhD in AI)</p>
+                                                                    </strong>
+                                                                </div>
+                                                            </div>
+
+                                                            @if (sizeof($assessmentCategory->result) && $assessmentCategory->result[0]->remarks == 'FAILED')
+                                                                <div><span class="badge bg-danger">Unsuccessful</span></div>
+                                                            @endif
                                                         </div>
-                                                    </div>
-                                                    
-                                                    @if (sizeof($assessmentCategory->result) && $assessmentCategory->result[0]->remarks == 'FAILED')
-                                                     <div><span class="badge bg-danger">Unsuccessful</span></div>
-                                                    
-                                                    @endif
-                                                    </div>
-                                                </li>
-                                            @endforeach
+                                                    </li>
+                                                @endforeach
 
-                                        </ul>
+                                            </ul>
+
+                                        </div>
 
                                     </div>
-
                                 </div>
-                            </div>
-                        </section>
-
+                            </section>
+                        @endif
 
                         <section>
                             <div class="row border m-5">

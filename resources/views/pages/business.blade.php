@@ -62,9 +62,9 @@
             }
         }
 
-        .sub-btn-demo {
+        .banner-content .sub-btn {
             /* background: #0B0D63; */
-            border-radius: 50px !important;
+            border-radius: 5px !important;
             font-weight: bold;
             border: 1px solid #0B0D63;
             height: 52px;
@@ -98,7 +98,8 @@
                             Build your AI products with global freelance AI talents
                         </h1>
 
-                        <p>BrainX is a global freelance platform for building your AI products with quality AI talents.</p>
+                        <p>BrainX is a freelance platform for building your AI products with global network of quality AI
+                            talents. </p>
                         <div id="blog-slider1" class="owl-carousel owl-theme blog-slider aos between-slider"
                             data-aos="fade-up">
 
@@ -141,32 +142,55 @@
                                     data-bs-target="#client-signup" type="button">Post a project</button>
                             </a>
                         @endif
-                        <a class="btn join-us" href="https://calendly.com/hector-tan-brainx/brainx-discovery"
-                            target="_blank">
-                            <button class="btn btn-outline-primary sub-btn-demo " data-bs-toggle="modal"
-                                data-bs-target="#client-signup" type="button">Book a demo</button>
-                        </a>
-                        <div class="col-md-6 col-sm-8 mt-4">
-                            <img class="w-100" src="assets/img/BrainX/ms-badge.png" alt="">
+
+                        <div class="col-md-12 mt-4 ">
+                            <button class="btn rounded-pill btn-outline-dark m-1">AI API integration</button>
+                            <button class="btn rounded-pill btn-outline-dark m-1">ChatGPT for customer service</button>
+                            <button class="btn rounded-pill btn-outline-dark m-1">Chatbot</button>
+                            <button class="btn rounded-pill btn-outline-dark m-1">GenerativeAI langualge tutor</button>
+                            <button class="btn rounded-pill btn-outline-dark m-1">Employee face recognition</button>
+                            <button class="btn rounded-pill btn-outline-dark m-1">Model customization</button>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4 col-lg-5">
 
-                    <div id="blog-slider" class="owl-carousel owl-theme blog-slider aos" data-aos="fade-up">
+                    {{-- <div id="blog-slider" class="owl-carousel owl-theme blog-slider aos" data-aos="fade-up">
                         <div class="grid-blog blog-two aos" data-aos="fade-up">
-                            <div class="banner-img aos text-center" data-aos="fade-up">
-                                <img src="assets/img/imgpsh_fullsize_anim.png" class="img-fluid hero-img" alt="banner">
-                                <div class="blurry">
+                            <div class="banner-img aos text-center" data-aos="fade-up"> --}}
+                    <div id="developers-slider1" class="owl-carousel owl-theme developers-slider aos" data-aos="fade-up">
+                        @foreach ($talents as $talent)
+                            @if (isset($talent->talent) && $talent->talent->status == 'PUBLISHED')
+                                <div class="freelance-widget border-0">
+                                    <div class="freelance-content">
 
+                                        <div class="freelance-img">
+                                            <a href="developer-details.html">
+                                                <img src="{{ $talent->talent->photo }}" alt="User Image">
+                                                <span class="verified"><i class="fas fa-check-circle"></i></span>
+                                            </a>
+                                        </div>
+                                        <div class="freelance-info">
+                                            <h3><a href="developer-details.html"> {{ $talent->name }} </a></h3>
+                                            <div class="freelance-specific">
+                                                {{ $talent->talent->standout_job_title }}</div>
+                                            <div class="text-bold">
+                                                <strong>{{ (int) $talent->talent->hourly_rate }}$/hour</strong>
+                                            </div>
+                                            <div class="freelance-specific">{{ $talent->talent->country }}</div>
+                                            <div class="mt-3">
+                                                <a class="btn btn-primary"
+                                                    href="{{ route('show.talent.profile', encrypt($talent->id)) }}">View</a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="freelance-info text-center">
-                                    <h3 class="mt-2 text-primary">Vinh Dang PhD</h3>
-                                    <h4 class="freelance-specific"><strong>Senior data scientist - Vietnam</strong></h4>
-                                    <h6>Current - VNG & RMIT lecturer </h6>
-                                </div>
+                            @endif
+                        @endforeach
+
+                        {{-- </div>
                             </div>
-                        </div>
+                        </div> --}}
 
 
                     </div>
@@ -178,6 +202,79 @@
         </div>
     </section>
     <!-- /Home Banner -->
+
+
+    <!-- Great About -->
+    <section class="section great-about about-project">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-12 mx-auto">
+                    <div class="section-header section-header-two aos" data-aos="fade-up">
+                        <h2 class="header-title">Why businesses go to BrainX?</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-6 col-md-6">
+                    <div class="great-blk aos boxes-shadow" data-aos="fade-up">
+                        <div class="great-icon">
+                            <img src="assets/img/BrainX/Selective-AI-talents.png" alt="">
+                        </div>
+                        <div class="great-content">
+                            <h4>1. Specialize in freelance AI services</h4>
+                            <p>
+                                Global pool of AI talents with variety of AI skills: NLP, computer vision, generativeAI,...
+                                <br>&nbsp;
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-md-6">
+                    <div class="great-blk aos boxes-shadow" data-aos="fade-up">
+                        <div class="great-icon">
+                            <img src="assets/img/BrainX/No-1st-month-salary.png" alt="">
+                        </div>
+                        <div class="great-content">
+                            <h4>2. Hire AI talents at an affordable cost</h4>
+                            <p>
+                                Unlock AI power and transform your business with freelance AI workforce.
+                                <br>&nbsp;<br>&nbsp;
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-6 col-md-6">
+                    <div class="great-blk aos boxes-shadow" data-aos="fade-up">
+                        <div class="great-icon">
+                            <img src="assets/img/BrainX/Save-time.png" alt="">
+                        </div>
+                        <div class="great-content">
+                            <h4>3. Save your time</h4>
+                            <p>
+                                With support of our AI expert, you will be matched to a suitable AI talent within 24h.
+                                <br>&nbsp;
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-md-6">
+                    <div class="great-blk aos boxes-shadow" data-aos="fade-up">
+                        <div class="great-icon">
+                            <img src="assets/img/BrainX/SuitableAItalentstoyourbusiness.png" alt="">
+                        </div>
+                        <div class="great-content">
+                            <h4>4. Remote collaboration tools</h4>
+                            <p>Work with your freelancer via chat, contract creation and escrow service.
+                                <br>&nbsp;<br>&nbsp;
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 
     <section class="section developer">
         <div class="container">
@@ -204,7 +301,10 @@
                                     <div class="text-bold"><strong>{{ (int) $talent->talent->hourly_rate }}$/hour</strong>
                                     </div>
                                     <div class="freelance-specific">{{ $talent->talent->country }}</div>
-
+                                    <div class="mt-3">
+                                        <a class="btn btn-primary"
+                                            href="{{ route('show.talent.profile', encrypt($talent->id)) }}">View</a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -215,75 +315,6 @@
         </div>
     </section>
 
-
-    <!-- Great About -->
-    <section class="section great-about about-project">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12 col-sm-12 col-12 mx-auto">
-                    <div class="section-header section-header-two aos" data-aos="fade-up">
-                        <h2 class="header-title">Why BrainX?</h2>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xl-6 col-md-6">
-                    <div class="great-blk aos boxes-shadow" data-aos="fade-up">
-                        <div class="great-icon">
-                            <img src="assets/img/BrainX/SuitableAItalentstoyourbusiness.png" alt="">
-                        </div>
-                        <div class="great-content">
-                            <h4>Collaboration tools</h4>
-                            <p>
-                                BrainX provide chat, contract creation and escrow service.
-                                <br>&nbsp;<br>&nbsp;
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-md-6">
-                    <div class="great-blk aos boxes-shadow" data-aos="fade-up">
-                        <div class="great-icon">
-                            <img src="assets/img/BrainX/No-1st-month-salary.png" alt="">
-                        </div>
-                        <div class="great-content">
-                            <h4>Save cost</h4>
-                            <p>
-                                It’s much cheaper to hire freelance AI talents than permanent ones. And no charge for
-                                clients. <br>&nbsp;
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xl-6 col-md-6">
-                    <div class="great-blk aos boxes-shadow" data-aos="fade-up">
-                        <div class="great-icon">
-                            <img src="assets/img/BrainX/Selective-AI-talents.png" alt="">
-                        </div>
-                        <div class="great-content">
-                            <h4>Quality AI talents</h4>
-                            <p>
-                                Access remote talents globally. BrainX selects them carefully with criteria.
-                                <br>&nbsp;
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-6 col-md-6">
-                    <div class="great-blk aos boxes-shadow" data-aos="fade-up">
-                        <div class="great-icon">
-                            <img src="assets/img/BrainX/Save-time.png" alt="">
-                        </div>
-                        <div class="great-content">
-                            <h4>Save time</h4>
-                            <p>BrainX tries to match your project to a suitable AI talent within 24h. <br>&nbsp;</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- /Great About -->
     <section class="great-about text-center">
