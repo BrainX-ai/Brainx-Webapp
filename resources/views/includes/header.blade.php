@@ -1,19 +1,20 @@
 <style>
-   .has-submenu a{
-    color: #000;
-    border-bottom: #0B0D63;
-   }
+    .has-submenu a {
+        color: #000;
+        border-bottom: #0B0D63;
+    }
 
-   .has-submenu a:active{
-    color: #0B0D63;
-   }
-   .bar-icon span{
-    background-color: #0B0D63;
-   }
+    .has-submenu a:active {
+        color: #0B0D63;
+    }
 
-   .active-page{
-    text-decoration: underline;
-   }
+    .bar-icon span {
+        background-color: #0B0D63;
+    }
+
+    .active-page {
+        text-decoration: underline;
+    }
 </style>
 <!-- Header -->
 <header class="header">
@@ -40,36 +41,43 @@
                 </a>
             </div>
             <ul class="main-nav">
-                <li class="submenu">
-                    <a href="/" class="@if(Request::is('/')) active-page @endif">For Business </a>
-                </li>
-                <li class="submenu">
-                    <a href="/talent" class="@if(Request::is('talent')) active-page @endif">For AI Talent</a>
-                </li> 
+
                 <li class="has-submenu fade" style="width: 200px">
                 </li>
-                <li class="has-submenu fade" style="width: 100px">                                        
+                <li class="has-submenu fade" style="width: 100px">
                 </li>
             </ul>
-        </div>		 
+        </div>
         <ul class="nav header-navbar-rht reg-head pe-5">
+
+            <li class="submenu">
+                <a href="/" class="@if (Request::is('/')) active-page @endif">For Business </a>
+            </li>
+            <li class="submenu">
+                <a href="/talent" class="@if (Request::is('talent')) active-page @endif">For AI Talent</a>
+            </li>
+            <li>
+                <a class="btn join-us" href="https://calendly.com/hector-tan-brainx/brainx-discovery" target="_blank">
+                    Book a demo
+                </a>
+            </li>
             @if (Auth::user() != null)
-                @if(Auth::user()->role == 'Client')											
-                <li><a href="{{ route('client.job.detail') }}" class="reg-btn"> Dashboard</a></li>
-                @elseif(Auth::user()->role == 'Talent')		
-                <li><a href="{{ route('build.profile') }}" class="reg-btn"> Dashboard</a></li>
+                @if (Auth::user()->role == 'Client')
+                    <li><a href="{{ route('client.job.detail') }}" class="reg-btn"> Dashboard</a></li>
+                @elseif(Auth::user()->role == 'Talent')
+                    <li><a href="{{ route('build.profile') }}" class="reg-btn"> Dashboard</a></li>
                 @else
-                <li><a href="{{ route('admin.dashboard') }}" class="reg-btn"> Dashboard</a></li>
+                    <li><a href="{{ route('admin.dashboard') }}" class="reg-btn"> Dashboard</a></li>
                 @endif
             @endif
-
             @if (Auth::guard()->user() == null && Request::is('talent'))
-            <li><a href="{{ url('auth/linkedin') }}" data-bs-toggle="modal" data-bs-target="#login-modal" class="log-btn"><img src="assets/img/icon/lock-icon.svg" class="me-2" alt="icon"> Login</a></li>
-                
+                <li><a href="{{ url('auth/linkedin') }}" data-bs-toggle="modal" data-bs-target="#login-modal"
+                        class="log-btn"><img src="assets/img/icon/lock-icon.svg" class="me-2" alt="icon">
+                        Login</a></li>
             @endif
             @if (Auth::guard()->user() == null && Request::is('/'))
-            <li><a href="#" data-bs-toggle="modal" data-bs-target="#client-signin" class="log-btn"><img src="assets/img/icon/lock-icon.svg" class="me-2" alt="icon"> Login</a></li>
-                
+                <li><a href="#" data-bs-toggle="modal" data-bs-target="#client-signin" class="log-btn"><img
+                            src="assets/img/icon/lock-icon.svg" class="me-2" alt="icon"> Login</a></li>
             @endif
             {{-- <li><a href="post-project.html" class="login-btn">Post a Project </a></li> --}}
         </ul>
