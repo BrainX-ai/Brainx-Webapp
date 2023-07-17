@@ -144,12 +144,14 @@
                         @endif
 
                         <div class="col-md-12 mt-4 ">
-                            <button class="btn rounded-pill btn-outline-dark m-1">AI API integration</button>
-                            <button class="btn rounded-pill btn-outline-dark m-1">ChatGPT for customer service</button>
-                            <button class="btn rounded-pill btn-outline-dark m-1">Chatbot</button>
-                            <button class="btn rounded-pill btn-outline-dark m-1">GenerativeAI langualge tutor</button>
-                            <button class="btn rounded-pill btn-outline-dark m-1">Employee face recognition</button>
-                            <button class="btn rounded-pill btn-outline-dark m-1">Model customization</button>
+                            <button class="btn rounded-pill btn-outline-dark m-1 shadow">AI API integration</button>
+                            <button class="btn rounded-pill btn-outline-dark m-1 shadow ">ChatGPT for customer
+                                service</button>
+                            <button class="btn rounded-pill btn-outline-dark m-1 shadow">Chatbot</button>
+                            <button class="btn rounded-pill btn-outline-dark m-1 shadow">GenerativeAI langualge
+                                tutor</button>
+                            <button class="btn rounded-pill btn-outline-dark m-1  shadow">Employee face recognition</button>
+                            <button class="btn rounded-pill btn-outline-dark m-1 shadow">Model customization</button>
                         </div>
                     </div>
                 </div>
@@ -179,7 +181,7 @@
                                             </div>
                                             <div class="freelance-specific">{{ $talent->talent->country }}</div>
                                             <div class="mt-3">
-                                                <a class="btn btn-primary"
+                                                <a class="btn btn-outline-primary rounded-pill"
                                                     href="{{ route('show.talent.profile', encrypt($talent->id)) }}">View</a>
                                             </div>
                                         </div>
@@ -218,7 +220,7 @@
                 <div class="col-xl-6 col-md-6">
                     <div class="great-blk aos boxes-shadow" data-aos="fade-up">
                         <div class="great-icon">
-                            <img src="assets/img/BrainX/Selective-AI-talents.png" alt="">
+                            <img src="assets/img/BrainX/Specialize-in-freelance-AI-service.png" alt="">
                         </div>
                         <div class="great-content">
                             <h4>1. Specialize in freelance AI services</h4>
@@ -275,6 +277,25 @@
         </div>
     </section>
 
+    <!-- /Great About -->
+    <section class="great-about text-center">
+        <span class="open-desktop pt-0">
+            <a class="btn" href="#" data-bs-toggle="modal" data-bs-target="#desktop-modal">
+                <button class="btn btn-primary sub-btn boxes-shadow " type="button">Post a project</button>
+            </a>
+        </span>
+        @if (Auth::guard()->user() == null)
+            <a class="btn join-us">
+                <button class="btn btn-primary sub-btn boxes-shadow join-us" data-bs-toggle="modal"
+                    data-bs-target="#client-signup" type="button">Post a project</button>
+            </a>
+        @else
+            <a class="btn join-us">
+                <button class="btn btn-primary sub-btn boxes-shadow join-us" data-bs-toggle="modal"
+                    data-bs-target="#client-signup" type="button">Post a project</button>
+            </a>
+        @endif
+    </section>
 
     <section class="section developer">
         <div class="container">
@@ -290,7 +311,7 @@
                             <div class="freelance-content">
 
                                 <div class="freelance-img">
-                                    <a href="developer-details.html">
+                                    <a>
                                         <img src="{{ $talent->talent->photo }}" alt="User Image">
                                         <span class="verified"><i class="fas fa-check-circle"></i></span>
                                     </a>
@@ -316,70 +337,53 @@
     </section>
 
 
-    <!-- /Great About -->
-    <section class="great-about text-center">
-        <span class="open-desktop pt-0">
-            <a class="btn" href="#" data-bs-toggle="modal" data-bs-target="#desktop-modal">
-                <button class="btn btn-primary sub-btn boxes-shadow " type="button">Post a project</button>
-            </a>
-        </span>
-        @if (Auth::guard()->user() == null)
-            <a class="btn join-us">
-                <button class="btn btn-primary sub-btn boxes-shadow join-us" data-bs-toggle="modal"
-                    data-bs-target="#client-signup" type="button">Post a project</button>
-            </a>
-        @else
-            <a class="btn join-us">
-                <button class="btn btn-primary sub-btn boxes-shadow join-us" data-bs-toggle="modal"
-                    data-bs-target="#client-signup" type="button">Post a project</button>
-            </a>
-        @endif
-    </section>
 
-    <section class="section  great-about ">
-        <div class="about-position">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 col-sm-12 col-12 mx-auto">
-                        <div class="section-header section-header-two aos" data-aos="fade-up">
-                            <h2 class="header-title">AI services</h2>
-                        </div>
-                    </div>
-                </div>
-                <div class="row justify-content-center text-left">
-                    <div class="col-md-6 d-flex ">
-                        <div class="about-it-blk aos boxes-shadow" data-aos="fade-up">
-                            <div class="about-it-img">
-                                <a href="javascript:;"><img class="img-fluid" src="assets/img/BrainX/Consult.png"
-                                        alt=""></a>
-                            </div>
-                            <div class="about-it-content ">
-                                <h4>Hourly rate</h4>
-                                <p>Hire remote contract AI talents for fixed periods of time and pay in hourly rate</p>
 
+    @if (false)
+        <section class="section  great-about ">
+            <div class="about-position">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-12 mx-auto">
+                            <div class="section-header section-header-two aos" data-aos="fade-up">
+                                <h2 class="header-title">AI services</h2>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 d-flex">
-                        <div class="about-it-blk aos boxes-shadow" data-aos="fade-up">
-                            <div class="about-it-img">
-                                <a href="javascript:;"><img class="img-fluid" src="assets/img/BrainX/Development.png"
-                                        alt=""></a>
-                            </div>
-                            <div class="about-it-content text-left">
-                                <h4>Fixed price</h4>
-                                <p>
-                                    Outsource AI projects to freelancers and pay them in a fixed price
-                                </p>
+                    <div class="row justify-content-center text-left">
+                        <div class="col-md-6 d-flex ">
+                            <div class="about-it-blk aos boxes-shadow" data-aos="fade-up">
+                                <div class="about-it-img">
+                                    <a href="javascript:;"><img class="img-fluid" src="assets/img/BrainX/Consult.png"
+                                            alt=""></a>
+                                </div>
+                                <div class="about-it-content ">
+                                    <h4>Hourly rate</h4>
+                                    <p>Hire remote contract AI talents for fixed periods of time and pay in hourly rate</p>
 
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 d-flex">
+                            <div class="about-it-blk aos boxes-shadow" data-aos="fade-up">
+                                <div class="about-it-img">
+                                    <a href="javascript:;"><img class="img-fluid" src="assets/img/BrainX/Development.png"
+                                            alt=""></a>
+                                </div>
+                                <div class="about-it-content text-left">
+                                    <h4>Fixed price</h4>
+                                    <p>
+                                        Outsource AI projects to freelancers and pay them in a fixed price
+                                    </p>
+
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
+        </section>
+    @endif
 
 
     <section class="section great-about mt-4">
@@ -434,10 +438,24 @@
         </div>
     </section>
 
-    <section class="great-about text-center mb-5">
-        <a href="#" data-bs-toggle="modal" data-bs-target="#add-feedback"
-            class="btn btn-primary sub-btn boxes-shadow"> Give a feedback</a>
-
+    <!-- /Great About -->
+    <section class="great-about text-center">
+        <span class="open-desktop pt-0">
+            <a class="btn" href="#" data-bs-toggle="modal" data-bs-target="#desktop-modal">
+                <button class="btn btn-primary sub-btn boxes-shadow " type="button">Get started</button>
+            </a>
+        </span>
+        @if (Auth::guard()->user() == null)
+            <a class="btn join-us">
+                <button class="btn btn-primary sub-btn boxes-shadow join-us" data-bs-toggle="modal"
+                    data-bs-target="#client-signup" type="button">Get started</button>
+            </a>
+        @else
+            <a class="btn join-us">
+                <button class="btn btn-primary sub-btn boxes-shadow join-us" data-bs-toggle="modal"
+                    data-bs-target="#client-signup" type="button">Get started</button>
+            </a>
+        @endif
     </section>
 
 

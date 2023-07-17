@@ -900,11 +900,6 @@ Version      : 1.0
             dots: false,
             nav: true,
             smartSpeed: 2000,
-            navText: [
-                '<i class="fas fa-chevron-left"></i>',
-                '<i class="fas fa-chevron-right"></i>',
-            ],
-            next: true,
             autoplay: true,
             loop: true,
             responsiveClass: true,
