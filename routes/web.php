@@ -22,7 +22,7 @@ Route::get('/talent', function () {
 })->name('talent.home');
 Route::get('/', function () {
 
-    $publishedTalents = User::with('talent')->where('role', 'Talent')->get();
+    $publishedTalents = User::with('talent')->where('role', 'Talent')->orderBy('id', 'DESC')->get();
 
     return view('pages.business')->with('talents', $publishedTalents);
 })->name('home');
