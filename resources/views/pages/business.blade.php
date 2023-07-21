@@ -82,6 +82,14 @@
             -webkit-transition: all 0.5s ease;
             box-shadow: 3px 3px 3px #a2a2b5;
         }
+
+        @media only screen and (max-width: 767.98px) {
+
+            #developer-slider1.owl-carousel.owl-loaded,
+            .mob-slider {
+                display: block !important;
+            }
+        }
     </style>
     <!-- Start Navigation -->
 
@@ -100,24 +108,43 @@
 
                         <p>BrainX is a freelance platform for building your AI products with global network of quality AI
                             talents. </p>
-                        <div id="blog-slider1" class="owl-carousel owl-theme blog-slider aos between-slider"
+                        <div id="blog-slider1" class="owl-carousel owl-theme blog-slider aos between-slider "
                             data-aos="fade-up">
 
                             <div class="grid-blog blog-two aos">
                                 <div class="banner-img aos text-center">
-                                    <div class="text-center ps-5 ms-2">
+                                    <div id="developers-slider1"
+                                        class="owl-carousel owl-theme developers-slider aos mob-slider" data-aos="fade-up">
+                                        @foreach ($talents as $talent)
+                                            @if (isset($talent->talent) && $talent->talent->status == 'PUBLISHED')
+                                                <div class="freelance-widget border-0">
+                                                    <div class="freelance-content">
 
-                                        <img src="assets/img/imgpsh_fullsize_anim.png" class="img-fluid hero-img"
-                                            alt="banner">
-
-                                    </div>
-                                    <div class="blurry">
-                                    </div>
-                                    <div class="freelance-info text-center">
-                                        <h3 class="mt-2 text-primary">Vinh Dang PhD</h3>
-                                        <h4 class="freelance-specific"><strong>Senior data scientist - Vietnam</strong></h4>
-                                        <h5>Current - VNG & RMIT lecturer </h5>
-
+                                                        <div class="freelance-img">
+                                                            <a>
+                                                                <img src="{{ $talent->talent->photo }}" alt="User Image">
+                                                                <span class="verified"><i
+                                                                        class="fas fa-check-circle"></i></span>
+                                                            </a>
+                                                        </div>
+                                                        <div class="freelance-info">
+                                                            <h3><a> {{ $talent->name }} </a></h3>
+                                                            <div class="freelance-specific">
+                                                                {{ $talent->talent->standout_job_title }}</div>
+                                                            <div class="text-bold">
+                                                                <strong>{{ (int) $talent->talent->hourly_rate }}$/hour</strong>
+                                                            </div>
+                                                            <div class="freelance-specific">{{ $talent->talent->country }}
+                                                            </div>
+                                                            {{-- <div class="mt-3">
+                                                                <a class="btn btn-outline-primary rounded-pill"
+                                                                    href="{{ route('show.talent.profile', encrypt($talent->id)) }}">View</a>
+                                                            </div> --}}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @endforeach
                                     </div>
                                 </div>
                             </div>
@@ -126,8 +153,8 @@
                         </div>
 
                         <span class="open-desktop text-center">
-                            <a class="btn" href="#" data-bs-toggle="modal" data-bs-target="#desktop-modal">
-                                <button class="btn btn-primary sub-btn " type="submit">Post a project</button>
+                            <a class="btn" href="#" data-bs-toggle="modal" data-bs-target="#client-signup">
+                                <button class="btn btn-primary sub-btn " type="submit">Get started</button>
                             </a>
                         </span>
 
@@ -161,20 +188,20 @@
                     {{-- <div id="blog-slider" class="owl-carousel owl-theme blog-slider aos" data-aos="fade-up">
                         <div class="grid-blog blog-two aos" data-aos="fade-up">
                             <div class="banner-img aos text-center" data-aos="fade-up"> --}}
-                    <div id="developers-slider1" class="owl-carousel owl-theme developers-slider aos" data-aos="fade-up">
+                    <div id="developers-slider2" class="owl-carousel owl-theme developers-slider aos" data-aos="fade-up">
                         @foreach ($talents as $talent)
                             @if (isset($talent->talent) && $talent->talent->status == 'PUBLISHED')
                                 <div class="freelance-widget border-0">
                                     <div class="freelance-content">
 
                                         <div class="freelance-img">
-                                            <a href="developer-details.html">
+                                            <a>
                                                 <img src="{{ $talent->talent->photo }}" alt="User Image">
                                                 <span class="verified"><i class="fas fa-check-circle"></i></span>
                                             </a>
                                         </div>
                                         <div class="freelance-info">
-                                            <h3><a href="developer-details.html"> {{ $talent->name }} </a></h3>
+                                            <h3><a> {{ $talent->name }} </a></h3>
                                             <div class="freelance-specific">
                                                 {{ $talent->talent->standout_job_title }}</div>
                                             <div class="text-bold">
@@ -281,8 +308,8 @@
     <!-- /Great About -->
     <section class="great-about text-center">
         <span class="open-desktop pt-0">
-            <a class="btn" href="#" data-bs-toggle="modal" data-bs-target="#desktop-modal">
-                <button class="btn btn-primary sub-btn boxes-shadow " type="button">Post a project</button>
+            <a class="btn" href="#" data-bs-toggle="modal" data-bs-target="#client-signup">
+                <button class="btn btn-primary sub-btn boxes-shadow " type="button">Get started</button>
             </a>
         </span>
         @if (Auth::guard()->user() == null)
@@ -442,7 +469,7 @@
     <!-- /Great About -->
     <section class="great-about text-center">
         <span class="open-desktop pt-0">
-            <a class="btn" href="#" data-bs-toggle="modal" data-bs-target="#desktop-modal">
+            <a class="btn" href="#" data-bs-toggle="modal" data-bs-target="#client-signup">
                 <button class="btn btn-primary sub-btn boxes-shadow " type="button">Get started</button>
             </a>
         </span>

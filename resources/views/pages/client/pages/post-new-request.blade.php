@@ -70,8 +70,46 @@
         #cke_2_bottom {
             display: none;
         }
+
+        .use-desktop {
+            display: none;
+        }
+
+        @media only screen and (max-width: 767.98px) {
+            .use-desktop {
+                display: block !important;
+            }
+
+            .desktop-section {
+                display: none;
+            }
+        }
     </style>
-    <form action="{{ route('client.job.create') }}" method="POST" enctype="multipart/form-data">
+
+    <div class="content use-desktop ">
+        <div class="container-fuild">
+            <div class="row">
+
+                <div class="col-md-12">
+
+                    <div class="chat-window mt-5 pt-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5>
+                                    For your best experience, please
+                                    kindly use a PC to sign up an account on <b> BrainX </b>
+                                </h5>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <form action="{{ route('client.job.create') }}" method="POST" enctype="multipart/form-data" class="desktop-section">
         @csrf
         <!-- Content -->
         <div class="content ">
@@ -79,7 +117,7 @@
                 <div class="row">
 
                     <div class="col-md-12">
-
+                        sdfasfasdfasd
                         <div class="chat-window">
 
                             @include('pages.client.includes.job-request-list-sidebar')
