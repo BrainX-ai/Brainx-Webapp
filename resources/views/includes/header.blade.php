@@ -20,6 +20,23 @@
         max-width: 70% !important;
         height: auto;
     }
+
+    .mob {
+        display: none;
+    }
+
+    @media only screen and (max-width:767.98px) {
+        .mob {
+            display: block;
+        }
+    }
+
+    @media (min-width: 992px) {
+        .main-nav li {
+            display: none;
+            position: relative;
+        }
+    }
 </style>
 <!-- Header -->
 <header class="header">
@@ -47,7 +64,12 @@
                 </a>
             </div>
             <ul class="main-nav">
-
+                <li class="submenu mob">
+                    <a href="/" class="@if (Request::is('/')) active-page @endif">For Business </a>
+                </li>
+                <li class="submenu mob">
+                    <a href="/talent" class="@if (Request::is('talent')) active-page @endif">For AI Talent</a>
+                </li>
                 <li class="has-submenu fade" style="width: 200px">
                 </li>
                 <li class="has-submenu fade" style="width: 100px">

@@ -917,6 +917,30 @@ Version      : 1.0
         });
     }
 
+    if ($("#developers-slider2").length > 0) {
+        $("#developers-slider2").owlCarousel({
+            items: 5,
+            margin: 30,
+            dots: false,
+            nav: false,
+            smartSpeed: 2000,
+            autoplay: true,
+            loop: true,
+            responsiveClass: true,
+            responsive: {
+                0: {
+                    items: 1,
+                },
+                768: {
+                    items: 1,
+                },
+                1170: {
+                    items: 1,
+                },
+            },
+        });
+    }
+
     if ($("#trend-slider").length > 0) {
         $("#trend-slider").owlCarousel({
             items: 5,
