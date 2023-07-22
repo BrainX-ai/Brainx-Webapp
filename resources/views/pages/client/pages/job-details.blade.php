@@ -44,7 +44,7 @@
             -webkit-box-align: center;
             -ms-flex-align: center;
             /* align-items:
-                    center; */
+                                center; */
         }
 
         .chat-cont-left {
@@ -132,10 +132,45 @@
         .circle.active {
             background-color: var(--line-border-fill);
         }
-    </style>
 
+        .use-desktop {
+            display: none;
+        }
+
+        @media only screen and (max-width: 767.98px) {
+            .use-desktop {
+                display: block !important;
+            }
+
+            .desktop-section {
+                display: none;
+            }
+        }
+    </style>
+    <div class="content use-desktop ">
+        <div class="container-fuild">
+            <div class="row">
+
+                <div class="col-md-12">
+
+                    <div class="chat-window mt-5 pt-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5>
+                                    For your best experience, please
+                                    kindly use a PC.
+                                </h5>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Content -->
-    <div class="content ">
+    <div class="content desktop-section">
         <div class="container-fluid">
             <div class="row">
 
