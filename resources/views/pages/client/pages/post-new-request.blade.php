@@ -97,7 +97,7 @@
                             <div class="card-body">
                                 <h5>
                                     For your best experience, please
-                                    kindly use a PC to sign up an account on <b> BrainX </b>
+                                    kindly use a PC.
                                 </h5>
                             </div>
 
@@ -117,7 +117,7 @@
                 <div class="row">
 
                     <div class="col-md-12">
-                        sdfasfasdfasd
+
                         <div class="chat-window">
 
                             @include('pages.client.includes.job-request-list-sidebar')
