@@ -49,10 +49,45 @@
             padding: 10px;
             /* Add some padding to the container */
         }
-    </style>
 
+        .use-desktop {
+            display: none;
+        }
+
+        @media only screen and (max-width: 767.98px) {
+            .use-desktop {
+                display: block !important;
+            }
+
+            .desktop-section {
+                display: none;
+            }
+        }
+    </style>
+    <div class="content use-desktop ">
+        <div class="container-fuild">
+            <div class="row">
+
+                <div class="col-md-12">
+
+                    <div class="chat-window mt-5 pt-5">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5>
+                                    For your best experience, please
+                                    kindly use a PC.
+                                </h5>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <!-- Content -->
-    <div class="content ">
+    <div class="content desktop-section">
         <div class="container-fluid">
             <div class="row">
 
@@ -91,7 +126,7 @@
                                             @endif
                                         </div>
                                     @endforeach
-                                    
+
                                 </div>
                                 <div class="progress">
                                     <div class="progress-bar progress-bar-striped progress-bar-animated bg-danger"
@@ -104,23 +139,26 @@
                             <div>
                                 <ul style="display: block;" class="d-flex mb-0">
                                     <li class="me-5 ms-3">
-                                        <a href="" class="text-primary fw-bold"  data-bs-toggle="modal" data-bs-target="#view-request">View request</a>
+                                        <a href="" class="text-primary fw-bold" data-bs-toggle="modal"
+                                            data-bs-target="#view-request">View request</a>
 
                                     </li>
                                     @if ($job->contract != null)
-                                    <li >
-                                        <a href="" class="text-primary fw-bold" data-bs-toggle="modal" data-bs-target="#preview-{{ $action->job->contract->contract_type }}-contract">View contract</a>
-                                    </li>                                        
+                                        <li>
+                                            <a href="" class="text-primary fw-bold" data-bs-toggle="modal"
+                                                data-bs-target="#preview-{{ $action->job->contract->contract_type }}-contract">View
+                                                contract</a>
+                                        </li>
                                     @endif
                                 </ul>
                             </div>
                             <div class="chat-footer">
                                 <div class="input-group">
-                                    
-                                        <div class="btn-file btn ">
-                                            <i class="fa fa-paperclip"></i>
-                                            <input type="file" name="file" id="file" onchange="sendFile()">
-                                        </div>
+
+                                    <div class="btn-file btn ">
+                                        <i class="fa fa-paperclip"></i>
+                                        <input type="file" name="file" id="file" onchange="sendFile()">
+                                    </div>
                                     <input type="hidden" value="{{ $job->job_id }}" id="job_id" />
                                     <input type="hidden" name="receiver_id" value="{{ $job->client_id }}"
                                         id="receiver_id" />
@@ -159,7 +197,7 @@
         @include('pages.talent.includes.modals.review-fixed-contract')
         @include('pages.talent.includes.modals.review-hourly-contract')
     </form>
-    
+
     @include('includes.modals.client-request')
 @section('chat-js')
     <script>
@@ -171,7 +209,7 @@
         function sendFile() {
             // Get the selected file
             var files = $('#file')[0].files;
-            
+
             if (files.length > 0) {
                 var fd = new FormData();
 
@@ -199,7 +237,6 @@
                 });
             }
         }
-
     </script>
 @endsection
 @endsection
