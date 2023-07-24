@@ -53,8 +53,8 @@
 @section('feedback-js')
     <script>
         function postFeedback() {
-
-            var elements = ['topic', 'message'];
+            alert('post sdfjosdijfo')
+            var elements = ['message'];
             var isRequired = false;
             elements.forEach(el => {
                 var obj = document.querySelector('input[name="' + el + '"]')
