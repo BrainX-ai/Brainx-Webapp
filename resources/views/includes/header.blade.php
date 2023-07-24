@@ -67,7 +67,7 @@
                 <li class="submenu mob">
                     <a href="/" class="@if (Request::is('/')) active-page @endif">For Business </a>
                 </li>
-                <li class="submenu mob">
+                <li class="submenu mob only-web">
                     <a href="/talent" class="@if (Request::is('talent')) active-page @endif">For AI Talent</a>
                 </li>
                 <li>

@@ -83,11 +83,33 @@
             box-shadow: 3px 3px 3px #a2a2b5;
         }
 
+        .only-mobile {
+            display: none !important;
+        }
+
+        .only-web {
+            display: block !important;
+        }
+
         @media only screen and (max-width: 767.98px) {
 
             #developer-slider1.owl-carousel.owl-loaded,
             .mob-slider {
                 display: block !important;
+            }
+
+            .only-mobile {
+                display: block !important;
+            }
+
+            .only-web {
+                display: none !important;
+            }
+
+            .great-icon.number img {
+                width: 25px;
+                height: auto;
+                justify-items: last baseline;
             }
         }
     </style>
@@ -102,12 +124,22 @@
                     <div class="banner-content aos mt-5 pt-5" data-aos="fade-up">
 
 
-                        <h1>
+                        <h1 class="only-web">
                             Build your AI products with global freelance AI talents
                         </h1>
+                        <h1 class="only-mobile">
+                            Level up your business and career
+                            with global network of freelance AI consultants and experts
+                        </h1>
 
-                        <p>BrainX is a freelance platform for building your AI products with global network of quality AI
+                        <p class="only-web">BrainX is a freelance platform for building your AI products with global network
+                            of quality AI
                             talents. </p>
+
+                        <p class="only-mobile">
+
+                            BrainX is on the mission to democratize AI to the world.
+                        </p>
                         <div id="blog-slider1" class="owl-carousel owl-theme blog-slider aos between-slider "
                             data-aos="fade-up">
 
@@ -136,10 +168,15 @@
                                                             </div>
                                                             <div class="freelance-specific">{{ $talent->talent->country }}
                                                             </div>
-                                                            {{-- <div class="mt-3">
+                                                            <div class="mt-3 only-web">
                                                                 <a class="btn btn-outline-primary rounded-pill"
                                                                     href="{{ route('show.talent.profile', encrypt($talent->id)) }}">View</a>
-                                                            </div> --}}
+                                                            </div>
+                                                            <div class="mt-3 only-mobile">
+                                                                <a class="btn btn-outline-primary rounded-pill"
+                                                                    data-bs-toggle="modal"
+                                                                    data-bs-target="#add-feedback">Book consultation</a>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -152,7 +189,7 @@
 
                         </div>
 
-                        <span class="open-desktop text-center">
+                        <span class="open-desktop text-center d-none">
                             <a class="btn" href="#" data-bs-toggle="modal" data-bs-target="#client-signup">
                                 <button class="btn btn-primary sub-btn " type="submit">Get started</button>
                             </a>
@@ -170,7 +207,7 @@
                             </a>
                         @endif
 
-                        <div class="col-md-12 mt-4 ">
+                        <div class="col-md-12 mt-4 only-web">
                             <button class="btn btn-sm rounded-pill btn-outline-dark m-1 shadow">AI API integration</button>
                             <button class="btn btn-sm rounded-pill btn-outline-dark m-1 shadow ">ChatGPT for customer
                                 service</button>
@@ -235,7 +272,7 @@
 
 
     <!-- Great About -->
-    <section class="section great-about about-project">
+    <section class="section great-about about-project only-web">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-12 mx-auto">
@@ -306,7 +343,7 @@
     </section>
 
     <!-- /Great About -->
-    <section class="great-about text-center">
+    <section class="great-about text-center only-web">
         <span class="open-desktop pt-0">
             <a class="btn" href="#" data-bs-toggle="modal" data-bs-target="#client-signup">
                 <button class="btn btn-primary sub-btn boxes-shadow " type="button">Get started</button>
@@ -325,7 +362,7 @@
         @endif
     </section>
 
-    <section class="section developer">
+    <section class="section developer only-web">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-12 mx-auto">
@@ -414,7 +451,7 @@
     @endif
 
 
-    <section class="section great-about mt-4">
+    <section class="section great-about mt-4 only-web">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-12 mx-auto">
@@ -466,8 +503,62 @@
         </div>
     </section>
 
+    <section class="section great-about  only-mobile">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-12 mx-auto">
+                    <div class="section-header section-header-two aos" data-aos="fade-up">
+                        <h2 class="header-title">How BrainX works? (beta)</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xl-4 col-md-4">
+                    <div class="great-blk aos boxes-shadow d-flex" data-aos="fade-up">
+                        <div class="great-icon number ps-3 pe-3">
+                            <img src="assets/img/BrainX/1.png" alt="">
+                        </div>
+                        <div class="great-content">
+                            <h4>Choose an AI consultant</h4>
+                            <p>
+                                Find an expert who matches your need: <b>consult your startup’s AI project, find a specific
+                                    AI solution for your small business, educate on how to apply AI into your life and
+                                    career,...</b>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-4">
+                    <div class="great-blk aos boxes-shadow d-flex" data-aos="fade-up">
+                        <div class="great-icon number">
+                            <img src="assets/img/BrainX/2.png" alt="">
+                        </div>
+                        <div class="great-content">
+                            <h4>Book a session</h4>
+                            <p>Select a date & time from the expert’s schedule and share what you want to talk about</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-md-4">
+                    <div class="great-blk aos boxes-shadow d-flex" data-aos="fade-up">
+                        <div class="great-icon number">
+                            <img src="assets/img/BrainX/3.png" alt="">
+                        </div>
+                        <div class="great-content">
+                            <h4>Join a video call</h4>
+                            <p>
+                                1-on-1 virtual session with your consultant to discuss your needs and projects
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <!-- /Great About -->
-    <section class="great-about text-center">
+    <section class="great-about text-center only-web">
         <span class="open-desktop pt-0">
             <a class="btn" href="#" data-bs-toggle="modal" data-bs-target="#client-signup">
                 <button class="btn btn-primary sub-btn boxes-shadow " type="button">Get started</button>
@@ -484,6 +575,13 @@
                     data-bs-target="#client-signup" type="button">Get started</button>
             </a>
         @endif
+    </section>
+
+    <section class="only-mobile mb-4">
+        <a class="btn ">
+            <button class="btn btn-primary  boxes-shadow " data-bs-toggle="modal" data-bs-target="#add-feedback"
+                type="button">Join the waiting list</button>
+        </a>
     </section>
 
 
