@@ -65,9 +65,9 @@
             </div>
             <ul class="main-nav">
                 <li class="submenu mob">
-                    <a href="/" class="@if (Request::is('/')) active-page @endif">For Business </a>
+                    <a href="/" class="@if (Request::is('/')) active-page @endif">For Clients </a>
                 </li>
-                <li class="submenu mob only-web">
+                <li class="submenu mob ">
                     <a href="/talent" class="@if (Request::is('talent')) active-page @endif">For AI Talent</a>
                 </li>
                 <li>

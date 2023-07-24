@@ -163,8 +163,9 @@
                                                             <h3><a> {{ $talent->name }} </a></h3>
                                                             <div class="freelance-specific">
                                                                 {{ $talent->talent->standout_job_title }}</div>
-                                                            <div class="text-bold">
-                                                                <strong>{{ (int) $talent->talent->hourly_rate }}$/hour</strong>
+                                                            <div class="text-bold ">
+                                                                <strong>Start from
+                                                                    {{ (int) $talent->talent->hourly_rate }}$</strong>
                                                             </div>
                                                             <div class="freelance-specific">{{ $talent->talent->country }}
                                                             </div>
@@ -577,7 +578,7 @@
         @endif
     </section>
 
-    <section class="only-mobile mb-4">
+    <section class="only-mobile mb-4 text-center">
         <a class="btn ">
             <button class="btn btn-primary  boxes-shadow " data-bs-toggle="modal" data-bs-target="#add-feedback"
                 type="button">Join the waiting list</button>

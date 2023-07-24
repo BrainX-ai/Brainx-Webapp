@@ -5,7 +5,7 @@
 
             <!-- Modal Header -->
             <div class="modal-header text-center">
-                <h4 class="modal-title text-center w-100">Join the waiting list</h4>
+                <h4 class="modal-title text-center w-100">Join the waiting list (beta)</h4>
                 <button type="button" class="close" data-bs-dismiss="modal"><span>&times;</span></button>
             </div>
 
@@ -53,8 +53,8 @@
 @section('feedback-js')
     <script>
         function postFeedback() {
-
-            var elements = ['topic', 'message'];
+            alert('post sdfjosdijfo')
+            var elements = ['message'];
             var isRequired = false;
             elements.forEach(el => {
                 var obj = document.querySelector('input[name="' + el + '"]')
