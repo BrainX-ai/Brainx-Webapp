@@ -163,8 +163,9 @@
                                                             <h3><a> {{ $talent->name }} </a></h3>
                                                             <div class="freelance-specific">
                                                                 {{ $talent->talent->standout_job_title }}</div>
-                                                            <div class="text-bold only-web">
-                                                                <strong>{{ (int) $talent->talent->hourly_rate }}$/hour</strong>
+                                                            <div class="text-bold ">
+                                                                <strong>Start from
+                                                                    {{ (int) $talent->talent->hourly_rate }}$</strong>
                                                             </div>
                                                             <div class="freelance-specific">{{ $talent->talent->country }}
                                                             </div>
