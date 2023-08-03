@@ -38,14 +38,15 @@
                             <tbody>
                                 @foreach ($feedbacks as $feedback)
                                     <tr>
-                                        <td>
-                                            {{ $feedback->role }}
-                                        </td>
+
                                         <td>
                                             <div class="form-check custom-checkbox">
                                                 <input type="checkbox" class="form-check-input">
                                                 <label class="form-check-label"></label>
                                             </div>
+                                        </td>
+                                        <td>
+                                            {{ $feedback->role }}
                                         </td>
                                         <td>
                                             <div class="table-avatar user-profile">
