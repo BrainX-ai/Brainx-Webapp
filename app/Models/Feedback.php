@@ -18,6 +18,7 @@ class Feedback extends Model
         'name',
         'email',
         'message',
-        'topic'
+        'topic',
+        'role'
     ];
 }
