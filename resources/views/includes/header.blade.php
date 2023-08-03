@@ -64,17 +64,12 @@
                 </a>
             </div>
             <ul class="main-nav">
-                <li class="submenu mob">
-                    <a href="/" class="@if (Request::is('/')) active-page @endif">For Clients </a>
-                </li>
+
                 <li class="submenu mob ">
-                    <a href="/talent" class="@if (Request::is('talent')) active-page @endif">For AI Talent</a>
+                    <a href="/talent" class="@if (Request::is('talent')) active-page @endif">Become AI
+                        freelancer</a>
                 </li>
-                <li>
-                    <a class="join-us" href="https://calendly.com/hector-tan-brainx/brainx-discovery" target="_blank">
-                        Book a demo
-                    </a>
-                </li>
+
                 @if (Auth::user() != null)
                     @if (Auth::user()->role == 'Client')
                         <li><a href="{{ route('client.job.detail') }}" class="reg-btn"> Dashboard</a></li>
@@ -101,17 +96,12 @@
         </div>
         <ul class="nav header-navbar-rht reg-head pt-3 pe-5">
 
+
             <li class="submenu">
-                <a href="/" class="@if (Request::is('/')) active-page @endif">For Business </a>
+                <a href="/talent" data-bs-toggle="modal" data-bs-target="#add-feedback"
+                    class="@if (Request::is('talent')) active-page @endif">Become AI freelancer</a>
             </li>
-            <li class="submenu">
-                <a href="/talent" class="@if (Request::is('talent')) active-page @endif">For AI Talent</a>
-            </li>
-            <li>
-                <a class="btn join-us" href="https://calendly.com/hector-tan-brainx/brainx-discovery" target="_blank">
-                    Book a demo
-                </a>
-            </li>
+
             @if (Auth::user() != null)
                 @if (Auth::user()->role == 'Client')
                     <li><a href="{{ route('client.job.detail') }}" class="reg-btn"> Dashboard</a></li>
