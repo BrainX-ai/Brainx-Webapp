@@ -124,7 +124,7 @@
                     <div class="banner-content aos mt-5 pt-5" data-aos="fade-up">
 
                         <h1>
-                            Empower your business with AI solutions on demand.
+                            Empower your business with creative AI solutions on demand.
                         </h1>
 
 
