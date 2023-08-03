@@ -230,7 +230,6 @@
                             @if (isset($talent->talent) && $talent->talent->status == 'PUBLISHED')
                                 <div class="freelance-widget border-0">
                                     <div class="freelance-content">
-
                                         <div class="freelance-img">
                                             <a>
                                                 <img src="{{ $talent->talent->photo }}" alt="User Image">
@@ -362,7 +361,7 @@
         @endif
     </section>
 
-    <section class="section developer only-web">
+    <section class="section developer only-web d-none">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-12 mx-auto">
