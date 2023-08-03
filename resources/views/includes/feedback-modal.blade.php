@@ -20,11 +20,13 @@
 
                                 <div class="form-group d-flex justify-content-between">
                                     <label for="client">
-                                        <input type="radio" id="client" name="role" class="me-3"> I'm
+                                        <input type="radio" id="client" name="role" class="me-3"
+                                            value="client"> I'm
                                         interested client
                                     </label>
                                     <label for="talent">
-                                        <input type="radio" id="talent" name="role" class="me-3"> I'm AI
+                                        <input type="radio" id="talent" name="role" class="me-3"
+                                            value="talent"> I'm AI
                                         freelancer
                                     </label>
 
