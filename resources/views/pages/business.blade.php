@@ -145,14 +145,14 @@
                         @endif
 
 
-
+                        <div class="col-md-12 col-sm-6 mt-4 only-web">
+                            <img src="/assets/img/BrainX/ms-badge.png" alt="" class="col-md-6 col-sm-12 mt-3">
+                        </div>
                     </div>
 
-                    <div class="col-md-12 mt-4">
-                        <img src="/assets/img/BrainX/ms-badge.png" alt="" class="col-md-6 mt-3">
-                    </div>
+
                 </div>
-                <div class="col-md-4 col-lg-5 text-center text-muted">
+                <div class="col-md-4 col-lg-5 text-center text-muted only-web">
 
                     <h3>Version 3 <br />coming soon</h3>
 
@@ -174,10 +174,10 @@
 
     <!-- /Great About -->
     <section class="great-about container mb-5">
-        <h5 class="col-md-12 mt-4 ">
+        <h5 class="col-md-12 mt-4 ms-2">
             Find AI solution/service that’s relevant to your business
         </h5>
-        <div class="col-md-12 mt-4 only-web">
+        <div class="col-md-12 mt-4 ">
             @foreach ($industries as $industry)
                 <button class="btn btn-sm rounded-pill btn-outline-dark m-1 ps-3 pe-3  shadow">{{ $industry }}</button>
             @endforeach
