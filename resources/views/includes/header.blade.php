@@ -66,7 +66,8 @@
             <ul class="main-nav">
 
                 <li class="submenu mob ">
-                    <a href="/talent" class="@if (Request::is('talent')) active-page @endif">Become AI
+                    <a href="/talent" data-bs-toggle="modal" data-bs-target="#add-feedback"
+                        class="@if (Request::is('talent')) active-page @endif">Become AI
                         freelancer</a>
                 </li>
 
@@ -79,21 +80,10 @@
         </div>
         <ul class="nav header-navbar-rht reg-head pt-3 pe-5">
 
-
             <li class="submenu">
                 <a href="/talent" data-bs-toggle="modal" data-bs-target="#add-feedback"
                     class="@if (Request::is('talent')) active-page @endif">Become AI freelancer</a>
             </li>
-
-            @if (Auth::user() != null)
-                @if (Auth::user()->role == 'Client')
-                    <li><a href="{{ route('client.job.detail') }}" class="reg-btn"> Dashboard</a></li>
-                @elseif(Auth::user()->role == 'Talent')
-                    <li><a href="{{ route('build.profile') }}" class="reg-btn"> Dashboard</a></li>
-                @else
-                    <li><a href="{{ route('admin.dashboard') }}" class="reg-btn"> Dashboard</a></li>
-                @endif
-            @endif
 
             {{-- <li><a href="post-project.html" class="login-btn">Post a Project </a></li> --}}
         </ul>
