@@ -70,24 +70,7 @@
                         freelancer</a>
                 </li>
 
-                @if (Auth::user() != null)
-                    @if (Auth::user()->role == 'Client')
-                        <li><a href="{{ route('client.job.detail') }}" class="reg-btn"> Dashboard</a></li>
-                    @elseif(Auth::user()->role == 'Talent')
-                        <li><a href="{{ route('build.profile') }}" class="reg-btn"> Dashboard</a></li>
-                    @else
-                        <li><a href="{{ route('admin.dashboard') }}" class="reg-btn"> Dashboard</a></li>
-                    @endif
-                @endif
-                @if (Auth::guard()->user() == null && Request::is('talent'))
-                    <li><a href="{{ url('auth/linkedin') }}" data-bs-toggle="modal" data-bs-target="#login-modal"
-                            class="log-btn"><img src="assets/img/icon/lock-icon.svg" class="me-2" alt="icon">
-                            Login</a></li>
-                @endif
-                @if (Auth::guard()->user() == null && Request::is('/'))
-                    <li><a href="#" data-bs-toggle="modal" data-bs-target="#client-signin" class="log-btn"><img
-                                src="assets/img/icon/lock-icon.svg" class="me-2" alt="icon"> Login</a></li>
-                @endif
+
                 <li class="has-submenu fade" style="width: 200px">
                 </li>
                 <li class="has-submenu fade" style="width: 100px">

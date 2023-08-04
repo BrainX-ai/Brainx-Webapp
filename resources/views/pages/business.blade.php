@@ -147,22 +147,17 @@
 
 
 
-                        <div class="col-md-12 col-sm-6 mt-4 only-web">
-                            <img src="/assets/img/BrainX/ms-badge.png" alt="" class="col-md-6 col-sm-12 mt-3">
+                        <div class="col-md-6 col-sm-8 mt-4 ">
+                            <img src="/assets/img/BrainX/ms-badge.png" alt="" class="w-100">
                         </div>
                     </div>
-
-
                 </div>
                 <div class="col-md-4 col-lg-5 text-center text-muted only-web">
 
                     <h3>Version 3 <br />coming soon</h3>
 
                 </div>
-
             </div>
-
-
         </div>
         </div>
     </section>
