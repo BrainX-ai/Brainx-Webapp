@@ -112,6 +112,13 @@
                 justify-items: last baseline;
             }
         }
+
+        @media (max-width: 767.98px) {
+            .join-us {
+                display: block !important;
+                margin-top: 70px;
+            }
+        }
     </style>
     <!-- Start Navigation -->
 
@@ -132,17 +139,12 @@
                             With global network of freelance AI talents, BrainX is democratizing AI to the global economy
                         </p>
 
-                        @if (Auth::guard()->user() == null)
-                            <a class="btn join-us">
-                                <button class="btn btn-primary  boxes-shadow " data-bs-toggle="modal"
-                                    data-bs-target="#add-feedback" type="button">Join the waiting list</button>
-                            </a>
-                        @else
-                            <a class="btn join-us">
-                                <button class="btn btn-primary  boxes-shadow " data-bs-toggle="modal"
-                                    data-bs-target="#add-feedback" type="button">Join the waiting list</button>
-                            </a>
-                        @endif
+
+                        <a class="btn join-us">
+                            <button class="btn btn-primary boxes-shadow " data-bs-toggle="modal" data-bs-target="#add-feedback"
+                                type="button">Join the waiting list</button>
+                        </a>
+
 
 
                         <div class="col-md-12 col-sm-6 mt-4 only-web">
