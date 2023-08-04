@@ -116,7 +116,16 @@
         @media (max-width: 767.98px) {
             .join-us {
                 display: block !important;
-                margin-top: 70px;
+                margin-top: 40px;
+                margin-bottom: 40px;
+            }
+        }
+
+        @media only screen and (max-width: 767.98px) {
+
+            .no-js .owl-carousel,
+            .owl-carousel.owl-loaded {
+                display: block !important;
             }
         }
     </style>
@@ -190,7 +199,7 @@
 
 
     </div>
-    <section class="section developer mb-5">
+    <section class="section  mb-5">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-12 mx-auto">
