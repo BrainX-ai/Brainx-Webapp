@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
+use App\Models\Portfolio;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Category;
@@ -13,7 +13,9 @@ use App\Models\Education;
 use App\Models\Action;
 use App\Models\Message;
 use App\Models\AssessmentCateory;
+use App\Models\Service;
 use CV;
+use Illuminate\Support\Facades\Auth;
 
 class TalentProfileController extends Controller
 {
@@ -41,7 +43,7 @@ class TalentProfileController extends Controller
                 return view('pages.talent.build-profile')->with('user', $user)->with('categories', $categories);
             } else if (!isset($user->talent) || $user->talent->status == "ASSESSMENT_PENDING") {
                 return redirect()->route('show.profile', encrypt($user->id));
-            }else { //if($user->talent->status == "PUBLISHED"){
+            } else { //if($user->talent->status == "PUBLISHED"){
                 return redirect()->route('talent.care');
             }
             // else{
@@ -109,12 +111,13 @@ class TalentProfileController extends Controller
         }
 
 
-        
-        return redirect()->route('show.profile',encrypt($user_id));
+
+        return redirect()->route('show.profile', encrypt($user_id));
         // return redirect()->route('talent.care');
     }
 
-    public function submitForReview(){
+    public function submitForReview()
+    {
 
         $user_id = Auth::guard()->user()->id;
         $talent = Talent::where('user_id', $user_id)->first();
@@ -136,7 +139,8 @@ class TalentProfileController extends Controller
         return redirect()->back();
     }
 
-    public function updateHourlyRate(Request $request){
+    public function updateHourlyRate(Request $request)
+    {
         $user_id = Auth::guard()->user()->id;
         $talent = Talent::where('user_id', $user_id)->first();
         $talent->hourly_rate = $request->hourly_rate;
@@ -144,7 +148,8 @@ class TalentProfileController extends Controller
         return redirect()->route('show.profile', encrypt($user_id));
     }
 
-    public function updateHoursPerWeek(Request $request){
+    public function updateHoursPerWeek(Request $request)
+    {
         $user_id = Auth::guard()->user()->id;
         $talent = Talent::where('user_id', $user_id)->first();
         $talent->hours_per_week = $request->hours_per_week;
@@ -153,7 +158,8 @@ class TalentProfileController extends Controller
         return redirect()->route('show.profile', encrypt($user_id));
     }
 
-    public function updateExFamousCompany(Request $request){
+    public function updateExFamousCompany(Request $request)
+    {
         $user_id = Auth::guard()->user()->id;
         $talent = Talent::where('user_id', $user_id)->first();
         $talent->ex_famouse_company = $request->ex_famouse_company;
@@ -162,7 +168,8 @@ class TalentProfileController extends Controller
         return redirect()->route('show.profile', encrypt($user_id));
     }
 
-    public function updateBio(Request $request){
+    public function updateBio(Request $request)
+    {
         $user_id = Auth::guard()->user()->id;
         $talent = Talent::where('user_id', $user_id)->first();
         $talent->brief_summary = $request->bio;
@@ -171,7 +178,8 @@ class TalentProfileController extends Controller
         return redirect()->route('show.profile', encrypt($user_id));
     }
 
-    public function uploadResume($file){
+    public function uploadResume($file)
+    {
         $fileName = Auth::guard()->user()->id . time() . '.' . $file->extension();
         // Move uploaded file to a specific location
         $file->move(public_path('resumes'), $fileName);
@@ -280,13 +288,13 @@ class TalentProfileController extends Controller
     public function show($id)
     {
         $id = decrypt($id);
-        $title = ['Experience', 'Education'];
-
+        $portfolios = Portfolio::where('user_id', $id)->get();
+        $services = Service::where('user_id', $id)->get();
         $categories = Category::with('skills')->get();
         $user = User::with('talent')->with('experiences')->with('educations')->find($id);
         $assessmentCategories = AssessmentCateory::with('result')->get();
         // dd($assessmentCategories);
-        return view('pages.talent.profile')->with('user', $user)->with('categories', $categories)->with('assessmentCategories', $assessmentCategories);
+        return view('pages.talent.service-profile')->with('portfolios', $portfolios)->with('user', $user)->with('services', $services)->with('categories', $categories)->with('assessmentCategories', $assessmentCategories);
     }
 
 
@@ -298,7 +306,7 @@ class TalentProfileController extends Controller
     }
 
     public function showTalentProfile()
-    {   
+    {
         $assessmentCategories = AssessmentCateory::with('result')->get();
         $user = User::with('talent')->with('experiences')->with('educations')->find(Auth::user()->id);
 

@@ -162,12 +162,9 @@
                     </div>
                 </div>
                 <div class="col-md-4 col-lg-5 text-center text-muted only-web">
-
                     <h3>Version 3 <br />coming soon</h3>
-
                 </div>
             </div>
-        </div>
         </div>
     </section>
     <!-- /Home Banner -->
@@ -187,17 +184,10 @@
             @foreach ($industries as $industry)
                 <button class="btn btn-sm rounded-pill btn-outline-dark m-1 ps-3 pe-3  shadow">{{ $industry }}</button>
             @endforeach
-
         </div>
-
-
     </section>
     <div class="col-md-12 mt-5 mb-5 pt-5 pb-5 text-center text-muted">
-
-
         <h3 class="mt-5 pt-5 mb-5 pb-5">Version 3 <br />coming soon</h3>
-
-
     </div>
     <section class="section  mb-5">
         <div class="container">
