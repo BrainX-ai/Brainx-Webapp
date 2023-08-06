@@ -66,7 +66,7 @@
             <ul class="main-nav">
 
                 <li class="submenu mob ">
-                    <a href="/talent" data-bs-toggle="modal" data-bs-target="#add-feedback"
+                    <a href="/talent" data-bs-toggle="modal" data-bs-target="#login-modal"
                         class="@if (Request::is('talent')) active-page @endif">Become AI
                         freelancer</a>
                 </li>
@@ -81,7 +81,7 @@
         <ul class="nav header-navbar-rht reg-head pt-3 pe-5">
 
             <li class="submenu">
-                <a href="/talent" data-bs-toggle="modal" data-bs-target="#add-feedback"
+                <a href="/talent" data-bs-toggle="modal" data-bs-target="#login-modal"
                     class="@if (Request::is('talent')) active-page @endif">Become AI freelancer</a>
             </li>
 
