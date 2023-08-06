@@ -17,6 +17,21 @@
                         <div class="card-body text-center">
                             <form action="">
 
+
+                                <div class="form-group d-flex justify-content-between">
+                                    <label for="client">
+                                        <input type="radio" id="client" name="role" class="me-3"
+                                            value="client"> I'm
+                                        interested client
+                                    </label>
+                                    <label for="talent">
+                                        <input type="radio" id="talent" name="role" class="me-3"
+                                            value="talent"> I'm AI
+                                        freelancer
+                                    </label>
+
+                                </div>
+
                                 @if (Auth::guard()->user() == null)
                                     <div class="form-group">
                                         <input type="text" name="name" class="form-control"
@@ -33,7 +48,7 @@
                                 </div>
                                 <div class="form-group">
                                     <textarea name="message" id="desc" cols="52" rows="5" class="form-control" required
-                                        placeholder="What do you want to consult about?"></textarea>
+                                        placeholder="Do you have any feedback for us?"></textarea>
                                 </div>
                             </form>
                         </div>

@@ -45,6 +45,11 @@ Route::post('/submit-profile', 'App\http\controllers\TalentProfileController@sto
 Route::post('/submit-contract', 'App\http\controllers\ContractController@store')->name('submit.contract');
 Route::post('/end-contract', 'App\http\controllers\ContractController@endContract')->name('end.contract');
 Route::post('/add-experience', 'App\http\controllers\TalentProfileController@addExperience')->name('add.experience');
+Route::post('/add-service', 'App\http\controllers\ServiceController@addService')->name('add.service');
+Route::post('/update-service', 'App\http\controllers\ServiceController@updateService')->name('update.service');
+Route::get('/edit-service/{id}', 'App\http\controllers\ServiceController@editService')->name('edit.service');
+Route::post('/add-portfolio', 'App\http\controllers\ServiceController@addPortfolio')->name('add.portfolio');
+Route::get('/service/{id}', 'App\http\controllers\ServiceController@serviceDetails')->name('service.details');
 Route::post('/add-education', 'App\http\controllers\TalentProfileController@addEducation')->name('add.education');
 Route::post('/accept-request', 'App\http\controllers\JobController@acceptRequest')->name('accept.request');
 Route::post('/reject-request', 'App\http\controllers\JobController@rejectRequest')->name('reject.request');

@@ -8,30 +8,30 @@ use Auth;
 
 class FeedbackController extends Controller
 {
-    
 
-    public function store(Request $request){
+
+    public function store(Request $request)
+    {
 
         try {
 
-        if(Auth::guard()->user()){
-            $request->name = Auth::guard()->user()->name;
-            $request->email = Auth::guard()->user()->email;
-            
-        }
-            
-        $feedback = Feedback::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'topic' => $request->topic,
-            'message' => $request->message
-        ]);
+            if (Auth::guard()->user()) {
+                $request->name = Auth::guard()->user()->name;
+                $request->email = Auth::guard()->user()->email;
+            }
 
-        return response()->json(['success' => 1], 200);
+            $feedback = Feedback::create([
+                'role' => $request->role,
+                'name' => $request->name,
+                'email' => $request->email,
+                'topic' => $request->topic,
+                'message' => $request->message
+            ]);
+
+            return response()->json(['success' => 1], 200);
         } catch (\Throwable $th) {
-            
-        return response()->json(['success' => 0], 200);
+
+            return response()->json(['success' => 0], 200);
         }
     }
-
 }
