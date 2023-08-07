@@ -26,7 +26,7 @@
 
             <!-- Modal Header -->
             <div class="modal-header ">
-                <h4 class="modal-title text-center w-100">Add education</h4>
+{{--                <h4 class="modal-title text-center w-100">Add education</h4>--}}
                 <button type="button" class="close" data-bs-dismiss="modal"><span>&times;</span></button>
             </div>
 
@@ -66,7 +66,7 @@
                                 <div class="form-group col-md-7">
                                     <label for="" class="h4">Pricing (USD)</label>
                                     <input type="number" name="price" class="form-control">
-                                    <small>Your price won’t be deducted. BrainX charges fee on clients</small>
+{{--                                    <small>Your price won’t be deducted. BrainX charges fee on clients</small>--}}
                                 </div>
                                 <div class="form-group col-md-5">
                                     <label for="" class="h4">Delivery time (days)</label>
@@ -85,7 +85,7 @@
 
                         </div>
                         <div class="card-footer pb-2 border-0 float-right">
-                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"> Save</button>
+                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"> Publish</button>
                         </div>
                     </form>
 

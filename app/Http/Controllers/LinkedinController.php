@@ -8,7 +8,7 @@ use Exception;
 use Socialite;
 use App\Models\User;
 use App\Models\Talent;
-use Abraham\TwitterOAuth\TwitterOAuth; 
+use Abraham\TwitterOAuth\TwitterOAuth;
 
 
 class LinkedinController extends Controller
@@ -17,17 +17,17 @@ class LinkedinController extends Controller
     {
         return Socialite::driver('linkedin')->redirect();
     }
-       
+
     public function linkedinCallback()
     {
         try {
-            
+
             $user = Socialite::driver('linkedin')->user();
             // dd($user->user['profilePicture']);
             $linkedinUser = User::where('oauth_id', $user->id)->first();
-      
+
             if($linkedinUser){
-                
+
                 Auth::login($linkedinUser);
                 $talent = Talent::where('user_id',$linkedinUser->id)->first();
                 try{
@@ -43,9 +43,9 @@ class LinkedinController extends Controller
                     return redirect()->route('show.profile', encrypt($linkedinUser->id))->with(['user'=> $linkedinUser]);
                 }else{
                     return redirect()->route('talent.care')->with(['user'=> $linkedinUser]);
-                    
+
                 }
-      
+
             }else{
                 $newUser = User::create([
                     'name' => $user->name,
@@ -68,10 +68,10 @@ class LinkedinController extends Controller
                 ]);
             }
                 Auth::login($newUser);
-      
+
                 return redirect('/build-profile')->with(['user'=> $newUser]);
             }
-     
+
         } catch (Exception $e) {
             dd($e);
         }
