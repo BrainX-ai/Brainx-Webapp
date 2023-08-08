@@ -13,8 +13,14 @@ class Service extends Model
         'user_id',
         'title',
         'description',
+        'industry',
         'price',
         'delivery_time',
         'image'
     ];
+
+    public function talent()
+    {
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
 }

@@ -46,7 +46,7 @@ class ServiceController extends Controller
         //     'file' => 'required|file|mimes:jpeg,png,pdf|max:2048', // Adjust allowed file types and size as needed
         // ]);
 
-        if ($request->hasFile('file')) {
+        if ($request->hasFile('image')) {
             $file = $request->file('image');
             $fileName = time() . '_' . $file->getClientOriginalName();
             $filePath = public_path('uploads'); // Change this to the desired upload directory

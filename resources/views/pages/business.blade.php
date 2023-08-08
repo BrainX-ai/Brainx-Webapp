@@ -128,6 +128,23 @@
                 display: block !important;
             }
         }
+
+        .default-image {
+            width: 100% !important;
+            /* height: auto !important; */
+            text-align: center;
+            object-fit: scale-down !important;
+            opacity: 0.7;
+        }
+
+        .job-locate-blk img,
+        .location-img {
+            width: 100%;
+            height: 200px;
+            /* background-size: cover; */
+            background-position: center;
+            object-fit: cover;
+        }
     </style>
     <!-- Start Navigation -->
 
@@ -171,24 +188,14 @@
 
     @php
         
-        $industries = ['All', 'Marketing', 'Sales', 'Real estate', 'Ecommerce', 'Finance', 'Education', 'Robotics', 'Transportation & logistics', 'Retail', 'Media & Entertainment', 'Tourism & hospotality', 'Gaming', 'Manufacturing', 'Healthcare', 'IT', 'Energy', 'Art & Design'];
-        
+        // $industries = ['All', 'Marketing', 'Sales', 'Real estate', 'Ecommerce', 'Finance', 'Education', 'Robotics', 'Transportation & logistics', 'Retail', 'Media & Entertainment', 'Tourism & hospotality', 'Gaming', 'Manufacturing', 'Healthcare', 'IT', 'Energy', 'Art & Design'];
     @endphp
 
+    @livewire('search-service')
+    @livewireScripts
     <!-- /Great About -->
-    <section class="great-about container mb-5">
-        <h5 class="col-md-12 mt-4 ms-2">
-            Find AI solution/service that’s relevant to your business
-        </h5>
-        <div class="col-md-12 mt-4 ">
-            @foreach ($industries as $industry)
-                <button class="btn btn-sm rounded-pill btn-outline-dark m-1 ps-3 pe-3  shadow">{{ $industry }}</button>
-            @endforeach
-        </div>
-    </section>
-    <div class="col-md-12 mt-5 mb-5 pt-5 pb-5 text-center text-muted">
-        <h3 class="mt-5 pt-5 mb-5 pb-5">Version 3 <br />coming soon</h3>
-    </div>
+
+
     <section class="section  mb-5">
         <div class="container">
             <div class="row">
@@ -232,13 +239,6 @@
                 type="button">Join the waiting list</button>
         </a>
     </section>
-
-
-
-
-
-
-
 
 
     @include('includes.feedback-modal')
