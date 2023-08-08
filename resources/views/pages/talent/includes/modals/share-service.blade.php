@@ -15,9 +15,9 @@
                         <p class=" text-center">Let the world know your AI solution/services</p>
                         <div class="d-flex justify-content-center">
                             <a href="{{$linkedinShare}}" class="btn btn-outline-primary m-2 " target="_blank">
-                                <img class="avatar-img rounded-circle me-3" src="{{asset('assets/img/BrainX/linkedin.png')}}" alt=""> Share on LinkedIn
+                                <img class="avatar-img rounded-circle " src="{{asset('assets/img/BrainX/linkedin.png')}}" alt=""> Share on LinkedIn
                             </a>
-                            <a href="#" class="btn btn-outline-primary m-2" onclick="copyLink()">Copy Link</a>
+                            <a href="#" class="btn btn-outline-primary m-2" onclick="copyLink()"><i class="material-icons link">link</i> Copy Link</a>
 					</div>
 
 				</div>
