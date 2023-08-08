@@ -215,22 +215,22 @@
 
 
                         <section>
-                            <div class="float-end p-5">
-                                <a href="{{ route('client.view') }}">
-                                    <button class="btn btn-primary me-3" type="button">Client view</button>
-                                </a>
-                                <form action="{{ route('submit.for.review') }}" method="POST" class="float-end">
-                                    @csrf
+{{--                            <div class="float-end p-5">--}}
+{{--                                <a href="{{ route('client.view') }}">--}}
+{{--                                    <button class="btn btn-primary me-3" type="button">Client view</button>--}}
+{{--                                </a>--}}
+{{--                                <form action="{{ route('submit.for.review') }}" method="POST" class="float-end">--}}
+{{--                                    @csrf--}}
 
-                                    @if (
-                                        $user->talent->status != 'IN_REVIEW' &&
-                                            $user->talent->status != 'PUBLISHED' &&
-                                            $user->talent->status != 'INCOMPLETE')
-                                        <button class="btn btn-primary me-3" type="submit"
-                                            @if (sizeof($user->experiences) == 0 || sizeof($user->educations) == 0) disabled @endif>Submit for review</button>
-                                    @endif
-                                </form>
-                            </div>
+{{--                                    @if (--}}
+{{--                                        $user->talent->status != 'IN_REVIEW' &&--}}
+{{--                                            $user->talent->status != 'PUBLISHED' &&--}}
+{{--                                            $user->talent->status != 'INCOMPLETE')--}}
+{{--                                        <button class="btn btn-primary me-3" type="submit"--}}
+{{--                                            @if (sizeof($user->experiences) == 0 || sizeof($user->educations) == 0) disabled @endif>Submit for review</button>--}}
+{{--                                    @endif--}}
+{{--                                </form>--}}
+{{--                            </div>--}}
                         </section>
 
                     </div>

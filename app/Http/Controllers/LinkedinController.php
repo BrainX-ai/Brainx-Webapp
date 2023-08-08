@@ -8,7 +8,9 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Talent;
 use Abraham\TwitterOAuth\TwitterOAuth;
+
 use Laravel\Socialite\Facades\Socialite;
+
 
 
 class LinkedinController extends Controller
@@ -26,7 +28,8 @@ class LinkedinController extends Controller
             // dd($user->user['profilePicture']);
             $linkedinUser = User::where('oauth_id', $user->id)->first();
 
-            if ($linkedinUser) {
+            if($linkedinUser){
+
 
                 Auth::login($linkedinUser);
                 $talent = Talent::where('user_id', $linkedinUser->id)->first();
@@ -36,6 +39,7 @@ class LinkedinController extends Controller
                     $talent->photo = '';
                 }
                 $talent->save();
+
 
                 if ($talent->status == "INCOMPLETE") {
                     return redirect()->route('build.profile')->with(['user' => $linkedinUser]);
@@ -66,6 +70,7 @@ class LinkedinController extends Controller
                     ]);
                 }
                 Auth::login($newUser);
+
 
                 return redirect('/build-profile')->with(['user' => $newUser]);
             }

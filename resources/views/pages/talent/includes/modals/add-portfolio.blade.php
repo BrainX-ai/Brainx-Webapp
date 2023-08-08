@@ -37,12 +37,12 @@
 
                             <div class="form-group">
                                 <label for="" class="h4">Title</label>
-                                <input type="text" name="title" placeholder="Write the title of you AI solition"
+                                <input type="text" name="title" placeholder="Title of AI project you did"
                                     class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="" class="h4">Description</label>
-                                <textarea type="text" name="description" placeholder="Write a short description about the AI solution"
+                                <textarea type="text" name="description" placeholder="A short description for that project"
                                     class="form-control"></textarea>
                             </div>
                         </div>
