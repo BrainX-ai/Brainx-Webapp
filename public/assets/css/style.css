@@ -1011,7 +1011,7 @@ label {
 }
 .avatar > img {
 	width: 100%;
-	height: 100%;
+	height: 100% !important;
 	-o-object-fit: cover;
 	object-fit: cover;
 }
@@ -4289,6 +4289,9 @@ html.menu-opened body header:before {
 	-webkit-justify-content: center;
 	-ms-flex-pack: center;
 }
+
+
+
 .job-locate-blk {
 	background: #FFFFFF;
 	border: 1px solid #EBEBEB;
@@ -4305,13 +4308,24 @@ html.menu-opened body header:before {
 .job-it-content h6 {
 	font-weight: 600;
 	margin-bottom: 8px;
+	min-height: 70px;
+}
+
+.job-it-content h5 {
+	font-weight: 600;
+	margin-bottom: 8px;
+	min-height: 50px;
 }
 .job-it-content {
 	margin-top: 10px;
 }
+
+.job-locate-blk:hover {
+	border: 1px solid #979393;
+}
 .job-locate-foot li {
 	color: #474747;
-	font-size: 14px;
+	font-size: 22px;
 	font-weight: 500;
 }
 .job-locate-foot {

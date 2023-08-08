@@ -178,6 +178,26 @@ class TalentProfileController extends Controller
         return redirect()->route('show.profile', encrypt($user_id));
     }
 
+    public function updateTitle(Request $request)
+    {
+        $user_id = Auth::guard()->user()->id;
+        $talent = Talent::where('user_id', $user_id)->first();
+        $talent->standout_job_title = $request->standout_job_title;
+        $talent->save();
+
+        return redirect()->route('show.profile', encrypt($user_id));
+    }
+
+    public function updateCountry(Request $request)
+    {
+        $user_id = Auth::guard()->user()->id;
+        $talent = Talent::where('user_id', $user_id)->first();
+        $talent->country = $request->country;
+        $talent->save();
+
+        return redirect()->route('show.profile', encrypt($user_id));
+    }
+
     public function uploadResume($file)
     {
         $fileName = Auth::guard()->user()->id . time() . '.' . $file->extension();
@@ -300,7 +320,6 @@ class TalentProfileController extends Controller
 
     public function showPendingPage()
     {
-
         $user = Auth::guard()->user();
         return view('pages.talent.pending-profile')->with('user', $user);
     }

@@ -16,13 +16,13 @@
     }
 </style>
 <!-- The Modal -->
-<div class="modal fade custom-modal" id="add-portfolio">
+<div class="modal fade custom-modal" id="edit-title">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
 
             <!-- Modal Header -->
             <div class="modal-header ">
-                <h4 class="modal-title text-center w-100">Add Portfolio</h4>
+                <h4 class="modal-title text-center w-100">Edit title</h4>
                 <button type="button" class="close" data-bs-dismiss="modal"><span>&times;</span></button>
             </div>
 
@@ -30,24 +30,20 @@
             <div class="modal-body">
 
                 <div class="  card m-2 border-0  col-md-12 ">
-                    <form action="{{ route('add.portfolio') }}" method="POST">
+                    <form action="{{ route('updateTitle') }}" method="POST">
                         @csrf
-
                         <div class="card-body ">
 
                             <div class="form-group">
-                                <label for="" class="h4">Title</label>
-                                <input type="text" name="title" placeholder="Title of AI project you did"
-                                    class="form-control">
+                                <label for="" class="h4">Standout job title</label>
+                                <textarea name="standout_job_title" class="form-control"> {{ $user->talent->standout_job_title }} </textarea>
                             </div>
-                            <div class="form-group">
-                                <label for="" class="h4">Description</label>
-                                <textarea type="text" name="description" placeholder="A short description for that project"
-                                    class="form-control"></textarea>
-                            </div>
+
+
+
                         </div>
-                        <div class="card-footer pb-2 border-0 float-right">
-                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"> Save</button>
+                        <div class="card-footer pb-2 border-0 float-end">
+                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"> Update</button>
                         </div>
                     </form>
 
