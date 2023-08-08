@@ -35,8 +35,8 @@
         }
 
         /* li {
-                                                                                                                                                                                                                                                                                                                                                                                                                                        list-style: none;
-                                                                                                                                                                                                                                                                                                                                                                                                                                    } */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    list-style: none;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                } */
 
         .arrow,
         .close {
@@ -57,9 +57,11 @@
         }
 
         .default-image {
-            width: 50px !important;
-            height: 50px !important;
+            width: 100% !important;
+            height: auto !important;
             text-align: center;
+            object-fit: scale-down !important;
+            opacity: 0.7;
         }
 
         .job-locate-blk img,
@@ -68,6 +70,7 @@
             height: 200px;
             /* background-size: cover; */
             background-position: center;
+            object-fit: cover;
         }
 
 
@@ -78,10 +81,7 @@
 
         .add-service:hover .job-locate-blk {
             opacity: 0.8;
-            background-image: url('/assets/img/BrainX/Plus_symbol.png');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
+
         }
     </style>
     <div class="container" style="height: 100%;">
@@ -104,13 +104,17 @@
                             </div>
                             <div class="col-md-9">
                                 <h2 id="name">{{ $user->name }}</h2>
-                                <h3 id="position">{{ $user->talent->standout_job_title }}</h3>
+                                <h3 id="position">{{ $user->talent->standout_job_title }}<button class="btn "
+                                        data-bs-target="#edit-title" data-bs-toggle="modal"><i
+                                            class="material-icons mb-1 edit">edit</i></button></h3>
                                 <div class="row">
 
                                     <div class="col-md-4 p-2">
 
                                         <i class="material-icons mb-1">location_on</i> <span
-                                            id="country">{{ $user->talent->country }}</span>
+                                            id="country">{{ $user->talent->country }}</span><button class="btn "
+                                            data-bs-target="#edit-country" data-bs-toggle="modal"><i
+                                                class="material-icons mb-1 edit">edit</i></button>
                                     </div>
                                 </div>
                             </div>
@@ -133,29 +137,33 @@
                                     </div>
                                 </button>
                                 @foreach ($services as $key => $service)
-                                    <a href="{{ route('service.details', $service->id) }}" class="col-md-3">
+                                    <div class="col-md-3">
                                         <div class="job-locate-blk ">
-                                            <div class="location-img">
-                                                <span>
-                                                    @if ($service->image == null)
-                                                        <img class="default-image" src="/assets/img/BrainX/plus.png"
-                                                            alt="">
-                                                    @else
-                                                        <img class="img-fluid" src="assets/img/{{ $service->image }}"
-                                                            alt="">
-                                                    @endif
-                                                </span>
-                                            </div>
-                                            <div class="job-it-content">
-                                                <h6>{{ $service->title }}</h6>
-                                                <ul class="nav job-locate-foot">
-                                                    <li>${{ $service->price }}</li>
-                                                    <li>* {{ $service->rating }}</li>
-                                                </ul>
-                                            </div>
+                                            <a href="{{ route('service.details', $service->id) }}" class="">
 
+                                                <div class="location-img">
+                                                    <span>
+                                                        @if ($service->image == null)
+                                                            <img class="default-image" src="/assets/img/BrainX/X.png"
+                                                                alt="">
+                                                        @else
+                                                            <img class="img-fluid" src="/uploads/{{ $service->image }}"
+                                                                alt="">
+                                                        @endif
+                                                    </span>
+                                                </div>
+                                                <div class="job-it-content">
+                                                    <h6>{{ substr($service->title, 0, 50) . (strlen($service->title) > 50 ? '...' : '') }}
+
+                                                    </h6>
+                                                    <ul class="nav job-locate-foot">
+                                                        <li>${{ $service->price }}</li>
+                                                        {{-- <li><i class="material-icons mb-1">star</i> {{ $service->rating }}</li> --}}
+                                                    </ul>
+                                                </div>
+                                            </a>
                                         </div>
-                                    </a>
+                                    </div>
                                 @endforeach
                             </div>
                         </section>
@@ -238,6 +246,8 @@
     @include('pages.talent.includes.modals.edit.hourly-rate')
     @include('pages.talent.includes.modals.edit.hours-per-week')
     @include('pages.talent.includes.modals.edit.bio')
+    @include('pages.talent.includes.modals.edit.title')
+    @include('pages.talent.includes.modals.edit.country')
     @include('pages.talent.includes.modals.edit.ex-famous-company')
     @include('pages.talent.includes.modals.edit.experience')
     @include('pages.talent.includes.modals.edit.education')

@@ -34,7 +34,7 @@
             <div class="modal-body">
 
                 <div class="  card m-2 border-0  col-md-12 ">
-                    <form action="{{ route('add.service') }}" method="POST">
+                    <form action="{{ route('add.service') }}" method="POST" enctype="multipart/form-data">
                         @csrf
 
                         <div class="card-body ">

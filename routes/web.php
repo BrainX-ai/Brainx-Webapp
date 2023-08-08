@@ -62,6 +62,8 @@ Route::post('/update-ex-famous-company', 'App\http\controllers\TalentProfileCont
 Route::post('/update-bio', 'App\http\controllers\TalentProfileController@updateBio')->name('updateBio');
 Route::post('/update-experience', 'App\http\controllers\TalentProfileController@updateExp')->name('updateExp');
 Route::post('/update-education', 'App\http\controllers\TalentProfileController@updateEdu')->name('updateEdu');
+Route::post('/update-country', 'App\http\controllers\TalentProfileController@updateCountry')->name('updateCountry');
+Route::post('/update-title', 'App\http\controllers\TalentProfileController@updateTitle')->name('updateTitle');
 
 Route::get('/assessment/{category_id}', 'App\http\controllers\AssesmentController@assessment')->name('assessment.init');
 Route::get('/quiz-running/{category_id}', 'App\http\controllers\AssesmentController@generateQuestions')->name('assessment.running');
@@ -92,6 +94,7 @@ Route::prefix('/client')->as('client.')->middleware(['auth', 'verified'])->group
     Route::get('/job-details/{id}', 'App\http\controllers\Client\JobController@jobDetails')->name('job.details');
     Route::get('/job-detail', 'App\http\controllers\Client\JobController@jobDetail')->name('job.detail');
     Route::get('/view-talent-profile/{id}', 'App\http\controllers\Client\JobController@showTalentProfile')->name('show.profile');
+    Route::get('/service/{id}', 'App\http\controllers\Client\ServiceController@show')->name('service.details');
     Route::post('/request-invoice', 'App\http\controllers\Client\JobController@requestInvoice')->name('requestInvoice');
     Route::post('/approve-deposit', 'App\http\controllers\Client\JobController@approveDeposit')->name('approveDeposit');
 });
