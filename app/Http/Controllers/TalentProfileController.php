@@ -16,6 +16,7 @@ use App\Models\AssessmentCateory;
 use App\Models\Service;
 use CV;
 use Illuminate\Support\Facades\Auth;
+use Jorenvh\Share;
 
 class TalentProfileController extends Controller
 {
@@ -303,7 +304,7 @@ class TalentProfileController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return mixed
      */
     public function show($id)
     {
@@ -313,8 +314,18 @@ class TalentProfileController extends Controller
         $categories = Category::with('skills')->get();
         $user = User::with('talent')->with('experiences')->with('educations')->find($id);
         $assessmentCategories = AssessmentCateory::with('result')->get();
-        // dd($assessmentCategories);
-        return view('pages.talent.service-profile')->with('portfolios', $portfolios)->with('user', $user)->with('services', $services)->with('categories', $categories)->with('assessmentCategories', $assessmentCategories);
+        $clientProfileLink = route('client.show.profile', encrypt($id));
+
+        $linkedinShare=Share\ShareFacade::page( $clientProfileLink , 'Share AI Talent Profile')
+            ->linkedin()->getRawLinks();
+        return view('pages.talent.service-profile')
+            ->with('clientProfileLink', $clientProfileLink)
+            ->with('linkedinShare', $linkedinShare)
+            ->with('portfolios', $portfolios)
+            ->with('user', $user)
+            ->with('services', $services)
+            ->with('categories', $categories)
+            ->with('assessmentCategories', $assessmentCategories);
     }
 
 
