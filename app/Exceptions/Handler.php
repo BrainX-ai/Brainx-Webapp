@@ -62,22 +62,22 @@ class Handler extends ExceptionHandler
      */
     protected function unauthenticated($request, AuthenticationException $exception): JsonResponse|RedirectResponse
     {
-        
+
         $guard = collect($exception->guards())->first();
         $role = session('role');
         $route = match ($role) {
             'Admin' => 'admin.login.form',
-            'Client' => 'home',
-            'Talent' => 'talent.home',
+                // 'Client' => 'home',
+                // 'Talent' => 'talent.home',
             default => 'home'
         };
 
         Session::forget('role');
-        
 
-        
+
+
         return $request->expectsJson()
             ? response()->json(['message' => $exception->getMessage()], 401)
-            : redirect()->guest(route($route));  
+            : redirect()->guest(route($route));
     }
 }

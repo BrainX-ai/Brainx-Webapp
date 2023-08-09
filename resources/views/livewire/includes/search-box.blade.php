@@ -5,7 +5,7 @@
     <div class="col-md-12 mt-4 ">
         @foreach ($industries as $key => $industry)
             <label wire:key="{{ $key }}" for="{{ $key }}"
-                class="btn btn-sm rounded-pill btn-outline-dark m-1 ps-3 pe-3  shadow">
+                class="btn btn-sm rounded-pill  @if ($industry == $search) btn-primary @else btn-outline-primary @endif m-1 ps-3 pe-3  shadow">
                 <input type="radio" id="{{ $key }}" value="{{ $industry }}" class="d-none"
                     wire:model="search" />{{ $industry }}</label>
         @endforeach
