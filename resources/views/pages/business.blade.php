@@ -167,8 +167,8 @@
 
 
                         <a class="btn join-us">
-                            <button class="btn btn-primary boxes-shadow " data-bs-toggle="modal" data-bs-target="#add-feedback"
-                                type="button">Join the waiting list</button>
+                            <button class="btn btn-primary boxes-shadow " onclick="scrollToElement('searchSection')"
+                                type="button">Find AI solution</button>
                         </a>
 
 
@@ -178,8 +178,39 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4 col-lg-5 text-center text-muted only-web">
-                    <h3>Version 3 <br />coming soon</h3>
+                <div class="col-md-4 col-lg-5 ">
+                    <div id="developers-slider2" class="owl-carousel owl-theme developers-slider aos" data-aos="fade-up">
+                        @foreach ($talents as $talent)
+                            @if (isset($talent->talent) && $talent->talent->status == 'PUBLISHED')
+                                <div class="freelance-widget border-0">
+                                    <div class="freelance-content">
+                                        <div class="freelance-img">
+                                            <a>
+                                                <img src="{{ $talent->talent->photo }}" alt="User Image">
+                                                <span class="verified"><i class="fas fa-check-circle"></i></span>
+                                            </a>
+                                        </div>
+                                        <div class="freelance-info">
+                                            <h3><a> {{ $talent->name }} </a></h3>
+                                            <div class="freelance-specific">
+                                                {{ $talent->talent->standout_job_title }}</div>
+                                            <div class="text-bold">
+                                                <strong>{{ (int) $talent->talent->hourly_rate }}$/hour</strong>
+                                            </div>
+                                            <div class="freelance-specific">{{ $talent->talent->country }}</div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+
+                        {{-- </div>
+                            </div>
+                        </div> --}}
+
+
+                    </div>
                 </div>
             </div>
         </div>
@@ -190,13 +221,15 @@
         
         // $industries = ['All', 'Marketing', 'Sales', 'Real estate', 'Ecommerce', 'Finance', 'Education', 'Robotics', 'Transportation & logistics', 'Retail', 'Media & Entertainment', 'Tourism & hospotality', 'Gaming', 'Manufacturing', 'Healthcare', 'IT', 'Energy', 'Art & Design'];
     @endphp
+    <section id="searchSection">
 
-    @livewire('search-service')
-    @livewireScripts
+        @livewire('search-service')
+        @livewireScripts
+    </section>
     <!-- /Great About -->
 
 
-    <section class="section  mb-5">
+    <section class="section  mb-5 d-none">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-12 mx-auto">
@@ -232,13 +265,7 @@
     </section>
 
 
-    <section class="mb-5 pb-5 text-center mt-5 pt-5">
 
-        <a class="btn ">
-            <button class="btn btn-primary  boxes-shadow " data-bs-toggle="modal" data-bs-target="#add-feedback"
-                type="button">Join the waiting list</button>
-        </a>
-    </section>
 
 
     @include('includes.feedback-modal')
@@ -246,4 +273,16 @@
     @include('includes.modals.desktop-msg')
     @include('pages.client.includes.modals.signup')
     @include('pages.client.includes.modals.signin')
+
+    <script>
+        function scrollToElement(elementId) {
+            const element = document.getElementById(elementId);
+
+            if (element) {
+                element.scrollIntoView({
+                    behavior: 'smooth'
+                }); // Use { behavior: 'auto' } for instant scrolling
+            }
+        }
+    </script>
 @endsection

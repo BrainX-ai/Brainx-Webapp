@@ -84,6 +84,7 @@ Route::prefix('/client')->as('client.')->group(function () {
 
     Route::post('/auth/register', 'App\http\controllers\Client\AuthController@register')->name('register');
     Route::post('/auth/login', 'App\http\controllers\Client\AuthController@login')->name('login');
+    Route::get('/view-talent-profile/{id}', 'App\http\controllers\Client\JobController@showTalentProfile')->name('show.profile');
 });
 
 Route::prefix('/client')->as('client.')->middleware(['auth', 'verified'])->group(function () {
@@ -93,7 +94,6 @@ Route::prefix('/client')->as('client.')->middleware(['auth', 'verified'])->group
     Route::post('/job-request/create', 'App\http\controllers\Client\JobController@store')->name('job.create');
     Route::get('/job-details/{id}', 'App\http\controllers\Client\JobController@jobDetails')->name('job.details');
     Route::get('/job-detail', 'App\http\controllers\Client\JobController@jobDetail')->name('job.detail');
-    Route::get('/view-talent-profile/{id}', 'App\http\controllers\Client\JobController@showTalentProfile')->name('show.profile');
     Route::get('/service/{id}', 'App\http\controllers\Client\ServiceController@show')->name('service.details');
     Route::post('/request-invoice', 'App\http\controllers\Client\JobController@requestInvoice')->name('requestInvoice');
     Route::post('/approve-deposit', 'App\http\controllers\Client\JobController@approveDeposit')->name('approveDeposit');
