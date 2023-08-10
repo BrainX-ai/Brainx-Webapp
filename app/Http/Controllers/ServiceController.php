@@ -21,6 +21,7 @@ class ServiceController extends Controller
             'image' => $this->uploadFile($request),
             'price' => $request->price,
             'industry' => $request->industry,
+            'delivery_time' => $request->delivery_time,
             'user_id' => Auth::user()->id
         ]);
 

@@ -20,7 +20,7 @@
     </style>
 
     @php
-        $industries = ['Marketing', 'Sales', 'Real estate', 'Ecommerce', 'Finance', 'Education'];
+        $industries = ['Marketing', 'Sales', 'Media & Entertainment', 'Ecommerce', 'Finance', 'Education', 'IT', 'Others'];
     @endphp
     <!-- The Modal -->
     <div class="container" style="height: 100%;">
@@ -44,9 +44,16 @@
                                 <div class="card-body ">
                                     <input type="hidden" value="{{ $service->id }}" name="id" />
                                     <div class="form-group">
-                                        <label for="" class="h4">Title</label>
+                                        <div class="row">
+                                            <div class="col">
+                                                <label for="" class="h4">Title</label>
+                                            </div>
+                                            <div class="col text-end">
+                                                <label for=""  >(100 characters max)</label>
+                                            </div>
+                                        </div>
                                         <input type="text" name="title" class="form-control"
-                                            value="{{ $service->title }}"
+                                            value="{{ $service->title }}" maxlength="100"
                                             placeholder="What AI solution/service do you want to create? ">
                                     </div>
 
@@ -72,13 +79,13 @@
                                     </div>
 
                                     <div class="d-flex">
-                                        <div class="form-group col-md-7">
+                                        <div class="form-group col-md-6 ">
                                             <label for="" class="h4">Pricing (USD)</label>
                                             <input type="number" name="price" value="{{ $service->price }}"
                                                 class="form-control">
-                                            <small>Your price won’t be deducted. BrainX charges fee on clients</small>
+{{--                                            <small>Your price won’t be deducted. BrainX charges fee on clients</small>--}}
                                         </div>
-                                        <div class="form-group col-md-5">
+                                        <div class="form-group col-md-5 ">
                                             <label for="" class="h4">Delivery time (days)</label>
                                             <input type="number" name="delivery_time" value="{{ $service->delivery_time }}"
                                                 class="form-control">
