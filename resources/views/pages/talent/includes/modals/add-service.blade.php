@@ -14,6 +14,27 @@
         border-bottom: none;
         border-style: hidden;
     }
+
+    .custom-select2 {
+        width: 400px;
+    }
+
+    /* Custom styles for the dropdown itself */
+    .custom-select2 .select2-container--default .select2-selection--single {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        height: 40px;
+    }
+
+    /* Custom styles for the search input */
+    .custom-select2 .select2-search__field {
+        border: none;
+    }
+
+    /* Custom styles for selected option */
+    .custom-select2 .select2-selection__rendered {
+        padding-left: 10px;
+    }
 </style>
 
 @php
@@ -59,9 +80,9 @@
                                 <label for="" class="h4">
                                     For which industries is your AI solution/service applied?
                                 </label>
-                                <select name="industry[]" id="industry" class="form-control" multiple>
+                                <select name="industry[]" id="industry" class="custom-select2 " multiple>
                                     @foreach ($industries as $key => $industry)
-                                        <option onclick="chkcontrol({{ $key }})" value="{{ $industry }}">
+                                        <option value="{{ $industry }}">
                                             {{ $industry }} </option>
                                     @endforeach
                                 </select>
@@ -107,23 +128,32 @@
         </div>
     </div>
 </div>
-<script>
-    function chkcontrol(j) {
-        var total = 0;
-        var data = document.getElementById('industry').options
-        console.log(data)
-        for (var i = 0; i < data.length; i++) {
+@section('add-service-js')
+    <script>
+        function chkcontrol(j) {
+            var total = 0;
+            var data = document.getElementById('industry').options
+            console.log(data)
+            for (var i = 0; i < data.length; i++) {
 
-            if (data[i].selected)
-                total = total + 1;
+                if (data[i].selected)
+                    total = total + 1;
+            }
+
+            if (total > 3) {
+                alert("Please Select only 3")
+                data[j].selected = false;
+                return false;
+            }
+
         }
 
-        if (total > 3) {
-            alert("Please Select only 3")
-            data[j].selected = false;
-            return false;
-        }
-
-    }
-</script>
+        $(document).ready(function() {
+            $('#industry').select2({
+                maximumSelectionLength: 3, // Set the maximum selection limit
+                theme: 'classic' // Use the 'classic' theme for this example
+            });
+        });
+    </script>
+@endsection
 <!-- /The Modal -->
