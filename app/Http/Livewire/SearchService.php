@@ -145,13 +145,13 @@ class SearchService extends Component
     {
         $this->mount();
         // dd($this->services);
-        $services = $this->services;
+
         if ($this->search != 'All') {
-            $services = $this->getService($this->search);
+            $this->services = $this->getService($this->search);
         }
-        // dd(is_array($services));
+
         return view('livewire.search-service', [
-            'services' => $services
+            'services' => $this->services
         ]);
     }
 
@@ -162,7 +162,7 @@ class SearchService extends Component
                 return [$service];
             }
         }
-        return $this->services;
+        return []; //$this->services;
     }
 
     // public function render()
