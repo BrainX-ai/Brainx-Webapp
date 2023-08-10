@@ -110,7 +110,8 @@
     <script src="/assets/js/script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
 
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <script>
         $.ajaxSetup({
             headers: {
@@ -127,6 +128,7 @@
     @yield('is-email-exist-js')
     @yield('chat-js')
     @yield('edit-profile-js')
+    @yield('add-service-js')
 </body>
 
 </html>
