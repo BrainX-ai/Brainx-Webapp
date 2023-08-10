@@ -58,7 +58,7 @@
     </script>
 
     @vite(['resources/js/app.js'])
-
+    @livewireStyles
 </head>
 
 <body class="home-page bg-one">
@@ -85,6 +85,7 @@
 
     <!-- jQuery -->
     <script src="/assets/js/jquery-3.6.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"></script>
 
     <!-- Bootstrap Bundle JS -->
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
@@ -108,6 +109,7 @@
     <!-- Custom JS -->
     <script src="/assets/js/script.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.3.0/jquery.form.min.js"></script>
+
 
     <script>
         $.ajaxSetup({

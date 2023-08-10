@@ -35,8 +35,8 @@
         }
 
         /* li {
-                    list-style: none;
-                } */
+                        list-style: none;
+                    } */
 
         .arrow,
         .close {
@@ -71,7 +71,6 @@
                         <div class="row m-5">
                             <div class="col-md-3 ">
                                 <div class="img-profile">
-
                                     <img class="avatar-img" src="{{ $user->talent->photo }}" alt="">
                                 </div>
                             </div>
@@ -294,7 +293,7 @@
                                                 <div class="d-flex">
                                                     <h4 class="text-primary mt-2">{{ $education->degree }},
                                                         {{ $education->field_of_study }}</h4>
-                                                        <button class="btn " data-bs-target="#edit-education"
+                                                    <button class="btn " data-bs-target="#edit-education"
                                                         data-bs-toggle="modal"
                                                         onclick="editEducation({{ json_encode($education) }})"><i
                                                             class="material-icons edit">edit</i></button>
@@ -354,12 +353,12 @@
     <script>
         function editExperience(experience) {
             console.log(experience);
-            if(experience.to == 'Present'){
+            if (experience.to == 'Present') {
 
                 document.getElementById('ex-toYear').disabled = true
                 document.getElementById('ex-present').checked = true
                 document.getElementById('present_edit_option').selected = true
-            }else{
+            } else {
 
                 $('#ex-toYear').val(experience.to);
                 document.getElementById('ex-toYear').disabled = false
@@ -376,7 +375,7 @@
 
         function editEducation(education) {
             console.log(education);
-           
+
             $('#edu-degree').val(education.degree);
             $('#edu-school').val(education.school);
             $('#edu-field-of-study').val(education.field_of_study);
