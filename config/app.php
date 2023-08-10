@@ -196,6 +196,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         Geeky\CV\ParserServiceProvider::class,
+        Jorenvh\Share\Providers\ShareServiceProvider::class,
+
     ],
 
     /*
@@ -211,6 +213,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
+        'Share' => Jorenvh\Share\ShareFacade::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'CV' => Geeky\CV\ParserFacade::class,
     ])->toArray(),

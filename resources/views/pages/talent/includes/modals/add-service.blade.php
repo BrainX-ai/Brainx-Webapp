@@ -17,7 +17,9 @@
 </style>
 
 @php
-    $industries = ['All', 'Marketing', 'Sales', 'Real estate', 'Ecommerce', 'Finance', 'Education', 'Robotics', 'Transportation & logistics', 'Retail', 'Media & Entertainment', 'Tourism & hospotality', 'Gaming', 'Manufacturing', 'Healthcare', 'IT', 'Energy', 'Art & Design'];
+
+    $industries = ['Ecommerce', 'Finance', 'Education', 'IT', 'Media & Entertainment', 'Marketing', 'Sales', 'Others'];
+    
 @endphp
 <!-- The Modal -->
 <div class="modal fade custom-modal" id="add-service">
@@ -34,14 +36,22 @@
             <div class="modal-body">
 
                 <div class="  card m-2 border-0  col-md-12 ">
-                    <form action="{{ route('add.service') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('add.service') }}" name="form1" method="POST"
+                        enctype="multipart/form-data">
                         @csrf
 
                         <div class="card-body ">
 
                             <div class="form-group">
-                                <label for="" class="h4">Title</label>
-                                <input type="text" name="title" class="form-control"
+                                <div class="row">
+                                    <div class="col">
+                                        <label for="" class="h4">Title</label>
+                                    </div>
+                                    <div class="col text-end">
+                                        <label for=""  >(100 characters max)</label>
+                                    </div>
+                                </div>
+                                <input type="text" name="title" class="form-control" maxlength="100"
                                     placeholder="What AI solution/service do you want to create? ">
                             </div>
 
@@ -49,10 +59,10 @@
                                 <label for="" class="h4">
                                     For which industries is your AI solution/service applied?
                                 </label>
-                                <select name="industry" id="" class="form-control">
-                                    <option value="">- Select industry</option>
-                                    @foreach ($industries as $industry)
-                                        <option value="{{ $industry }}">{{ $industry }}</option>
+                                <select name="industry[]" id="industry" class="form-control" multiple>
+                                    @foreach ($industries as $key => $industry)
+                                        <option onclick="chkcontrol({{ $key }})" value="{{ $industry }}">
+                                            {{ $industry }} </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -63,12 +73,12 @@
                             </div>
 
                             <div class="d-flex">
-                                <div class="form-group col-md-7">
+                                <div class="form-group col-md-5 ">
                                     <label for="" class="h4">Pricing (USD)</label>
                                     <input type="number" name="price" class="form-control">
                                     {{--                                    <small>Your price won’t be deducted. BrainX charges fee on clients</small> --}}
                                 </div>
-                                <div class="form-group col-md-5">
+                                <div class="form-group col-md-6 ">
                                     <label for="" class="h4">Delivery time (days)</label>
                                     <input type="number" name="delivery_time" class="form-control">
                                 </div>
@@ -97,4 +107,23 @@
         </div>
     </div>
 </div>
+<script>
+    function chkcontrol(j) {
+        var total = 0;
+        var data = document.getElementById('industry').options
+        console.log(data)
+        for (var i = 0; i < data.length; i++) {
+
+            if (data[i].selected)
+                total = total + 1;
+        }
+
+        if (total > 3) {
+            alert("Please Select only 3")
+            data[j].selected = false;
+            return false;
+        }
+
+    }
+</script>
 <!-- /The Modal -->
