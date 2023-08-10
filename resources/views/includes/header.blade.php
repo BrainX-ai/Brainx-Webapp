@@ -84,6 +84,10 @@
                 <a href="/talent" data-bs-toggle="modal" data-bs-target="#login-modal"
                     class="@if (Request::is('talent')) active-page @endif">Become AI freelancer</a>
             </li>
+            <li class="submenu">
+                <a href="/talent" data-bs-toggle="modal" data-bs-target="#client-signin"
+                    class="@if (Request::is('talent')) active-page @endif">Login</a>
+            </li>
 
             {{-- <li><a href="post-project.html" class="login-btn">Post a Project </a></li> --}}
         </ul>

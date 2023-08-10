@@ -1,14 +1,25 @@
 @extends('app')
 
 @section('content')
+    <style>
+        .service-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            background-position: center;
+        }
+    </style>
     <div class="container" style="height: 100%;">
 
         <div class="content">
             <div class="container-fluid">
                 <div class="row mb-5 pb-5">
                     <div class="col-md-8 border p-3">
-                        <img src="/assets/img/BrainX/plus.png" alt="" class="img-fluid">
-
+                        @if ($service->image != null)
+                            <img src="/uploads/{{ $service->image }}" alt="" class="service-image">
+                        @else
+                            <img src="/assets/img/BrainX/plus.png" alt="" class="service-image">
+                        @endif
                         <h4 class="mt-4">{{ $service->title }}</h4>
 
                         <div class="media d-flex mt-5">
