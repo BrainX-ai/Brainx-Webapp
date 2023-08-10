@@ -20,7 +20,9 @@ class ServiceController extends Controller
             'description' => $request->description,
             'image' => $this->uploadFile($request),
             'price' => $request->price,
+            'delivery_time' => $request->delivery_time,
             'industry' => implode(',', $request->industry),
+
             'user_id' => Auth::user()->id
         ]);
 

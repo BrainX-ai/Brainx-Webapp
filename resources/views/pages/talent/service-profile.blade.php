@@ -20,7 +20,7 @@
             border-radius: .45rem !important;
         }
 
-        .edit {
+        .edit, .share {
             font-size: 25px;
         }
 
@@ -103,7 +103,15 @@
                                 </div>
                             </div>
                             <div class="col-md-9">
-                                <h2 id="name">{{ $user->name }}</h2>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <h2 id="name">{{ $user->name }}</h2>
+                                    </div>
+                                    <div class="col-6">
+                                            <button class="btn" data-bs-target="#share-profile" data-bs-toggle="modal"><i
+                                                    class="material-icons mb-1 share">share</i></button>
+                                    </div>
+                                </div>
                                 <h3 id="position">{{ $user->talent->standout_job_title }}<button class="btn "
                                         data-bs-target="#edit-title" data-bs-toggle="modal"><i
                                             class="material-icons mb-1 edit">edit</i></button></h3>
@@ -253,6 +261,7 @@
     @include('pages.talent.includes.modals.edit.education')
     @include('pages.talent.includes.modals.add-service')
     @include('pages.talent.includes.modals.add-portfolio')
+    @include('pages.talent.includes.modals.share-service')
 
 @section('edit-profile-js')
     <script>
@@ -289,6 +298,7 @@
             $('#education_id').val(education.id)
 
         }
+
 
         // function disableExpToDate(el) {
 
