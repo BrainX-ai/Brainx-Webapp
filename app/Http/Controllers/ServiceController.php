@@ -20,8 +20,9 @@ class ServiceController extends Controller
             'description' => $request->description,
             'image' => $this->uploadFile($request),
             'price' => $request->price,
-            'industry' => $request->industry,
             'delivery_time' => $request->delivery_time,
+            'industry' => implode(',', $request->industry),
+
             'user_id' => Auth::user()->id
         ]);
 
@@ -79,6 +80,7 @@ class ServiceController extends Controller
         $service->delivery_time = $request->delivery_time;
         $service->price = $request->price;
         $service->industry = $request->industry;
+        $service->image = ($request->image !== null) ? $this->uploadFile($request) : $service->image;
 
         $service->save();
 

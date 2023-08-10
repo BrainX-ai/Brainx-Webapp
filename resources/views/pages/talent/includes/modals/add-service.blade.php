@@ -17,7 +17,9 @@
 </style>
 
 @php
-    $industries = ['Marketing', 'Sales', 'Media & Entertainment', 'Ecommerce', 'Finance', 'Education', 'IT', 'Others'];
+
+    $industries = ['Ecommerce', 'Finance', 'Education', 'IT', 'Media & Entertainment', 'Marketing', 'Sales', 'Others'];
+    
 @endphp
 <!-- The Modal -->
 <div class="modal fade custom-modal" id="add-service">
@@ -26,7 +28,7 @@
 
             <!-- Modal Header -->
             <div class="modal-header ">
-{{--                <h4 class="modal-title text-center w-100">Add education</h4>--}}
+                {{--                <h4 class="modal-title text-center w-100">Add education</h4> --}}
                 <button type="button" class="close" data-bs-dismiss="modal"><span>&times;</span></button>
             </div>
 
@@ -34,7 +36,8 @@
             <div class="modal-body">
 
                 <div class="  card m-2 border-0  col-md-12 ">
-                    <form action="{{ route('add.service') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('add.service') }}" name="form1" method="POST"
+                        enctype="multipart/form-data">
                         @csrf
 
                         <div class="card-body ">
@@ -56,10 +59,10 @@
                                 <label for="" class="h4">
                                     For which industries is your AI solution/service applied?
                                 </label>
-                                <select name="industry" id="" class="form-control">
-                                    <option value="">- Select industry</option>
-                                    @foreach ($industries as $industry)
-                                        <option value="{{ $industry }}">{{ $industry }}</option>
+                                <select name="industry[]" id="industry" class="form-control" multiple>
+                                    @foreach ($industries as $key => $industry)
+                                        <option onclick="chkcontrol({{ $key }})" value="{{ $industry }}">
+                                            {{ $industry }} </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -73,7 +76,7 @@
                                 <div class="form-group col-md-5 ">
                                     <label for="" class="h4">Pricing (USD)</label>
                                     <input type="number" name="price" class="form-control">
-{{--                                    <small>Your price won’t be deducted. BrainX charges fee on clients</small>--}}
+                                    {{--                                    <small>Your price won’t be deducted. BrainX charges fee on clients</small> --}}
                                 </div>
                                 <div class="form-group col-md-6 ">
                                     <label for="" class="h4">Delivery time (days)</label>
@@ -104,4 +107,23 @@
         </div>
     </div>
 </div>
+<script>
+    function chkcontrol(j) {
+        var total = 0;
+        var data = document.getElementById('industry').options
+        console.log(data)
+        for (var i = 0; i < data.length; i++) {
+
+            if (data[i].selected)
+                total = total + 1;
+        }
+
+        if (total > 3) {
+            alert("Please Select only 3")
+            data[j].selected = false;
+            return false;
+        }
+
+    }
+</script>
 <!-- /The Modal -->

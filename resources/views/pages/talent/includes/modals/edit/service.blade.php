@@ -20,7 +20,9 @@
     </style>
 
     @php
-        $industries = ['Marketing', 'Sales', 'Media & Entertainment', 'Ecommerce', 'Finance', 'Education', 'IT', 'Others'];
+
+        $industries = ['Ecommerce', 'Finance', 'Education', 'IT', 'Media & Entertainment', 'Marketing', 'Sales', 'Others'];
+        
     @endphp
     <!-- The Modal -->
     <div class="container" style="height: 100%;">
@@ -38,7 +40,7 @@
                     <div class="modal-body">
 
                         <div class="  card m-2 border-0  col-md-12 ">
-                            <form action="{{ route('update.service') }}" method="POST">
+                            <form action="{{ route('update.service') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
 
                                 <div class="card-body ">
@@ -61,11 +63,12 @@
                                         <label for="" class="h4">
                                             For which industries is your AI solution/service applied?
                                         </label>
-                                        <select name="industry" id="" class="form-control">
-                                            <option value="">- Select industry</option>
-                                            @foreach ($industries as $industry)
+                                        <select name="industry[]" id="industry" class="form-control" multiple>
+
+                                            @foreach ($industries as $key => $industry)
                                                 <option value="{{ $industry }}"
-                                                    @if ($industry == $service->industry) selected @endif>{{ $industry }}
+                                                    onclick="chkcontrol({{ $key }})"
+                                                    @if (strpos($service->industry, $industry) !== false) selected @endif>{{ $industry }}
                                                 </option>
                                             @endforeach
                                         </select>
@@ -94,12 +97,9 @@
                                     <div class="form-group">
                                         <label for="" class="h4">Visualize your AI solution/service (1
                                             image)</label>
-                                        <input type="file" name="image" class="form-control" />
+                                        <input type="file" name="image" class="form-control" id="imgInp" />
+                                        <img src="/uploads/{{ $service->image }}" alt="" id="service_image">
                                     </div>
-
-
-
-
 
                                 </div>
                                 <div class="card-footer pb-2 border-0 float-right">
@@ -116,5 +116,38 @@
             </div>
         </div>
     </div>
+    <script>
+        function placeImage() {
+            var image = document.getElementById('image').value;
+            document.getElementById('service-image').src = image
+        }
+
+        imgInp.onchange = evt => {
+            const [file] = imgInp.files
+            if (file) {
+                service_image.src = URL.createObjectURL(file)
+            }
+        }
+    </script>
+
+    <script>
+        function chkcontrol(j) {
+            var total = 0;
+            var data = document.getElementById('industry').options
+            console.log(data)
+            for (var i = 0; i < data.length; i++) {
+
+                if (data[i].selected)
+                    total = total + 1;
+            }
+
+            if (total > 3) {
+                alert("Please Select only 3")
+                data[j].selected = false;
+                return false;
+            }
+
+        }
+    </script>
     <!-- /The Modal -->
 @endsection
