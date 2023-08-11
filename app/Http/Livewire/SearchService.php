@@ -25,7 +25,7 @@ class SearchService extends Component
                     'name' => 'Silvio',
                     'standout_job_title' =>
                     'Fashion generative AI expert',
-                    'photo' => '/assets/img/BrainX/X.png'
+                    'photo' => '/assets/img/BrainX/service_example.png'
                 ]
             ]
         ],
@@ -40,7 +40,7 @@ class SearchService extends Component
                     'name' => 'David',
                     'standout_job_title' =>
                     'AI specialist in finance',
-                    'photo' => '/assets/img/BrainX/X.png'
+                    'photo' => '/assets/img/BrainX/service_example.png'
                 ]
             ]
         ],
@@ -54,7 +54,7 @@ class SearchService extends Component
                 'talent' => [
                     'name' => 'Tom',
                     'standout_job_title' => 'AI engineer',
-                    'photo' => '/assets/img/BrainX/X.png'
+                    'photo' => '/assets/img/BrainX/service_example.png'
                 ]
             ]
         ],
@@ -69,7 +69,7 @@ class SearchService extends Component
                     'name' => 'Nicolas',
                     'standout_job_title' =>
                     'Data scientist',
-                    'photo' => '/assets/img/BrainX/X.png'
+                    'photo' => '/assets/img/BrainX/service_example.png'
                 ]
             ]
         ], [
@@ -83,7 +83,7 @@ class SearchService extends Component
                     'name' => 'Bill',
                     'standout_job_title' =>
                     'Prompt engineer',
-                    'photo' => '/assets/img/BrainX/X.png'
+                    'photo' => '/assets/img/BrainX/service_example.png'
                 ]
             ]
         ],
@@ -98,7 +98,7 @@ class SearchService extends Component
                     'name' => 'Huyen Chip',
                     'standout_job_title' =>
                     'Generative AI specialist',
-                    'photo' => '/assets/img/BrainX/X.png'
+                    'photo' => '/assets/img/BrainX/service_example.png'
                 ]
             ]
         ],
@@ -112,7 +112,7 @@ class SearchService extends Component
                 'talent' => [
                     'name' => 'Lily',
                     'standout_job_title' => 'NLP expert',
-                    'photo' => '/assets/img/BrainX/X.png'
+                    'photo' => '/assets/img/BrainX/service_example.png'
                 ]
             ]
         ],
@@ -149,7 +149,7 @@ class SearchService extends Component
         if ($this->search != 'All') {
             $this->defaultServices = $this->getService($this->search);
         }
-
+        // dd($this->getServicesFromDB());
         return view('livewire.search-service', [
             'defaultServices' => $this->defaultServices,
             'services' => $this->getServicesFromDB()
@@ -158,7 +158,7 @@ class SearchService extends Component
 
     public function getService($industry)
     {
-        foreach ($this->services as $service) {
+        foreach ($this->defaultServices as $service) {
             if ($this->search == $service->industry) {
                 return [$service];
             }
@@ -170,7 +170,7 @@ class SearchService extends Component
     {
         $services = Service::inRandomOrder()->with('talent');
         if ($this->search != 'All') {
-            $services = $services->where('industry', $this->search);
+            $services = $services->where('industry', 'LIKE', '%' . $this->search . '%');
         }
         return $services = $services->get();
     }

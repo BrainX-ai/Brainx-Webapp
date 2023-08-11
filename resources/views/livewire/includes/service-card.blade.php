@@ -1,6 +1,6 @@
 <div class="col-md-4">
     <div class="job-locate-blk bg-light">
-        <a href="{{ route('client.service.details', $service->id) }}" class="" wire:key="{{ $service->id }}">
+        <a href="{{ route('client.service.details', $service->id) }}" class="">
 
             <div class="location-img">
                 @if ($service->image == null)
