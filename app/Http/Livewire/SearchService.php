@@ -13,7 +13,7 @@ class SearchService extends Component
     // public $industries = ['All', 'Marketing', 'Sales', 'Real estate', 'Ecommerce', 'Finance', 'Education', 'Robotics', 'Transportation & logistics', 'Retail', 'Media & Entertainment', 'Tourism & hospotality', 'Gaming', 'Manufacturing', 'Healthcare', 'IT', 'Energy', 'Art & Design'];
     public $industries = ['All', 'Ecommerce', 'Finance', 'Education', 'IT', 'Media & Entertainment', 'Marketing', 'Sales', 'Others'];
 
-    public $services = [];
+    public $defaultServices = [];
     public $serviceArray = [
         [
             'image' => 'fashion_model.png',
@@ -120,10 +120,10 @@ class SearchService extends Component
 
     public function mount()
     {
-        $this->services = [];
+        $this->defaultServices = [];
         foreach ($this->serviceArray as $subArray) {
             // dd(is_array($subArray));
-            $this->services[] =   (object)$subArray;
+            $this->defaultServices[] =   (object)$subArray;
             // dd($this->services);
         }
     }
@@ -147,11 +147,12 @@ class SearchService extends Component
         // dd($this->services);
 
         if ($this->search != 'All') {
-            $this->services = $this->getService($this->search);
+            $this->defaultServices = $this->getService($this->search);
         }
 
         return view('livewire.search-service', [
-            'services' => $this->services
+            'defaultServices' => $this->defaultServices,
+            'services' => $this->getServicesFromDB()
         ]);
     }
 
@@ -163,6 +164,15 @@ class SearchService extends Component
             }
         }
         return []; //$this->services;
+    }
+
+    public function getServicesFromDB()
+    {
+        $services = Service::inRandomOrder()->with('talent');
+        if ($this->search != 'All') {
+            $services = $services->where('industry', $this->search);
+        }
+        return $services = $services->get();
     }
 
     // public function render()
