@@ -167,8 +167,16 @@
 
 
                         <a class="btn join-us">
-                            <button class="btn btn-primary boxes-shadow " onclick="scrollToElement('searchSection')"
-                                type="button">Find AI solution</button>
+                            <button class="btn btn-primary boxes-shadow ps-5 pe-5" onclick="scrollToElement('searchSection')"
+                                type="button">
+                                <div class="text-center"><small>Client</small></div>Find AI solution
+                            </button>
+                        </a>
+                        <a class="btn join-us">
+                            <button class="btn btn-outline-primary boxes-shadow ps-5 pe-5" data-bs-toggle="modal"
+                                data-bs-target="#login-modal" type="button">
+                                <div class="text-center"><small>Talent</small></div>Sell AI solution
+                            </button>
                         </a>
 
 
