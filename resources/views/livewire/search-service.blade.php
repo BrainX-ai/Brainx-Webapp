@@ -28,11 +28,13 @@
 
                 </div>
                 @if (count($defaultServices) > 0)
+                    @foreach ($services as $service)
+                        @if ($service->talent->talent->status == 'PUBLISHED')
+                            @include('livewire.includes.service-card')
+                        @endif
+                    @endforeach
                     @foreach ($defaultServices as $service)
                         @include('livewire.includes.service-card-default')
-                    @endforeach
-                    @foreach ($services as $service)
-                        @include('livewire.includes.service-card')
                     @endforeach
                 @else
                     <h5 class="text-center">This industry needs AI solutions from AI talents.</h5>
