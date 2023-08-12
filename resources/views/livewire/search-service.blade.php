@@ -27,7 +27,10 @@
                     </div>
 
                 </div>
-                @if (count($services) > 0)
+                @if (count($defaultServices) > 0)
+                    @foreach ($defaultServices as $service)
+                        @include('livewire.includes.service-card-default')
+                    @endforeach
                     @foreach ($services as $service)
                         @include('livewire.includes.service-card')
                     @endforeach

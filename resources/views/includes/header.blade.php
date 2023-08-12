@@ -67,10 +67,12 @@
 
                 <li class="submenu mob ">
                     <a href="/talent" data-bs-toggle="modal" data-bs-target="#login-modal"
-                        class="@if (Request::is('talent')) active-page @endif">Become AI
-                        freelancer</a>
+                        class="@if (Request::is('talent')) active-page @endif">Sell AI solution/service</a>
                 </li>
-
+                <li class="submenu">
+                    <a href="/talent" data-bs-toggle="modal" data-bs-target="#client-signin"
+                        class="@if (Request::is('talent')) active-page @endif">Login</a>
+                </li>
 
                 <li class="has-submenu fade" style="width: 200px">
                 </li>

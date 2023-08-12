@@ -13,7 +13,7 @@ class SearchService extends Component
     // public $industries = ['All', 'Marketing', 'Sales', 'Real estate', 'Ecommerce', 'Finance', 'Education', 'Robotics', 'Transportation & logistics', 'Retail', 'Media & Entertainment', 'Tourism & hospotality', 'Gaming', 'Manufacturing', 'Healthcare', 'IT', 'Energy', 'Art & Design'];
     public $industries = ['All', 'Ecommerce', 'Finance', 'Education', 'IT', 'Media & Entertainment', 'Marketing', 'Sales', 'Others'];
 
-    public $services = [];
+    public $defaultServices = [];
     public $serviceArray = [
         [
             'image' => 'fashion_model.png',
@@ -25,7 +25,7 @@ class SearchService extends Component
                     'name' => 'Silvio',
                     'standout_job_title' =>
                     'Fashion generative AI expert',
-                    'photo' => '/assets/img/BrainX/X.png'
+                    'photo' => '/assets/img/BrainX/service_example.png'
                 ]
             ]
         ],
@@ -40,7 +40,7 @@ class SearchService extends Component
                     'name' => 'David',
                     'standout_job_title' =>
                     'AI specialist in finance',
-                    'photo' => '/assets/img/BrainX/X.png'
+                    'photo' => '/assets/img/BrainX/service_example.png'
                 ]
             ]
         ],
@@ -54,7 +54,7 @@ class SearchService extends Component
                 'talent' => [
                     'name' => 'Tom',
                     'standout_job_title' => 'AI engineer',
-                    'photo' => '/assets/img/BrainX/X.png'
+                    'photo' => '/assets/img/BrainX/service_example.png'
                 ]
             ]
         ],
@@ -69,7 +69,7 @@ class SearchService extends Component
                     'name' => 'Nicolas',
                     'standout_job_title' =>
                     'Data scientist',
-                    'photo' => '/assets/img/BrainX/X.png'
+                    'photo' => '/assets/img/BrainX/service_example.png'
                 ]
             ]
         ], [
@@ -83,7 +83,7 @@ class SearchService extends Component
                     'name' => 'Bill',
                     'standout_job_title' =>
                     'Prompt engineer',
-                    'photo' => '/assets/img/BrainX/X.png'
+                    'photo' => '/assets/img/BrainX/service_example.png'
                 ]
             ]
         ],
@@ -98,7 +98,7 @@ class SearchService extends Component
                     'name' => 'Huyen Chip',
                     'standout_job_title' =>
                     'Generative AI specialist',
-                    'photo' => '/assets/img/BrainX/X.png'
+                    'photo' => '/assets/img/BrainX/service_example.png'
                 ]
             ]
         ],
@@ -112,7 +112,7 @@ class SearchService extends Component
                 'talent' => [
                     'name' => 'Lily',
                     'standout_job_title' => 'NLP expert',
-                    'photo' => '/assets/img/BrainX/X.png'
+                    'photo' => '/assets/img/BrainX/service_example.png'
                 ]
             ]
         ],
@@ -120,10 +120,10 @@ class SearchService extends Component
 
     public function mount()
     {
-        $this->services = [];
+        $this->defaultServices = [];
         foreach ($this->serviceArray as $subArray) {
             // dd(is_array($subArray));
-            $this->services[] =   (object)$subArray;
+            $this->defaultServices[] =   (object)$subArray;
             // dd($this->services);
         }
     }
@@ -147,22 +147,32 @@ class SearchService extends Component
         // dd($this->services);
 
         if ($this->search != 'All') {
-            $this->services = $this->getService($this->search);
+            $this->defaultServices = $this->getService($this->search);
         }
-
+        // dd($this->getServicesFromDB());
         return view('livewire.search-service', [
-            'services' => $this->services
+            'defaultServices' => $this->defaultServices,
+            'services' => $this->getServicesFromDB()
         ]);
     }
 
     public function getService($industry)
     {
-        foreach ($this->services as $service) {
+        foreach ($this->defaultServices as $service) {
             if ($this->search == $service->industry) {
                 return [$service];
             }
         }
         return []; //$this->services;
+    }
+
+    public function getServicesFromDB()
+    {
+        $services = Service::inRandomOrder()->with('talent');
+        if ($this->search != 'All') {
+            $services = $services->where('industry', 'LIKE', '%' . $this->search . '%');
+        }
+        return $services = $services->get();
     }
 
     // public function render()

@@ -46,12 +46,13 @@ class AuthenticatedSessionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(Request $request){
+    public function destroy(Request $request)
+    {
         $redirectTo = '/';
-        if(session('role') == 'Talent'){
-            $redirectTo = '/talent';
+        if (session('role') == 'Talent') {
+            // $redirectTo = '/talent';
         }
-        
+
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();

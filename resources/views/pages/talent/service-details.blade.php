@@ -4,7 +4,7 @@
     <style>
         .service-image {
             width: 100%;
-            height: 200px;
+            height: 400px;
             object-fit: cover;
             background-position: center;
         }
