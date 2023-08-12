@@ -90,12 +90,12 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        @if (sizeof($user->experiences) == 0 || sizeof($user->educations) == 0)
-                            <h4 class="mb-5 text-center text-primary">Your profile is incomplete</h4>
-                        @endif
-                        @if ($user->talent->status == 'IN_REVIEW')
-                            <h4 class="mb-5 text-center text-primary">This profile is in review</h4>
-                        @endif
+{{--                        @if (sizeof($user->experiences) == 0 || sizeof($user->educations) == 0)--}}
+{{--                            <h4 class="mb-5 text-center text-primary">Your profile is incomplete</h4>--}}
+{{--                        @endif--}}
+{{--                        @if ($user->talent->status == 'IN_REVIEW')--}}
+{{--                            <h4 class="mb-5 text-center text-primary">This profile is in review</h4>--}}
+{{--                        @endif--}}
                         <div class="row m-5">
                             <div class="col-md-3 ">
                                 <div class="img-profile">
