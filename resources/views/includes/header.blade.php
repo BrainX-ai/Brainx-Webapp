@@ -82,10 +82,10 @@
         </div>
         <ul class="nav header-navbar-rht reg-head pt-3 pe-5">
 
-            <li class="submenu">
-                <a href="/talent" data-bs-toggle="modal" data-bs-target="#login-modal"
-                    class="@if (Request::is('talent')) active-page @endif">Sell AI solution/service</a>
-            </li>
+{{--            <li class="submenu">--}}
+{{--                <a href="/talent" data-bs-toggle="modal" data-bs-target="#login-modal"--}}
+{{--                    class="@if (Request::is('talent')) active-page @endif">Sell AI solution/service</a>--}}
+{{--            </li>--}}
             <li class="submenu">
                 <a href="/talent" data-bs-toggle="modal" data-bs-target="#client-signin"
                     class="@if (Request::is('talent')) active-page @endif">Login</a>
