@@ -84,7 +84,7 @@ Route::prefix('/client')->as('client.')->group(function () {
 
     Route::post('/auth/register', 'App\http\controllers\Client\AuthController@register')->name('register');
     Route::post('/auth/login', 'App\http\controllers\Client\AuthController@login')->name('login');
-    Route::get('/view-talent-profile/{id}', 'App\http\controllers\Client\JobController@showTalentProfile')->name('show.profile');
+    Route::get('/view-talent-profile/{id}', 'App\Http\Controllers\TalentController@showTalentProfile')->name('show.profile');
     Route::get('/service/{id}', 'App\http\controllers\Client\ServiceController@show')->name('service.details');
 });
 
