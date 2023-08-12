@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use App\Http\Controllers\LinkedinController;
 use App\Models\User;
+use App\Http\Controllers\PayPalController;
 
 /*
 |--------------------------------------------------------------------------
@@ -144,4 +145,12 @@ Route::post('email/isexist', 'App\http\Controllers\Client\AuthController@isEmail
 
 Route::get('auth/linkedin', [LinkedinController::class, 'linkedinRedirect']);
 Route::get('auth/linkedin/callback', [LinkedinController::class, 'linkedinCallback']);
+
+// Paypal ----------------------------------------------------------------
+
+Route::get('create-transaction', [PayPalController::class, 'createTransaction'])->name('createTransaction');
+Route::get('process-transaction', [PayPalController::class, 'processTransaction'])->name('processTransaction');
+Route::get('success-transaction', [PayPalController::class, 'successTransaction'])->name('successTransaction');
+Route::get('cancel-transaction', [PayPalController::class, 'cancelTransaction'])->name('cancelTransaction');
+
 require __DIR__ . '/auth.php';
