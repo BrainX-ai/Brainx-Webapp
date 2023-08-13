@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Action;
 use App\Models\Portfolio;
 use App\Models\Service;
+use App\Models\ServiceTransaction;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -93,5 +95,38 @@ class ServiceController extends Controller
         $talent = User::with('talent')->find($service->user_id);
 
         return view('pages.talent.service-details')->with('service', $service)->with('talent', $talent);
+    }
+
+    public function messages($service_id)
+    {
+
+        $client_id = Auth::user()->id;
+        $serviceTransactions = ServiceTransaction::where('user_id', $client_id)->with('service')->get();
+
+        if ($service_id == null) {
+            $actions = Action::where('service_id', $serviceTransactions[0]->service_id)->get();
+        } else {
+            $actions = Action::where('service_id', $service_id)->get();
+        }
+        $service = Service::find($service_id);
+
+
+
+        return view('pages.talent.service-chat-page', compact('actions', 'service', 'serviceTransactions'));
+    }
+
+    public function messagesAll()
+    {
+
+        $user_id = Auth::user()->id;
+        $serviceTransactions = ServiceTransaction::where('user_id', $user_id)->with('service')->get();
+
+        $actions = Action::where('service_id', $serviceTransactions[0]->service_id)->get();
+
+        $service = Service::find($serviceTransactions[0]->service_id);
+
+
+
+        return view('pages.talent.service-chat-page', compact('actions', 'service', 'serviceTransactions'));
     }
 }
