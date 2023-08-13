@@ -36,12 +36,12 @@
         </li>
         {{-- @if (isset($user) && $user->talent->status != 'INCOMPLETE') --}}
         @if (Auth::guard()->user() != null)
-            {{-- <li class="nav-item dropdown">
-            <a href="{{ route('build.profile') }}" class=" nav-link user-img" >
-                <img src="/assets/img/BrainX/Message-icon.png" alt=""> 
-            </a>
-            
-        </li> --}}
+            <li class="nav-item dropdown">
+                <a href="{{ route('messages.all') }}" class=" nav-link user-img">
+                    <img src="/assets/img/BrainX/Message-icon.png" alt="">
+                </a>
+
+            </li>
 
 
             {{-- @endif --}}

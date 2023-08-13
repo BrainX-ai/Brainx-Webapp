@@ -77,6 +77,8 @@ Route::get('/results', 'App\http\controllers\AssesmentController@results')->name
 Route::post('/send-message', 'App\http\controllers\ChatController@sendMessage')->name('send.message');
 Route::post('/upload-chat-file', 'App\http\controllers\ChatController@uploadChatFile')->name('upload.chat.file');
 Route::get('/download-chat-file/{file_id}', 'App\http\controllers\ChatController@downloadFile')->name('download.chat.file');
+Route::get('/messages', 'App\http\controllers\ServiceController@messagesAll')->name('messages.all');
+Route::get('/messages/{service_id}', 'App\http\controllers\ServiceController@messages')->name('messages');
 
 
 Route::get('/redirect/admin/{id}', 'App\http\controllers\Client\AuthController@redirectToAdmin')->name('redirectToAdmin');
@@ -96,6 +98,8 @@ Route::prefix('/client')->as('client.')->middleware(['auth', 'verified'])->group
     Route::post('/job-request/create', 'App\http\controllers\Client\JobController@store')->name('job.create');
     Route::get('/job-details/{id}', 'App\http\controllers\Client\JobController@jobDetails')->name('job.details');
     Route::get('/job-detail', 'App\http\controllers\Client\JobController@jobDetail')->name('job.detail');
+    Route::get('/messages', 'App\http\controllers\Client\ServiceController@messagesAll')->name('messages.all');
+    Route::get('/messages/{service_id}', 'App\http\controllers\Client\ServiceController@messages')->name('messages');
     Route::post('/request-invoice', 'App\http\controllers\Client\JobController@requestInvoice')->name('requestInvoice');
     Route::post('/approve-deposit', 'App\http\controllers\Client\JobController@approveDeposit')->name('approveDeposit');
 });
@@ -150,7 +154,7 @@ Route::get('auth/linkedin/callback', [LinkedinController::class, 'linkedinCallba
 
 Route::get('create-transaction', [PayPalController::class, 'createTransaction'])->name('createTransaction');
 Route::get('process-transaction/{id}', [PayPalController::class, 'processTransaction'])->name('process.payment');
-Route::get('success-transaction', [PayPalController::class, 'successTransaction'])->name('successTransaction');
-Route::get('cancel-transaction', [PayPalController::class, 'cancelTransaction'])->name('cancelTransaction');
+Route::get('success-transaction/{service_id}', [PayPalController::class, 'successTransaction'])->name('successTransaction');
+Route::get('cancel-transaction/{service_id}', [PayPalController::class, 'cancelTransaction'])->name('cancelTransaction');
 
 require __DIR__ . '/auth.php';
