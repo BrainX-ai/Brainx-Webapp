@@ -162,7 +162,9 @@
 
 
                         <p>
-                            With global network of freelance AI talents, BrainX is democratizing AI to the global economy
+
+                            BrainX is a marketplace empowering global economy with creative AI solutions from global network
+                            of AI talents.
                         </p>
 
 

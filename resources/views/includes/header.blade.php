@@ -65,10 +65,10 @@
             </div>
             <ul class="main-nav">
 
-                <li class="submenu mob ">
+                {{-- <li class="submenu mob ">
                     <a href="/talent" data-bs-toggle="modal" data-bs-target="#login-modal"
                         class="@if (Request::is('talent')) active-page @endif">Sell AI solution/service</a>
-                </li>
+                </li> --}}
                 <li class="submenu">
                     <a href="/talent" data-bs-toggle="modal" data-bs-target="#client-signin"
                         class="@if (Request::is('talent')) active-page @endif">Login</a>
@@ -82,10 +82,10 @@
         </div>
         <ul class="nav header-navbar-rht reg-head pt-3 pe-5">
 
-            <li class="submenu">
+            {{-- <li class="submenu">
                 <a href="/talent" data-bs-toggle="modal" data-bs-target="#login-modal"
                     class="@if (Request::is('talent')) active-page @endif">Sell AI solution/service</a>
-            </li>
+            </li> --}}
             <li class="submenu">
                 <a href="/talent" data-bs-toggle="modal" data-bs-target="#client-signin"
                     class="@if (Request::is('talent')) active-page @endif">Login</a>
