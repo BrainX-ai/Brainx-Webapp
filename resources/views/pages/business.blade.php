@@ -162,7 +162,9 @@
 
 
                         <p>
+
                             BrainX is a marketplace empowering global economy with creative AI solutions from global network of AI talents
+
                         </p>
 
 

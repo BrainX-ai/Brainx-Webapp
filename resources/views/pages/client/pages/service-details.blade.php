@@ -55,22 +55,22 @@
                             <h5 class="text-center">
                                 {{ $service->delivery_time }} days delivery
                             </h5>
-                            @if (false)
-                                <div class="mb-2">
-                                    @if (Auth::check())
-                                        <button class="btn btn-primary w-100" data-bs-toggle="modal"
-                                            data-bs-target="#checkout">Continue
-                                            (${{ $service->price }})</button>
-                                    @else
-                                        <button class="btn btn-primary w-100" data-bs-toggle="modal"
-                                            data-bs-target="#client-signup">Continue
-                                            (${{ $service->price }})</button>
-                                    @endif
-                                </div>
-                                <div>
-                                    <button class="btn btn-primary w-100">Message </button>
-                                </div>
-                            @endif
+
+                            <div class="mb-2">
+                                @if (Auth::check())
+                                    <button class="btn btn-primary w-100" data-bs-toggle="modal"
+                                        data-bs-target="#checkout">Continue
+                                        (${{ $service->price }})</button>
+                                @else
+                                    <button class="btn btn-primary w-100" data-bs-toggle="modal"
+                                        data-bs-target="#client-signup">Continue
+                                        (${{ $service->price }})</button>
+                                @endif
+                            </div>
+                            <div>
+                                <button class="btn btn-primary w-100">Message </button>
+                            </div>
+
                         </div>
                         <p>
                             Fund upfront. The freelancer gets paid once you are satisfied with the work.

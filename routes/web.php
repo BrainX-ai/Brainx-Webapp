@@ -18,9 +18,9 @@ use App\Http\Controllers\PayPalController;
 |
 */
 
-Route::get('/talent', function () {
-    return view('pages.index');
-})->name('talent.home');
+// Route::get('/talent', function () {
+//     return view('pages.index');
+// })->name('talent.home');
 Route::get('/', function () {
 
     $publishedTalents = User::with('talent')->where('role', 'Talent')->orderBy('id', 'DESC')->get();
@@ -149,7 +149,7 @@ Route::get('auth/linkedin/callback', [LinkedinController::class, 'linkedinCallba
 // Paypal ----------------------------------------------------------------
 
 Route::get('create-transaction', [PayPalController::class, 'createTransaction'])->name('createTransaction');
-Route::get('process-transaction', [PayPalController::class, 'processTransaction'])->name('processTransaction');
+Route::get('process-transaction/{id}', [PayPalController::class, 'processTransaction'])->name('process.payment');
 Route::get('success-transaction', [PayPalController::class, 'successTransaction'])->name('successTransaction');
 Route::get('cancel-transaction', [PayPalController::class, 'cancelTransaction'])->name('cancelTransaction');
 

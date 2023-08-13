@@ -126,7 +126,9 @@
 
     <!-- Custom JS -->
     <script src="/assets/js/script.js"></script>
-
+    <script
+        src=”https://www.paypal.com/sdk/js?client-id=AQU7Wbq3-xZ0TNrMC_Ir9cY6ixiDLrGNDmZw60BeshPm5WNxnPnLKqGXgpEbEMluanL1ymzomzEZSOo8">
+    </script>
     <script>
         $.ajaxSetup({
             headers: {
