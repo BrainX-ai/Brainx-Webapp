@@ -9,6 +9,8 @@ Route::get('/users/{status}', 'App\http\controllers\Admin\AdminController@users'
 Route::get('/users', 'App\http\controllers\Admin\AdminController@users')->name('admin.users');
 Route::get('/clients', 'App\http\controllers\Admin\AdminController@clients')->name('admin.clients');
 Route::get('/clients/delete/{id}', 'App\http\controllers\Admin\AdminController@destroy')->name('admin.clients.delete');
+Route::get('/services', 'App\http\controllers\Admin\ServiceController@index')->name('admin.services');
+Route::get('/service/details/{id}', 'App\http\controllers\Admin\ServiceController@show')->name('admin.service.details');
 Route::get('/projects', 'App\http\controllers\Admin\JobController@index')->name('admin.projects');
 Route::get('/project/details/{id}', 'App\http\controllers\Admin\JobController@details')->name('admin.project.details');
 Route::post('/update-transaction-status', 'App\http\controllers\Admin\JobController@updateTransactionStatus')->name('admin.update.transaction.status');

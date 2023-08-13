@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
@@ -14,6 +15,12 @@ class PayPalController extends Controller
     public function createTransaction()
     {
         return view('transaction');
+    }
+
+    public function getAmount($service_id)
+    {
+        $id = decrypt($service_id);
+        return Service::find($id)->price;
     }
     /**
      * process transaction.
@@ -35,15 +42,19 @@ class PayPalController extends Controller
                 0 => [
                     "amount" => [
                         "currency_code" => "USD",
-                        "value" => "1000.00"
+                        "value" => strval($this->getAmount($request->id))
                     ]
                 ]
             ]
         ]);
+
+        // dd($response);
+
         if (isset($response['id']) && $response['id'] != null) {
             // redirect to approve href
             foreach ($response['links'] as $links) {
                 if ($links['rel'] == 'approve') {
+                    // dd($response);
                     return redirect()->away($links['href']);
                 }
             }
@@ -51,6 +62,7 @@ class PayPalController extends Controller
                 ->route('createTransaction')
                 ->with('error', 'Something went wrong.');
         } else {
+
             return redirect()
                 ->route('createTransaction')
                 ->with('error', $response['message'] ?? 'Something went wrong.');
@@ -67,6 +79,7 @@ class PayPalController extends Controller
         $provider->setApiCredentials(config('paypal'));
         $provider->getAccessToken();
         $response = $provider->capturePaymentOrder($request['token']);
+
         if (isset($response['status']) && $response['status'] == 'COMPLETED') {
             return redirect()->route('createTransaction')
                 ->with('success', 'Transaction complete.');
