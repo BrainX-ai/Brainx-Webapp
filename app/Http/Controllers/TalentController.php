@@ -96,7 +96,7 @@ class TalentController extends Controller
         $id = decrypt($id);
 
         $user = User::with('talent')->with('experiences')->with('educations')->find($id);
-        $assessmentCategories = []; //AssessmentCateory::with('result')->get();
+        $assessmentCategories = AssessmentCateory::with('result')->get();
 
         return view('pages.client.pages.talent-profile')->with('user', $user)->with('assessmentCategories', $assessmentCategories);
     }
