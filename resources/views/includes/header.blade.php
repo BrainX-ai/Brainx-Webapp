@@ -86,14 +86,16 @@
                 <a href="/talent" data-bs-toggle="modal" data-bs-target="#login-modal"
                     class="@if (Request::is('talent')) active-page @endif">Sell AI solution/service</a>
             </li> --}}
-            @if (Auth::user()->role == 'Client')
-                <li class="submenu">
-                    <a href="{{ route('client.messages.all') }}">Dashboard</a>
-                </li>
-            @elseif(Auth::user()->role == 'talent')
-                <li class="submenu">
-                    <a href="{{ route('messages.all') }}">Dashboard</a>
-                </li>
+            @if (Auth::check())
+                @if (Auth::user()->role == 'Client')
+                    <li class="submenu">
+                        <a href="{{ route('client.messages.all') }}">Dashboard</a>
+                    </li>
+                @elseif(Auth::user()->role == 'talent')
+                    <li class="submenu">
+                        <a href="{{ route('messages.all') }}">Dashboard</a>
+                    </li>
+                @endif
             @else
                 <li class="submenu">
                     <a href="/talent" data-bs-toggle="modal" data-bs-target="#client-signin"
