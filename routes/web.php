@@ -78,7 +78,7 @@ Route::post('/send-message', 'App\http\controllers\ChatController@sendMessage')-
 Route::post('/upload-chat-file', 'App\http\controllers\ChatController@uploadChatFile')->name('upload.chat.file');
 Route::get('/download-chat-file/{file_id}', 'App\http\controllers\ChatController@downloadFile')->name('download.chat.file');
 Route::get('/messages', 'App\http\controllers\ServiceController@messagesAll')->name('messages.all');
-Route::get('/messages/{service_id}', 'App\http\controllers\ServiceController@messages')->name('messages');
+Route::get('/messages/{service_transaction_id}', 'App\http\controllers\ServiceController@messages')->name('messages');
 
 
 Route::get('/redirect/admin/{id}', 'App\http\controllers\Client\AuthController@redirectToAdmin')->name('redirectToAdmin');

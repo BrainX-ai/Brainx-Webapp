@@ -85,12 +85,13 @@ class PayPalController extends Controller
     public function successTransaction(Request $request)
     {
         $service_id = decrypt($request->service_id);
+        $client_id = Auth::user()->id;
         $provider = new PayPalClient;
         $provider->setApiCredentials(config('paypal'));
         $provider->getAccessToken();
         $response = $provider->capturePaymentOrder($request['token']);
 
-        $serviceTransaction = ServiceTransaction::where('service_id', '=', $service_id)->update([
+        $serviceTransaction = ServiceTransaction::where('service_id', '=', $service_id)->where('client_id', $client_id)->update([
             'payment_status' => 'SUCCESSFUL'
         ]);
 
@@ -99,6 +100,7 @@ class PayPalController extends Controller
             'sender_id' => Auth::guard()->user()->id, // sender id 0 means it is auto generated or sent by admin
             'action_type' => 'SERVICE_BOUGHT_MESSAGE',
             'receiver_id' => Auth::guard()->user()->id, // receiver 
+            'service_trasaction_id' => ServiceTransaction::where('service_id', '=', $service_id)->where('client_id', $client_id)->first()->id
         ]);
 
         $message = Message::create([
@@ -111,7 +113,7 @@ class PayPalController extends Controller
             return redirect()->route('client.messages', ['service_id' => $service_id])
                 ->with('success', 'Transaction complete.');
         } else {
-            return redirect()->route('service.details', ['id' => $service_id])->with('error', 'Payment failed');
+            return redirect()->route('cllient.service.details', ['id' => $service_id])->with('error', 'Payment failed');
         }
     }
     /**
@@ -123,6 +125,6 @@ class PayPalController extends Controller
     {
 
         $service_id = decrypt($request->service_id);
-        return redirect()->route('service.details', ['id' => $service_id])->with('error', 'Payment Cancelled');
+        return redirect()->route('client.service.details', ['id' => $service_id])->with('error', 'Payment Cancelled');
     }
 }

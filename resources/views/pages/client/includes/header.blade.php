@@ -3,7 +3,7 @@
 
     <!-- Logo -->
     <div class="header-left">
-        <a href="#" class="navbar-brand logo ">
+        <a href="/" class="navbar-brand logo ">
             <img src="/assets/img/BrainX/BrainX_icon_White-removebg-preview.png" alt="Logo">
         </a>
         {{-- <a href="/" class="logo logo-small">
