@@ -10,6 +10,7 @@ $(document).ready(function () {
                 receiver_id: $("#receiver_id").val(),
                 message: $("#message").val(),
                 service_id: $("#service_id").val(),
+                service_transaction_id: $("#service_transaction_id").val(),
             },
             success: function (res, textStatus, htttStatus) {
                 if (htttStatus.status != 200) {

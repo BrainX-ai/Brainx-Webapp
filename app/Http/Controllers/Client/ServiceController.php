@@ -50,6 +50,10 @@ class ServiceController extends Controller
      */
     public function show($id)
     {
+        if (!Auth::check()) {
+            session(['service_id' => $id]);
+        }
+
         $service = Service::with('talent')->find($id);
         $talent = User::with('talent')->find($service->user_id);
 
@@ -94,27 +98,39 @@ class ServiceController extends Controller
     {
 
         $client_id = Auth::user()->id;
-        $serviceTransactions = ServiceTransaction::where('client_id', $client_id)->with('service')->get();
-        if ($service_id == null) {
-            $actions = Action::where('service_id', $serviceTransactions[0]->service_id)->get();
-        } else {
-            $actions = Action::where('service_id', $service_id)->get();
+        $serviceTransaction = ServiceTransaction::where('client_id', $client_id)->where('service_id', $service_id)->with('service')->first();
+        if ($serviceTransaction == null) {
+            $serviceTransaction = $this->createServiceTransaction($service_id);
         }
-        $service = Service::find($service_id);
+        $actions = Action::where('service_transaction_id', $serviceTransaction->id)->get();
 
-        return view('pages.client.pages.service-chat-page', compact('actions', 'serviceTransactions', 'service'));
+        $service = Service::find($service_id);
+        $serviceTransactions = ServiceTransaction::where('client_id', $client_id)->get();
+
+        return view('pages.client.pages.service-chat-page', compact('actions', 'serviceTransaction', 'serviceTransactions', 'service'));
     }
 
     public function messagesAll()
     {
+        $actions = [];
+        $service = null;
 
         $client_id = Auth::user()->id;
         $serviceTransactions = ServiceTransaction::where('client_id', $client_id)->with('service')->get();
 
-        $actions = Action::where('service_id', $serviceTransactions[0]->service_id)->get();
+        if (sizeof($serviceTransactions) > 0) {
+            return redirect()->route('client.messages', ['service_id' => $serviceTransactions[0]->service_id]);
+        }
 
-        $service = Service::find($serviceTransactions[0]->service_id);
+        return view('pages.client.pages.service-chat-page', compact('actions', 'serviceTransaction', 'serviceTransactions', 'service'));
+    }
 
-        return view('pages.client.pages.service-chat-page', compact('actions', 'serviceTransactions', 'service'));
+    public function createServiceTransaction($service_id)
+    {
+        return ServiceTransaction::create([
+            'service_id' => $service_id,
+            'client_id' => Auth::user()->id,
+            'user_id' => Service::find($service_id)->user_id
+        ]);
     }
 }

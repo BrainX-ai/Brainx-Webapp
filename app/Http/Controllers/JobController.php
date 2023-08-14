@@ -9,9 +9,9 @@ use App\Models\Milestone;
 use App\Models\ProjectRequest;
 use App\Models\Message;
 use App\Models\User;
-use Auth;
-use Mail;
 use App\Mail\SendMail;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class JobController extends Controller
 {
@@ -72,7 +72,8 @@ class JobController extends Controller
         return view('pages.talent.job-details')->with('job', $job)->with('jobs', $jobs)->with('actions', $actions);
     }
 
-    public function acceptRequest(Request $request){
+    public function acceptRequest(Request $request)
+    {
 
         $projectRequest = ProjectRequest::where('job_id', $request->job_id)->where('user_id', Auth::user()->id)->update([
             'status' => 'ACCEPTED',
@@ -103,9 +104,7 @@ class JobController extends Controller
             ];
 
             Mail::to($receiver->email)->send(new SendMail($mailData));
-
         } catch (\Exception $ex) {
-
         }
         return redirect()->route('talent.job.details', $request->job_id);
     }
@@ -135,7 +134,6 @@ class JobController extends Controller
 
             Mail::to('talent@brainx.biz')->send(new SendMail($mailData));
         } catch (\Exception $ex) {
-
         }
 
         return redirect()->back();

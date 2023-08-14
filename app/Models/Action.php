@@ -27,7 +27,7 @@ class Action extends Model
 
     public function service()
     {
-        return $this->belongsTo(Service::class);
+        return $this->belongsTo(ServiceTransaction::class, 'id', 'service_id');
     }
 
     public function projectRequest()
@@ -45,6 +45,7 @@ class Action extends Model
         'sender_id',
         'action_type',
         'receiver_id',
-        'service_id'
+        'service_id',
+        'service_transaction_id'
     ];
 }

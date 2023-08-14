@@ -6,18 +6,17 @@
         <div class="media-img-wrap flex-shrink-0">
             <div class="avatar ">
                 @if ($action->sender_id == Auth::user()->id)
-                <img src="{{ $action->job->talent->talent->photo }}" alt="User Image" class="avatar-img rounded-circle">
-                
+                    <img src="{{ $action->sender->talent->photo }}" alt="User Image" class="avatar-img rounded-circle">
                 @else
-                <img src="/assets/img/BrainX/AI-focused-profile.png" alt="User Image" class="avatar-img rounded-circle">
-                
+                    <img src="/assets/img/BrainX/AI-focused-profile.png" alt="User Image"
+                        class="avatar-img rounded-circle">
                 @endif
             </div>
         </div>
         <div class="media-body flex-grow-1">
             <div class="user-name">{{ $action->sender->name }}</div>
             <div class="message"> {{ $action->message->message }} </div>
-            
+
         </div>
     </div>
 </div>

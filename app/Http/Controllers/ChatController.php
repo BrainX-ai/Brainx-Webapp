@@ -26,6 +26,7 @@ class ChatController extends Controller
         $action = Action::create([
             'sender_id' => Auth::user()->id,
             'service_id' => $request->service_id,
+            'service_transaction_id' => $request->service_transaction_id,
             'action_type' => 'ONLY_MESSAGE',
             'receiver_id' => $request->receiver_id
         ]);
@@ -45,6 +46,7 @@ class ChatController extends Controller
         $action = Action::create([
             'sender_id' => Auth::user()->id,
             'service_id' => $request->service_id,
+            'service_transaction_id' => $request->service_transaction_id,
             'action_type' => 'ONLY_MESSAGE_WITH_FILE',
             'receiver_id' => $request->receiver_id
         ]);
