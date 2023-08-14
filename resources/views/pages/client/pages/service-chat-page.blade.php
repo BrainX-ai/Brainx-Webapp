@@ -44,7 +44,7 @@
             -webkit-box-align: center;
             -ms-flex-align: center;
             /* align-items:
-                                                                                center; */
+                                                                                                center; */
         }
 
         .chat-cont-left {
@@ -229,6 +229,9 @@
                                             @endif
                                         </div>
                                     @endforeach
+                                    @if (sizeof($actions) == 0)
+                                        <h5 class="text-center">No conversation found</h5>
+                                    @endif
                                 </div>
                                 <div id="focus"></div>
                             </div>
@@ -238,7 +241,9 @@
                                         <i class="fa fa-paperclip"></i>
                                         <input type="file" name="file" id="file" onchange="sendFile()">
                                     </div>
-                                    <input type="hidden" value="{{ $service->id }}" id="service_id" />
+                                    <input type="hidden" value="{{ $serviceTransaction->service->id }}" id="service_id" />
+                                    <input type="hidden" value="{{ $serviceTransaction->id }}"
+                                        id="service_transaction_id" />
                                     <input type="hidden" name="receiver_id" value="{{ $service->user_id }}"
                                         id="receiver_id" />
                                     <input type="hidden" name="photo" value="/assets/img/BrainX/AI-focused-profile.png"

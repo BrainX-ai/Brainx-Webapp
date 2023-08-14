@@ -1,4 +1,4 @@
-@extends('pages.client.layouts.app')
+@extends('app')
 
 @section('content')
 
@@ -44,7 +44,7 @@
             -webkit-box-align: center;
             -ms-flex-align: center;
             /* align-items:
-                                                                            center; */
+                                                                                            center; */
         }
 
         .chat-cont-left {
@@ -226,6 +226,9 @@
                                             @endif
                                         </div>
                                     @endforeach
+                                    @if (sizeof($actions) == 0)
+                                        <h5 class="text-center">No conversation found</h5>
+                                    @endif
                                 </div>
                                 <div id="focus"></div>
                             </div>
@@ -236,9 +239,12 @@
                                         <i class="fa fa-paperclip"></i>
                                         <input type="file" name="file" id="file" onchange="sendFile()">
                                     </div>
-                                    <input type="hidden" value="{{ $service->id }}" id="service_id" />
-                                    <input type="hidden" name="receiver_id" value="{{ $serviceTransactions->client_id }}"
-                                        id="receiver_id" />
+                                    <input type="hidden" value="{{ $selectedServiceTransaction->service->id }}"
+                                        id="service_id" />
+                                    <input type="hidden" value="{{ $selectedServiceTransaction->id }}"
+                                        id="service_transaction_id" />
+                                    <input type="hidden" name="receiver_id"
+                                        value="{{ $selectedServiceTransaction->client_id }}" id="receiver_id" />
                                     <input type="hidden" name="photo" value="/assets/img/BrainX/AI-focused-profile.png"
                                         id="photo" />
                                     <input type="text" class="input-msg-send form-control" name="message" id="message"

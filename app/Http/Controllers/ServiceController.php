@@ -97,35 +97,35 @@ class ServiceController extends Controller
         return view('pages.talent.service-details')->with('service', $service)->with('talent', $talent);
     }
 
-    public function messages($service_id)
+    public function messages($service_transaction_id)
     {
 
         $client_id = Auth::user()->id;
         $serviceTransactions = ServiceTransaction::where('user_id', $client_id)->with('service')->get();
-
-        if ($service_id == null) {
-            $actions = Action::where('service_id', $serviceTransactions[0]->service_id)->get();
+        $selectedServiceTransaction = ServiceTransaction::find($service_transaction_id);
+        if ($service_transaction_id == null) {
+            $actions = Action::where('service_transaction_id', $serviceTransactions[0]->id)->get();
         } else {
-            $actions = Action::where('service_id', $service_id)->get();
+            $actions = Action::where('service_transaction_id', $service_transaction_id)->get();
         }
-        $service = Service::find($service_id);
+        $service = Service::find($selectedServiceTransaction->id);
 
 
 
-        return view('pages.talent.service-chat-page', compact('actions', 'service', 'serviceTransactions'));
+        return view('pages.talent.service-chat-page', compact('actions', 'service', 'serviceTransactions', 'selectedServiceTransaction'));
     }
 
     public function messagesAll()
     {
+        $actions = [];
+        $service = null;
 
         $user_id = Auth::user()->id;
-        $serviceTransactions = ServiceTransaction::where('user_id', $user_id)->with('service')->get();
+        $serviceTransactions = ServiceTransaction::with('service')->where('user_id', $user_id)->get();
 
-        $actions = Action::where('service_id', $serviceTransactions[0]->service_id)->get();
-
-        $service = Service::find($serviceTransactions[0]->service_id);
-
-
+        if (sizeof($serviceTransactions) > 0) {
+            return redirect()->route('messages', ['service_transaction_id' => $serviceTransactions[0]->id]);
+        }
 
         return view('pages.talent.service-chat-page', compact('actions', 'service', 'serviceTransactions'));
     }

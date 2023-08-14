@@ -36,9 +36,14 @@
                                 </div>
                             </div>
                             <div class="media-body flex-grow-1 ms-3">
-                                <div class="user-name">{{ $talent->name }}</div>
+                                <div class="user-name"><a
+                                        href="{{ route('client.show.profile', encrypt($talent->id)) }}">{{ $talent->name }}</a>
+                                </div>
                                 <div class="message"> {{ $talent->talent->standout_job_title }} </div>
 
+                            </div>
+                            <div>
+                                <span class="h4">${{ $service->price }}</span>
                             </div>
                         </div>
                         <h4 class="mt-5">
@@ -50,7 +55,7 @@
                     </div>
 
                     <div class="col-md-4 ">
-                        <div class="border text-center p-2">
+                        <div class="border text-center p-4 pb-4 pt-4">
 
                             <h5 class="text-center">
                                 {{ $service->delivery_time }} days delivery
@@ -68,7 +73,15 @@
                                 @endif
                             </div>
                             <div>
-                                <button class="btn btn-primary w-100">Message </button>
+                                @if (Auth::check())
+                                    <a href="{{ route('client.messages', ['service_id' => $service->id]) }}">
+                                        <button class="btn btn-primary w-100">Message </button>
+                                    </a>
+                                @else
+                                    <button class="btn btn-primary w-100" data-bs-toggle="modal"
+                                        data-bs-target="#client-signup">Message
+                                    </button>
+                                @endif
                             </div>
 
                         </div>

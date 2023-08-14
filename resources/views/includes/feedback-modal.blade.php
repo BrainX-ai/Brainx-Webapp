@@ -5,7 +5,7 @@
 
             <!-- Modal Header -->
             <div class="modal-header text-center">
-                <h4 class="modal-title text-center w-100">Join the waiting list (beta)</h4>
+                <h4 class="modal-title text-center w-100">Feedback</h4>
                 <button type="button" class="close" data-bs-dismiss="modal"><span>&times;</span></button>
             </div>
 
@@ -22,12 +22,12 @@
                                     <label for="client">
                                         <input type="radio" id="client" name="role" class="me-3"
                                             value="client"> I'm
-                                        interested client
+                                        client
                                     </label>
                                     <label for="talent">
                                         <input type="radio" id="talent" name="role" class="me-3"
                                             value="talent"> I'm AI
-                                        freelancer
+                                        talent
                                     </label>
 
                                 </div>
