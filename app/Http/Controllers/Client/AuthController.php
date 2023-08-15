@@ -26,7 +26,6 @@ class AuthController extends Controller
     public function login(Request $request)
     {
 
-
         $user = User::where('email', $request->email)->first();
 
         if ($user && Hash::check($request->password, $user->password)) {
@@ -69,7 +68,13 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return redirect()->route('client.job.new');
+        if (session('service_id')) {
+            $service_id = session('service_id');
+            Session::forget('service_id');
+            return redirect()->route('client.service.details', ['id' => $service_id]);
+        }
+
+        return redirect()->route('client.messages.all');
     }
 
     public function isEmailExist(Request $request)

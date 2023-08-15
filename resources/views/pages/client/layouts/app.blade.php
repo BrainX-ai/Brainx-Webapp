@@ -142,6 +142,7 @@
     @yield('invitation-js')
     @yield('post-new-js')
     @yield('chat-js')
+    @yield('is-email-exist-js')
 </body>
 
 </html>
