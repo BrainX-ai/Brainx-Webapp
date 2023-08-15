@@ -100,9 +100,10 @@ class ServiceController extends Controller
     public function messages($service_transaction_id)
     {
 
-        $client_id = Auth::user()->id;
-        $serviceTransactions = ServiceTransaction::where('user_id', $client_id)->with('service')->get();
-        $selectedServiceTransaction = ServiceTransaction::find($service_transaction_id);
+        $user_id = Auth::user()->id;
+        $serviceTransactions = ServiceTransaction::where('user_id', $user_id)->with('service')->get();
+        $selectedServiceTransaction = ServiceTransaction::where('id', $service_transaction_id)->where('user_id', $user_id)->first();
+
         if ($service_transaction_id == null) {
             $actions = Action::where('service_transaction_id', $serviceTransactions[0]->id)->get();
         } else {

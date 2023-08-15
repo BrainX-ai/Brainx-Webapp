@@ -15,9 +15,9 @@ use App\Models\Transaction;
 use App\Models\Milestone;
 use App\Models\Contract;
 use App\Models\AssessmentCateory;
-use Auth;
-use Mail;
 use App\Mail\SendMail;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class JobController extends Controller
 {
@@ -31,7 +31,6 @@ class JobController extends Controller
 
     public function jobsPage()
     {
-
         return view('pages.client.pages.dashboard');
     }
 
