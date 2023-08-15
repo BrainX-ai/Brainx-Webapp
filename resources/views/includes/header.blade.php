@@ -91,7 +91,7 @@
                     <li class="submenu">
                         <a href="{{ route('client.messages.all') }}">Dashboard</a>
                     </li>
-                @elseif(Auth::user()->role == 'talent')
+                @elseif(Auth::user()->role == 'Talent')
                     <li class="submenu">
                         <a href="{{ route('messages.all') }}">Dashboard</a>
                     </li>
