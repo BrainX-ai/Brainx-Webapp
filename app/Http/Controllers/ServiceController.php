@@ -12,7 +12,11 @@ use Illuminate\Support\Facades\Auth;
 
 class ServiceController extends Controller
 {
-
+    public function __construct()
+    {
+        $this->checkRole('Talent');
+        $this->middleware('auth');
+    }
 
     public function addService(Request $request)
     {
@@ -104,14 +108,17 @@ class ServiceController extends Controller
         $serviceTransactions = ServiceTransaction::where('user_id', $user_id)->with('service')->get();
         $selectedServiceTransaction = ServiceTransaction::where('id', $service_transaction_id)->where('user_id', $user_id)->first();
 
+        if ($selectedServiceTransaction == null) {
+
+            return view('includes.no-service-chat');
+        }
+
         if ($service_transaction_id == null) {
             $actions = Action::where('service_transaction_id', $serviceTransactions[0]->id)->get();
         } else {
             $actions = Action::where('service_transaction_id', $service_transaction_id)->get();
         }
         $service = Service::find($selectedServiceTransaction->id);
-
-
 
         return view('pages.talent.service-chat-page', compact('actions', 'service', 'serviceTransactions', 'selectedServiceTransaction'));
     }
@@ -128,6 +135,6 @@ class ServiceController extends Controller
             return redirect()->route('messages', ['service_transaction_id' => $serviceTransactions[0]->id]);
         }
 
-        return view('pages.talent.service-chat-page', compact('actions', 'service', 'serviceTransactions'));
+        return view('pages.talent.includes.no-service-chat');
     }
 }
