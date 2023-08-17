@@ -122,7 +122,8 @@ class ServiceController extends Controller
             return redirect()->route('client.messages', ['service_id' => $serviceTransactions[0]->service_id]);
         }
 
-        return view('pages.client.pages.service-chat-page', compact('actions', 'serviceTransaction', 'serviceTransactions', 'service'));
+
+        return view('pages.client.includes.no-service-chat');
     }
 
     public function createServiceTransaction($service_id)
