@@ -36,8 +36,8 @@
         }
 
         /* li {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            list-style: none;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        } */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                list-style: none;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            } */
 
         .arrow,
         .close {
@@ -120,7 +120,7 @@
                         </div>
                         <section>
                             <div class="row">
-                                <button class="btn text-start col-md-3 add-service" data-bs-target="#add-service"
+                                {{-- <button class="btn text-start col-md-3 add-service" data-bs-target="#add-service"
                                     data-bs-toggle="modal">
                                     <div class="job-locate-blk ">
                                         <div class="location-img bg-white">
@@ -134,7 +134,7 @@
                                             </ul>
                                         </div>
                                     </div>
-                                </button>
+                                </button> --}}
                                 @foreach ($services as $key => $service)
                                     <div class="col-md-3">
                                         <div class="job-locate-blk ">
