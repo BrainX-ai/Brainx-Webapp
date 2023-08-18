@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Portfolio;
+use App\Models\Service;
 use Illuminate\Http\Request;
 use App\Models\AssessmentCateory;
 use App\Models\User;
@@ -84,7 +87,6 @@ class TalentController extends Controller
         //
     }
 
-
     public function getProfileBuilder()
     {
         $user = Auth::guard()->user();
@@ -95,10 +97,19 @@ class TalentController extends Controller
     public function showTalentProfile($id)
     {
         $id = decrypt($id);
-
+        $portfolios = Portfolio::where('user_id', $id)->get();
+        $services = Service::where('user_id', $id)->get();
+        $categories = Category::with('skills')->get();
         $user = User::with('talent')->with('experiences')->with('educations')->find($id);
-        $assessmentCategories = []; //AssessmentCateory::with('result')->get();
 
-        return view('pages.client.pages.talent-profile')->with('user', $user)->with('assessmentCategories', $assessmentCategories);
+        $clientProfileLink = route('client.show.profile', encrypt($id));
+
+
+        return view('pages.client.pages.service-profile')
+            ->with('clientProfileLink', $clientProfileLink)
+            ->with('portfolios', $portfolios)
+            ->with('user', $user)
+            ->with('services', $services)
+            ->with('categories', $categories);
     }
 }
