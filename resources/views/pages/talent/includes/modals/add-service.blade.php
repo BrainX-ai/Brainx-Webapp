@@ -38,7 +38,7 @@
 </style>
 
 @php
-
+    
     $industries = ['Ecommerce', 'Finance', 'Education', 'IT', 'Media & Entertainment', 'Marketing', 'Sales', 'Others'];
     
 @endphp
@@ -69,7 +69,7 @@
                                         <label for="" class="h4">Title</label>
                                     </div>
                                     <div class="col text-end">
-                                        <label for=""  >(100 characters max)</label>
+                                        <label for="">(100 characters max)</label>
                                     </div>
                                 </div>
                                 <input type="text" name="title" class="form-control" maxlength="100"
@@ -117,6 +117,8 @@
                         </div>
                         <div class="card-footer pb-2 border-0 float-right">
                             <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"> Publish</button>
+                            <div><small>Your AI solution/service will be shown on your profile and BrainX’s
+                                    homepage</small></div>
                         </div>
                     </form>
 
