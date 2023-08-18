@@ -16,14 +16,14 @@ class ChatMessage implements ShouldBroadcast
 
     public $username;
     public $message;
-    public $job_id;
+    public $service_id;
     public $receiver_id;
     public $photo;
     public $messageType;
 
-    public function __construct($username, $message, $job_id, $receiver_id, $photo, $messageType)
+    public function __construct($username, $message, $service_id, $receiver_id, $photo, $messageType)
     {
-        $this->job_id = $job_id;
+        $this->service_id = $service_id;
         $this->username = $username;
         $this->message = $message;
         $this->receiver_id = $receiver_id;
@@ -31,7 +31,7 @@ class ChatMessage implements ShouldBroadcast
         $this->messageType = $messageType;
     }
 
-   
+
     /**
      * Get the channels the event should broadcast on.
      *

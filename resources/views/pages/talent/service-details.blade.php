@@ -48,7 +48,7 @@
                         </p>
                     </div>
 
-                    <div class="col-md-4 ">
+                    <div class="col-md-4 p-4">
                         <h5 class="text-center">
                             {{ $service->delivery_time }} days delivery
                         </h5>

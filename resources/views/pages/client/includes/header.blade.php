@@ -3,7 +3,7 @@
 
     <!-- Logo -->
     <div class="header-left">
-        <a href="#" class="navbar-brand logo ">
+        <a href="/" class="navbar-brand logo ">
             <img src="/assets/img/BrainX/BrainX_icon_White-removebg-preview.png" alt="Logo">
         </a>
         {{-- <a href="/" class="logo logo-small">
@@ -37,7 +37,7 @@
         {{-- @if (isset($user) && $user->talent->status != 'INCOMPLETE') --}}
         @if (Auth::guard()->user() != null)
             <li class="nav-item dropdown">
-                <a href="{{ route('client.job.detail') }}" class=" nav-link user-img">
+                <a href="{{ route('client.messages.all') }}" class=" nav-link user-img">
                     <img src="/assets/img/BrainX/Message-icon.png" alt="">
                 </a>
 

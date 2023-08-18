@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Action;
+use App\Models\Message;
 use App\Models\Service;
+use App\Models\ServiceTransaction;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
 use Srmklive\PayPal\Services\PayPal as PayPalClient;
 
 
@@ -29,14 +33,15 @@ class PayPalController extends Controller
      */
     public function processTransaction(Request $request)
     {
+        $service_id = decrypt($request->id);
         $provider = new PayPalClient;
         $provider->setApiCredentials(config('paypal'));
         $paypalToken = $provider->getAccessToken();
         $response = $provider->createOrder([
             "intent" => "CAPTURE",
             "application_context" => [
-                "return_url" => route('successTransaction'),
-                "cancel_url" => route('cancelTransaction'),
+                "return_url" => route('successTransaction', ['service_id' => $request->id]),
+                "cancel_url" => route('cancelTransaction', ['service_id' => $request->id]),
             ],
             "purchase_units" => [
                 0 => [
@@ -48,7 +53,11 @@ class PayPalController extends Controller
             ]
         ]);
 
-        // dd($response);
+        $serviceTransaction = ServiceTransaction::create([
+            'service_id' => $service_id,
+            'client_id' => Auth::user()->id,
+            'user_id' => Service::find($service_id)->user_id
+        ]);
 
         if (isset($response['id']) && $response['id'] != null) {
             // redirect to approve href
@@ -75,18 +84,36 @@ class PayPalController extends Controller
      */
     public function successTransaction(Request $request)
     {
+        $service_id = decrypt($request->service_id);
+        $client_id = Auth::user()->id;
         $provider = new PayPalClient;
         $provider->setApiCredentials(config('paypal'));
         $provider->getAccessToken();
         $response = $provider->capturePaymentOrder($request['token']);
 
+        $serviceTransaction = ServiceTransaction::where('service_id', '=', $service_id)->where('client_id', $client_id)->update([
+            'payment_status' => 'SUCCESSFUL'
+        ]);
+
+        $action = Action::create([
+            'service_id' => $service_id,
+            'sender_id' => Auth::guard()->user()->id, // sender id 0 means it is auto generated or sent by admin
+            'action_type' => 'SERVICE_BOUGHT_MESSAGE',
+            'receiver_id' => Auth::guard()->user()->id, // receiver 
+            'service_trasaction_id' => ServiceTransaction::where('service_id', '=', $service_id)->where('client_id', $client_id)->first()->id
+        ]);
+
+        $message = Message::create([
+            'action_id' => $action->id,
+            'message' => 'I bought your AI solution. Let’s get it started.',
+            'sender_id' => Auth::guard()->user()->id
+        ]);
+
         if (isset($response['status']) && $response['status'] == 'COMPLETED') {
-            return redirect()->route('createTransaction')
+            return redirect()->route('client.messages', ['service_id' => $service_id])
                 ->with('success', 'Transaction complete.');
         } else {
-            return redirect()
-                ->route('createTransaction')
-                ->with('error', $response['message'] ?? 'Something went wrong.');
+            return redirect()->route('cllient.service.details', ['id' => $service_id])->with('error', 'Payment failed');
         }
     }
     /**
@@ -96,7 +123,8 @@ class PayPalController extends Controller
      */
     public function cancelTransaction(Request $request)
     {
-        return redirect()->route('createTransaction')
-            ->with('error', $request['message'] ?? 'You have canceled the transaction.');
+
+        $service_id = decrypt($request->service_id);
+        return redirect()->route('client.service.details', ['id' => $service_id])->with('error', 'Payment Cancelled');
     }
 }

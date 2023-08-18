@@ -3,7 +3,7 @@
 
     <!-- Logo -->
     <div class="header-left">
-        <a href="#" class="navbar-brand logo ">
+        <a href="/" class="navbar-brand logo ">
             <img src="/assets/img/BrainX/BrainX_icon_White-removebg-preview.png" alt="Logo">
         </a>
         {{-- <a href="/" class="logo logo-small">
@@ -36,12 +36,12 @@
         </li>
         {{-- @if (isset($user) && $user->talent->status != 'INCOMPLETE') --}}
         @if (Auth::guard()->user() != null)
-            {{-- <li class="nav-item dropdown">
-            <a href="{{ route('build.profile') }}" class=" nav-link user-img" >
-                <img src="/assets/img/BrainX/Message-icon.png" alt=""> 
-            </a>
-            
-        </li> --}}
+            <li class="nav-item dropdown">
+                <a href="{{ route('messages.all') }}" class=" nav-link user-img">
+                    <img src="/assets/img/BrainX/Message-icon.png" alt="">
+                </a>
+
+            </li>
 
 
             {{-- @endif --}}
@@ -56,11 +56,10 @@
                     </span>
                 </a>
                 <div class="dropdown-menu">
-                    @if (Auth::guard()->user()->talent->status != 'INCOMPLETE')
-                        <a class="dropdown-item"
-                            href="{{ route('show.profile', encrypt(Auth::guard()->user()->id)) }}"><i
-                                data-feather="user" class="me-1"></i> Profile</a>
-                    @endif
+                    {{-- @if (Auth::guard()->user()->talent->status != 'INCOMPLETE') --}}
+                    <a class="dropdown-item" href="{{ route('show.profile', encrypt(Auth::guard()->user()->id)) }}"><i
+                            data-feather="user" class="me-1"></i> Profile</a>
+                    {{-- @endif --}}
                     <a class="dropdown-item" href="{{ route('logout') }}"
                         onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i
                             data-feather="log-out" class="me-1"></i> Logout</a>
@@ -71,7 +70,6 @@
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
             </form>
-
         @endif
     </ul>
     <!-- /Header Menu -->

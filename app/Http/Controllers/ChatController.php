@@ -7,13 +7,13 @@ use App\Models\Action;
 use App\Models\Message;
 use App\Models\File;
 use Illuminate\Http\Request;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 class ChatController extends Controller
 {
     public function sendMessage(Request $request)
     {
-        event(new ChatMessage(Auth::user()->name, $request->message, $request->job_id, $request->receiver_id, $request->photo, 'text'));
+        event(new ChatMessage(Auth::user()->name, $request->message, $request->service_id, $request->receiver_id, $request->photo, 'text'));
 
         $this->storeChatMessage($request);
 
@@ -25,7 +25,8 @@ class ChatController extends Controller
 
         $action = Action::create([
             'sender_id' => Auth::user()->id,
-            'job_id' => $request->job_id,
+            'service_id' => $request->service_id,
+            'service_transaction_id' => $request->service_transaction_id,
             'action_type' => 'ONLY_MESSAGE',
             'receiver_id' => $request->receiver_id
         ]);
@@ -44,7 +45,8 @@ class ChatController extends Controller
 
         $action = Action::create([
             'sender_id' => Auth::user()->id,
-            'job_id' => $request->job_id,
+            'service_id' => $request->service_id,
+            'service_transaction_id' => $request->service_transaction_id,
             'action_type' => 'ONLY_MESSAGE_WITH_FILE',
             'receiver_id' => $request->receiver_id
         ]);

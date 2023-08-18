@@ -2,15 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Action;
 use App\Models\Portfolio;
 use App\Models\Service;
+use App\Models\ServiceTransaction;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ServiceController extends Controller
 {
-
+    public function __construct()
+    {
+        $this->checkRole('Talent');
+        $this->middleware('auth');
+    }
 
     public function addService(Request $request)
     {
@@ -93,5 +99,42 @@ class ServiceController extends Controller
         $talent = User::with('talent')->find($service->user_id);
 
         return view('pages.talent.service-details')->with('service', $service)->with('talent', $talent);
+    }
+
+    public function messages($service_transaction_id)
+    {
+
+        $user_id = Auth::user()->id;
+        $serviceTransactions = ServiceTransaction::where('user_id', $user_id)->with('service')->get();
+        $selectedServiceTransaction = ServiceTransaction::where('id', $service_transaction_id)->where('user_id', $user_id)->first();
+
+        if ($selectedServiceTransaction == null) {
+
+            return view('includes.no-service-chat');
+        }
+
+        if ($service_transaction_id == null) {
+            $actions = Action::where('service_transaction_id', $serviceTransactions[0]->id)->get();
+        } else {
+            $actions = Action::where('service_transaction_id', $service_transaction_id)->get();
+        }
+        $service = Service::find($selectedServiceTransaction->id);
+
+        return view('pages.talent.service-chat-page', compact('actions', 'service', 'serviceTransactions', 'selectedServiceTransaction'));
+    }
+
+    public function messagesAll()
+    {
+        $actions = [];
+        $service = null;
+
+        $user_id = Auth::user()->id;
+        $serviceTransactions = ServiceTransaction::with('service')->where('user_id', $user_id)->get();
+
+        if (sizeof($serviceTransactions) > 0) {
+            return redirect()->route('messages', ['service_transaction_id' => $serviceTransactions[0]->id]);
+        }
+
+        return view('pages.talent.includes.no-service-chat');
     }
 }
