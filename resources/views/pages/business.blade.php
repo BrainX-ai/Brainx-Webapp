@@ -163,8 +163,8 @@
 
                         <p>
 
-                            BrainX is a marketplace empowering global economy with creative AI solutions from global network
-                            of AI talents.
+                            BrainX is a marketplace empowering global economy with creative AI solutions from global network of AI talents
+
                         </p>
 
 
@@ -226,7 +226,7 @@
     <!-- /Home Banner -->
 
     @php
-        
+
         // $industries = ['All', 'Marketing', 'Sales', 'Real estate', 'Ecommerce', 'Finance', 'Education', 'Robotics', 'Transportation & logistics', 'Retail', 'Media & Entertainment', 'Tourism & hospotality', 'Gaming', 'Manufacturing', 'Healthcare', 'IT', 'Energy', 'Art & Design'];
     @endphp
     <section id="searchSection">
