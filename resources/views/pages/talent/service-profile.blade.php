@@ -133,7 +133,7 @@
 
                                         </div>
                                         <div class="job-it-content bg-white">
-                                            <h6><a>Create an AI solution/service</a></h6>
+                                            <h6><a>Sell AI solution/service</a></h6>
                                             <ul class="nav job-locate-foot">
                                                 <li>$--</li>
                                             </ul>
