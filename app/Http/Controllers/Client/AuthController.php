@@ -40,7 +40,7 @@ class AuthController extends Controller
                 Session::forget('service_id');
                 return redirect()->route('client.service.details', ['id' => $service_id]);
             }
-            return redirect()->route('client.job.detail');
+            return redirect()->route('home');
         }
         return redirect("/");
     }

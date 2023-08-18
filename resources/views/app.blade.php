@@ -72,13 +72,21 @@
     <!-- Loader -->
     <!-- Main Wrapper -->
     <div class="main-wrapper">
-        @if (Request::is('/') || Request::is('talent') || Request::is('terms-of-service') || Request::is('privacy-policy'))
+        @if (Request::is('/') ||
+                Request::is('talent') ||
+                Request::is('faq') ||
+                Request::is('terms-of-service') ||
+                Request::is('privacy-policy'))
             @include('includes.header')
         @else
             @include('pages.talent.includes.header')
         @endif
         @yield('content')
-        @if (Request::is('/') || Request::is('talent') || Request::is('terms-of-service') || Request::is('privacy-policy'))
+        @if (Request::is('/') ||
+                Request::is('talent') ||
+                Request::is('terms-of-service') ||
+                Request::is('faq') ||
+                Request::is('privacy-policy'))
             @include('includes.footer')
         @endif
     </div>

@@ -70,6 +70,9 @@
                         class="@if (Request::is('talent')) active-page @endif">Sell AI solution/service</a>
                 </li> --}}
                 <li class="submenu">
+                    <a href="/faq" class="@if (Request::is('faq')) active-page @endif">FAQ</a>
+                </li>
+                <li class="submenu">
                     <a href="/talent" data-bs-toggle="modal" data-bs-target="#client-signin"
                         class="@if (Request::is('talent')) active-page @endif">Login</a>
                 </li>
@@ -86,6 +89,9 @@
                 <a href="/talent" data-bs-toggle="modal" data-bs-target="#login-modal"
                     class="@if (Request::is('talent')) active-page @endif">Sell AI solution/service</a>
             </li> --}}
+            <li class="submenu">
+                <a href="/faq" class="@if (Request::is('faq')) active-page @endif">FAQ</a>
+            </li>
             @if (Auth::check())
                 @if (Auth::user()->role == 'Client')
                     <li class="submenu">
