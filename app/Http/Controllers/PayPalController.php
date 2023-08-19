@@ -105,7 +105,7 @@ class PayPalController extends Controller
 
         $message = Message::create([
             'action_id' => $action->id,
-            'message' => 'I bought your AI solution. Let’s get it started.',
+            'message' => 'I bought your AI service. Let’s get it started.',
             'sender_id' => Auth::guard()->user()->id
         ]);
 

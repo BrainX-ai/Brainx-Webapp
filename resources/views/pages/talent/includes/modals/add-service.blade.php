@@ -73,12 +73,12 @@
                                     </div>
                                 </div>
                                 <input type="text" name="title" class="form-control" maxlength="100"
-                                    placeholder="What AI solution/service do you want to create? ">
+                                    placeholder="What AI service do you want to create? ">
                             </div>
 
                             <div class="form-group">
                                 <label for="" class="h4">
-                                    For which industries is your AI solution/service applied?
+                                    For which industries is your AI service applied?
                                 </label>
                                 <select name="industry[]" id="industry" class="custom-select2 " multiple>
                                     @foreach ($industries as $key => $industry)
@@ -90,7 +90,7 @@
 
                             <div class="form-group">
                                 <label for="" class="h4">Description</label>
-                                <textarea name="description" class="form-control" placeholder="Describe your AI solution/service"></textarea>
+                                <textarea name="description" class="form-control" placeholder="Describe your AI service"></textarea>
                             </div>
 
                             <div class="d-flex">
@@ -105,7 +105,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="" class="h4">Visualize your AI solution/service (1
+                                <label for="" class="h4">Visualize your AI service (1
                                     image)</label>
                                 <input type="file" name="image" class="form-control" />
                             </div>
@@ -117,7 +117,7 @@
                         </div>
                         <div class="card-footer pb-2 border-0 float-right">
                             <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"> Publish</button>
-                            <div><small>Your AI solution/service will be shown on your profile and BrainX’s
+                            <div><small>Your AI service will be shown on your profile and BrainX’s
                                     homepage</small></div>
                         </div>
                     </form>
