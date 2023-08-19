@@ -36,8 +36,8 @@
         }
 
         /* li {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        list-style: none;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    } */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            list-style: none;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        } */
 
         .arrow,
         .close {
@@ -108,16 +108,15 @@
                                                 class="material-icons mb-1 share">share</i></button>
                                     </div>
                                 </div>
-                                <h3 id="position">{{ $user->talent->standout_job_title }}<button class="btn "
-                                        data-bs-target="#edit-title" data-bs-toggle="modal"><i
-                                            class="material-icons mb-1 edit">edit</i></button></h3>
+                                <h3 id="position">{{ $user->talent->standout_job_title ?? 'Add job title' }}<button
+                                        class="btn " data-bs-target="#edit-title" data-bs-toggle="modal"><i
+                                            class="material-icons mb-1 edit">edit</i></button>
+                                </h3>
                                 <div class="row">
-
                                     <div class="col-md-4 p-2">
-
                                         <i class="material-icons mb-1">location_on</i> <span
-                                            id="country">{{ $user->talent->country }}</span><button class="btn "
-                                            data-bs-target="#edit-country" data-bs-toggle="modal"><i
+                                            id="country">{{ $user->talent->country == null ? 'Add country' : $user->talent->country }}</span><button
+                                            class="btn " data-bs-target="#edit-country" data-bs-toggle="modal"><i
                                                 class="material-icons mb-1 edit">edit</i></button>
                                     </div>
                                 </div>
