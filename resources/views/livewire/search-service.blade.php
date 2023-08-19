@@ -20,7 +20,7 @@
                         </div>
                         <div class="job-it-content text-center">
                             <div>For AI freelancer</div>
-                            <h5 class="mt-2">Sell AI solution/service</h5>
+                            <h5 class="mt-2">Sell AI service</h5>
 
                         </div>
                         {{-- </a> --}}
