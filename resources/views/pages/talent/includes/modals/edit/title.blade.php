@@ -36,7 +36,7 @@
 
                             <div class="form-group">
                                 <label for="" class="h4">Standout job title</label>
-                                <textarea name="standout_job_title" class="form-control"> {{ $user->talent->standout_job_title }} </textarea>
+                                <textarea name="standout_job_title" class="form-control" placeholder="Your standout job title"> {{ $user->talent->standout_job_title }} </textarea>
                             </div>
 
 

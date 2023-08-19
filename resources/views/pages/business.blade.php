@@ -157,13 +157,15 @@
                     <div class="banner-content aos mt-5 pt-5" data-aos="fade-up">
 
                         <h1>
-                            Empower your business with creative AI solutions on demand.
+                            Empower your business with creative AI services on demand.
                         </h1>
 
 
                         <p>
 
-                            BrainX is a marketplace empowering global economy with creative AI solutions from global network of AI talents
+
+                            BrainX is a marketplace empowering global economy with creative AI services from global network
+                            of AI talents.
 
                         </p>
 
@@ -171,13 +173,13 @@
                         <a class="btn join-us">
                             <button class="btn btn-primary boxes-shadow ps-5 pe-5" onclick="scrollToElement('searchSection')"
                                 type="button">
-                                <div class="text-center"><small>Client</small></div>Find AI solution
+                                <div class="text-center"><small>Client</small></div>Find AI service
                             </button>
                         </a>
                         <a class="btn join-us">
                             <button class="btn btn-outline-primary boxes-shadow ps-5 pe-5" data-bs-toggle="modal"
                                 data-bs-target="#login-modal" type="button">
-                                <div class="text-center"><small>Talent</small></div>Sell AI solution
+                                <div class="text-center"><small>Talent</small></div>Sell AI service
                             </button>
                         </a>
 
