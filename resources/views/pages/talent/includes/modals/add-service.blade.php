@@ -73,7 +73,7 @@
                                     </div>
                                 </div>
                                 <input type="text" name="title" class="form-control" maxlength="100"
-                                    placeholder="What AI service do you want to create? ">
+                                    placeholder="What AI service do you want to sell? ">
                             </div>
 
                             <div class="form-group">

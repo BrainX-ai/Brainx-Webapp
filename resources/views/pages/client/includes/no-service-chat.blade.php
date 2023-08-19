@@ -41,7 +41,7 @@
             -webkit-box-align: center;
             -ms-flex-align: center;
             /* align-items:
-                                                                                                                                center; */
+                                                                                                                                    center; */
         }
 
         .chat-cont-left {
@@ -173,7 +173,7 @@
                 <div class="col-md-12">
 
                     <h4 class="text-center mt-5 pt-5">
-                        No data found!
+                        No conversation yet!
                     </h4>
 
                 </div>

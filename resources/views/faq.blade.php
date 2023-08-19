@@ -42,7 +42,7 @@
                             <p>
                             <ol>
                                 <li>Create a BrainX account with your LinkedIn.</li>
-                                <li>Create an AI solution/service on your BrainX profile, set your own price and publish.
+                                <li>Create an AI service on your BrainX profile, set your own price and publish.
                                 </li>
                                 <li>Complete your BrainX profile.</li>
                             </ol>
@@ -63,17 +63,17 @@
                     <li>
                         <div>
                             <strong>
-                                What AI solution or service can I sell?
+                                What AI service can I sell?
                             </strong>
                             <ol>
                                 <li>
-                                    Any solution or service based on your knowledge, experience and skills in data science,
-                                    ML, AI, prompt engineering. They can be as simple as fine tune models, customize
-                                    chatGPT, movie trailers with prompt engineering, create interior design with
-                                    Midjourney,... OR as complex as developing AI systems, tools, consulting services,...
+                                    Any services based on your knowledge, experience and skills in data science, ML, AI,
+                                    prompt engineering. They can be as simple as fine tune models, customize chatGPT, create
+                                    movie trailers with prompt engineering, create interior design with Midjourney,... OR as
+                                    complex as developing AI systems, tools, consulting services,...
                                 </li>
                                 <li>
-                                    It would be very helpful and valuable to business clients if you have AI solutions for
+                                    It would be very helpful and valuable to business clients if you have AI services for
                                     specific industries listed on the marketplace.
                                 </li>
                             </ol>
@@ -95,8 +95,8 @@
                                 How do I get paid?
                             </strong>
                             <p>
-                                Paypal. Clients will fund the money to BrainX and after you successfully deliver AI
-                                solution/service to them, BrainX will send 85% of the price you set to your Paypal.
+                                Paypal. Clients will fund the money to BrainX and after you successfully deliver AI service
+                                to them, BrainX will send 85% of the price you set to your Paypal.
                             </p>
                         </div>
                     </li>
