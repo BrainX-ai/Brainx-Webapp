@@ -20,7 +20,8 @@
             border-radius: .45rem !important;
         }
 
-        .edit, .share {
+        .edit,
+        .share {
             font-size: 25px;
         }
 
@@ -35,8 +36,8 @@
         }
 
         /* li {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    list-style: none;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                } */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        list-style: none;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    } */
 
         .arrow,
         .close {
@@ -90,7 +91,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
-                        
+
                         <div class="row m-5">
                             <div class="col-md-3 ">
                                 <div class="img-profile">
@@ -103,8 +104,8 @@
                                         <h2 id="name">{{ $user->name }}</h2>
                                     </div>
                                     <div class="col-6">
-                                            <button class="btn" data-bs-target="#share-profile" data-bs-toggle="modal"><i
-                                                    class="material-icons mb-1 share">share</i></button>
+                                        <button class="btn" data-bs-target="#share-profile" data-bs-toggle="modal"><i
+                                                class="material-icons mb-1 share">share</i></button>
                                     </div>
                                 </div>
                                 <h3 id="position">{{ $user->talent->standout_job_title }}<button class="btn "
@@ -132,7 +133,7 @@
 
                                         </div>
                                         <div class="job-it-content bg-white">
-                                            <h6><a>Sell AI solution/service</a></h6>
+                                            <h6><a>Sell AI service</a></h6>
                                             <ul class="nav job-locate-foot">
                                                 <li>$--</li>
                                             </ul>
@@ -218,22 +219,7 @@
 
 
                         <section>
-{{--                            <div class="float-end p-5">--}}
-{{--                                <a href="{{ route('client.view') }}">--}}
-{{--                                    <button class="btn btn-primary me-3" type="button">Client view</button>--}}
-{{--                                </a>--}}
-{{--                                <form action="{{ route('submit.for.review') }}" method="POST" class="float-end">--}}
-{{--                                    @csrf--}}
 
-{{--                                    @if (--}}
-{{--                                        $user->talent->status != 'IN_REVIEW' &&--}}
-{{--                                            $user->talent->status != 'PUBLISHED' &&--}}
-{{--                                            $user->talent->status != 'INCOMPLETE')--}}
-{{--                                        <button class="btn btn-primary me-3" type="submit"--}}
-{{--                                            @if (sizeof($user->experiences) == 0 || sizeof($user->educations) == 0) disabled @endif>Submit for review</button>--}}
-{{--                                    @endif--}}
-{{--                                </form>--}}
-{{--                            </div>--}}
                         </section>
 
                     </div>

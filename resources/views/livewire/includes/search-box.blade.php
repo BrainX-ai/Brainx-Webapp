@@ -1,6 +1,6 @@
 <section class="great-about container mb-5">
     <h5 class="col-md-12 mt-4 ms-2">
-        Find AI solution/service that’s relevant to your business
+        Find AI services that’s relevant to your business
     </h5>
     <div class="col-md-12 mt-4 ">
         @foreach ($industries as $key => $industry)

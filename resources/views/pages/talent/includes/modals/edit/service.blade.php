@@ -41,7 +41,7 @@
     </style>
 
     @php
-
+        
         $industries = ['Ecommerce', 'Finance', 'Education', 'IT', 'Media & Entertainment', 'Marketing', 'Sales', 'Others'];
         
     @endphp
@@ -72,17 +72,17 @@
                                                 <label for="" class="h4">Title</label>
                                             </div>
                                             <div class="col text-end">
-                                                <label for=""  >(100 characters max)</label>
+                                                <label for="">(100 characters max)</label>
                                             </div>
                                         </div>
                                         <input type="text" name="title" class="form-control"
                                             value="{{ $service->title }}" maxlength="100"
-                                            placeholder="What AI solution/service do you want to create? ">
+                                            placeholder="What AI service do you want to create? ">
                                     </div>
 
                                     <div class="form-group">
                                         <label for="" class="h4">
-                                            For which industries is your AI solution/service applied?
+                                            For which industries is your AI service applied?
                                         </label>
                                         <div>
                                             <select name="industry[]" id="industry" class="custom-select2 " multiple>
@@ -99,7 +99,7 @@
 
                                     <div class="form-group">
                                         <label for="" class="h4">Description</label>
-                                        <textarea name="description" class="form-control" placeholder="Describe your AI solution/service">
+                                        <textarea name="description" class="form-control" placeholder="Describe your AI service">
                                             {{ $service->description }}
                                         </textarea>
                                     </div>
@@ -109,7 +109,7 @@
                                             <label for="" class="h4">Pricing (USD)</label>
                                             <input type="number" name="price" value="{{ $service->price }}"
                                                 class="form-control">
-{{--                                            <small>Your price won’t be deducted. BrainX charges fee on clients</small>--}}
+                                            {{--                                            <small>Your price won’t be deducted. BrainX charges fee on clients</small> --}}
                                         </div>
                                         <div class="form-group col-md-5 ">
                                             <label for="" class="h4">Delivery time (days)</label>
@@ -118,7 +118,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="" class="h4">Visualize your AI solution/service (1
+                                        <label for="" class="h4">Visualize your AI service (1
                                             image)</label>
                                         <input type="file" name="image" class="form-control" id="imgInp" />
                                         <img src="/uploads/{{ $service->image }}" alt="" id="service_image">
