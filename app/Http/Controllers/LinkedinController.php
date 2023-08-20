@@ -40,9 +40,9 @@ class LinkedinController extends Controller
                 }
                 $talent->save();
 
-                return redirect()->route('home');
 
-//                return redirect()->route('show.profile', ['id' => encrypt($linkedinUser->id)]);
+
+                return redirect()->route('show.profile', ['id' => encrypt($linkedinUser->id)]);
                 if ($talent->status == "INCOMPLETE") {
                     return redirect()->route('build.profile')->with(['user' => $linkedinUser]);
                 } else if ($talent->status == "ASSESSMENT_PENDING") {
@@ -73,8 +73,8 @@ class LinkedinController extends Controller
                 }
                 Auth::login($newUser);
 
-//                return redirect()->route('show.profile', ['id' => encrypt($newUser->id)]);
-                return redirect()->route('home');
+                return redirect()->route('show.profile', ['id' => encrypt($newUser->id)]);
+                // return redirect()->route('home');
                 // return redirect('/build-profile')->with(['user' => $newUser]);
             }
         } catch (Exception $e) {
