@@ -90,6 +90,10 @@
                     class="@if (Request::is('talent')) active-page @endif">Sell AI service</a>
             </li> --}}
             <li class="submenu">
+                <a class="btn btn-outline-primary  " data-bs-toggle="modal" data-bs-target="#post-project"
+                    type="button">Post AI project</a>
+            </li>
+            <li class="submenu">
                 <a href="/faq" class="@if (Request::is('faq')) active-page @endif">FAQ</a>
             </li>
             @if (Auth::check())
@@ -110,10 +114,12 @@
             @endif
 
 
-   
+
 
             {{-- <li><a href="post-project.html" class="login-btn">Post a Project </a></li> --}}
         </ul>
     </nav>
 </header>
+
+@livewire('post-ai-project')
 <!-- /Header -->

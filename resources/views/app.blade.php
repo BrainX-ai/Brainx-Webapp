@@ -128,6 +128,8 @@
         })
     </script>
 
+    @livewireScripts
+
     @yield('custom-js')
     @yield('custom-edit-js')
     @yield('feedback-js')

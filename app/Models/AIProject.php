@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class AIProject extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name', 'description', 'email', 'title', 'budget'
+    ];
 }
