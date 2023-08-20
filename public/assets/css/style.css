@@ -2089,6 +2089,11 @@ label {
 .header-navbar-rht li a:hover, .header-navbar-rht li a:focus {
     color: #0B0D63;
 }
+
+.header-navbar-rht li .btn:hover,
+.header-navbar-rht li a:focus {
+	color: #fff;
+}
 .header-navbar-rht li.lang-item > a {
 	padding-left: 0;
 	padding-right: 0;
