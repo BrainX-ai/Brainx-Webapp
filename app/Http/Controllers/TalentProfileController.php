@@ -316,7 +316,7 @@ class TalentProfileController extends Controller
         $assessmentCategories = AssessmentCateory::with('result')->get();
         $clientProfileLink = route('client.show.profile', encrypt($id));
 
-        $linkedinShare=Share\ShareFacade::page( $clientProfileLink , 'Share AI Talent Profile')
+        $linkedinShare=Share\ShareFacade::page( $clientProfileLink )
             ->linkedin()->getRawLinks();
         return view('pages.talent.service-profile')
             ->with('clientProfileLink', $clientProfileLink)
