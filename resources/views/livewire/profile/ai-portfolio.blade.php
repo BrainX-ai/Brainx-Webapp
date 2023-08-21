@@ -2,13 +2,17 @@
     <div class="row border m-5">
         <div class="col-md-12 p-5">
             <div class="d-flex mb-3">
-                <h4 class="text-primary">
-                    AI Portfolio
-                </h4>
+
+                <div></div>
                 <button class="btn btn-outline-dark btn-rounded" data-bs-target="#add-portfolio"
                     data-bs-toggle="modal">+</button>
             </div>
             <div class="ms-3">
+                @if (sizeof($portfolios) == 0)
+                    <div class="text-muted">
+                        Show AI-relating projects you did
+                    </div>
+                @endif
                 @foreach ($portfolios as $portfolio)
                     <div class="review-content no-padding">
                         <div class="d-flex">

@@ -1,8 +1,31 @@
 <section class="section  ">
-    <div class="container pb-5">
-        <div class=" align-items-center ">
+    <style>
+        ol li {
+            margin-bottom: 15px;
+        }
 
-            <ol class="">
+        li div {
+            margin-bottom: 30px;
+        }
+
+        ol,
+        strong {
+            font-size: 22px;
+            margin-bottom: 20px;
+        }
+
+        ol li div {
+            font-size: 18px;
+        }
+
+        ol div ol {
+            list-style-type: lower-alpha;
+        }
+    </style>
+    <div class="container pb-5">
+        <div class="card  align-items-center mt-2">
+
+            <ol class="m-3">
                 <li>
                     <div>
                         <strong>
