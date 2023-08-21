@@ -36,8 +36,8 @@
         }
 
         /* li {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            list-style: none;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        } */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                list-style: none;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            } */
 
         .arrow,
         .close {
@@ -123,104 +123,17 @@
                                 </div>
                             </div>
                         </div>
+
                         <section>
-                            <div class="row">
-                                <button class="btn text-start col-md-3 add-service" data-bs-target="#add-service"
-                                    data-bs-toggle="modal">
-                                    <div class="job-locate-blk ">
-                                        <div class="location-img bg-white">
-                                            <img class="" src="/assets/img/BrainX/Plus_symbol.png" alt="">
-
-                                        </div>
-                                        <div class="job-it-content bg-white">
-                                            <h6><a>Sell AI service</a></h6>
-                                            <ul class="nav job-locate-foot">
-                                                <li>$--</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </button>
-                                @foreach ($services as $key => $service)
-                                    <div class="col-md-3">
-                                        <div class="job-locate-blk ">
-                                            <a href="{{ route('service.details', $service->id) }}" class="">
-
-                                                <div class="location-img">
-                                                    <span>
-                                                        @if ($service->image == null)
-                                                            <img class="default-image" src="/assets/img/BrainX/X.png"
-                                                                alt="">
-                                                        @else
-                                                            <img class="img-fluid" src="/uploads/{{ $service->image }}"
-                                                                alt="">
-                                                        @endif
-                                                    </span>
-                                                </div>
-                                                <div class="job-it-content">
-                                                    <h6>{{ substr($service->title, 0, 50) . (strlen($service->title) > 50 ? '...' : '') }}
-
-                                                    </h6>
-                                                    <ul class="nav job-locate-foot">
-                                                        <li>${{ $service->price }}</li>
-                                                        {{-- <li><i class="material-icons mb-1">star</i> {{ $service->rating }}</li> --}}
-                                                    </ul>
-                                                </div>
-                                            </a>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                        </section>
-                        <section>
-                            <div class="row border rounded m-5">
-                                <div class="col-md-12 p-5">
-                                    <div class="d-flex">
-                                        <h4 class="text-primary pt-2">Bio</h4><button class="btn "
-                                            data-bs-target="#edit-bio" data-bs-toggle="modal"><i
-                                                class="material-icons mb-1 edit">edit</i></button>
-                                    </div>
-                                    <p id="bio" class="p-2">
-                                        {{ $user->talent->brief_summary }}
-                                    </p>
-                                </div>
-                            </div>
+                            @livewire('profile', ['user_id' => $user->id])
                         </section>
 
 
 
 
-                        <section>
-                            <div class="row border m-5">
-                                <div class="col-md-12 p-5">
-                                    <div class="d-flex mb-3">
-                                        <h4 class="text-primary">
-                                            AI Portfolio
-                                        </h4>
-                                        <button class="btn btn-outline-dark btn-rounded" data-bs-target="#add-portfolio"
-                                            data-bs-toggle="modal">+</button>
-                                    </div>
-                                    <div class="ms-3">
-                                        @foreach ($portfolios as $portfolio)
-                                            <div class="review-content no-padding">
-                                                <div class="d-flex">
-
-                                                    <h4 class="text-primary mt-2">{{ $portfolio->title }}</h4>
-
-                                                </div>
-
-                                                <p class="mb-3"> {{ $portfolio->description }}</p>
-
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
 
 
-                        <section>
 
-                        </section>
 
                     </div>
                 </div>
@@ -234,14 +147,12 @@
 
     @include('pages.talent.includes.modals.edit.hourly-rate')
     @include('pages.talent.includes.modals.edit.hours-per-week')
-    @include('pages.talent.includes.modals.edit.bio')
     @include('pages.talent.includes.modals.edit.title')
     @include('pages.talent.includes.modals.edit.country')
     @include('pages.talent.includes.modals.edit.ex-famous-company')
     @include('pages.talent.includes.modals.edit.experience')
     @include('pages.talent.includes.modals.edit.education')
     @include('pages.talent.includes.modals.add-service')
-    @include('pages.talent.includes.modals.add-portfolio')
     @include('pages.talent.includes.modals.share-service')
 
 @section('edit-profile-js')
