@@ -1,5 +1,11 @@
 @extends('pages.client.layouts.app')
 
+@section('linkedin-meta')
+    <meta property='og:title' content='Check my AI service on BrainX'/>
+    <meta property='og:description' content='BrainX is a marketplace empowering businesses with
+    creative AI services from global network of AI talents'/>
+@endsection
+
 @section('content')
     <style>
         .img-profile img {

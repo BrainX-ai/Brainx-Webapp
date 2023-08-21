@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-
+    @yield('linkedin-meta')
     <title inertia>{{ config('app.name', 'BrainX') }}</title>
 
     <!-- Favicon -->
@@ -93,7 +93,7 @@
         {{-- @if (Auth::user()->email_verified_at == null)
 			<div class="alert alert-info alert-dismissible fade show text-center" role="alert">
 				A verfication mail has been sent to your email address. Please check your email!
-				
+
 			  </div>
 			  @endif --}}
         @include('pages.client.includes.header')
