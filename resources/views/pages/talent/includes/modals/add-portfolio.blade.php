@@ -30,26 +30,27 @@
             <div class="modal-body">
 
                 <div class="  card m-2 border-0  col-md-12 ">
-                    <form action="{{ route('add.portfolio') }}" method="POST">
-                        @csrf
 
-                        <div class="card-body ">
+                    @csrf
 
-                            <div class="form-group">
-                                <label for="" class="h4">Title</label>
-                                <input type="text" name="title" placeholder="Title of AI project you did"
-                                    class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label for="" class="h4">Description</label>
-                                <textarea type="text" name="description" placeholder="A short description for that project"
-                                    class="form-control"></textarea>
-                            </div>
+                    <div class="card-body ">
+
+                        <div class="form-group">
+                            <label for="" class="h4">Title</label>
+                            <input type="text" wire:model.defer="title" placeholder="Title of AI project you did"
+                                class="form-control">
                         </div>
-                        <div class="card-footer pb-2 border-0 float-right">
-                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"> Save</button>
+                        <div class="form-group">
+                            <label for="" class="h4">Description</label>
+                            <textarea type="text" wire:model.defer="description" placeholder="A short description for that project"
+                                class="form-control"></textarea>
                         </div>
-                    </form>
+                    </div>
+                    <div class="card-footer pb-2 border-0 float-right">
+                        <button type="submit" class="btn btn-primary" data-bs-dismiss="modal"
+                            wire:click.prevent="addPortfolio"> Save</button>
+                    </div>
+
 
 
                 </div>
