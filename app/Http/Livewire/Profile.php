@@ -11,8 +11,8 @@ use Livewire\Component;
 
 class Profile extends Component
 {
-    public $tabs = ['AI services', 'Bio', 'AI portfolio', 'FAQ'];
-    public $activeTab = 'AI services';
+    public $tabs = ['My AI services', 'Bio', 'AI portfolio', 'Info'];
+    public $activeTab = 'My AI services';
     public $portfolios = [], $services = [], $user, $bio;
     public $user_id;
     protected $queryString = ['user_id'];
