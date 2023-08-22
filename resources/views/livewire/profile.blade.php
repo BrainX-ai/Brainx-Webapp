@@ -7,7 +7,7 @@
         @include('livewire.profile.bio')
     @elseif ($activeTab == 'AI portfolio')
         @include('livewire.profile.ai-portfolio')
-    @elseif ($activeTab == 'Info')
+    @elseif ($activeTab == 'How it works')
         @include('livewire.profile.faq')
     @endif
 </div>
