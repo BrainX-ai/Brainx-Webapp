@@ -69,10 +69,7 @@
                     <a href="/talent" data-bs-toggle="modal" data-bs-target="#login-modal"
                         class="@if (Request::is('talent')) active-page @endif">Sell AI service</a>
                 </li> --}}
-                <li class="submenu">
-                    <a href="/how-it-works" class="@if (Request::is('faq')) active-page @endif">How it
-                        works</a>
-                </li>
+
                 <li class="submenu">
                     <a href="/talent" data-bs-toggle="modal" data-bs-target="#client-signin"
                         class="@if (Request::is('talent')) active-page @endif">Login</a>
@@ -97,9 +94,6 @@
             <li class="submenu">
                 <a class="btn btn-outline-primary  " data-bs-toggle="modal" data-bs-target="#post-project"
                     type="button">Post AI project</a>
-            </li>
-            <li class="submenu">
-                <a href="/how-it-works" class="@if (Request::is('faq')) active-page @endif">How it works</a>
             </li>
             @if (Auth::check())
                 @if (Auth::user()->role == 'Client')
