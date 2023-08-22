@@ -33,7 +33,7 @@ Route::get('/privacy-policy', function () {
 Route::get('/terms-of-service', function () {
     return view('pages.terms');
 });
-Route::get('/faq', function () {
+Route::get('/how-it-works', function () {
     return view('faq');
 });
 Route::get('/pending', 'App\http\controllers\TalentProfileController@showPendingPage')->name('talent.pending');
