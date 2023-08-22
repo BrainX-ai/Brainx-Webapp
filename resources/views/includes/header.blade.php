@@ -79,7 +79,7 @@
                 </li>
 
                 <li class="submenu">
-                    <a href="/talent" data-bs-toggle="modal" data-bs-target="#add-feedback"
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#add-feedback"
                         class="@if (Request::is('talent')) active-page @endif">Feedback</a>
                 </li>
                 <li class="has-submenu fade" style="width: 200px">
