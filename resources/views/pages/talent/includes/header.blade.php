@@ -30,7 +30,8 @@
         <!-- Notifications -->
         <li class="nav-item dropdown">
             <a href="#" class=" nav-link user-img" data-bs-toggle="modal" data-bs-target="#add-feedback">
-                <img src="/assets/img/BrainX/Feedback-button-on-navigation-bar.png" alt="">
+                {{-- <img src="/assets/img/BrainX/Feedback-button-on-navigation-bar.png" alt=""> --}}
+                Feedback
             </a>
 
         </li>
