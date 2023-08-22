@@ -29,11 +29,11 @@
 
     <!-- Home Banner -->
     <section class="section home-banner ">
-        <div class="container pt-5">
+        <div class="container pt-5 mb-5 pb-5">
             <h1>How it works</h1>
-            <div class=" align-items-center pt-5">
-
-                <ul class="mt-5">
+            <div class=" align-items-center pt-5 mb-5">
+                <h4 style="text-decoration: underline;">For AI talents</h4>
+                <ul class="mt-5 mb-5 pb-5">
                     <li>
                         <div>
                             <strong>
