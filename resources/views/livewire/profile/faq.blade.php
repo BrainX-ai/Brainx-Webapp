@@ -1,6 +1,6 @@
 <section class="section  ">
     <style>
-        ol li {
+        ul li {
             margin-bottom: 15px;
         }
 
@@ -8,35 +8,36 @@
             margin-bottom: 30px;
         }
 
-        ol,
+        ul,
         strong {
             font-size: 22px;
             margin-bottom: 20px;
         }
 
-        ol li div {
+        ul li div {
             font-size: 18px;
         }
 
-        ol div ol {
-            list-style-type: lower-alpha;
+        ul div ol {
+            list-style-type: disc;
         }
     </style>
     <div class="container pb-5">
         <div class="card  align-items-center mt-2">
 
-            <ol class="m-3">
+            <ul class="m-3 ms-5 me-5">
                 <li>
                     <div>
                         <strong>
-                            How to get started?
+                            Step 1: Sign up
                         </strong>
                         <p>
                         <ol>
-                            <li>Create a BrainX account with your LinkedIn.</li>
-                            <li>Create an AI service on your BrainX profile, set your own price and publish.
+                            <li>Create a free BrainX profile with your LinkedIn.</li>
+                            <li>We welcome all types of AI talents: ML/AI engineers, prompt engineers, data scientists,
+                                data engineers, MLops, AI researchers, AI consultants, business intelligence developers…
                             </li>
-                            <li>Complete your BrainX profile.</li>
+
                         </ol>
                         </p>
                     </div>
@@ -44,55 +45,44 @@
                 <li>
                     <div>
                         <strong>
-                            Who can join BrainX as an AI talent?
+                            Step 2: Create your own AI service
                         </strong>
                         <p>
-                            ML/AI engineers, prompt engineers, data scientists, data engineers, MLops, AI researchers,
-                            AI consultants, business intelligence developers...
-                        </p>
-                    </div>
-                </li>
-                <li>
-                    <div>
-                        <strong>
-                            What AI service can I sell?
-                        </strong>
                         <ol>
                             <li>
-                                Any services based on your knowledge, experience and skills in data science, ML, AI,
-                                prompt engineering. They can be as simple as fine tune models, customize chatGPT, create
-                                movie trailers with prompt engineering, create interior design with Midjourney,... OR as
-                                complex as developing AI systems, tools, consulting services,...
+                                Based on your knowledge, experience and skills in data science, ML, AI, prompt
+                                engineering, you can create services that you think are helpful for businesses in
+                                specific industries like fine tune models, customize chatGPT, create movie trailers with
+                                Runway Gen2, developing AI apps, consulting,...
                             </li>
                             <li>
-                                It would be very helpful and valuable to business clients if you have AI services for
-                                specific industries listed on the marketplace.
+                                Set your own price for the AI service you want to sell.
                             </li>
                         </ol>
-                    </div>
-                </li>
-                <li>
-                    <div>
-                        <strong>
-                            Is there any fee to join BrainX?
-                        </strong>
-                        <p>
-                            No. Totally free
                         </p>
                     </div>
                 </li>
                 <li>
                     <div>
                         <strong>
-                            How do I get paid?
+                            Step 3: Publish for sales
                         </strong>
                         <p>
-                            Paypal. Clients will fund the money to BrainX and after you successfully deliver AI service
-                            to them, BrainX will send 85% of the price you set to your Paypal.
+                        <ol>
+                            <li>
+                                Your AI service will be published on BrainX’s homepage. If clients see your service is
+                                helpful for them, they will fund BrainX in advance. After you successfully deliver AI
+                                service to them, BrainX will send 85% of the price you set to your Paypal.
+                            </li>
+                            <li>
+                                Complete your BrainX profile to build trust with clients.
+                            </li>
+                        </ol>
                         </p>
+
                     </div>
                 </li>
-            </ol>
+            </ul>
 
         </div>
     </div>
