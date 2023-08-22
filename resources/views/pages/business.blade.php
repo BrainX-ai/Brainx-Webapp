@@ -165,7 +165,9 @@
 
 
                             BrainX is a marketplace empowering business with creative AI services from global network
-                            of AI talents.
+                            of AI talents. <a href="/how-it-works" class="text-primary fw-bold text-decoration-underline">How
+                                it
+                                works?</a>
 
                         </p>
 
