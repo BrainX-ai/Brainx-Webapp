@@ -69,14 +69,16 @@
                     <a href="/talent" data-bs-toggle="modal" data-bs-target="#login-modal"
                         class="@if (Request::is('talent')) active-page @endif">Sell AI service</a>
                 </li> --}}
-                <li class="submenu">
-                    <a href="/faq" class="@if (Request::is('faq')) active-page @endif">FAQ</a>
-                </li>
+
                 <li class="submenu">
                     <a href="/talent" data-bs-toggle="modal" data-bs-target="#client-signin"
                         class="@if (Request::is('talent')) active-page @endif">Login</a>
                 </li>
 
+                <li class="submenu">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#add-feedback"
+                        class="@if (Request::is('talent')) active-page @endif">Feedback</a>
+                </li>
                 <li class="has-submenu fade" style="width: 200px">
                 </li>
                 <li class="has-submenu fade" style="width: 100px">
@@ -92,9 +94,6 @@
             <li class="submenu">
                 <a class="btn btn-outline-primary  " data-bs-toggle="modal" data-bs-target="#post-project"
                     type="button">Post AI project</a>
-            </li>
-            <li class="submenu">
-                <a href="/faq" class="@if (Request::is('faq')) active-page @endif">FAQ</a>
             </li>
             @if (Auth::check())
                 @if (Auth::user()->role == 'Client')
@@ -114,6 +113,10 @@
             @endif
 
 
+            <li class="submenu">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#add-feedback"
+                    class="@if (Request::is('talent')) active-page @endif">Feedback</a>
+            </li>
 
 
             {{-- <li><a href="post-project.html" class="login-btn">Post a Project </a></li> --}}
