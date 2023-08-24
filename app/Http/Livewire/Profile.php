@@ -11,15 +11,33 @@ use Livewire\Component;
 
 class Profile extends Component
 {
-    public $tabs = ['My AI services', 'Bio', 'AI portfolio', 'How it works'];
-    public $activeTab = 'My AI services';
+    public $tabs = [];
+    public $activeTab = '';
     public $portfolios = [], $services = [], $user, $bio;
     public $user_id;
     protected $queryString = ['user_id'];
 
     public $title, $description;
+
+    public function mount()
+    {
+        if (Auth::check() && Auth::user()->role == 'Talent') {
+            $this->tabs[] = 'My AI services';
+            $this->activeTab = 'My AI services';
+        } else {
+            $this->tabs[] = 'AI services';
+            $this->activeTab = 'AI services';
+        }
+        $this->tabs[] = 'Bio';
+        $this->tabs[] = 'AI portfolio';
+
+        if (Auth::check() && Auth::user()->role == 'Talent')
+            $this->tabs[] = 'How it works';
+    }
+
     public function render()
     {
+
 
         $id = ($this->user_id);
         $this->portfolios = Portfolio::where('user_id', $id)->get();

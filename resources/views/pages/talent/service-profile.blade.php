@@ -47,8 +47,8 @@
         }
 
         /* li {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    list-style: none;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                } */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            list-style: none;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        } */
 
         .arrow,
         .close {
@@ -116,21 +116,32 @@
                                         <h2 id="name">{{ $user->name }}</h2>
                                     </div>
                                     <div class="col-6">
-                                        <button class="btn" data-bs-target="#share-profile" data-bs-toggle="modal"><i
-                                                class="material-icons mb-1 share">share</i></button>
+                                        @if (Auth::check() && Auth::user()->role == 'Talent')
+                                            <button class="btn" data-bs-target="#share-profile" data-bs-toggle="modal"><i
+                                                    class="material-icons mb-1 share">share</i></button>
+                                        @endif
                                     </div>
                                 </div>
                                 <h3 id="position" class="mb-0">
-                                    {{ $user->talent->standout_job_title ?? 'Add job title' }}<button class="btn "
-                                        data-bs-target="#edit-title" data-bs-toggle="modal"><i
-                                            class="material-icons  edit">edit</i></button>
+                                    @if ($user->talent->standout_job_title)
+                                        {{ $user->talent->standout_job_title ?? 'Add job title' }}
+                                    @endif
+
+                                    @if (Auth::check() && Auth::user()->role == 'Talent')
+                                        <button class="btn " data-bs-target="#edit-title" data-bs-toggle="modal"><i
+                                                class="material-icons  edit">edit</i></button>
+                                    @endif
                                 </h3>
                                 <div class="row">
-                                    <div class="col-md-4 ps-2">
-                                        <i class="material-icons mb-1">location_on</i> <span
-                                            id="country">{{ $user->talent->country == null ? 'Add country' : $user->talent->country }}</span><button
-                                            class="btn " data-bs-target="#edit-country" data-bs-toggle="modal"><i
-                                                class="material-icons mb-1 edit">edit</i></button>
+                                    <div class="col-md-4 ps-2 mt-2">
+                                        @if ($user->talent->country)
+                                            <i class="material-icons mb-1">location_on</i> <span
+                                                id="country">{{ $user->talent->country == null ? 'Add country' : $user->talent->country }}</span>
+                                        @endif
+                                        @if (Auth::check() && Auth::user()->role == 'Talent')
+                                            <button class="btn " data-bs-target="#edit-country" data-bs-toggle="modal"><i
+                                                    class="material-icons mb-1 edit">edit</i></button>
+                                        @endif
                                     </div>
                                 </div>
                             </div>
@@ -165,7 +176,10 @@
     @include('pages.talent.includes.modals.edit.experience')
     @include('pages.talent.includes.modals.edit.education')
     @include('pages.talent.includes.modals.add-service')
-    @include('pages.talent.includes.modals.share-service')
+
+    @if (Auth::check() && Auth::user()->role == 'Talent')
+        @include('pages.talent.includes.modals.share-service')
+    @endif
 
 @section('edit-profile-js')
     <script>
