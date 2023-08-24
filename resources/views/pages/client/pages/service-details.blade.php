@@ -36,7 +36,7 @@
                                 </div>
                             </div>
                             <div class="media-body flex-grow-1 ms-3">
-                                <div class="user-name fw-bold"><a style="text-decoration: underline;"
+                                <div class="user-name fw-bold"><a class="text-primary " style="text-decoration: underline;"
                                         href="{{ route('client.show.profile', encrypt($talent->id)) }}">{{ $talent->name }}</a>
                                 </div>
                                 <div class="message"> {{ $talent->talent->standout_job_title }} </div>
