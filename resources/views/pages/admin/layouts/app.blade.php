@@ -132,6 +132,10 @@
                                 <span>Projects</span></a>
                         </li>
                         <li>
+                            <a href="{{ route('admin.ai.projects') }}"><i data-feather="clipboard"></i>
+                                <span>AI Projects</span></a>
+                        </li>
+                        <li>
                             <a href="{{ route('admin.services') }}"><i data-feather="clipboard"></i>
                                 <span>Services</span></a>
                         </li>
