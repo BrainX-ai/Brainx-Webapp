@@ -4,13 +4,19 @@
             <div class="d-flex mb-3">
 
                 <div></div>
-                <button class="btn btn-outline-dark btn-rounded" data-bs-target="#add-portfolio"
-                    data-bs-toggle="modal">+</button>
+                @if (Auth::check() && Auth::user()->role == 'Talent')
+                    <button class="btn btn-outline-dark btn-rounded" data-bs-target="#add-portfolio"
+                        data-bs-toggle="modal">+</button>
+                @endif
             </div>
             <div class="ms-3">
                 @if (sizeof($portfolios) == 0)
                     <div class="text-muted">
-                        Show AI-relating projects you did
+                        @if (Auth::check() && Auth::user()->role == 'Talent')
+                            Show AI-relating projects you did
+                        @else
+                            No AI portfolio added.
+                        @endif
                     </div>
                 @endif
                 @foreach ($portfolios as $portfolio)
@@ -28,5 +34,7 @@
             </div>
         </div>
     </div>
-    @include('pages.talent.includes.modals.add-portfolio')
+    @if (Auth::check() && Auth::user()->role == 'Talent')
+        @include('pages.talent.includes.modals.add-portfolio')
+    @endif
 </section>

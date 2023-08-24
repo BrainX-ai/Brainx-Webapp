@@ -1,23 +1,25 @@
 <section>
     <div class="row">
-        <button class="btn text-start col-md-3 add-service" data-bs-target="#add-service" data-bs-toggle="modal">
-            <div class="job-locate-blk ">
-                <div class="location-img bg-white">
-                    <img class="" src="/assets/img/BrainX/Plus_symbol.png" alt="">
+        @if (Auth::check() && Auth::user()->role == 'Talent')
+            <button class="btn text-start col-md-3 add-service" data-bs-target="#add-service" data-bs-toggle="modal">
+                <div class="job-locate-blk ">
+                    <div class="location-img bg-white">
+                        <img class="" src="/assets/img/BrainX/Plus_symbol.png" alt="">
 
+                    </div>
+                    <div class="job-it-content bg-white">
+                        <h6><a>Sell AI service</a></h6>
+                        <ul class="nav job-locate-foot">
+                            <li>$--</li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="job-it-content bg-white">
-                    <h6><a>Sell AI service</a></h6>
-                    <ul class="nav job-locate-foot">
-                        <li>$--</li>
-                    </ul>
-                </div>
-            </div>
-        </button>
+            </button>
+        @endif
         @foreach ($services as $key => $service)
             <div class="col-md-3">
                 <div class="job-locate-blk ">
-                    <a href="{{ route('service.details', $service->id) }}" class="">
+                    <a href="{{ route('client.service.details', $service->id) }}" class="">
 
                         <div class="location-img">
                             <span>
@@ -41,7 +43,13 @@
                 </div>
             </div>
         @endforeach
+
+        @if (sizeof($services) == 0 && Auth::check() && Auth::user()->role != 'Talent')
+            No AI services added
+        @endif
     </div>
 
-    @include('pages.talent.includes.modals.add-service')
+    @if (Auth::check() && Auth::user()->role == 'Talent')
+        @include('pages.talent.includes.modals.add-service')
+    @endif
 </section>

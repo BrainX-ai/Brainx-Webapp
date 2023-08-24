@@ -29,7 +29,10 @@
                     </div>
                 </div>
                 <div class="media-body flex-grow-1 ms-3">
-                    <div class="user-name">{{ $service->talent->name }}</div>
+                    <div class="user-name fw-bold text-decoration-underline"><a class="text-primary "
+                            style="text-decoration: underline;"
+                            href="{{ route('client.show.profile', encrypt($service->talent->id)) }}">
+                            {{ $service->talent->name }}</a></div>
                     <div class="message"> {{ $service->talent->talent->standout_job_title }} </div>
 
                 </div>
