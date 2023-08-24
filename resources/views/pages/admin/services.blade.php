@@ -19,7 +19,9 @@
         </div>
     </div>
     <!-- /Page Header -->
-
+    @php
+        $values = [ 'UNPUBLISHED', 'PUBLISHED'];
+    @endphp
     <!-- Table -->
     <div class="row">
         <div class="col-lg-12">
@@ -39,6 +41,7 @@
                                 <th>Talent</th>
                                 <th>Rating</th>
                                 <th>Price</th>
+                                <th>Status</th>
                                 <th>Created Date</th>
                                 <th></th>
                             </tr>
@@ -75,6 +78,25 @@
                                     </td>
                                     <td>
                                         {{ $service->price }}
+                                    </td>
+                                    <td>
+
+                                            <form action="{{ route('admin.update.service.status') }}" method="POST">
+                                                @csrf
+                                                <input type="hidden" name="service_id" value="{{ $service->id }}">
+
+                                                <select name="status" class="form-control" onchange="this.form.submit()">
+                                                    <option value="">- Select status -</option>
+                                                    <option value="UNPUBLISHED"
+                                                    @if ($service->status == 'UNPUBLISHED') {{ 'selected' }} @endif>
+                                                        UNPUBLISHED</option>
+                                                    <option value="PUBLISHED"
+                                                    @if ($service->status == 'PUBLISHED') {{ 'selected' }} @endif>
+                                                        PUBLISHED</option>
+                                                </select>
+                                            </form>
+
+
                                     </td>
                                     <td>{{ $service->created_at }}</td>
 
