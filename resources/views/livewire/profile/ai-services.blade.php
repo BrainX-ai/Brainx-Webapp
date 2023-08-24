@@ -19,7 +19,7 @@
         @foreach ($services as $key => $service)
             <div class="col-md-3">
                 <div class="job-locate-blk ">
-                    <a href="{{ route('service.details', $service->id) }}" class="">
+                    <a href="{{ route('client.service.details', $service->id) }}" class="">
 
                         <div class="location-img">
                             <span>
@@ -43,6 +43,10 @@
                 </div>
             </div>
         @endforeach
+
+        @if (sizeof($services) == 0 && Auth::check() && Auth::user()->role != 'Talent')
+            No AI services added
+        @endif
     </div>
 
     @if (Auth::check() && Auth::user()->role == 'Talent')
