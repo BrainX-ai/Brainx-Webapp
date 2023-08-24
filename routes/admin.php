@@ -10,6 +10,8 @@ Route::get('/users', 'App\http\controllers\Admin\AdminController@users')->name('
 Route::get('/clients', 'App\http\controllers\Admin\AdminController@clients')->name('admin.clients');
 Route::get('/clients/delete/{id}', 'App\http\controllers\Admin\AdminController@destroy')->name('admin.clients.delete');
 Route::get('/services', 'App\http\controllers\Admin\ServiceController@index')->name('admin.services');
+Route::post('/service/status/update', 'App\http\controllers\Admin\ServiceController@updateStatus')->name('admin.update.service.status');
+
 Route::get('/service/details/{id}', 'App\http\controllers\Admin\ServiceController@show')->name('admin.service.details');
 Route::get('/projects', 'App\http\controllers\Admin\JobController@index')->name('admin.projects');
 Route::get('/project/details/{id}', 'App\http\controllers\Admin\JobController@details')->name('admin.project.details');
@@ -33,6 +35,7 @@ Route::post('/add-questions', 'App\http\controllers\Admin\QuestionController@sto
 Route::post('/edit-question', 'App\http\controllers\Admin\QuestionController@updateQuestion')->name('admin.update.question');
 Route::get('/question/edit/{id}', 'App\http\controllers\Admin\QuestionController@editQuestion')->name('admin.edit.page.question');
 Route::post('/add-assessment-category', 'App\http\controllers\Admin\QuestionController@storeAssessmentCategory')->name('admin.add.assessment.category');
+Route::get('/ai-projects', 'App\http\controllers\Admin\AIProjectController@index')->name('admin.ai.projects');
 
 //
 Route::get('/zoom', 'App\http\controllers\Admin\VideoMeetingsController@index')->name('admin.zoom');

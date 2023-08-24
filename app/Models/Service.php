@@ -16,7 +16,8 @@ class Service extends Model
         'industry',
         'price',
         'delivery_time',
-        'image'
+        'image',
+        'status'
     ];
 
     public function talent()
