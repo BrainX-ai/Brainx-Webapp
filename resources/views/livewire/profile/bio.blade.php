@@ -14,7 +14,11 @@
                     @if ($user->talent->brief_summary)
                         {{ $user->talent->brief_summary }}
                     @else
-                        <span class="text-muted">Let clients know about you and your experience, skills in AI</span>
+                        @if (Auth::check() && Auth::user()->role == 'Talent')
+                            <span class="text-muted">Let clients know about you and your experience, skills in AI</span>
+                        @else
+                            <span class="text-muted">No bio added</span>
+                        @endif
                     @endif
                 </p>
             </div>

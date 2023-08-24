@@ -25,8 +25,8 @@ class Profile extends Component
             $this->tabs[] = 'My AI services';
             $this->activeTab = 'My AI services';
         } else {
-            $this->tabs[] = 'AI services';
-            $this->activeTab = 'AI services';
+            $this->tabs[] = 'My AI services';
+            $this->activeTab = 'My AI services';
         }
         $this->tabs[] = 'Bio';
         $this->tabs[] = 'AI portfolio';

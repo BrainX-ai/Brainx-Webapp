@@ -12,7 +12,11 @@
             <div class="ms-3">
                 @if (sizeof($portfolios) == 0)
                     <div class="text-muted">
-                        Show AI-relating projects you did
+                        @if (Auth::check() && Auth::user()->role == 'Talent')
+                            Show AI-relating projects you did
+                        @else
+                            No AI portfolio added.
+                        @endif
                     </div>
                 @endif
                 @foreach ($portfolios as $portfolio)
