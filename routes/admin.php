@@ -33,6 +33,7 @@ Route::post('/add-questions', 'App\http\controllers\Admin\QuestionController@sto
 Route::post('/edit-question', 'App\http\controllers\Admin\QuestionController@updateQuestion')->name('admin.update.question');
 Route::get('/question/edit/{id}', 'App\http\controllers\Admin\QuestionController@editQuestion')->name('admin.edit.page.question');
 Route::post('/add-assessment-category', 'App\http\controllers\Admin\QuestionController@storeAssessmentCategory')->name('admin.add.assessment.category');
+Route::get('/ai-projects', 'App\http\controllers\Admin\AIProjectController@index')->name('admin.ai.projects');
 
 //
 Route::get('/zoom', 'App\http\controllers\Admin\VideoMeetingsController@index')->name('admin.zoom');
