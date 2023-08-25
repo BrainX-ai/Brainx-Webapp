@@ -47,8 +47,8 @@
         }
 
         /* li {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            list-style: none;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        } */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    list-style: none;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                } */
 
         .arrow,
         .close {
@@ -134,7 +134,7 @@
                                 </h3>
                                 <div class="row">
                                     <div class="col-md-4 ps-2 mt-2">
-                                        @if ($user->talent->country)
+                                        @if ($user->talent->country || (Auth::check() && Auth::user()->role == 'Talent' && $user->talent->country == null))
                                             <i class="material-icons mb-1">location_on</i> <span
                                                 id="country">{{ $user->talent->country == null ? 'Add country' : $user->talent->country }}</span>
                                         @endif
@@ -143,6 +143,18 @@
                                                     class="material-icons mb-1 edit">edit</i></button>
                                         @endif
                                     </div>
+                                    @if (
+                                        $user->talent->ex_famouse_company ||
+                                            (Auth::check() && Auth::user()->role == 'Talent' && $user->talent->ex_famouse_company == null))
+                                        <div class="  col-md-4 p-2">
+                                            <i class="material-icons mb-1 me-2">store</i><span
+                                                id="ex-famous-company">{{ $user->talent->ex_famouse_company == null ? 'Add ex-famous company' : $user->talent->ex_famouse_company }}</span>
+                                            @if (Auth::check() && Auth::user()->role == 'Talent')
+                                                <button class="btn " data-bs-target="#edit-ex-famous-company"
+                                                    data-bs-toggle="modal"><i class="material-icons mb-1">edit</i></button>
+                                            @endif
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
