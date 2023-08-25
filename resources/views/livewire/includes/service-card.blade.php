@@ -34,7 +34,7 @@
                             href="{{ route('client.show.profile', encrypt($service->talent->id)) }}">
                             {{ $service->talent->name }}</a></div>
                     <div class="message"> {{ $service->talent->talent->standout_job_title }} </div>
-
+                    <small>{{ $service->talent->talent->ex_famouse_company ?? '' }}</small>
                 </div>
             </div>
         </a>
