@@ -41,6 +41,7 @@
                                 </div>
                                 <div class="message"> {{ $talent->talent->standout_job_title }} </div>
 
+                                <small>{{ $service->talent->talent->ex_famouse_company ?? '' }}</small>
                             </div>
                             <div>
                                 <span class="h4">${{ $service->price }}</span>
