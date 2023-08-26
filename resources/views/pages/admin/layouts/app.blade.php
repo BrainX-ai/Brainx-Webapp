@@ -152,9 +152,13 @@
                                 <span>Feedbacks</span></a>
                         </li>
                         <li>
+                            <a href="{{ route('admin.errors') }}"><i data-feather="clipboard"></i>
+                                <span>Error</span></a>
+                        </li>
+                        {{-- <li>
                             <a href="{{ route('admin.zoom') }}"><i data-feather="clipboard"></i>
                                 <span>Zoom</span></a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </div>
             </div>

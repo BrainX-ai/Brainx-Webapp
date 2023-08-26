@@ -168,7 +168,7 @@ class SearchService extends Component
 
     public function getServicesFromDB()
     {
-        $services = Service::inRandomOrder()->with('talent');
+        $services = Service::inRandomOrder()->with('talent')->whereStatus('PUBLISHED');
         if ($this->search != 'All') {
             $services = $services->where('industry', 'LIKE', '%' . $this->search . '%');
         }
