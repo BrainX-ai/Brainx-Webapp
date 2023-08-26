@@ -41,3 +41,6 @@ Route::get('/ai-projects', 'App\http\controllers\Admin\AIProjectController@index
 Route::get('/zoom', 'App\http\controllers\Admin\VideoMeetingsController@index')->name('admin.zoom');
 Route::get('/zoom/callback', 'App\http\controllers\Admin\VideoMeetingsController@callback')->name('admin.zoom.callback');
 Route::get('/zoom/meeting/create', 'App\http\controllers\VideoMeetingController@create_meeting')->name('admin.zoom.meeting.create');
+
+
+Route::get('/errors', 'App\http\controllers\Admin\ErrorController@index')->name('admin.errors');
