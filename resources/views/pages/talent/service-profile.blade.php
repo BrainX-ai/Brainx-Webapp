@@ -47,8 +47,8 @@
         }
 
         /* li {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    list-style: none;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                } */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        list-style: none;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    } */
 
         .arrow,
         .close {
@@ -123,7 +123,9 @@
                                     </div>
                                 </div>
                                 <h3 id="position" class="mb-0">
-                                    @if ($user->talent->standout_job_title)
+                                    @if (
+                                        $user->talent->standout_job_title ||
+                                            (Auth::check() && Auth::user()->role == 'Talent' && $user->talent->standout_job_title == null))
                                         {{ $user->talent->standout_job_title ?? 'Add job title' }}
                                     @endif
 
