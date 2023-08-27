@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use App\Models\AssessmentCateory;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Jorenvh\Share;
 
 class TalentController extends Controller
 {
