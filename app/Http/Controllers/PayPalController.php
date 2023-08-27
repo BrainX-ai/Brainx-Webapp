@@ -47,7 +47,7 @@ class PayPalController extends Controller
                 0 => [
                     "amount" => [
                         "currency_code" => "USD",
-                        "value" => strval($this->getAmount($request->id))
+                        "value" => strval(number_format($this->getAmount($request->id) * 1.055, 2, '.', ''))
                     ]
                 ]
             ]

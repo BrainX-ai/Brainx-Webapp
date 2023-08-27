@@ -93,7 +93,10 @@
             </li> --}}
             <li class="submenu">
                 <a class="btn btn-outline-primary  " data-bs-toggle="modal" data-bs-target="#post-project"
-                    type="button">Post AI project</a>
+                    type="button">
+                    <div>Client</div><br>
+                    <div>Post AI project</div>
+                </a>
             </li>
             @if (Auth::check())
                 @if (Auth::user()->role == 'Client')
