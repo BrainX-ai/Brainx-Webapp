@@ -84,10 +84,13 @@ class Handler extends ExceptionHandler
 
     public function report(Throwable $e)
     {
-        $error = Error::create([
-            'message' => $e->getMessage(),
-            'file' => $e->getFile(),
-            'line' => $e->getLine()
-        ]);
+        try {
+            $error = Error::create([
+                'message' => $e->getMessage(),
+                'file' => $e->getFile(),
+                'line' => $e->getLine()
+            ]);
+        } catch (\Exception $e) {
+        }
     }
 }
