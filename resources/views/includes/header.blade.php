@@ -37,6 +37,10 @@
             position: relative;
         }
     }
+
+    .header-navbar-rht li .join-us .btn:hover {
+        color: #fff !important;
+    }
 </style>
 <!-- Header -->
 <header class="header">
@@ -69,7 +73,13 @@
                     <a href="/talent" data-bs-toggle="modal" data-bs-target="#login-modal"
                         class="@if (Request::is('talent')) active-page @endif">Sell AI service</a>
                 </li> --}}
+                <li class="submenu">
+                    <a href="#" data-bs-toggle="modal" data-bs-target="#post-project">
 
+                        Client - Post AI project
+
+                    </a>
+                </li>
                 <li class="submenu">
                     <a href="/talent" data-bs-toggle="modal" data-bs-target="#client-signin"
                         class="@if (Request::is('talent')) active-page @endif">Login</a>
@@ -91,11 +101,11 @@
                 <a href="/talent" data-bs-toggle="modal" data-bs-target="#login-modal"
                     class="@if (Request::is('talent')) active-page @endif">Sell AI service</a>
             </li> --}}
-            <li class="submenu">
-                <a class="btn btn-outline-primary  " data-bs-toggle="modal" data-bs-target="#post-project"
-                    type="button">
-                    <div>Client</div><br>
-                    <div>Post AI project</div>
+            <li class="submenu"><a class="btn join-us">
+                    <button class="btn btn-outline-primary  " data-bs-toggle="modal" data-bs-target="#post-project">
+                        <div class="text-center"><small>Client</small></div>
+                        <div>Post AI project</div>
+                    </button>
                 </a>
             </li>
             @if (Auth::check())
