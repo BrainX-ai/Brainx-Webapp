@@ -20,7 +20,7 @@
 
 
     <!-- Feather CSS -->
-    <link rel="stylesheet" href="/assets/css/feather.css">
+    {{-- <link rel="stylesheet" href="/assets/css/feather.css"> --}}
     <!-- Owl Carousel CSS -->
     <link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="/assets/css/owl.theme.default.min.css">
