@@ -104,9 +104,10 @@ class TalentController extends Controller
         $user = User::with('talent')->with('experiences')->with('educations')->find($id);
         $clientProfileLink = route('client.show.profile', encrypt($id));
 
-        // $linkedinShare = Share\ShareFacade::page($clientProfileLink)
-        //     ->linkedin()->getRawLinks();
+        $linkedinShare = Share\ShareFacade::page($clientProfileLink)
+            ->linkedin()->getRawLinks();
         return view('pages.talent.service-profile')
+            ->with('linkedinShare', $linkedinShare)
             ->with('clientProfileLink', $clientProfileLink)
             ->with('portfolios', $portfolios)
             ->with('user', $user)

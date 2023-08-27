@@ -50,7 +50,7 @@
                                         Service fee
                                     </div>
                                     <div>
-                                        {{ $service->price * 0.2 }}$
+                                        {{ number_format((float) $service->price * 0.055, 2, '.', '') }}$
                                     </div>
                                 </li>
                                 <li class="d-flex justify-content-between">
@@ -58,13 +58,13 @@
                                         Total
                                     </div>
                                     <div>
-                                        {{ $service->price * 1.2 }}$
+                                        {{ number_format((float) $service->price * 1.055, 2, '.', '') }}$
                                     </div>
                                 </li>
                             </ul>
                             <div>
                                 <a href="{{ route('process.payment', ['id' => encrypt($service->id)]) }}"
-                                    class="btn btn-primary">
+                                    target="_blank" class="btn btn-primary">
                                     Pay with Paypal
                                 </a>
                             </div>
