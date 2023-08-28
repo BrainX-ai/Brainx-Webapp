@@ -33,7 +33,7 @@
                             @include('livewire.includes.service-card')
                         @endif
                     @endforeach
-                    @foreach ($defaultServices as $service)
+                    @foreach ($defaultServices as $key => $service)
                         @include('livewire.includes.service-card-default')
                     @endforeach
                 @else

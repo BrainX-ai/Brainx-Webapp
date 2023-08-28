@@ -6,7 +6,7 @@ use Inertia\Inertia;
 use App\Http\Controllers\LinkedinController;
 use App\Models\User;
 use App\Http\Controllers\PayPalController;
-
+use App\Http\Livewire\SearchService;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,6 +39,12 @@ Route::group(
         Route::get('/how-it-works', function () {
             return view('faq');
         });
+        Route::get('/example-service/{index}', function ($index) {
+
+            $service = SearchService::$serviceArray[$index];
+
+            return view('pages.example-service-details')->with('service', $service);
+        })->name('example-service');
         Route::get('/pending', 'App\http\controllers\TalentProfileController@showPendingPage')->name('talent.pending');
 
         Route::get('/view-talent-profile/{id}', 'App\http\controllers\TalentController@showTalentProfile')->name('show.talent.profile');
