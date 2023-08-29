@@ -19,7 +19,7 @@
         @foreach ($services as $key => $service)
             <div class="col-md-3">
                 <div class="job-locate-blk ">
-                    <a href="{{ route('client.service.details', $service->id) }}" class="">
+                    <a href="{{ route('service.details', $service->id) }}" class="">
 
                         <div class="location-img">
                             <span>
