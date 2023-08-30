@@ -1,8 +1,18 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\BlogPostController;
 
-
+Route::prefix('/blog')->as('admin.blog.')->group(
+    function () {
+        Route::get('/', [BlogPostController::class, 'index'])->name('all'); // Show create form
+        Route::get('/create', [BlogPostController::class, 'create'])->name('create'); // Show create form
+        Route::post('/store', [BlogPostController::class, 'store'])->name('store'); // Store new post
+        Route::get('/edit/{slug}', [BlogPostController::class, 'edit'])->name('edit'); // Show edit form
+        Route::get('/{slug}', [BlogPostController::class, 'show'])->name('show'); // Show edit form
+        Route::post('/update/{id}', [BlogPostController::class, 'update'])->name('update'); // Update post
+    }
+);
 Route::get('/talent-profile/{id}', 'App\http\controllers\Admin\AdminController@userDetails')->name('admin.show.profile');
 Route::get('/dashboard', 'App\http\controllers\Admin\DashboardController@index')->name('admin.dashboard');
 Route::get('/users/{status}', 'App\http\controllers\Admin\AdminController@users')->name('admin.users.bystatus');
