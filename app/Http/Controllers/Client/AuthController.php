@@ -30,7 +30,7 @@ class AuthController extends Controller
 
         if ($user && Hash::check($request->password, $user->password)) {
 
-            if ($user->role == 'Admin') {
+            if ($user->role == 'Admin' || $user->role == 'editor') {
                 // dd($user);
                 return Redirect::to(env('URL_SCHEME') . '://admin.brainx.' . env('URL_END') . '/redirect/admin/' . encrypt($user->id));
             }
