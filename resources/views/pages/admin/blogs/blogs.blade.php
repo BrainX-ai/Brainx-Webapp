@@ -36,7 +36,8 @@
                                         <td>{{ $blog->title }}</td>
                                         <td>{{ $blog->author }}</td>
                                         <td>
-                                            <a href="edit/{{ $blog->slug }}" class="btn btn-danger">Edit</a>
+                                            <a href="{{ route('admin.blog.edit', ['slug' => $blog->slug]) }}"
+                                                class="btn btn-danger">Edit</a>
                                             <a class="btn btn-info"
                                                 href="{{ route('admin.blog.show', ['slug' => $blog->slug]) }}">View</a>
                                         </td>
