@@ -38,7 +38,7 @@
                             <div class="form-group">
                                 <label for="" class="h5">Choose the most famous company you're working or
                                     worked for</label>
-                                <input type="text" name="ex_famouse_company" placeholder="Ex/current - company name"
+                                <input type="text" name="ex_famouse_company" placeholder="Ex- company name"
                                     class="form-control" value="{{ $user->talent->ex_famouse_company }}">
                             </div>
 

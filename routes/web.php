@@ -21,6 +21,8 @@ use App\Http\Livewire\SearchService;
 // Route::get('/talent', function () {
 //     return view('pages.index');
 // })->name('talent.home');
+
+
 Route::group(
     ['middleware' => 'throttle:40,1'],
     function () {
@@ -45,6 +47,11 @@ Route::group(
 
             return view('pages.example-service-details')->with('service', $service);
         })->name('example-service');
+
+        Route::get('/blog/{slug}', 'App\http\controllers\BlogController@show')->name('blog.show');
+        Route::get('/blogs', 'App\http\controllers\BlogController@index')->name('blogs');
+
+
         Route::get('/pending', 'App\http\controllers\TalentProfileController@showPendingPage')->name('talent.pending');
 
         Route::get('/view-talent-profile/{id}', 'App\http\controllers\TalentController@showTalentProfile')->name('show.talent.profile');
