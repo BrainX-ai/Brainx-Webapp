@@ -8,7 +8,7 @@
                 <h3 class="page-title">Blogs</h3>
             </div>
             <div class="col-md-2">
-                <a href="/blog/create" class="btn btn-primary">Add
+                <a href="{{ route('admin.blog.create') }}" class="btn btn-primary">Add
                     new</a>
             </div>
         </div>

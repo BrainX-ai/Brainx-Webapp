@@ -87,7 +87,9 @@
                 Request::is('talent') ||
                 Request::is('faq') ||
                 Request::is('terms-of-service') ||
-                Request::is('privacy-policy'))
+                Request::is('privacy-policy') ||
+                Request::is('blogs') ||
+                Request::is('blog/*'))
             @include('includes.header')
         @else
             @include('pages.talent.includes.header')

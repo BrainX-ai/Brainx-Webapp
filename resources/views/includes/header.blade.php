@@ -54,7 +54,7 @@
                 </span>
             </a>
             <a href="/" class="navbar-brand logo">
-                <img src="assets/img/BrainX_logo.png" class="img-fluid" alt="Logo"><br>
+                <img src="/assets/img/BrainX_logo.png" class="img-fluid" alt="Logo"><br>
 
             </a>
         </div>
@@ -129,6 +129,9 @@
             <li class="submenu">
                 <a href="#" data-bs-toggle="modal" data-bs-target="#add-feedback"
                     class="@if (Request::is('talent')) active-page @endif">Feedback</a>
+            </li>
+            <li class="submenu">
+                <a href="/blogs" class="@if (Request::is('talent')) active-page @endif">Blogs</a>
             </li>
 
 

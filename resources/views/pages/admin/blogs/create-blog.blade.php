@@ -27,11 +27,14 @@
                 <div class="card-body">
                     <div class="  card m-2 border-0
                     col-md-12 ">
-                        <form action="/blog/store" method="post">
+                        <form action="/blog/store" method="post" enctype="multipart/form-data">
                             @csrf <!-- Add this if you're using Laravel's built-in CSRF protection -->
 
+                            <label for="image">Image: (1200 x 800)</label><br>
+                            <input type="file" id="image" class="form-control" name="image" required><br><br>
+
                             <label for="title">Title:</label><br>
-                            <input type="text" id="title" class="form-control  " name="title" required><br><br>
+                            <input type="text" id="title" class="form-control " name="title" required><br><br>
 
                             <label for="content">Content:</label><br>
                             <textarea name="content" id="content" rows="5" class="form-control  "></textarea>

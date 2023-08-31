@@ -14,39 +14,38 @@
         <div class="content">
             <div class="container-fluid">
                 <div class="row mb-5 pb-5">
-                    <div class="col-md-8 border p-3">
-                        {{-- @if ($service->image != null)
-                            <img src="/uploads/{{ $service->image }}" alt="" class="service-image">
-                        @else --}}
-                        <img class="default-image" src="/assets/img/BrainX/X.png" alt="">
-                        {{-- @endif --}}
+                    <div class="col-md-12  p-3">
 
-                        <h4 class="mt-4">{{ $blog->title }}</h4>
-
-                        <div class="media d-flex mt-5">
-
-                            <div class="media-body flex-grow-1 ms-3">
-                                <div class="user-name fw-bold"><a class="text-primary ">{{ $blog->author }}</a>
+                        <div class="blog-view">
+                            <div class="blog-single-post pro-post widget-box">
+                                <div class="blog-image">
+                                    <a href="javascript:void(0);"><img alt="" src="/uploads/{{ $blog->photo }}"></a>
                                 </div>
-                                <div class="message"> {{ $blog->created_at }} </div>
-
-
+                                <h3 class="blog-title">{{ $blog->title }}</h3>
+                                <div class="blog-info clearfix">
+                                    <div class="post-left">
+                                        <ul>
+                                            <li>
+                                                <div class="post-author">
+                                                    <a>
+                                                        <span>{{ $blog->author }}</span></a>
+                                                </div>
+                                            </li>
+                                            <li><a href="#"><i class="far fa-calendar"></i>{{ $blog->created_at }}</a>
+                                            </li>
+                                            {{-- <li><a href="#"><i class="far fa-comments"></i>12 Comments</a></li> --}}
+                                            {{-- <li><i class="fas fa-tags"></i>Study Tips</li> --}}
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="blog-content">
+                                    {{ strip_tags($blog->content) }}
+                                </div>
                             </div>
                         </div>
-
-                        <p class="mt-5">
-                            {{ strip_tags($blog->content) }}
-                        </p>
                     </div>
 
-                    <div class="col-md-4 ">
-                        @foreach ($services as $service)
-                            @if ($service->talent->talent->status == 'PUBLISHED')
-                                @include('pages.blogs.service-card')
-                            @endif
-                        @endforeach
 
-                    </div>
                 </div>
             </div>
         </div>

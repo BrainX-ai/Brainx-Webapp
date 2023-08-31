@@ -18,9 +18,12 @@
                             <img class="default-image" src="/assets/img/BrainX/Plus_symbol.png" alt="">
 
                         </div>
-                        <div class="job-it-content text-center">
-                            <div>For AI freelancer</div>
-                            <h5 class="mt-2">Sell AI service</h5>
+                        <div class="job-it-content ">
+                            <div class="h5 text-center">For AI talents</div>
+                            <p class="text-justify p-3">
+                                Simply provide AI services that you think business clients might need from your
+                                knowledge, experience and skills in Data Science, ML, AI
+                            </p>
 
                         </div>
                         {{-- </a> --}}

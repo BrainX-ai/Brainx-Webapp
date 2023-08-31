@@ -49,6 +49,7 @@ Route::group(
         })->name('example-service');
 
         Route::get('/blog/{slug}', 'App\http\controllers\BlogController@show')->name('blog.show');
+        Route::get('/blogs', 'App\http\controllers\BlogController@index')->name('blogs');
 
 
         Route::get('/pending', 'App\http\controllers\TalentProfileController@showPendingPage')->name('talent.pending');

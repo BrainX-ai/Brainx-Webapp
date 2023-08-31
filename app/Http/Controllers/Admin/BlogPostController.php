@@ -45,9 +45,35 @@ class BlogPostController extends Controller
         $blogPost->title = $validatedData['title'];
         $blogPost->content = $validatedData['content'];
         $blogPost->author = $validatedData['author'];
+        $blogPost->photo = $this->uploadFile($request);
         $blogPost->save();
 
         return redirect('blog/')->with('success', 'Blog post created successfully!');
+    }
+
+    public function uploadFile(Request $request)
+    {
+        // Validate the uploaded file
+        // $request->validate([
+        //     'file' => 'required|file|mimes:jpeg,png,pdf|max:2048', // Adjust allowed file types and size as needed
+        // ]);
+
+        if ($request->hasFile('image')) {
+
+            $file = $request->file('image');
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $filePath = public_path('uploads'); // Change this to the desired upload directory
+
+            // Move the uploaded file to the storage location
+            $file->move($filePath, $fileName);
+
+            // You can also store the file information in a database if needed
+            // Example: File::create(['name' => $fileName, 'path' => $filePath]);
+
+            return $fileName;
+        }
+
+        return null;
     }
 
     public function update(Request $request, $id)
