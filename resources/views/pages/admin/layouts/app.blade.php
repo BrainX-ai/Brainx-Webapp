@@ -112,12 +112,12 @@
                         <li class="menu-title"><span>Main</span></li>
                         @if (Auth::user()->role == 'editor')
                             <li>
-                                <a href="blog/"><i data-feather="home"></i>
+                                <a href="{{ route('admin.blog.all') }}"><i data-feather="home"></i>
                                     <span>Blogs</span></a>
                             </li>
                         @else
                             <li>
-                                <a href="blog/"><i data-feather="home"></i>
+                                <a href="{{ route('admin.blog.all') }}"><i data-feather="home"></i>
                                     <span>Blogs</span></a>
                             </li>
                             <li>
