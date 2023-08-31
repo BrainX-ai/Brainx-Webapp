@@ -111,6 +111,10 @@
                     <ul>
                         <li class="menu-title"><span>Main</span></li>
                         <li>
+                            <a href="blog/"><i data-feather="home"></i>
+                                <span>Blogs</span></a>
+                        </li>
+                        <li>
                             <a href="{{ route('admin.dashboard') }}"><i data-feather="home"></i>
                                 <span>Dashboard</span></a>
                         </li>
