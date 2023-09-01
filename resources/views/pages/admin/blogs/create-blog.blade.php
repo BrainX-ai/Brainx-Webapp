@@ -27,7 +27,7 @@
                 <div class="card-body">
                     <div class="  card m-2 border-0
                     col-md-12 ">
-                        <form action="/blog/store" method="post" enctype="multipart/form-data">
+                        <form action="{{ route('admin.blog.store') }}" method="post" enctype="multipart/form-data">
                             @csrf <!-- Add this if you're using Laravel's built-in CSRF protection -->
 
                             <label for="image">Image: (1200 x 800)</label><br>
