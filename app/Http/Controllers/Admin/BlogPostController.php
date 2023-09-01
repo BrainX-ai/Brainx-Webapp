@@ -48,7 +48,7 @@ class BlogPostController extends Controller
         $blogPost->photo = $this->uploadFile($request);
         $blogPost->save();
 
-        return redirect('blog/')->with('success', 'Blog post created successfully!');
+        return redirect()->route('admin.blog.all')->with('success', 'Blog post created successfully!');
     }
 
     public function uploadFile(Request $request)
