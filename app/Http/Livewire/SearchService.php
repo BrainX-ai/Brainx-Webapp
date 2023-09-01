@@ -14,7 +14,7 @@ class SearchService extends Component
     public $industries = ['All', 'Ecommerce', 'Finance', 'Education', 'IT', 'Media & Entertainment', 'Marketing', 'Sales', 'Others'];
 
     public $defaultServices = [];
-    public $serviceArray = [
+    public static $serviceArray = [
         [
             'image' => 'fashion_model.png',
             'title' => 'Create an AI fashion model',
@@ -121,7 +121,7 @@ class SearchService extends Component
     public function mount()
     {
         $this->defaultServices = [];
-        foreach ($this->serviceArray as $subArray) {
+        foreach (static::$serviceArray as $subArray) {
             // dd(is_array($subArray));
             $this->defaultServices[] =   (object)$subArray;
             // dd($this->services);
@@ -168,7 +168,7 @@ class SearchService extends Component
 
     public function getServicesFromDB()
     {
-        $services = Service::inRandomOrder()->with('talent');
+        $services = Service::inRandomOrder()->with('talent')->whereStatus('PUBLISHED');
         if ($this->search != 'All') {
             $services = $services->where('industry', 'LIKE', '%' . $this->search . '%');
         }

@@ -90,7 +90,8 @@
 
                             <div class="form-group">
                                 <label for="" class="h4">Description</label>
-                                <textarea name="description" class="form-control" placeholder="Describe your AI service"></textarea>
+                                <textarea name="description" class="form-control"
+                                    placeholder="Explain your service in details so clients can understand it clearly "></textarea>
                             </div>
 
                             <div class="d-flex">

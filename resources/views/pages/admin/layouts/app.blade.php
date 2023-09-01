@@ -110,47 +110,69 @@
                 <div id="sidebar-menu" class="sidebar-menu">
                     <ul>
                         <li class="menu-title"><span>Main</span></li>
-                        <li>
-                            <a href="{{ route('admin.dashboard') }}"><i data-feather="home"></i>
-                                <span>Dashboard</span></a>
-                        </li>
-                        <li>
-                            <a href="{{ route('admin.categories') }}"><i data-feather="copy"></i>
-                                <span>Categories</span></a>
-                        </li>
-                        <li>
-                            <a href="{{ route('admin.skills') }}"><i data-feather="award"></i> <span>Skills</span></a>
-                        </li>
-                        <li>
-                            <a href="{{ route('admin.users') }}"><i data-feather="users"></i> <span>Talents</span></a>
-                        </li>
-                        <li>
-                            <a href="{{ route('admin.clients') }}"><i data-feather="users"></i> <span>Clients</span></a>
-                        </li>
-                        <li>
-                            <a href="{{ route('admin.projects') }}"><i data-feather="clipboard"></i>
-                                <span>Projects</span></a>
-                        </li>
-                        <li>
-                            <a href="{{ route('admin.services') }}"><i data-feather="clipboard"></i>
-                                <span>Services</span></a>
-                        </li>
-                        <li>
-                            <a href="{{ route('admin.assessment.categories') }}"><i data-feather="clipboard"></i>
-                                <span>Assessment Categories</span></a>
-                        </li>
-                        <li>
-                            <a href="{{ route('admin.questions') }}"><i data-feather="clipboard"></i>
-                                <span>Questions</span></a>
-                        </li>
-                        <li>
-                            <a href="{{ route('admin.feedbacks') }}"><i data-feather="clipboard"></i>
-                                <span>Feedbacks</span></a>
-                        </li>
-                        <li>
+                        @if (Auth::user()->role == 'editor')
+                            <li>
+                                <a href="{{ route('admin.blog.all') }}"><i data-feather="home"></i>
+                                    <span>Blogs</span></a>
+                            </li>
+                        @else
+                            <li>
+                                <a href="{{ route('admin.blog.all') }}"><i data-feather="home"></i>
+                                    <span>Blogs</span></a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.dashboard') }}"><i data-feather="home"></i>
+                                    <span>Dashboard</span></a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.categories') }}"><i data-feather="copy"></i>
+                                    <span>Categories</span></a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.skills') }}"><i data-feather="award"></i>
+                                    <span>Skills</span></a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.users') }}"><i data-feather="users"></i>
+                                    <span>Talents</span></a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.clients') }}"><i data-feather="users"></i>
+                                    <span>Clients</span></a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.projects') }}"><i data-feather="clipboard"></i>
+                                    <span>Projects</span></a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.ai.projects') }}"><i data-feather="clipboard"></i>
+                                    <span>AI Projects</span></a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.services') }}"><i data-feather="clipboard"></i>
+                                    <span>Services</span></a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.assessment.categories') }}"><i data-feather="clipboard"></i>
+                                    <span>Assessment Categories</span></a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.questions') }}"><i data-feather="clipboard"></i>
+                                    <span>Questions</span></a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.feedbacks') }}"><i data-feather="clipboard"></i>
+                                    <span>Feedbacks</span></a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.errors') }}"><i data-feather="clipboard"></i>
+                                    <span>Error</span></a>
+                            </li>
+                            {{-- <li>
                             <a href="{{ route('admin.zoom') }}"><i data-feather="clipboard"></i>
                                 <span>Zoom</span></a>
-                        </li>
+                        </li> --}}
+                        @endif
                     </ul>
                 </div>
             </div>

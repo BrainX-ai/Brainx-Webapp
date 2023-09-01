@@ -1,17 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Category;
-use App\Models\Portfolio;
-use App\Models\Service;
+use App\Models\Error;
 use Illuminate\Http\Request;
-use App\Models\AssessmentCateory;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
-use Jorenvh\Share;
+use App\Http\Controllers\Controller;
 
-class TalentController extends Controller
+class ErrorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,7 +15,8 @@ class TalentController extends Controller
      */
     public function index()
     {
-        //
+        $errors = Error::orderBy('id', 'desc')->limit(50)->get();
+        return view('pages.admin.errors')->with('errors', $errors);
     }
 
     /**
@@ -41,6 +37,7 @@ class TalentController extends Controller
      */
     public function store(Request $request)
     {
+        //
     }
 
     /**
@@ -86,33 +83,5 @@ class TalentController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function getProfileBuilder()
-    {
-        $user = Auth::guard()->user();
-
-        return redirect('/build-profile')->with(['user' => $user]);
-    }
-
-    public function showTalentProfile($id)
-    {
-
-        $id = decrypt($id);
-        $portfolios = Portfolio::where('user_id', $id)->get();
-        $services = Service::where('user_id', $id)->get();
-        $categories = Category::with('skills')->get();
-        $user = User::with('talent')->with('experiences')->with('educations')->find($id);
-        $clientProfileLink = route('client.show.profile', encrypt($id));
-
-        $linkedinShare = Share\ShareFacade::page($clientProfileLink)
-            ->linkedin()->getRawLinks();
-        return view('pages.talent.service-profile')
-            ->with('linkedinShare', $linkedinShare)
-            ->with('clientProfileLink', $clientProfileLink)
-            ->with('portfolios', $portfolios)
-            ->with('user', $user)
-            ->with('services', $services)
-            ->with('categories', $categories);
     }
 }

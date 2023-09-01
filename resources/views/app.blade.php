@@ -2,9 +2,20 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HQ72BVH2MS"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-HQ72BVH2MS');
+    </script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta property="og:image" content="{{ 'https://brainx.biz/assets/img/BrainX_logo.png' }}" />
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title inertia>{{ config('app.name', 'BrainX') }}</title>
 
@@ -20,7 +31,7 @@
 
 
     <!-- Feather CSS -->
-    <link rel="stylesheet" href="/assets/css/feather.css">
+    {{-- <link rel="stylesheet" href="/assets/css/feather.css"> --}}
     <!-- Owl Carousel CSS -->
     <link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="/assets/css/owl.theme.default.min.css">
@@ -76,7 +87,9 @@
                 Request::is('talent') ||
                 Request::is('faq') ||
                 Request::is('terms-of-service') ||
-                Request::is('privacy-policy'))
+                Request::is('privacy-policy') ||
+                Request::is('blogs') ||
+                Request::is('blog/*'))
             @include('includes.header')
         @else
             @include('pages.talent.includes.header')

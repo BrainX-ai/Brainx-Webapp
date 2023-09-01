@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use App\Models\Error;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Http\JsonResponse;
@@ -79,5 +80,17 @@ class Handler extends ExceptionHandler
         return $request->expectsJson()
             ? response()->json(['message' => $exception->getMessage()], 401)
             : redirect()->guest(route('home'));
+    }
+
+    public function report(Throwable $e)
+    {
+        try {
+            $error = Error::create([
+                'message' => $e->getMessage(),
+                'file' => $e->getFile(),
+                'line' => $e->getLine()
+            ]);
+        } catch (\Exception $e) {
+        }
     }
 }

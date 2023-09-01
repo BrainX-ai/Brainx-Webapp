@@ -9,9 +9,10 @@
                     </div>
                     <div class="job-it-content bg-white">
                         <h6><a>Sell AI service</a></h6>
-                        <ul class="nav job-locate-foot">
-                            <li>$--</li>
-                        </ul>
+                        <p class="text-justify">
+                            Simply provide AI services that you think business clients might need from your knowledge,
+                            experience and skills in Data Science, ML, AI
+                        </p>
                     </div>
                 </div>
             </button>
@@ -19,7 +20,7 @@
         @foreach ($services as $key => $service)
             <div class="col-md-3">
                 <div class="job-locate-blk ">
-                    <a href="{{ route('client.service.details', $service->id) }}" class="">
+                    <a href="{{ route('service.details', $service->id) }}" class="">
 
                         <div class="location-img">
                             <span>

@@ -50,13 +50,19 @@
                         <p>
                         <ol>
                             <li>
-                                Based on your knowledge, experience and skills in data science, ML, AI, prompt
-                                engineering, you can create services that you think are helpful for businesses in
-                                specific industries like fine tune models, customize chatGPT, create movie trailers with
-                                Runway Gen2, developing AI apps, consulting,...
+                                You can try to provide simple AI services that you think business clients might need
+                                from your knowledge, experience and skills in Data Science, ML, AI, prompt engineering
+                                like fine tune models, customize chatGPT, create movie trailers with Runway Gen2,
+                                developing AI apps, consulting,...
+                                <p class="fw-bold">
+                                    You don’t have to start with AI solutions/products which might take you months.
+                                </p>
                             </li>
                             <li>
                                 Set your own price for the AI service you want to sell.
+                            </li>
+                            <li>
+                                You can create many services with different prices.
                             </li>
                         </ol>
                         </p>

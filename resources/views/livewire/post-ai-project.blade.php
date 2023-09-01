@@ -29,7 +29,7 @@
 
                 <!-- Modal Header -->
                 <div class="modal-header ">
-                    <h4 class="modal-title text-center w-100">Post AI project</h4>
+                    <h4 class="modal-title text-center w-100">Post AI project as client</h4>
                     <button type="button" class="close" data-bs-dismiss="modal"><span>&times;</span></button>
                 </div>
 

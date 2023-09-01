@@ -28,7 +28,7 @@ class ServiceController extends Controller
             'price' => $request->price,
             'delivery_time' => $request->delivery_time,
             'industry' => implode(',', $request->industry),
-
+            'status' => 'PUBLISHED',
             'user_id' => Auth::user()->id
         ]);
 

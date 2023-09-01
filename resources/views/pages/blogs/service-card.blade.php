@@ -1,6 +1,6 @@
-<div class="col-md-4">
+<div class="col-md-12">
     <div class="job-locate-blk bg-light">
-        <a href="{{ route('example-service', $key) }}" class="">
+        <a href="{{ route('client.service.details', $service->id) }}" class="">
 
             <div class="location-img">
                 @if ($service->image == null)
@@ -19,8 +19,8 @@
             <div class="media d-flex mt-4">
                 <div class="media-img-wrap flex-shrink-0">
                     <div class="avatar ">
-                        @if ($service->talent['talent']['photo'] != null)
-                            <img src="{{ $service->talent['talent']['photo'] }}" alt="User Image"
+                        @if ($service->talent->talent->photo != null)
+                            <img src="{{ $service->talent->talent->photo }}" alt="User Image"
                                 class="avatar-img rounded-circle">
                         @else
                             <img src="/assets/img/BrainX/AI-focused-profile.png" alt="User Image"
@@ -29,9 +29,12 @@
                     </div>
                 </div>
                 <div class="media-body flex-grow-1 ms-3">
-                    <div class="user-name">{{ $service->talent['talent']['name'] }}</div>
-                    <div class="message"> {{ $service->talent['talent']['standout_job_title'] }} </div>
-
+                    <div class="user-name fw-bold text-decoration-underline"><a class="text-primary "
+                            style="text-decoration: underline;"
+                            href="{{ route('client.show.profile', encrypt($service->talent->id)) }}">
+                            {{ $service->talent->name }}</a></div>
+                    <div class="message"> {{ $service->talent->talent->standout_job_title }} </div>
+                    <small>{{ $service->talent->talent->ex_famouse_company ?? '' }}</small>
                 </div>
             </div>
         </a>

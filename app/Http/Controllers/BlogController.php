@@ -2,16 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use App\Models\Portfolio;
-use App\Models\Service;
+use App\Models\BlogPost;
 use Illuminate\Http\Request;
-use App\Models\AssessmentCateory;
-use App\Models\User;
-use Illuminate\Support\Facades\Auth;
-use Jorenvh\Share;
+use App\Models\Service;
 
-class TalentController extends Controller
+class BlogController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,7 +15,9 @@ class TalentController extends Controller
      */
     public function index()
     {
-        //
+        $blogs = BlogPost::all();
+
+        return view('pages.blogs.blogs')->with('blogs', $blogs);
     }
 
     /**
@@ -41,6 +38,7 @@ class TalentController extends Controller
      */
     public function store(Request $request)
     {
+        //
     }
 
     /**
@@ -49,9 +47,12 @@ class TalentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        $blog = BlogPost::whereSlug($slug)->first();
+        $services = Service::limit(2)->get();
+
+        return view('pages.blogs.blog', compact('blog', 'services')); // Show the form to edit an existing blog post
     }
 
     /**
@@ -86,33 +87,5 @@ class TalentController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function getProfileBuilder()
-    {
-        $user = Auth::guard()->user();
-
-        return redirect('/build-profile')->with(['user' => $user]);
-    }
-
-    public function showTalentProfile($id)
-    {
-
-        $id = decrypt($id);
-        $portfolios = Portfolio::where('user_id', $id)->get();
-        $services = Service::where('user_id', $id)->get();
-        $categories = Category::with('skills')->get();
-        $user = User::with('talent')->with('experiences')->with('educations')->find($id);
-        $clientProfileLink = route('client.show.profile', encrypt($id));
-
-        $linkedinShare = Share\ShareFacade::page($clientProfileLink)
-            ->linkedin()->getRawLinks();
-        return view('pages.talent.service-profile')
-            ->with('linkedinShare', $linkedinShare)
-            ->with('clientProfileLink', $clientProfileLink)
-            ->with('portfolios', $portfolios)
-            ->with('user', $user)
-            ->with('services', $services)
-            ->with('categories', $categories);
     }
 }
