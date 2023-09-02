@@ -45,10 +45,12 @@ class BlogPostController extends Controller
         $blogPost->title = $validatedData['title'];
         $blogPost->content = $validatedData['content'];
         $blogPost->author = $validatedData['author'];
+        $blogPost->meta_description = $request->meta_desc;
+        $blogPost->keywords = $request->keywords;
         $blogPost->photo = $this->uploadFile($request);
         $blogPost->save();
 
-        return redirect('blog/')->with('success', 'Blog post created successfully!');
+        return redirect()->route('admin.blog.all')->with('success', 'Blog post created successfully!');
     }
 
     public function uploadFile(Request $request)
@@ -88,8 +90,13 @@ class BlogPostController extends Controller
         $blogPost->title = $validatedData['title'];
         $blogPost->content = $validatedData['content'];
         $blogPost->author = $validatedData['author'];
+        $blogPost->meta_description = $request->meta_desc;
+        $blogPost->keywords = $request->keywords;
+        if ($request->hasFile('image')) {
+            $blogPost->photo = $this->uploadFile($request);
+        }
         $blogPost->save();
 
-        return redirect('/')->with('success', 'Blog post updated successfully!');
+        return redirect()->route('admin.blog.all')->with('success', 'Blog post updated successfully!');
     }
 }

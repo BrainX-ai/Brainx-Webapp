@@ -25,22 +25,30 @@
 
             <div class="card">
                 <div class="card-body">
-                    <div class="  card m-2 border-0 text-center col-md-12 ">
-                        <form action="/blog/update/{{ $post->id }}" method="post">
+                    <div class="  card m-2 border-0 col-md-12 ">
+                        <form action="{{ route('admin.blog.update', ['id' => $post->id]) }}" method="post"
+                            enctype="multipart/form-data">
                             @csrf <!-- Add this if you're using Laravel's built-in CSRF protection -->
+                            <label for="image">Image: (1200 x 800)</label><br>
+                            <input type="file" id="image" class="form-control" name="image"><br><br>
 
                             <label for="title">Title:</label><br>
                             <input type="text" id="title" class="form-control  " name="title"
                                 value="{{ $post->title }}" required><br><br>
+                            <label for="meta_desc">Meta description:</label><br>
+                            <textarea name="meta_desc" id="meta_desc" rows="5" class="form-control  ">{{ $post->meta_description }}</textarea>
+                            <label for="keywords">Primary keywords:</label><br>
+                            <input type="text" id="keywords" class="form-control " name="keywords" required
+                                value="{{ $post->keywords }}"><br><br>
 
                             <label for="content">Content:</label><br>
                             <textarea name="content" id="content" rows="5" class="form-control  " value="">{{ $post->content }}</textarea>
 
                             <label for="author">Author:</label><br>
                             <input type="text" id="author" name="author" value="{{ $post->author }}"
-                                class="form-control  " value="{{ $post->title }}" required><br><br>
+                                class="form-control  " required><br><br>
 
-                            <button type="submit">Update Blog Post</button>
+                            <button type="submit" class="btn btn-primary">Update Blog Post</button>
                         </form>
                     </div>
                 </div>

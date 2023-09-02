@@ -18,8 +18,9 @@
 
                         <div class="blog-view">
                             <div class="blog-single-post pro-post widget-box">
-                                <div class="blog-image">
-                                    <a href="javascript:void(0);"><img alt="" src="/uploads/{{ $blog->photo }}"></a>
+                                <div class="blog-image offset-md-2 col-md-8">
+                                    <a href="javascript:void(0);"><img alt="" src="/uploads/{{ $blog->photo }}"
+                                            class="img-fluid"></a>
                                 </div>
                                 <h3 class="blog-title">{{ $blog->title }}</h3>
                                 <div class="blog-info clearfix">
