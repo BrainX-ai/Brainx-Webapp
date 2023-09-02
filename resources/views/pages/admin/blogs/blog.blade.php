@@ -28,6 +28,10 @@
 
                     <h4>Title</h4>
                     <p>{{ $blog->title }}</p>
+                    <h4>Meta description</h4>
+                    <p>{{ $blog->meta_description }}</p>
+                    <h4>Keywords</h4>
+                    <p>{{ $blog->keywords }}</p>
                     <h4>Description</h4>
                     <p>{{ str_replace('&#39;', "'", strip_tags(html_entity_decode($blog->content))) }}</p>
 

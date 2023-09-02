@@ -7,6 +7,8 @@ use App\Http\Controllers\LinkedinController;
 use App\Models\User;
 use App\Http\Controllers\PayPalController;
 use App\Http\Livewire\SearchService;
+use App\Models\BlogPost;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,8 +31,8 @@ Route::group(
         Route::get('/', function () {
 
             $publishedTalents = User::with('talent')->where('role', 'Talent')->orderBy('id', 'DESC')->get();
-
-            return view('pages.business')->with('talents', $publishedTalents);
+            $blogs = BlogPost::limit(2)->get();
+            return view('pages.business')->with('blogs', $blogs)->with('talents', $publishedTalents);
         })->name('home');
         Route::get('/privacy-policy', function () {
             return view('pages.privacy');
