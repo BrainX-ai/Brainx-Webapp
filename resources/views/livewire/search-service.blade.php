@@ -30,7 +30,7 @@
                     </div>
 
                 </div>
-                @if (count($defaultServices) > 0)
+                @if (count($defaultServices) > 0 || count($services) > 0)
                     @foreach ($services as $service)
                         @if ($service->talent->talent->status == 'PUBLISHED')
                             @include('livewire.includes.service-card')
