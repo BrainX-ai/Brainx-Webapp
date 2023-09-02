@@ -89,6 +89,12 @@
                     <a href="#" data-bs-toggle="modal" data-bs-target="#add-feedback"
                         class="@if (Request::is('talent')) active-page @endif">Feedback</a>
                 </li>
+
+                @if (isset($blogs) && sizeof($blogs) > 0)
+                    <li class="submenu">
+                        <a href="/blogs" class="@if (Request::is('talent')) active-page @endif">Blogs</a>
+                    </li>
+                @endif
                 <li class="has-submenu fade" style="width: 200px">
                 </li>
                 <li class="has-submenu fade" style="width: 100px">
@@ -130,11 +136,11 @@
                 <a href="#" data-bs-toggle="modal" data-bs-target="#add-feedback"
                     class="@if (Request::is('talent')) active-page @endif">Feedback</a>
             </li>
-            <li class="submenu">
-                <a href="/blogs" class="@if (Request::is('talent')) active-page @endif">Blogs</a>
-            </li>
-
-
+            @if (isset($blogs) && sizeof($blogs) > 0)
+                <li class="submenu">
+                    <a href="/blogs" class="@if (Request::is('talent')) active-page @endif">Blogs</a>
+                </li>
+            @endif
             {{-- <li><a href="post-project.html" class="login-btn">Post a Project </a></li> --}}
         </ul>
     </nav>

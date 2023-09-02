@@ -5,7 +5,7 @@
     <div class="content">
         <div class="container-fluid">
             <div class="row">
-                <h2 class="m-5 text-center">Blogs</h2>
+                <h2 class="mt-5 mb-5 text-center">Blogs</h2>
                 <div class="col-lg-8 offset-lg-2 col-md-12">
 
                     <div class="row blog-grid-row">
