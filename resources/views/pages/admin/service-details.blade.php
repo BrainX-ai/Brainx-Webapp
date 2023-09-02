@@ -29,11 +29,13 @@
                     <h4>Title</h4>
                     <p>{{ $service->title }}</p>
                     <h4>Description</h4>
-                    <p>{{ str_replace("&#39;","'",strip_tags(html_entity_decode($service->description))) }}</p>
+                    <p>{{ str_replace('&#39;', "'", strip_tags(html_entity_decode($service->description))) }}</p>
                     <h4>Rating</h4>
                     <p>{{ $service->rating }}</p>
                     <h4>Pricing</h4>
                     <p>{{ $service->price }}</p>
+                    <h4>Industry</h4>
+                    <p>{{ $service->industry }}</p>
 
                 </div>
             </div>
@@ -72,5 +74,4 @@
     </div>
 
     </div>
-
 @endsection
