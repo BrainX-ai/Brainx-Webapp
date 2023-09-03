@@ -40,7 +40,7 @@
                                     </div>
                                 </div>
                                 <div class="blog-content">
-                                    {{ strip_tags($blog->content) }}
+                                    {!! $blog->content !!}
                                 </div>
                             </div>
                         </div>
