@@ -33,7 +33,8 @@
                     <h4>Keywords</h4>
                     <p>{{ $blog->keywords }}</p>
                     <h4>Description</h4>
-                    <p>{{ str_replace('&#39;', "'", strip_tags(html_entity_decode($blog->content))) }}</p>
+                    <p>
+                        {!! $blog->content !!}</p>
 
 
                 </div>
