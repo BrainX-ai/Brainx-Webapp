@@ -24,6 +24,8 @@ use App\Models\BlogPost;
 //     return view('pages.index');
 // })->name('talent.home');
 
+Route::get('sitemap.xml', [SitemapController::class, 'index']);
+
 
 Route::group(
     ['middleware' => 'throttle:40,1'],
