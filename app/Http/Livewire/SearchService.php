@@ -14,111 +14,7 @@ class SearchService extends Component
     public $industries = ['All', 'Ecommerce', 'Finance', 'Education', 'IT', 'Media & Entertainment', 'Marketing', 'Sales', 'Others'];
 
     public $defaultServices = [];
-    public static $serviceArray = [
-        [
-            'image' => 'fashion_model.png',
-            'title' => 'Create an AI fashion model',
-            'price' => '300',
-            'industry' => 'Ecommerce',
-            'talent' => [
-                'talent' => [
-                    'name' => 'Silvio',
-                    'standout_job_title' =>
-                    'Fashion generative AI expert',
-                    'photo' => '/assets/img/BrainX/service_example.png'
-                ]
-            ]
-        ],
-        [
-            'image' => 'trading_bot.png',
-            'title' => 'Develop a trading bot',
-            'price' => '2000',
-            'industry' =>
-            'Finance',
-            'talent' => [
-                'talent' => [
-                    'name' => 'David',
-                    'standout_job_title' =>
-                    'AI specialist in finance',
-                    'photo' => '/assets/img/BrainX/service_example.png'
-                ]
-            ]
-        ],
-        // [
-        //     'image' => 'Develop_an_English_tutor_app.png',
-        //     'title' => 'Develop an English tutor app',
-        //     'price' => '2000',
-        //     'industry' =>
-        //     'Education',
-        //     'talent' => [
-        //         'talent' => [
-        //             'name' => 'Tom',
-        //             'standout_job_title' => 'AI engineer',
-        //             'photo' => '/assets/img/BrainX/service_example.png'
-        //         ]
-        //     ]
-        // ],
-        // [
-        //     'image' => 'Fine_tuning_OpenAI_GPT4s_model.png',
-        //     'title' => 'Fine tuning OpenAI GPT4’s model',
-        //     'price' => '200',
-        //     'industry' =>
-        //     'IT',
-        //     'talent' => [
-        //         'talent' => [
-        //             'name' => 'Nicolas',
-        //             'standout_job_title' =>
-        //             'Data scientist',
-        //             'photo' => '/assets/img/BrainX/service_example.png'
-        //         ]
-        //     ]
-        // ], 
-        // [
-        //     'image' => 'AI-generated_movie_trailer.png',
-        //     'title' => 'Create AI-generated  movie trailer',
-        //     'price' => '200',
-        //     'industry' =>
-        //     'Media & Entertainment',
-        //     'talent' => [
-        //         'talent' => [
-        //             'name' => 'Bill',
-        //             'standout_job_title' =>
-        //             'Prompt engineer',
-        //             'photo' => '/assets/img/BrainX/service_example.png'
-        //         ]
-        //     ]
-        // ],
-        // [
-        //     'image' => 'Create_AI-generated_video_for_your_car_company.png',
-        //     'title' => 'Create AI-generated video for your car company',
-        //     'price' => '200',
-        //     'industry' =>
-        //     'Marketing',
-        //     'talent' => [
-        //         'talent' => [
-        //             'name' => 'Huyen Chip',
-        //             'standout_job_title' =>
-        //             'Generative AI specialist',
-        //             'photo' => '/assets/img/BrainX/service_example.png'
-        //         ]
-        //     ]
-        // ],
-        // [
-        //     'image' => 'Develop_conversational_AI_for_sales_call.png',
-        //     'title' => 'Develop conversational AI for sales call',
-        //     'price' => '1500',
-        //     'industry' =>
-        //     'Sales',
-        //     'talent' => [
-        //         'talent' => [
-        //             'name' => 'Lily',
-        //             'standout_job_title' => 'NLP expert',
-        //             'photo' => '/assets/img/BrainX/service_example.png'
-        //         ]
-        //     ]
-        // ],
-    ];
-
+    public static $serviceArray = [];
     public function mount()
     {
         $this->defaultServices = [];
@@ -148,7 +44,7 @@ class SearchService extends Component
         // dd($this->services);
 
         if ($this->search != 'All') {
-            $this->defaultServices = $this->getService($this->search);
+            $this->defaultServices = []; //$this->getService($this->search);
         }
         // dd($this->getServicesFromDB());
         return view('livewire.search-service', [
