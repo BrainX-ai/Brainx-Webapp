@@ -20,26 +20,30 @@
         @foreach ($services as $key => $service)
             <div class="col-md-3">
                 <div class="job-locate-blk ">
-                    <a href="{{ route('service.details', $service->id) }}" class="">
+                    @if (Auth::check() && Auth::user()->user()->role == 'Talent')
+                        <a href="{{ route('service.details', $service->id) }}" class="">
+                        @else
+                            <a href="{{ route('client.service.details', $service->id) }}" class="">
+                    @endif
 
-                        <div class="location-img">
-                            <span>
-                                @if ($service->image == null)
-                                    <img class="default-image" src="/assets/img/BrainX/X.png" alt="">
-                                @else
-                                    <img class="img-fluid" src="/uploads/{{ $service->image }}" alt="">
-                                @endif
-                            </span>
-                        </div>
-                        <div class="job-it-content">
-                            <h6>{{ substr($service->title, 0, 50) . (strlen($service->title) > 50 ? '...' : '') }}
+                    <div class="location-img">
+                        <span>
+                            @if ($service->image == null)
+                                <img class="default-image" src="/assets/img/BrainX/X.png" alt="">
+                            @else
+                                <img class="img-fluid" src="/uploads/{{ $service->image }}" alt="">
+                            @endif
+                        </span>
+                    </div>
+                    <div class="job-it-content">
+                        <h6>{{ substr($service->title, 0, 50) . (strlen($service->title) > 50 ? '...' : '') }}
 
-                            </h6>
-                            <ul class="nav job-locate-foot">
-                                <li>${{ $service->price }}</li>
-                                {{-- <li><i class="material-icons mb-1">star</i> {{ $service->rating }}</li> --}}
-                            </ul>
-                        </div>
+                        </h6>
+                        <ul class="nav job-locate-foot">
+                            <li>${{ $service->price }}</li>
+                            {{-- <li><i class="material-icons mb-1">star</i> {{ $service->rating }}</li> --}}
+                        </ul>
+                    </div>
                     </a>
                 </div>
             </div>
