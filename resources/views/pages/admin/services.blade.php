@@ -103,7 +103,7 @@
                                     <td class="text-end three-dots">
 
                                         <a href="{{ route('admin.service.details', $service->id) }}" class="btn btn-primary">Details</a>
-{{--                                        <a href="#" class="btn btn-primary">Details</a>--}}
+                                        <button class="btn btn-info" data-bs-toggle="modal" data-bs-target="#edit-service" >Edit</button>
                                     </td>
                                 </tr>
 
@@ -116,5 +116,26 @@
         </div>
 
     </div>
+    @include('pages.admin.includes.modals.edit-service')
+@section('custom-js')
+    <script>
+        $(document).ready(function() {
+            $('#industry').select2({
+                maximumSelectionLength: 3, // Set the maximum selection limit
+                theme: 'classic' // Use the 'classic' theme for this example
+            });
+        });
+        function placeImage() {
+            var image = document.getElementById('image').value;
+            document.getElementById('service-image').src = image
+        }
 
+        imgInp.onchange = evt => {
+            const [file] = imgInp.files
+            if (file) {
+                service_image.src = URL.createObjectURL(file)
+            }
+        }
+    </script>
+@endsection
 @endsection

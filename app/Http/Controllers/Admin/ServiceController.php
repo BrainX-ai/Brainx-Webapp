@@ -39,4 +39,20 @@ class ServiceController extends Controller
         return redirect()->route('admin.services');
     }
 
+    public function update(Request $request)
+    {
+        $service = Service::find($request->id);
+        $service->title = $request->title;
+        $service->description = $request->description;
+        $service->delivery_time = $request->delivery_time;
+        $service->price = $request->price;
+        $service->industry = $request->industry;
+        $service->image = ($request->image !== null) ? $this->uploadFile($request) : $service->image;
+
+        $service->save();
+
+        return redirect()->route('admin.services');
+    }
+
+
 }

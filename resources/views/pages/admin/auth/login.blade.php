@@ -48,7 +48,7 @@
                                         <h3>Admin Panel</h3>
                                     </div>
                                     <form action="{{ route('admin.login') }}" method="POST">
-
+                                        @csrf
                                         <div class="form-group form-focus">
                                             <input type="text" name="email" class="form-control floating">
                                             <label class="focus-label">Email</label>

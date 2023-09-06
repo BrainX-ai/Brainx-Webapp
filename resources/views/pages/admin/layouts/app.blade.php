@@ -25,6 +25,9 @@
     <!-- Datepicker CSS -->
     <link rel="stylesheet" href="/admin/assets/css/bootstrap-datetimepicker.min.css">
 
+    <!-- Select2 CSS -->
+    <link rel="stylesheet" href="/assets/plugins/select2/css/select2.min.css">
+
     <!-- Main CSS -->
     <link rel="stylesheet" href="/admin/assets/css/style.css">
     <!-- Fonts -->
@@ -213,6 +216,10 @@
     <!-- Datepicker Core JS -->
     <script src="/admin/assets/js/moment.min.js"></script>
     <script src="/admin/assets/js/bootstrap-datetimepicker.min.js"></script>
+
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 
     <!-- Custom JS -->
     <script src="/admin/assets/js/script.js"></script>
