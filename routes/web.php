@@ -6,6 +6,7 @@ use Inertia\Inertia;
 use App\Http\Controllers\LinkedinController;
 use App\Models\User;
 use App\Http\Controllers\PayPalController;
+use App\Http\Controllers\SitemapController;
 use App\Http\Livewire\SearchService;
 use App\Models\BlogPost;
 
@@ -23,6 +24,8 @@ use App\Models\BlogPost;
 // Route::get('/talent', function () {
 //     return view('pages.index');
 // })->name('talent.home');
+
+Route::get('sitemap.xml', [SitemapController::class, 'index']);
 
 
 Route::group(

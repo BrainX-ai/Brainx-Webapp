@@ -17,14 +17,14 @@
                     <div class="col-md-12  p-3">
 
                         <div class="blog-view">
-                            <div class="blog-single-post pro-post widget-box">
+                            <div class="blog-single-post pro-post widget-box ps-3">
                                 <div class="blog-image offset-md-2 col-md-8">
                                     <a href="javascript:void(0);"><img alt="" src="/uploads/{{ $blog->photo }}"
                                             class="img-fluid"></a>
                                 </div>
-                                <h3 class="blog-title">{{ $blog->title }}</h3>
+                                <h3 class="blog-title ps-3">{{ $blog->title }}</h3>
                                 <div class="blog-info clearfix">
-                                    <div class="post-left">
+                                    <div class="post-left ps-3">
                                         <ul>
                                             <li>
                                                 <div class="post-author">
@@ -39,8 +39,8 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="blog-content">
-                                    {{ strip_tags($blog->content) }}
+                                <div class="blog-content ps-3 text-justify">
+                                    {!! $blog->content !!}
                                 </div>
                             </div>
                         </div>
