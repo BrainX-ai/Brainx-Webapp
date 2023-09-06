@@ -38,7 +38,7 @@
                             <label for="meta_desc">Meta description:</label><br>
                             <textarea name="meta_desc" id="meta_desc" rows="5" class="form-control  ">{{ $post->meta_description }}</textarea>
                             <label for="keywords">Primary keywords:</label><br>
-                            <input type="text" id="keywords" class="form-control " name="keywords" required
+                            <input type="text" id="keywords" class="form-control " name="keywords"
                                 value="{{ $post->keywords }}"><br><br>
 
                             <label for="content">Content:</label><br>
