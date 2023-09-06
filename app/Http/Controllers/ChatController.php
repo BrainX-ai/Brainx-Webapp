@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Events\ChatMessage;
+use App\Mail\SendMail;
 use App\Models\Action;
 use App\Models\Message;
 use App\Models\File;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class ChatController extends Controller
 {
@@ -37,6 +40,24 @@ class ChatController extends Controller
                 'sender_id' => Auth::user()->id,
                 'message' => $request->message,
             ]);
+        }
+
+        $actions = Action::where('send_id', Auth::user()->id)->where('service_id', $request->service_id)->get();
+        if (sizeof($actions) > 0) {
+            $receiver = User::find($action->receiver_id);
+            try {
+                $mailData = [
+                    'subject' => 'BrainX found an AI talent for you',
+                    'body' => 'We have found an AI talent that is suitable to your request. Go to the conversation and view the talent’s profile.',
+                    'button_text' => 'Go',
+                    'button_url' => route('client.job.details', $request->job_id),
+                    'receiver' => $receiver->name,
+                    'preheadtext' => 'We have found an AI talent that is suitable to your request'
+                ];
+
+                Mail::to($receiver->email)->send(new SendMail($mailData));
+            } catch (\Exception $ex) {
+            }
         }
     }
 
