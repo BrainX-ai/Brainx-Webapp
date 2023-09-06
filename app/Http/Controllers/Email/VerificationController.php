@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Email;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 
 use Illuminate\Foundation\Auth\RedirectsUsers;
@@ -52,13 +53,14 @@ class VerificationController extends Controller
     public function show(Request $request)
     {
         return $request->user()->hasVerifiedEmail()
-                        ? redirect($this->redirectPath())
-                        : view('verification.notice', [
-                            'pageTitle' => __('Account Verification')
-                        ]);
+            ? redirect($this->redirectPath())
+            : view('verification.notice', [
+                'pageTitle' => __('Account Verification')
+            ]);
     }
 
-    public function verify(EmailVerificationRequest $request) {
+    public function verify(EmailVerificationRequest $request)
+    {
         $request->fulfill();
         dd('email verification done');
     }

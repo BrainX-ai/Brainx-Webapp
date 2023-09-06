@@ -42,21 +42,23 @@ class ChatController extends Controller
             ]);
         }
 
-        $actions = Action::where('send_id', Auth::user()->id)->where('service_id', $request->service_id)->get();
-        if (sizeof($actions) > 0) {
+        $actions = Action::where('sender_id', Auth::user()->id)->where('service_id', $request->service_id)->get();
+
+        if (sizeof($actions) == 1) {
             $receiver = User::find($action->receiver_id);
             try {
                 $mailData = [
-                    'subject' => 'BrainX found an AI talent for you',
-                    'body' => 'We have found an AI talent that is suitable to your request. Go to the conversation and view the talent’s profile.',
-                    'button_text' => 'Go',
-                    'button_url' => route('client.job.details', $request->job_id),
+                    'subject' => 'New Client Message at BrainX',
+                    'body' => 'You have received a new message from ' . Auth::user()->name . '. Please login to your BrainX account and reply to the client. Thank you!',
+                    'button_text' => 'Visit BrainX',
+                    'button_url' => "https://brainx.biz",
                     'receiver' => $receiver->name,
-                    'preheadtext' => 'We have found an AI talent that is suitable to your request'
+                    'preheadtext' => 'New message from ' . Auth::user()->name
                 ];
 
                 Mail::to($receiver->email)->send(new SendMail($mailData));
             } catch (\Exception $ex) {
+                dd('email send');
             }
         }
     }

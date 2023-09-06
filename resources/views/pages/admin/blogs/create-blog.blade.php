@@ -38,7 +38,7 @@
                             <label for="meta_desc">Meta description:</label><br>
                             <textarea name="meta_desc" id="meta_desc" rows="5" class="form-control  "></textarea>
                             <label for="keywords">Primary keywords:</label><br>
-                            <input type="text" id="keywords" class="form-control " name="keywords" required><br><br>
+                            <input type="text" id="keywords" class="form-control " name="keywords"><br><br>
 
                             <label for="content">Content:</label><br>
                             <textarea name="content" id="content" rows="5" class="form-control  "></textarea>
