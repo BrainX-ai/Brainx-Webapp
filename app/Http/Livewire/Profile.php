@@ -38,7 +38,6 @@ class Profile extends Component
     public function render()
     {
 
-
         $id = ($this->user_id);
         $this->portfolios = Portfolio::where('user_id', $id)->get();
         $this->services = Service::where('user_id', $id)->get();

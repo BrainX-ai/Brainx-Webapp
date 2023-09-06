@@ -20,7 +20,7 @@
         @foreach ($services as $key => $service)
             <div class="col-md-3">
                 <div class="job-locate-blk ">
-                    @if (Auth::check() && Auth::user()->user()->role == 'Talent')
+                    @if (Auth::check() && Auth::user()->role == 'Talent')
                         <a href="{{ route('service.details', $service->id) }}" class="">
                         @else
                             <a href="{{ route('client.service.details', $service->id) }}" class="">
