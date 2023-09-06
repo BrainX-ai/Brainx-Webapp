@@ -178,8 +178,6 @@
                             </button>
                         </a>
 
-
-
                         <div class="col-md-6 col-sm-8 mt-4 ">
                             <img src="/assets/img/BrainX/ms-badge.png" alt="" class="w-100">
                         </div>
