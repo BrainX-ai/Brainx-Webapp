@@ -8,9 +8,12 @@ use App\Models\Talent;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class Profile extends Component
 {
+
+    use WithFileUploads;
     public $tabs = [];
     public $activeTab = '';
     public $portfolios = [], $services = [], $user, $bio;
@@ -18,6 +21,9 @@ class Profile extends Component
     protected $queryString = ['user_id'];
 
     public $title, $description;
+
+
+    public $photo;
 
     public function mount()
     {
