@@ -8,6 +8,10 @@
             object-fit: cover;
             background-position: center;
         }
+
+        ul li {
+            margin: 20px 0px;
+        }
     </style>
     <div class="container" style="height: 100%;">
 
