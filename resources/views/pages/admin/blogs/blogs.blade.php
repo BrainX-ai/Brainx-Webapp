@@ -24,9 +24,9 @@
                         <table class="table mb-0">
                             <thead>
                                 <tr>
-
                                     <th>Title</th>
                                     <th>Author</th>
+                                    <th>Status</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -34,7 +34,13 @@
                                 @foreach ($blogs as $blog)
                                     <tr>
                                         <td>{{ $blog->title }}</td>
+
                                         <td>{{ $blog->author }}</td>
+                                        @if ($blog->status == 'UNPUBLISHED')
+                                            <td> <span class="badge badge-danger ">{{ $blog->status }}</span></td>
+                                        @else
+                                            <td> <span class="badge badge-success ">{{ $blog->status }}</span> </td>
+                                        @endif
                                         <td>
                                             <a href="{{ route('admin.blog.edit', ['slug' => $blog->slug]) }}"
                                                 class="btn btn-danger">Edit</a>
