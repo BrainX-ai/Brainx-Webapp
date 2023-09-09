@@ -48,6 +48,18 @@
                             <input type="text" id="author" name="author" value="{{ $post->author }}"
                                 class="form-control  " required><br><br>
 
+                            <div class="form-group">
+                                <label for="status">
+                                    Status:
+                                    <select name="status" id="status" class="form-control">
+                                        <option value="UNPUBLISHED" @if ($post->status == 'UNPUBLISHED') selected @endif>
+                                            UNPUBLISHED</option>
+                                        <option value="PUBLISHED" @if ($post->status == 'PUBLISHED') selected @endif>
+                                            PUBLISHED</option>
+                                    </select>
+                                </label>
+                            </div>
+
                             <button type="submit" class="btn btn-primary">Update Blog Post</button>
                         </form>
                     </div>
