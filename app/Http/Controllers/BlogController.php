@@ -15,7 +15,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = BlogPost::whereStatus('PUBLISHED')->get();
+        $blogs = BlogPost::whereStatus('PUBLISHED')->orderBy('id', 'desc')->get();
 
         return view('pages.blogs.blogs')->with('blogs', $blogs);
     }
