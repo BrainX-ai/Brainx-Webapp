@@ -21,8 +21,9 @@
                         <div class="job-it-content ">
                             <div class="h5 text-center">For AI talents</div>
                             <p class="text-justify p-3">
-                                Simply provide AI services that you think business clients might need from your
-                                knowledge, experience and skills in Data Science, ML, AI
+                                Create specific services that help business clients apply AI into different areas of
+                                their businesses, solve their business problems from your knowledge, experience, tools &
+                                skills in Data Science, ML, AI
                             </p>
 
                         </div>
