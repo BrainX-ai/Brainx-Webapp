@@ -58,10 +58,11 @@
                             <p>
                             <ol>
                                 <li>
-                                    You can try to provide simple AI services that you think business clients might need
-                                    from your knowledge, experience and skills in Data Science, ML, AI, prompt engineering
-                                    like fine tune models, customize chatGPT, create movie trailers with Runway Gen2,
-                                    developing AI apps, consulting,...
+                                    For service ideas: create specific services that help business clients apply AI into
+                                    different areas of their businesses, solve their business problems from your knowledge,
+                                    experience, tools & skills in Data Science, ML, AI, prompt engineering like fine tune
+                                    models, customize chatGPT, create movie trailers with Runway Gen2, developing AI apps,
+                                    consulting,...
                                     <p class="fw-bold">
                                         You don’t have to start with AI solutions/products which might take you months.
                                     </p>
