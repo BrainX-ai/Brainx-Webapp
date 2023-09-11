@@ -14,15 +14,20 @@
         #next-link {
             pointer-events: none;
         }
+
         .prevent-select {
-  -webkit-user-select: none; /* Safari */
-  -ms-user-select: none; /* IE 10 and IE 11 */
-  user-select: none; /* Standard syntax */
-}
+            -webkit-user-select: none;
+            /* Safari */
+            -ms-user-select: none;
+            /* IE 10 and IE 11 */
+            user-select: none;
+            /* Standard syntax */
+        }
     </style>
     <div class="container" style="height: 100%;">
 
         <div class="content">
+            @include('includes.email-verify')
             <div class="container-fluid">
 
                 <h2 class="mb-3 text-center">BrainX Skill Assessment</h2>
@@ -41,7 +46,7 @@
                                 <span><span id="minutes"></span>: <span id="seconds"></span> </span>
                             </div>
                             <div class="card-body m-3 prevent-select">
-                                <p >
+                                <p>
                                     {{ $question->question }}
                                 </p>
                                 <ul class="ms-3">
@@ -85,8 +90,7 @@
                                 <div class="mt-5">
                                     <input type="hidden" name="quiz_question_id" id="quiz_question_id"
                                         value="{{ $quiz_question_id }}" />
-                                        <input type="hidden" name="quiz_id" id="quiz_id"
-                                            value="{{ session('quiz_id') }}" />
+                                    <input type="hidden" name="quiz_id" id="quiz_id" value="{{ session('quiz_id') }}" />
                                     {{-- @if ($index > 0)
                                             <a href="{{ route('assessment.progress', ['index' => $index - 1]) }}">
                                                 <button class="btn btn-primary">Prev</button>
@@ -142,7 +146,7 @@
             function makeTimer() {
                 // var endTime = new Date("29 April 2018 9:56:00 GMT+01:00");
                 var endTime = new Date("{{ $endTime }} UTC");
-                
+
                 endTime = (Date.parse(endTime) / 1000);
                 var now = new Date();
                 now = (Date.parse(now) / 1000);
@@ -163,7 +167,7 @@
                 $("#minutes").html(minutes);
                 $("#seconds").html(seconds);
 
-                if(minutes <= "00" && seconds <= "00"){
+                if (minutes <= "00" && seconds <= "00") {
                     window.location.href = "{{ route('assessment.result') }}"
                 }
             }
