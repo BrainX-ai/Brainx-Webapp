@@ -56,6 +56,7 @@ Route::group(
         Route::get('/blog/{slug}', 'App\http\controllers\BlogController@show')->name('blog.show');
         Route::get('/blogs', 'App\http\controllers\BlogController@index')->name('blogs');
 
+        Route::get('/download-service-file/{file_name}', 'App\http\controllers\ServiceController@downloadServiceFile')->name('download.portfolio.file');
 
         Route::get('/pending', 'App\http\controllers\TalentProfileController@showPendingPage')->name('talent.pending');
 

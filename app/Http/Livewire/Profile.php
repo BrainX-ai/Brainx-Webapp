@@ -21,9 +21,9 @@ class Profile extends Component
     protected $queryString = ['user_id'];
 
     public $title, $description;
+    public Portfolio $selectedPortfolio;
 
-
-    public $photo;
+    public $files = [];
 
     public function mount()
     {
@@ -49,6 +49,10 @@ class Profile extends Component
         $this->services = Service::where('user_id', $id)->get();
         $this->user = User::with('talent')->find($id);
         $this->bio = $this->user->talent->bio;
+        if (sizeof($this->portfolios) > 0) {
+
+            $this->selectedPortfolio = $this->portfolios[0];
+        }
         return view('livewire.profile');
     }
 
@@ -61,11 +65,38 @@ class Profile extends Component
 
     public function addPortfolio()
     {
+        $file_data = [];
+        foreach ($this->files as $file) {
+            $name = ($file->store('uploads'));
+            $name = time() . '.' . $name;
+
+            $data = [
+                'file_name' => $file->getClientOriginalName(),
+                'file_extension' => $file->getClientOriginalExtension(),
+                'file_type' => $file->getClientMimeType(),
+                'file_url' => $name
+
+            ];
+            $file_data[] = $data;
+        }
+
+
 
         $create = Portfolio::create([
             'title' => $this->title,
             'description' => $this->description,
-            'user_id' => Auth::user()->id
+            'user_id' => Auth::user()->id,
+            'files' => json_encode($file_data)
         ]);
+    }
+
+    public function updatePortfolio()
+    {
+        $this->selectedPortfolio->save();
+    }
+
+    public function selectPortfolio($index)
+    {
+        $this->selectedPortfolio = $this->portfolios[$index];
     }
 }

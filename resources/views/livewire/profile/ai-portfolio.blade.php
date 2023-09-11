@@ -19,22 +19,46 @@
                         @endif
                     </div>
                 @endif
-                @foreach ($portfolios as $portfolio)
-                    <div class="review-content no-padding">
-                        <div class="d-flex">
+                @foreach ($portfolios as $key => $portfolio)
+                    <div class="d-flex">
 
-                            <h4 class="text-primary mt-2">{{ $portfolio->title }}</h4>
+                        <div class="review-content no-padding">
+                            <div class="d-flex">
+
+                                <h4 class="text-primary mt-2">{{ $portfolio->title }}</h4>
+
+                            </div>
+
+                            <p class="mb-3"> {{ $portfolio->description }}</p>
 
                         </div>
-
-                        <p class="mb-3"> {{ $portfolio->description }}</p>
-
+                        @if (Auth::check() && Auth::user()->role == 'Talent')
+                            <button class="btn " wire:click="selectPortfolio({{ $key }})"
+                                data-bs-target="#edit-portfolio" data-bs-toggle="modal"><i
+                                    class="material-icons  edit">edit</i></button>
+                        @endif
                     </div>
+                    @if ($portfolio->files != null)
+                        @php
+                            $files = json_decode($portfolio->files, true);
+                        @endphp
+                        <ul>
+                            @foreach ($files as $file)
+                                <li>
+                                    <a href="{{ route('download.portfolio.file', $file['file_name']) }}"
+                                        class="text-primary fw-bold" target="_blank"
+                                        download>{{ $file['file_name'] }}</a>
+
+                                </li>
+                            @endforeach
+                        </ul>
+                    @endif
                 @endforeach
             </div>
         </div>
     </div>
     @if (Auth::check() && Auth::user()->role == 'Talent')
         @include('pages.talent.includes.modals.add-portfolio')
+        @include('pages.talent.includes.modals.edit.portfolio')
     @endif
 </section>
