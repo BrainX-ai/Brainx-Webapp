@@ -137,14 +137,4 @@ class ServiceController extends Controller
 
         return view('pages.talent.includes.no-service-chat');
     }
-
-    public function downloadPortfolioFile(Request $request)
-    {
-
-        $file = File::find($request->file_id);
-        $file_path = public_path('storage/' . $file->file_url);
-        $headers = array('Content-Type' => $file->file_type);
-
-        return \Response::download($file_path, $file->file_name, $headers);
-    }
 }

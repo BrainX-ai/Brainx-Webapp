@@ -33,21 +33,28 @@
 
                         </div>
                         @if (Auth::check() && Auth::user()->role == 'Talent')
-                            <button class="btn " wire:click="selectPortfolio({{ $key }})"
-                                data-bs-target="#edit-portfolio" data-bs-toggle="modal"><i
-                                    class="material-icons  edit">edit</i></button>
+                            <div class="d-flex">
+                                <button class="btn " wire:click="selectPortfolio({{ $key }})"
+                                    data-bs-target="#edit-portfolio" data-bs-toggle="modal"><i
+                                        class="material-icons  edit">edit</i></button>
+
+                                <button class="btn " data-bs-target="#delete-portfolio-modal"
+                                    wire:click="selectPortfolio({{ $key }})" data-bs-toggle="modal"><i
+                                        class="material-icons  delete text-danger">delete</i></button>
+                            </div>
                         @endif
                     </div>
                     @if ($portfolio->files != null)
+                        <h5 class="mt-2 mb-2">Documents:</h5>
                         @php
                             $files = json_decode($portfolio->files, true);
                         @endphp
                         <ul>
-                            @foreach ($files as $file)
-                                <li>
-                                    <a href="{{ route('download.portfolio.file', $file['file_name']) }}"
-                                        class="text-primary fw-bold" target="_blank"
-                                        download>{{ $file['file_name'] }}</a>
+                            @foreach ($files as $fileKey => $file)
+                                <li class="m-3">
+                                    <a href="#"
+                                        wire:click="downloadPortfolioFile({{ $key }}, {{ $fileKey }})"
+                                        class="text-primary fw-bold">{{ $file['file_name'] }}</a>
 
                                 </li>
                             @endforeach
@@ -60,5 +67,6 @@
     @if (Auth::check() && Auth::user()->role == 'Talent')
         @include('pages.talent.includes.modals.add-portfolio')
         @include('pages.talent.includes.modals.edit.portfolio')
+        @include('includes.modals.portfolio-delete-alert')
     @endif
 </section>

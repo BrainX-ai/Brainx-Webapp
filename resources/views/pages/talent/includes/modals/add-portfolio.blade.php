@@ -47,7 +47,7 @@
                         </div>
                         <div class="form-group">
                             <label for="" class="h4">Documents</label>
-                            <input type="file" wire:model.defer="files" class="form-control">
+                            <input type="file" wire:model.defer="files" class="form-control" multiple />
                         </div>
                     </div>
                     <div class="card-footer pb-2 border-0 float-right">
