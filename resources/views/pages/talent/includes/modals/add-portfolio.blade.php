@@ -16,7 +16,7 @@
     }
 </style>
 <!-- The Modal -->
-<div class="modal fade custom-modal" id="add-portfolio">
+<div wire:ignore.self class="modal fade custom-modal" id="add-portfolio">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content">
 
@@ -44,6 +44,10 @@
                             <label for="" class="h4">Description</label>
                             <textarea type="text" wire:model.defer="description" placeholder="A short description for that project"
                                 class="form-control"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="" class="h4">Documents</label>
+                            <input type="file" wire:model.defer="files" class="form-control" multiple />
                         </div>
                     </div>
                     <div class="card-footer pb-2 border-0 float-right">
