@@ -4,6 +4,7 @@
     <div class="container" style="height: 100%;">
 
         <div class="content">
+            @include('includes.email-verify')
             <div class="container-fluid">
                 <h2 class="mb-3 text-center">BrainX Skill Assessment</h2>
                 <div class="row">
@@ -16,13 +17,14 @@
 
                                     <h4>
                                         Congratulations! <br />
-                                        
+
                                     </h4>
                                     <h5 class="mb-5 mt-3">
                                         You've earned the badge
                                     </h5>
 
-                                    <a href="{{ route('show.profile', encrypt(Auth::guard()->user()->id)) }}" class="mt-5">
+                                    <a href="{{ route('show.profile', encrypt(Auth::guard()->user()->id)) }}"
+                                        class="mt-5">
                                         <button class="btn btn-primary">Go back</button>
                                     </a>
 

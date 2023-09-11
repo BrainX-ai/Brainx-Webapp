@@ -49,6 +49,7 @@
     <div class="container" style="height: 100%;">
 
         <div class="content">
+            @include('includes.email-verify')
             <div class="container-fluid">
                 <div class="row">
 
