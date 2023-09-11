@@ -4,6 +4,7 @@
     <div class="container" style="height: 100%;">
 
         <div class="content">
+            @include('includes.email-verify')
             <div class="container-fluid">
                 <h2 class="mb-3 text-center">BrainX Skill Assessment</h2>
                 <div class="row">
@@ -37,7 +38,7 @@
                                 </ul>
 
                                 <div class="mt-2">
-                                    <a href="{{ route('assessment.running',['category_id' => $category->id]) }}">
+                                    <a href="{{ route('assessment.running', ['category_id' => $category->id]) }}">
                                         <button class="btn btn-primary">Challenge yourself</button>
                                     </a>
                                 </div>

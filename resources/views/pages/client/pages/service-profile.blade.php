@@ -1,9 +1,10 @@
 @extends('pages.client.layouts.app')
 
 @section('linkedin-meta')
-    <meta property='og:title' content='Check my AI service on BrainX'/>
-    <meta property='og:description' content='BrainX is a marketplace empowering businesses with
-    creative AI services from global network of AI talents'/>
+    <meta property='og:title' content='Check my AI service on BrainX' />
+    <meta property='og:description'
+        content='BrainX is a marketplace empowering businesses with
+    creative AI services from global network of AI talents' />
 @endsection
 
 @section('content')
@@ -42,8 +43,8 @@
         }
 
         /* li {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                list-style: none;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            } */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    list-style: none;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                } */
 
         .arrow,
         .close {
@@ -94,6 +95,7 @@
     <div class="container" style="height: 100%;">
 
         <div class="content">
+            @include('includes.email-verify')
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
