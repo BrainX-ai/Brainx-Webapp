@@ -8,14 +8,17 @@
             object-fit: cover;
             background-position: center;
         }
+
+        ul li {
+            margin: 20px 0px;
+        }
     </style>
     <div class="container" style="height: 100%;">
-
         <div class="content">
+            @include('includes.email-verify')
             <div class="container-fluid">
                 <div class="row mb-5 pb-5">
                     <div class="col-md-12  p-3">
-
                         <div class="blog-view">
                             <div class="blog-single-post pro-post widget-box ps-3">
                                 <div class="blog-image offset-md-2 col-md-8">

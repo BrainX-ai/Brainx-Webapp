@@ -18,7 +18,7 @@
     <meta property="og:image" content="{{ 'https://brainx.biz/assets/img/BrainX_logo.png' }}" />
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title inertia>{{ config('app.name', 'BrainX') }}</title>
-
+    <link rel="canonical" href="{{ url()->current() }}" />
     <!-- Favicon -->
     <link rel="shortcut icon" href="/assets/img/BrainX_logo.png" type="image/x-icon">
 
@@ -80,9 +80,12 @@
             <img src="/assets/img/BrainX/X.png" class="img-fluid" alt="">
         </div>
     </div>
+
+
     <!-- Loader -->
     <!-- Main Wrapper -->
     <div class="main-wrapper">
+
         @if (Request::is('/') ||
                 Request::is('talent') ||
                 Request::is('faq') ||
@@ -94,6 +97,7 @@
         @else
             @include('pages.talent.includes.header')
         @endif
+
         @yield('content')
         @if (Request::is('/') ||
                 Request::is('talent') ||

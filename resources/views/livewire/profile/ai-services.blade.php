@@ -10,8 +10,9 @@
                     <div class="job-it-content bg-white">
                         <h6><a>Sell AI service</a></h6>
                         <p class="text-justify">
-                            Simply provide AI services that you think business clients might need from your knowledge,
-                            experience and skills in Data Science, ML, AI
+                            Create specific services that help business clients apply AI into different areas of
+                            their businesses, solve their business problems from your knowledge, experience, tools &
+                            skills in Data Science, ML, AI
                         </p>
                     </div>
                 </div>
@@ -20,7 +21,7 @@
         @foreach ($services as $key => $service)
             <div class="col-md-3">
                 <div class="job-locate-blk ">
-                    @if (Auth::check() && Auth::user()->user()->role == 'Talent')
+                    @if (Auth::check() && Auth::user()->role == 'Talent')
                         <a href="{{ route('service.details', $service->id) }}" class="">
                         @else
                             <a href="{{ route('client.service.details', $service->id) }}" class="">

@@ -38,7 +38,7 @@
                             <label for="meta_desc">Meta description:</label><br>
                             <textarea name="meta_desc" id="meta_desc" rows="5" class="form-control  ">{{ $post->meta_description }}</textarea>
                             <label for="keywords">Primary keywords:</label><br>
-                            <input type="text" id="keywords" class="form-control " name="keywords" required
+                            <input type="text" id="keywords" class="form-control " name="keywords"
                                 value="{{ $post->keywords }}"><br><br>
 
                             <label for="content">Content:</label><br>
@@ -47,6 +47,18 @@
                             <label for="author">Author:</label><br>
                             <input type="text" id="author" name="author" value="{{ $post->author }}"
                                 class="form-control  " required><br><br>
+
+                            <div class="form-group">
+                                <label for="status">
+                                    Status:
+                                    <select name="status" id="status" class="form-control">
+                                        <option value="UNPUBLISHED" @if ($post->status == 'UNPUBLISHED') selected @endif>
+                                            UNPUBLISHED</option>
+                                        <option value="PUBLISHED" @if ($post->status == 'PUBLISHED') selected @endif>
+                                            PUBLISHED</option>
+                                    </select>
+                                </label>
+                            </div>
 
                             <button type="submit" class="btn btn-primary">Update Blog Post</button>
                         </form>

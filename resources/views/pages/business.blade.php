@@ -159,22 +159,15 @@
                         <h1>
                             Empower your business with creative AI services on demand.
                         </h1>
-
-
                         <p>
-
-
                             BrainX is a marketplace empowering business with creative AI services from global network
                             of AI talents. <a href="/how-it-works" class="text-primary fw-bold text-decoration-underline">How
                                 it
                                 works?</a>
-
                         </p>
-
-
                         <a class="btn join-us">
                             <button class="btn btn-primary boxes-shadow ps-5 pe-5" onclick="scrollToElement('searchSection')"
-                                type="button">
+                                data-bs-toggle="modal" data-bs-target="#client-signup" type="button">
                                 <div class="text-center"><small>Client</small></div>Find AI service
                             </button>
                         </a>
@@ -184,8 +177,6 @@
                                 <div class="text-center"><small>Talent</small></div>Sell AI service
                             </button>
                         </a>
-
-
 
                         <div class="col-md-6 col-sm-8 mt-4 ">
                             <img src="/assets/img/BrainX/ms-badge.png" alt="" class="w-100">

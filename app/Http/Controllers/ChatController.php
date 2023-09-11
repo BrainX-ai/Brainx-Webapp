@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Events\ChatMessage;
+use App\Mail\SendMail;
 use App\Models\Action;
 use App\Models\Message;
 use App\Models\File;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class ChatController extends Controller
 {
@@ -37,6 +40,26 @@ class ChatController extends Controller
                 'sender_id' => Auth::user()->id,
                 'message' => $request->message,
             ]);
+        }
+
+        $actions = Action::where('sender_id', Auth::user()->id)->where('service_id', $request->service_id)->get();
+
+        if (sizeof($actions) == 1) {
+            $receiver = User::find($action->receiver_id);
+            try {
+                $mailData = [
+                    'subject' => 'New Client Message at BrainX',
+                    'body' => 'You have received a new message from ' . Auth::user()->name . '. Please login to your BrainX account and reply to the client. Thank you!',
+                    'button_text' => 'Visit BrainX',
+                    'button_url' => "https://brainx.biz",
+                    'receiver' => $receiver->name,
+                    'preheadtext' => 'New message from ' . Auth::user()->name
+                ];
+
+                Mail::to($receiver->email)->send(new SendMail($mailData));
+            } catch (\Exception $ex) {
+                dd('email send');
+            }
         }
     }
 

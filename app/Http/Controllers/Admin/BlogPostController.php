@@ -92,6 +92,7 @@ class BlogPostController extends Controller
         $blogPost->author = $validatedData['author'];
         $blogPost->meta_description = $request->meta_desc;
         $blogPost->keywords = $request->keywords;
+        $blogPost->status = $request->status;
         if ($request->hasFile('image')) {
             $blogPost->photo = $this->uploadFile($request);
         }

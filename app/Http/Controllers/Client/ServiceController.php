@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Auth;
 
 class ServiceController extends Controller
 {
+
+
     /**
      * Display a listing of the resource.
      *
