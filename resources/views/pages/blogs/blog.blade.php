@@ -15,7 +15,6 @@
     </style>
     <div class="container" style="height: 100%;">
         <div class="content">
-            @include('includes.email-verify')
             <div class="container-fluid">
                 <div class="row mb-5 pb-5">
                     <div class="col-md-12  p-3">
