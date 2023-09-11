@@ -59,10 +59,10 @@
                             </div>
                         </div>
 
-                        @if ($portfolio->files != null)
+                        @if (isset($selectedPortfolio) && $selectedPortfolio->files != null)
 
                             @php
-                                $files = json_decode($portfolio->files, true);
+                                $files = json_decode($selectedPortfolio->files, true);
                             @endphp
                             <ul>
                                 @foreach ($files as $key => $file)
