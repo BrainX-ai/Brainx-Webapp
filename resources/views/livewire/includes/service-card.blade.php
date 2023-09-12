@@ -1,6 +1,6 @@
 <div class="col-md-4">
     <div class="job-locate-blk bg-light">
-        <a href="{{ route('client.service.details', $service->id) }}" class="">
+        <a href="{{ route('client.service.details', $service->id) }}" aria-label="{{ $service->title }}">
 
             <div class="location-img">
                 @if ($service->image == null)
@@ -30,7 +30,7 @@
                 </div>
                 <div class="media-body flex-grow-1 ms-3">
                     <div class="user-name fw-bold text-decoration-underline"><a class="text-primary "
-                            style="text-decoration: underline;"
+                            style="text-decoration: underline;" aria-label="{{ $service->talent->name }}"
                             href="{{ route('client.show.profile', encrypt($service->talent->id)) }}">
                             {{ $service->talent->name }}</a></div>
                     <div class="message"> {{ $service->talent->talent->standout_job_title }} </div>
