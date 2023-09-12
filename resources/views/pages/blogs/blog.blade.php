@@ -59,4 +59,9 @@
             </div>
         </div>
     </div>
+    @include('includes.feedback-modal')
+    @include('includes.modals.login-modal')
+    @include('includes.modals.desktop-msg')
+    @include('pages.client.includes.modals.signup')
+    @include('pages.client.includes.modals.signin')
 @endsection
