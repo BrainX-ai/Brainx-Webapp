@@ -1,5 +1,11 @@
 @extends('app')
 
+@section('seo_content')
+    <meta name="description" content="{{ $blog->meta_description }}">
+    <meta name="keywords" content="{{ $blog->keywords }}">
+    <meta name="author" content="{{ $blog->author }}">
+@endsection
+
 @section('content')
     <style>
         .service-image {
