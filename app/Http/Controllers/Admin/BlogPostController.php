@@ -48,6 +48,7 @@ class BlogPostController extends Controller
         $blogPost->meta_description = $request->meta_desc;
         $blogPost->keywords = $request->keywords;
         $blogPost->photo = $this->uploadFile($request);
+        $blogPost->status = $request->status;
         $blogPost->save();
 
         return redirect()->route('admin.blog.all')->with('success', 'Blog post created successfully!');

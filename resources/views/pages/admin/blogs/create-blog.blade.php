@@ -47,6 +47,17 @@
                             <label for="author">Author:</label><br>
                             <input type="text" id="author" name="author" class="form-control  " required><br><br>
 
+                            <div class="form-group">
+                                <label for="status">
+                                    Status:
+                                    <select name="status" id="status" class="form-control">
+                                        <option value="UNPUBLISHED">
+                                            UNPUBLISHED</option>
+                                        <option value="PUBLISHED">
+                                            PUBLISHED</option>
+                                    </select>
+                                </label>
+                            </div>
                             <button type="submit" class="btn btn-primary">Save Blog Post</button>
                         </form>
                     </div>
