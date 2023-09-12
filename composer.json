@@ -9,6 +9,7 @@
         "abraham/twitteroauth": "^5.0",
         "charl4e/linkedin-resume-parser": "^2.1",
         "doctrine/dbal": "^3.6",
+        "erlandmuchasaj/laravel-gzip": "^1.0",
         "geeky/cvparser": "^1.1",
         "guzzlehttp/guzzle": "^7.6",
         "inertiajs/inertia-laravel": "^0.5.4",
