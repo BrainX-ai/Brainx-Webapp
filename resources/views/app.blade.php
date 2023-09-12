@@ -16,6 +16,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta property="og:image" content="{{ 'https://brainx.biz/assets/img/BrainX_logo.png' }}" />
+    @yield('seo_content')
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title inertia>{{ config('app.name', 'BrainX') }}</title>
     <link rel="canonical" href="{{ url()->current() }}" />
