@@ -1,5 +1,12 @@
 @extends('app')
 
+@section('seo_content')
+    <meta name="description"
+        content="BrainX is a marketplace empowering business with creative AI services from global network
+                            of AI talents.">
+    <meta name="keywords" content="AI services, global">
+@endsection
+
 @section('content')
     <style>
         .great-icon {
@@ -148,7 +155,6 @@
     </style>
     <!-- Start Navigation -->
 
-
     <!-- Home Banner -->
     <section class="section home-banner ">
         <div class="container">
@@ -161,13 +167,15 @@
                         </h1>
                         <p>
                             BrainX is a marketplace empowering business with creative AI services from global network
-                            of AI talents. <a href="/how-it-works" class="text-primary fw-bold text-decoration-underline">How
+                            of AI talents. <a href="/how-it-works"
+                                class="text-primary fw-bold text-decoration-underline">How
                                 it
                                 works?</a>
                         </p>
                         <a class="btn join-us">
-                            <button class="btn btn-primary boxes-shadow ps-5 pe-5" onclick="scrollToElement('searchSection')"
-                                data-bs-toggle="modal" data-bs-target="#client-signup" type="button">
+                            <button class="btn btn-primary boxes-shadow ps-5 pe-5"
+                                onclick="scrollToElement('searchSection')" data-bs-toggle="modal"
+                                data-bs-target="#client-signup" type="button">
                                 <div class="text-center"><small>Client</small></div>Find AI service
                             </button>
                         </a>
