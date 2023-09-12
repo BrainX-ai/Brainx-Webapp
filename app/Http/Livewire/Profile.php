@@ -49,7 +49,7 @@ class Profile extends Component
         $this->services = Service::where('user_id', $id)->get();
         $this->user = User::with('talent')->find($id);
         $this->bio = $this->user->talent->bio;
-        if (sizeof($this->portfolios) > 0) {
+        if (isset($this->selectedPortfolio) && $this->selectedPortfolio == null && sizeof($this->portfolios) > 0) {
 
             $this->selectedPortfolio = $this->portfolios[0];
             $this->updateTitle = $this->selectedPortfolio->title;
