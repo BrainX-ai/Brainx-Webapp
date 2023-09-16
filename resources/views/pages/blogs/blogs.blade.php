@@ -18,38 +18,43 @@
                                         <a href="{{ route('blog.show', ['slug' => $blog->slug]) }}">
                                             @if ($blog->photo)
                                                 <img src="/uploads/{{ $blog->photo }}" alt="Post Image">
+                                            @else
+                                                <img src="/assets/img/BrainX/X.png" alt="Post Image">
+                                            @endif
                                         </a>
-                                    @else
-                                        <img src="/assets/img/BrainX/X.png" alt="Post Image"></a>
-                        @endif
-                    </div>
-                    <div class="blog-content">
-                        <ul class="entry-meta meta-item">
-                            <li>
-                                <div class="post-author">
-                                    <a> <span> {{ $blog->author }}</span></a>
+
+                                    </div>
+                                    <div class="blog-content">
+                                        <ul class="entry-meta meta-item">
+                                            <li>
+                                                <div class="post-author">
+                                                    <a> <span> {{ $blog->author }}</span></a>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <i class="far fa-clock"></i> {{ $blog->created_at }}
+                                            </li>
+                                        </ul>
+                                        <h3 class="blog-title">
+                                            <a href="{{ route('blog.show', ['slug' => $blog->slug]) }}">
+                                                {{ $blog->title }}
+                                            </a>
+                                        </h3>
+                                        <p class="mb-0">
+                                            {!! substr(strip_tags($blog->content), 0, 50) . (strlen(strip_tags($blog->content)) > 50 ? '...' : '') !!}
+                                        </p>
+                                    </div>
                                 </div>
-                            </li>
-                            <li><i class="far fa-clock"></i> {{ $blog->created_at }}</li>
-                        </ul>
-                        <h3 class="blog-title"><a
-                                href="{{ route('blog.show', ['slug' => $blog->slug]) }}">{{ $blog->title }}</a>
-                        </h3>
-                        <p class="mb-0">
-                            {{ substr(strip_tags($blog->content), 0, 50) . (strlen(strip_tags($blog->content)) > 50 ? '...' : '') }}
-                        </p>
+                                <!-- /Blog Post -->
+
+                            </div>
+                        @endforeach
+
+
                     </div>
-                </div>
-                <!-- /Blog Post -->
 
-            </div>
-            @endforeach
-
-
-        </div>
-
-        <!-- Blog Pagination -->
-        {{-- <div class="row">
+                    <!-- Blog Pagination -->
+                    {{-- <div class="row">
                         <div class="col-md-12">
                             <ul class="paginations list-pagination">
                                 <li class="page-item"><a href="#">Previous</a></li>
@@ -58,12 +63,12 @@
                             </ul>
                         </div>
                     </div> --}}
-        <!-- /Blog Pagination -->
+                    <!-- /Blog Pagination -->
 
-    </div>
+                </div>
 
-    <!-- Blog Sidebar -->
-    {{-- <div class="col-lg-4 col-md-12 sidebar-right ">
+                <!-- Blog Sidebar -->
+                {{-- <div class="col-lg-4 col-md-12 sidebar-right ">
 
                     <!-- Latest Posts -->
                     <div class=" pro-post widget-box post-widget">
@@ -130,10 +135,10 @@
                     <!-- /Share Widget -->
 
                 </div> --}}
-    <!-- /Blog Sidebar -->
+                <!-- /Blog Sidebar -->
 
-    </div>
-    </div>
+            </div>
+        </div>
     </div>
     <!-- /Page Content -->
     @include('includes.feedback-modal')
