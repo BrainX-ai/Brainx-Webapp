@@ -74,7 +74,7 @@
         CKEDITOR.replace('content', {
             extraPlugins: 'editorplaceholder',
             editorplaceholder: `Blog contents here...`,
-            removeButtons: 'PasteFromWord'
+            removeButtons: 'PasteFromWord',
         });
     </script>
 @endsection
