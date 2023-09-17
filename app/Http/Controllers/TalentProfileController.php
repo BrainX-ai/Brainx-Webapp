@@ -85,12 +85,13 @@ class TalentProfileController extends Controller
         $talent->name = $request->name;
         $talent->country = $request->country;
         $talent->standout_job_title = $request->standout_job_title;
+        $talent->ex_famouse_company = $request->ex_famouse_company;
         // $talent->experience = $request->experience;
         $talent->brief_summary = $request->bio;
         // $talent->hours_per_week = $request->hours_per_week;
         // $talent->hourly_rate = $request->hourly_rate;
         $talent->user_id = $user_id;
-        $talent->linkedin = $request->linkedin_url;
+        // $talent->linkedin = $request->linkedin_url;
         $talent->status = "COMPLETE";
         $talent->save();
 

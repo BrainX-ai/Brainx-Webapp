@@ -10,6 +10,11 @@
             margin: 20px;
         }
 
+        .chat-cont-right {
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+
         .skills .form-group label {
             margin-left: 5px;
         }
@@ -133,7 +138,7 @@
                                                 </div>
                                             </div>
                                             <div class="media-body flex-grow-1">
-
+                                                <br>
                                                 <div><strong>2/3. Intro</strong><b class="pb-1"> *</b></div>
                                             </div>
                                         </div>
@@ -195,19 +200,18 @@
                                                 </div>
                                             </div>
                                             <div class="media-body flex-grow-1">
-                                                <div class="user-name">Talent care </div>
+                                                <br>
                                                 <div><strong>3/3. Bio</strong><b class="pb-1"> *</b></div>
                                             </div>
                                         </div>
 
 
                                     </div>
-                                    <div class="  card m-2 border-0  col-md-6 offset-md-3">
+                                    <div class="  card m-2 border-0  col-md-7 ">
 
                                         <div class="card-body text-start">
                                             <div class="form-group">
-                                                <textarea name="bio" cols="80" rows="5" class="form-control" required
-                                                    onkeyup="setValuetoProfile('bio', this.value)"
+                                                <textarea name="bio" rows="5" class="form-control" required onkeyup="setValuetoProfile('bio', this.value)"
                                                     placeholder="Please briefly summarize your professional experience in AI"></textarea>
                                             </div>
                                         </div>

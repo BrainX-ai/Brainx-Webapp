@@ -17,6 +17,7 @@ class LinkedinController extends Controller
 {
     public function linkedinRedirect()
     {
+
         return Socialite::driver('linkedin')->redirect();
     }
 
@@ -63,7 +64,8 @@ class LinkedinController extends Controller
                 try {
                     $talent = Talent::create([
                         'photo' => $user->user['profilePicture']['displayImage~']['elements'][2]['identifiers'][0]['identifier'],
-                        'user_id' => $newUser->id
+                        'user_id' => $newUser->id,
+                        'status' => 'INCOMPLETE',
                     ]);
                 } catch (Exception $ex) {
                     $talent = Talent::create([
@@ -73,7 +75,8 @@ class LinkedinController extends Controller
                 }
                 Auth::login($newUser);
 
-                return redirect()->route('show.profile', ['id' => encrypt($newUser->id)]);
+                return redirect()->route('build.profile')->with(['user' => $linkedinUser]);
+                // return redirect()->route('show.profile', ['id' => encrypt($newUser->id)]);
                 // return redirect()->route('home');
                 // return redirect('/build-profile')->with(['user' => $newUser]);
             }
