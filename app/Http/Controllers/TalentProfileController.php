@@ -41,7 +41,7 @@ class TalentProfileController extends Controller
             if (!isset($user->talent) || $user->talent->status == "INCOMPLETE") {
 
 
-                return view('pages.talent.build-profile')->with('user', $user)->with('categories', $categories);
+                return view('pages.talent.build-profile-v3')->with('user', $user)->with('categories', $categories);
             } else if (!isset($user->talent) || $user->talent->status == "ASSESSMENT_PENDING") {
                 return redirect()->route('show.profile', encrypt($user->id));
             } else { //if($user->talent->status == "PUBLISHED"){
@@ -85,13 +85,14 @@ class TalentProfileController extends Controller
         $talent->name = $request->name;
         $talent->country = $request->country;
         $talent->standout_job_title = $request->standout_job_title;
-        $talent->experience = $request->experience;
+        $talent->ex_famouse_company = $request->ex_famouse_company;
+        // $talent->experience = $request->experience;
         $talent->brief_summary = $request->bio;
-        $talent->hours_per_week = $request->hours_per_week;
-        $talent->hourly_rate = $request->hourly_rate;
+        // $talent->hours_per_week = $request->hours_per_week;
+        // $talent->hourly_rate = $request->hourly_rate;
         $talent->user_id = $user_id;
-        $talent->linkedin = $request->linkedin_url;
-        $talent->status = "ASSESSMENT_PENDING";
+        // $talent->linkedin = $request->linkedin_url;
+        $talent->status = "COMPLETE";
         $talent->save();
 
         $data = [];
@@ -316,7 +317,7 @@ class TalentProfileController extends Controller
         $assessmentCategories = AssessmentCateory::with('result')->get();
         $clientProfileLink = route('client.show.profile', encrypt($id));
 
-        $linkedinShare=Share\ShareFacade::page( $clientProfileLink )
+        $linkedinShare = Share\ShareFacade::page($clientProfileLink)
             ->linkedin()->getRawLinks();
         return view('pages.talent.service-profile')
             ->with('clientProfileLink', $clientProfileLink)

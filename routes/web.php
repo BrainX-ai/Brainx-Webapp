@@ -46,6 +46,10 @@ Route::group(
         Route::get('/how-it-works', function () {
             return view('faq');
         });
+
+        Route::get('/talent-sign-in', function () {
+            return view('pages.talent.sign-up-step-1');
+        });
         Route::get('/example-service/{index}', function ($index) {
 
             $service = SearchService::$serviceArray[$index];
@@ -174,7 +178,7 @@ Route::group(
         Route::post('email/isexist', 'App\http\Controllers\Client\AuthController@isEmailExist')->name('email.isexist');
 
 
-        Route::get('auth/linkedin', [LinkedinController::class, 'linkedinRedirect']);
+        Route::get('/auth/linkedin', [LinkedinController::class, 'linkedinRedirect'])->name('auth.linkedin');
         Route::get('auth/linkedin/callback', [LinkedinController::class, 'linkedinCallback']);
 
         // Paypal ----------------------------------------------------------------

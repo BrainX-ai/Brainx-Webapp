@@ -32,9 +32,8 @@
                         </form>
                     </div>
                     <div class="card-footer pb-2 border-0">
-                        <a href="/talent" data-bs-toggle="modal" data-bs-target="#login-modal"
-                            class="@if (Request::is('talent')) active-page @endif">Log in as <span
-                                class="text-primary">AI freelancer</span></a>
+                        <a href="/talent-sign-in" class="@if (Request::is('talent')) active-page @endif">Log in as
+                            <span class="text-primary">AI freelancer</span></a>
                     </div>
                 </div>
             </div>
