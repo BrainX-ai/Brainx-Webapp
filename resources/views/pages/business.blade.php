@@ -179,20 +179,20 @@
                                 <div class="text-center"><small>Client</small></div>Find AI service
                             </button>
                         </a>
-                        <a class="btn join-us" href="/talent-sign-in">
+                        <a class="btn join-us" data-bs-toggle="modal" data-bs-target="#login-modal">
                             <button class="btn btn-outline-primary boxes-shadow ps-5 pe-5" ">
-                                    <div class="text-center"><small>Talent</small></div>Sell AI service
-                                </button>
-                            </a>
+                                        <div class="text-center"><small>Talent</small></div>Sell AI service
+                                    </button>
+                                </a>
 
-                            <div class="col-md-6 col-sm-8 mt-4 ">
-                                <img src="/assets/img/BrainX/ms-badge.png" alt="" class="w-100">
+                                <div class="col-md-6 col-sm-8 mt-4 ">
+                                    <img src="/assets/img/BrainX/ms-badge.png" alt="" class="w-100">
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-4 col-lg-5 ">
-                        <div id="developers-slider2" class="owl-carousel owl-theme developers-slider aos" data-aos="fade-up">
-                             @foreach ($talents as $talent)
+                        <div class="col-md-4 col-lg-5 ">
+                            <div id="developers-slider2" class="owl-carousel owl-theme developers-slider aos" data-aos="fade-up">
+                                  @foreach ($talents as $talent)
                                 @if (isset($talent->talent) && $talent->talent->status == 'PUBLISHED')
                                     <div class="freelance-widget border-0">
                                         <div class="freelance-content">

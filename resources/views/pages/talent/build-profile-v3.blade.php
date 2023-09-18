@@ -50,6 +50,42 @@
                 display: none;
             }
         }
+
+
+        .input-wrapper {
+            display: flex;
+            background-color: #ffffff;
+            border: 1px solid #E7E8EA;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+
+        .input-wrapper .form-control,
+        .input-wrapper .form-control:focus {
+            border-color: white;
+        }
+
+        .prefix,
+        .suffix {
+            position: relative;
+            color: #7b7b93;
+        }
+
+        .prefix {
+            padding: 10px 0 10px 15px;
+        }
+
+        .suffix {
+            padding: 15px 15px 15px 0;
+        }
+
+        input {
+            background-color: transparent;
+            position: relative;
+            width: 200px;
+            padding: 5px;
+            color: #2c2c51;
+        }
     </style>
     <div class="content use-desktop ">
         <div class="container-fuild">
@@ -80,7 +116,7 @@
             <div class="container-fluid">
                 <div class="row">
 
-                    <div class="col-md-8 offset-md-2">
+                    <div class="col-md-10 offset-md-1">
 
                         <div class="chat-window">
 
@@ -170,8 +206,11 @@
                                                         <label for="">
                                                             What ex-famous company did you work for?
                                                         </label>
-                                                        <input type="text" name="ex_famouse_company" class="form-control"
-                                                            required />
+                                                        <div class="input-wrapper">
+                                                            <div class="prefix">Ex-</div>
+                                                            <input type="text" name="ex_famouse_company"
+                                                                class="form-control" placeholder="" required />
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
