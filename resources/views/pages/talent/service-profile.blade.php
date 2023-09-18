@@ -47,8 +47,8 @@
         }
 
         /* li {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            list-style: none;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        } */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                list-style: none;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            } */
 
         .arrow,
         .close {
@@ -132,7 +132,7 @@
 
                                     @if (Auth::check() && Auth::user()->role == 'Talent')
                                         <button class="btn " data-bs-target="#edit-title" data-bs-toggle="modal"><i
-                                                class="material-icons  edit">edit</i></button>
+                                                class="material-icons  ">edit</i></button>
                                     @endif
                                 </h3>
                                 <div class="row">
@@ -143,7 +143,7 @@
                                         @endif
                                         @if (Auth::check() && Auth::user()->role == 'Talent')
                                             <button class="btn " data-bs-target="#edit-country" data-bs-toggle="modal"><i
-                                                    class="material-icons mb-1 edit">edit</i></button>
+                                                    class="material-icons mb-1 ">edit</i></button>
                                         @endif
                                     </div>
                                     @if (
