@@ -14,6 +14,41 @@
         border-bottom: none;
         border-style: hidden;
     }
+
+    .input-wrapper {
+        display: flex;
+        background-color: #ffffff;
+        border: 1px solid #E7E8EA;
+        margin: 10px 0;
+        border-radius: 5px;
+    }
+
+    .input-wrapper .form-control,
+    .input-wrapper .form-control:focus {
+        border-color: white;
+    }
+
+    .prefix,
+    .suffix {
+        position: relative;
+        color: #7b7b93;
+    }
+
+    .prefix {
+        padding: 10px 0 10px 15px;
+    }
+
+    .suffix {
+        padding: 15px 15px 15px 0;
+    }
+
+    input {
+        background-color: transparent;
+        position: relative;
+        width: 200px;
+        padding: 5px;
+        color: #2c2c51;
+    }
 </style>
 <!-- The Modal -->
 <div class="modal fade custom-modal" id="edit-ex-famous-company">
@@ -36,10 +71,14 @@
                         <div class="card-body ">
 
                             <div class="form-group">
-                                <label for="" class="h5">Choose the most famous company you're working or
+                                <label for="" class="h5">Choose the most famous company you
                                     worked for</label>
-                                <input type="text" name="ex_famouse_company" placeholder="Ex- company name"
-                                    class="form-control" value="{{ $user->talent->ex_famouse_company }}">
+                                <div class="input-wrapper">
+                                    <div class="prefix">Ex-</div>
+                                    <input type="text" name="ex_famouse_company" class="form-control"
+                                        value="{{ $user->talent->ex_famouse_company }}" required />
+                                </div>
+
                             </div>
 
 
