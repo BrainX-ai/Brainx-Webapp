@@ -164,7 +164,7 @@ class TalentProfileController extends Controller
     {
         $user_id = Auth::guard()->user()->id;
         $talent = Talent::where('user_id', $user_id)->first();
-        $talent->ex_famouse_company = $request->ex_famouse_company;
+        $talent->ex_famouse_company = 'Ex-' . $request->ex_famouse_company;
         $talent->save();
 
         return redirect()->route('show.profile', encrypt($user_id));
