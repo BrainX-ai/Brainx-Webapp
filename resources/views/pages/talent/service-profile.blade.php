@@ -47,8 +47,8 @@
         }
 
         /* li {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                list-style: none;
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            } */
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    list-style: none;
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                } */
 
         .arrow,
         .close {
@@ -117,7 +117,7 @@
                                         <h2 id="name">{{ $user->name }}</h2>
                                     </div>
                                     <div class="col-6">
-                                        @if (Auth::check() && Auth::user()->role == 'Talent')
+                                        @if (Auth::check() && Auth::user()->role == 'Talent' && $user->id == Auth::user()->id)
                                             <button class="btn" data-bs-target="#share-profile" data-bs-toggle="modal"><i
                                                     class="material-icons mb-1 share">share</i></button>
                                         @endif
@@ -130,7 +130,7 @@
                                         {{ $user->talent->standout_job_title ?? 'Add job title' }}
                                     @endif
 
-                                    @if (Auth::check() && Auth::user()->role == 'Talent')
+                                    @if (Auth::check() && Auth::user()->role == 'Talent' && $user->id == Auth::user()->id)
                                         <button class="btn " data-bs-target="#edit-title" data-bs-toggle="modal"><i
                                                 class="material-icons  ">edit</i></button>
                                     @endif
@@ -141,7 +141,7 @@
                                             <i class="material-icons mb-1">location_on</i> <span
                                                 id="country">{{ $user->talent->country == null ? 'Add country' : $user->talent->country }}</span>
                                         @endif
-                                        @if (Auth::check() && Auth::user()->role == 'Talent')
+                                        @if (Auth::check() && Auth::user()->role == 'Talent' && $user->id == Auth::user()->id)
                                             <button class="btn " data-bs-target="#edit-country" data-bs-toggle="modal"><i
                                                     class="material-icons mb-1 ">edit</i></button>
                                         @endif
@@ -152,7 +152,7 @@
                                         <div class="  col-md-4 p-2">
                                             <i class="material-icons mb-1 me-2">store</i><span
                                                 id="ex-famous-company">{{ $user->talent->ex_famouse_company == null ? 'Add ex-famous company' : $user->talent->ex_famouse_company }}</span>
-                                            @if (Auth::check() && Auth::user()->role == 'Talent')
+                                            @if (Auth::check() && Auth::user()->role == 'Talent' && $user->id == Auth::user()->id)
                                                 <button class="btn " data-bs-target="#edit-ex-famous-company"
                                                     data-bs-toggle="modal"><i class="material-icons mb-1">edit</i></button>
                                             @endif
