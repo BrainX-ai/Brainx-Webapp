@@ -5,7 +5,7 @@
             <div class="col-md-12 p-5">
                 <div class="d-flex">
                     <div></div>
-                    @if (Auth::check() && Auth::user()->role == 'Talent')
+                    @if (Auth::check() && Auth::user()->role == 'Talent' && $user->id == Auth::user()->id)
                         <button class="btn " data-bs-target="#edit-bio" data-bs-toggle="modal"><i
                                 class="material-icons mb-1 edit">edit</i></button>
                     @endif

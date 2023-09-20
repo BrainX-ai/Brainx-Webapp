@@ -4,7 +4,7 @@
             <div class="d-flex mb-3">
 
                 <div></div>
-                @if (Auth::check() && Auth::user()->role == 'Talent')
+                @if (Auth::check() && Auth::user()->role == 'Talent' && $user->id == Auth::user()->id)
                     <button class="btn btn-outline-dark btn-rounded" data-bs-target="#add-portfolio"
                         data-bs-toggle="modal">+</button>
                 @endif
@@ -12,7 +12,7 @@
             <div class="ms-3">
                 @if (sizeof($portfolios) == 0)
                     <div class="text-muted">
-                        @if (Auth::check() && Auth::user()->role == 'Talent')
+                        @if (Auth::check() && Auth::user()->role == 'Talent' && $user->id == Auth::user()->id)
                             Show AI-relating projects you did
                         @else
                             No AI portfolio added.
@@ -32,7 +32,7 @@
                             <p class="mb-3"> {{ $portfolio->description }}</p>
 
                         </div>
-                        @if (Auth::check() && Auth::user()->role == 'Talent')
+                        @if (Auth::check() && Auth::user()->role == 'Talent' && $user->id == Auth::user()->id)
                             <div class="d-flex">
                                 <button class="btn " wire:click="selectPortfolio({{ $key }})"
                                     data-bs-target="#edit-portfolio" data-bs-toggle="modal"><i
@@ -64,7 +64,7 @@
             </div>
         </div>
     </div>
-    @if (Auth::check() && Auth::user()->role == 'Talent')
+    @if (Auth::check() && Auth::user()->role == 'Talent' && $user->id == Auth::user()->id)
         @include('pages.talent.includes.modals.add-portfolio')
         @include('pages.talent.includes.modals.edit.portfolio')
         @include('includes.modals.portfolio-delete-alert')

@@ -1,6 +1,6 @@
 <section>
     <div class="row">
-        @if (Auth::check() && Auth::user()->role == 'Talent')
+        @if (Auth::check() && Auth::user()->role == 'Talent' && $user->id == Auth::user()->id)
             <button class="btn text-start col-md-3 add-service" data-bs-target="#add-service" data-bs-toggle="modal">
                 <div class="job-locate-blk ">
                     <div class="location-img bg-white">
@@ -21,7 +21,7 @@
         @foreach ($services as $key => $service)
             <div class="col-md-3">
                 <div class="job-locate-blk ">
-                    @if (Auth::check() && Auth::user()->role == 'Talent')
+                    @if (Auth::check() && Auth::user()->role == 'Talent' && $user->id == Auth::user()->id)
                         <a href="{{ route('service.details', $service->id) }}" class="">
                         @else
                             <a href="{{ route('client.service.details', $service->id) }}" class="">
@@ -55,7 +55,7 @@
         @endif
     </div>
 
-    @if (Auth::check() && Auth::user()->role == 'Talent')
+    @if (Auth::check() && Auth::user()->role == 'Talent' && $user->id == Auth::user()->id)
         @include('pages.talent.includes.modals.add-service')
     @endif
 </section>
