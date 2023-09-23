@@ -8,8 +8,8 @@ use App\Models\QuizQuestions;
 use Illuminate\Http\Request;
 use App\Models\Talent;
 use App\Models\AssessmentCateory;
-use Auth;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class AssesmentController extends Controller
 {
@@ -34,7 +34,7 @@ class AssesmentController extends Controller
             'user_id' => Auth::user()->id,
             'assessment_cateory_id' => $category_id
         ]);
-        
+
         $endTime = ($quiz->created_at->addMinutes(45)->format("d F Y H:i:s"));
         session(['quiz_id' => $quiz->id]);
         session(['endTime' => $endTime]);
@@ -52,12 +52,11 @@ class AssesmentController extends Controller
     {
 
         $questions = session('questions');
-        
+
         $quiz_question_id = QuizQuestions::where('question_id', $questions[$index]->id)->where('quiz_id', session('quiz_id'))->first()->id;
 
 
         return view('pages.talent.question-page')->with('question', $questions[$index])->with('index', $index)->with('quiz_question_id', $quiz_question_id)->with('endTime', session('endTime'));
-
     }
 
     public function getAnswer(Request $request)
@@ -73,10 +72,10 @@ class AssesmentController extends Controller
     {
 
         $quiz = Quiz::where('user_id', Auth::user()->id)->latest()->get();
-        
+
         $quizQuestions = QuizQuestions::where('quiz_id', $quiz[0]->id)->with('question')->get();
         $score = 0;
-        
+
         foreach ($quizQuestions as $quizQuestion) {
             if ($quizQuestion->given_answer == $quizQuestion->question->answer) {
                 $score++;
@@ -85,15 +84,14 @@ class AssesmentController extends Controller
 
         $quiz = Quiz::find($quiz[0]->id);
         $quiz->score = $score;
-        $quiz->remarks = ($score/sizeof($quizQuestions))*100 >= 80 ? 'PASSED' : 'FAILED';
+        $quiz->remarks = ($score / sizeof($quizQuestions)) * 100 >= 80 ? 'PASSED' : 'FAILED';
         $quiz->save();
 
         $user = Talent::where('user_id', Auth::user()->id)->first();
         $user->status = 'ASSESSMENT_COMPLETED';
-        $user->brainx_assessment = $quiz->remarks == 'PASSED' ? 1:0;
+        $user->brainx_assessment = $quiz->remarks == 'PASSED' ? 1 : 0;
         $user->save();
 
         return view('pages.talent.assessment-result')->with('score', $score)->with('quiz', $quiz);
-
     }
 }
