@@ -50,6 +50,9 @@ Route::group(
         Route::get('/talent-sign-in', function () {
             return view('pages.talent.sign-up-step-1');
         });
+        Route::get('/create-ai-service', function () {
+            return view('pages.talent.create-ai-services');
+        })->name('create-ai-service');
         Route::get('/example-service/{index}', function ($index) {
 
             $service = SearchService::$serviceArray[$index];
