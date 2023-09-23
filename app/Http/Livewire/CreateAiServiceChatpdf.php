@@ -26,13 +26,14 @@ class CreateAiServiceChatpdf extends Component
 
     public function getSuggestionsFromChatpdf($path)
     {
-
+        // $path = 'https://test-brainx.azurewebsites.net/storagercVQ7B6811Gucg4OovCFGrOdR4ejT2-metaVmluaF9DVi5wZGY=-.pdf';
+        dd($path);
         $chatpdf = new ChatPDF();
         $chatpdf->setPostFields(json_encode(array(
             'url' => $path
         )));
         $response = $chatpdf->uploadFile();
-        $chatpdf->setSourceId($response['sourceId']);
+        $chatpdf->setSourceId($response->sourceId);
         $chatpdf->setPostFields(json_encode([
             "sourceId" => $chatpdf->getSourceId(),
             "messages" => [
