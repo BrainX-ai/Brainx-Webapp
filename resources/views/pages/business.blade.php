@@ -179,44 +179,43 @@
                                 <div class="text-center"><small>Client</small></div>Find AI service
                             </button>
                         </a>
-                        <a class="btn join-us">
-                            <button class="btn btn-outline-primary boxes-shadow ps-5 pe-5" data-bs-toggle="modal"
-                                data-bs-target="#login-modal" type="button">
-                                <div class="text-center"><small>Talent</small></div>Sell AI service
-                            </button>
-                        </a>
+                        <a class="btn join-us" data-bs-toggle="modal" data-bs-target="#login-modal">
+                            <button class="btn btn-outline-primary boxes-shadow ps-5 pe-5" ">
+                                        <div class="text-center"><small>Talent</small></div>Sell AI service
+                                    </button>
+                                </a>
 
-                        <div class="col-md-6 col-sm-8 mt-4 ">
-                            <img src="/assets/img/BrainX/ms-badge.png" alt="" class="w-100">
+                                <div class="col-md-6 col-sm-8 mt-4 ">
+                                    <img src="/assets/img/BrainX/ms-badge.png" alt="" class="w-100">
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-4 col-lg-5 ">
-                    <div id="developers-slider2" class="owl-carousel owl-theme developers-slider aos" data-aos="fade-up">
-                        @foreach ($talents as $talent)
-                            @if (isset($talent->talent) && $talent->talent->status == 'PUBLISHED')
-                                <div class="freelance-widget border-0">
-                                    <div class="freelance-content">
-                                        <div class="freelance-img">
-                                            <a>
-                                                <img src="{{ $talent->talent->photo }}" alt="User Image">
-                                                <span class="verified"><i class="fas fa-check-circle"></i></span>
-                                            </a>
-                                        </div>
-                                        <div class="freelance-info">
-                                            <h3><a> {{ $talent->name }} </a></h3>
-                                            <div class="freelance-specific">
-                                                {{ $talent->talent->standout_job_title }}</div>
+                        <div class="col-md-4 col-lg-5 ">
+                            <div id="developers-slider2" class="owl-carousel owl-theme developers-slider aos" data-aos="fade-up">
+                                  @foreach ($talents as $talent)
+                                @if (isset($talent->talent) && $talent->talent->status == 'PUBLISHED')
+                                    <div class="freelance-widget border-0">
+                                        <div class="freelance-content">
+                                            <div class="freelance-img">
+                                                <a>
+                                                    <img src="{{ $talent->talent->photo }}" alt="User Image">
+                                                    <span class="verified"><i class="fas fa-check-circle"></i></span>
+                                                </a>
+                                            </div>
+                                            <div class="freelance-info">
+                                                <h3><a> {{ $talent->name }} </a></h3>
+                                                <div class="freelance-specific">
+                                                    {{ $talent->talent->standout_job_title }}</div>
 
-                                            <div class="freelance-specific">{{ $talent->talent->country }}</div>
+                                                <div class="freelance-specific">{{ $talent->talent->country }}</div>
 
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            @endif
-                        @endforeach
+                                @endif
+                                @endforeach
 
-                        {{-- </div>
+                                {{-- </div>
                             </div>
                         </div> --}}
 
