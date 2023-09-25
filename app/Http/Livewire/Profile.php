@@ -70,7 +70,7 @@ class Profile extends Component
         $file_data = [];
         foreach ($this->files as $file) {
             $name = $file->store('uploads');
-            $name = time() . '.' . $name;
+            // $name = time() . '.' . $name;
 
             $data = [
                 'file_name' => $file->getClientOriginalName(),
