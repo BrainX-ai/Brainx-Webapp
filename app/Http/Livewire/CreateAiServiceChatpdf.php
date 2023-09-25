@@ -51,7 +51,7 @@ class CreateAiServiceChatpdf extends Component
         // dd($path);
         $chatpdf = new ChatPDF();
         $chatpdf->setPostFields(json_encode(array(
-            'url' => url($path)
+            'url' => storage_path('app/' . $path)
         )));
         $response = $chatpdf->uploadFile();
 
