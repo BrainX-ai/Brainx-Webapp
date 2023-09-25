@@ -1,8 +1,8 @@
 <section>
     <div class="row">
         @if (Auth::check() && Auth::user()->role == 'Talent' && $user->id == Auth::user()->id)
-            <a href="{{ route('create-ai-service') }}">
-                <button class="btn text-start col-md-3 add-service">
+            <a href="{{ route('create-ai-service') }}" class="col-md-3">
+                <button class="btn text-start add-service">
                     <div class="job-locate-blk ">
                         <div class="location-img bg-white">
                             <img class="" src="/assets/img/BrainX/Plus_symbol.png" alt="">
