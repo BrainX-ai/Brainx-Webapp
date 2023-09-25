@@ -50,9 +50,7 @@ Route::group(
         Route::get('/talent-sign-in', function () {
             return view('pages.talent.sign-up-step-1');
         });
-        Route::get('/create-ai-service', function () {
-            return view('pages.talent.create-ai-services');
-        })->name('create-ai-service');
+        Route::get('/create-ai-service', 'App\http\controllers\ServiceController@create')->name('create-ai-service');
         Route::get('/example-service/{index}', function ($index) {
 
             $service = SearchService::$serviceArray[$index];
@@ -78,7 +76,7 @@ Route::group(
         Route::post('/submit-contract', 'App\http\controllers\ContractController@store')->name('submit.contract');
         Route::post('/end-contract', 'App\http\controllers\ContractController@endContract')->name('end.contract');
         Route::post('/add-experience', 'App\http\controllers\TalentProfileController@addExperience')->name('add.experience');
-        Route::post('/add-service', 'App\http\controllers\ServiceController@addService')->name('add.service');
+        // Route::post('/add-service', 'App\http\controllers\TalentController@addService')->name('add.service');
         Route::post('/update-service', 'App\http\controllers\ServiceController@updateService')->name('update.service');
         Route::get('/edit-service/{id}', 'App\http\controllers\ServiceController@editService')->name('edit.service');
         Route::post('/add-portfolio', 'App\http\controllers\ServiceController@addPortfolio')->name('add.portfolio');
