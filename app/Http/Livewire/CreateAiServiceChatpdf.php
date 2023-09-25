@@ -35,7 +35,7 @@ class CreateAiServiceChatpdf extends Component
 
 
         $this->fileUploaded = true;
-        // $this->suggestions = $this->getSuggestionsFromChatpdf($this->pdf->store('resumes'));
+        $this->suggestions = $this->getSuggestionsFromChatpdf($this->pdf->store('resumes'));
         // Display a success message
         // TODO: Replace this with your own code to display the success message in the view
     }
@@ -48,11 +48,10 @@ class CreateAiServiceChatpdf extends Component
 
     public function getSuggestionsFromChatpdf($path)
     {
-        $path = 'https://test-brainx.azurewebsites.net/resumes/21680031331.pdf';
         // dd($path);
         $chatpdf = new ChatPDF();
         $chatpdf->setPostFields(json_encode(array(
-            'url' => $path
+            'url' => url($path)
         )));
         $response = $chatpdf->uploadFile();
 
