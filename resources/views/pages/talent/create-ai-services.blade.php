@@ -55,10 +55,15 @@
             border-radius: 4px;
         }
     </style>
+
     <div class="container" style="height: 100%;">
         <div class="content">
             <div class="container-fluid">
-                @livewire('create-ai-service-chatpdf')
+                <div class="row">
+                    @livewire('create-ai-service-chatpdf')
+                    @include('livewire.add-services')
+
+                </div>
             </div>
         </div>
     </div>
