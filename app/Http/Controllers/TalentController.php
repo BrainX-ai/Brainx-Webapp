@@ -23,6 +23,47 @@ class TalentController extends Controller
         //
     }
 
+    public function addService(Request $request)
+    {
+
+        $create = Service::create([
+            'title' => $request->title,
+            'description' => $request->description,
+            'image' => $this->uploadFile($request),
+            'price' => $request->price,
+            'delivery_time' => $request->delivery_time,
+            'industry' =>  $request->industry,
+            'status' => 'PUBLISHED',
+            'user_id' => $request->user_id
+        ]);
+
+        return response()->json(['success' => true], 200);
+    }
+
+    public function uploadFile(Request $request)
+    {
+        // Validate the uploaded file
+        // $request->validate([
+        //     'file' => 'required|file|mimes:jpeg,png,pdf|max:2048', // Adjust allowed file types and size as needed
+        // ]);
+
+        if ($request->hasFile('image')) {
+            $file = $request->file('image');
+            $fileName = time() . '_' . $file->getClientOriginalName();
+            $filePath = public_path('uploads'); // Change this to the desired upload directory
+
+            // Move the uploaded file to the storage location
+            $file->move($filePath, $fileName);
+
+            // You can also store the file information in a database if needed
+            // Example: File::create(['name' => $fileName, 'path' => $filePath]);
+
+            return $fileName;
+        }
+
+        return null;
+    }
+
     /**
      * Show the form for creating a new resource.
      *
