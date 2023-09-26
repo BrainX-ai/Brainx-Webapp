@@ -48,24 +48,28 @@ class CreateAiServiceChatpdf extends Component
 
     public function getSuggestionsFromChatpdf($path)
     {
-        // dd($path);
+
         $chatpdf = new ChatPDF();
         $chatpdf->setPostFields(json_encode(array(
-            'url' => storage_path('app/' . $path)
+            'url' => url('app/resumes/' . $path)
         )));
         $response = $chatpdf->uploadFile();
 
-        $chatpdf->setSourceId($response->sourceId);
-        $chatpdf->setPostFields(json_encode([
-            "sourceId" => $chatpdf->getSourceId(),
-            "messages" => [
-                [
-                    "role" => "user",
-                    "content" => "What are the AI services this person can provide for businesses?"
+        if (isset($response->sourceId)) {
+            $chatpdf->setSourceId($response->sourceId);
+            $chatpdf->setPostFields(json_encode([
+                "sourceId" => $chatpdf->getSourceId(),
+                "messages" => [
+                    [
+                        "role" => "user",
+                        "content" => "What are the AI services this person can provide for businesses?"
+                    ]
                 ]
-            ]
-        ]));
-        $response = $chatpdf->sendMessage();
-        return $response->content;
+            ]));
+            $response = $chatpdf->sendMessage();
+            return $response->content;
+        } else {
+            return 'Something went wrong ' . url('app/resumes/' . $path);
+        }
     }
 }
