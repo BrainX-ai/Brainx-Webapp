@@ -1,9 +1,10 @@
 <div class="col-md-6">
     <h3>Get AI service suggestions</h3>
-    @if ($pdf && $suggestions)
+    @if (($pdf && $suggestions) || $suggestions)
         <div>
             <p>
-                {{ $suggestions }}
+                {!! nl2br($suggestions) !!}
+
             </p>
         </div>
     @else
