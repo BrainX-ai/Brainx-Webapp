@@ -3,6 +3,8 @@
 namespace App\Http\Livewire;
 
 use App\Http\Controllers\Utils\ChatPDF;
+use App\Models\ChatPDF as ModelsChatPDF;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
@@ -43,19 +45,39 @@ class CreateAiServiceChatpdf extends Component
     public function render()
     {
 
+        $chatPDFData = ModelsChatPDF::where('user_id', Auth::user()->id)->first();
+        if ($chatPDFData->content != null) {
+            $this->suggestions = $chatPDFData->content;
+        }
+
         return view('livewire.create-ai-service-chatpdf');
     }
 
     public function getSuggestionsFromChatpdf($path)
     {
-        $chatpdf = new ChatPDF();
-        $chatpdf->setPostFields(json_encode(array(
-            'url' => url('storage/' . explode('/', $path)[1])
-        )));
-        $response = $chatpdf->uploadFile();
 
-        if (isset($response->sourceId)) {
-            $chatpdf->setSourceId($response->sourceId);
+        $chatpdf = new ChatPDF();
+        $chatPDFData = ModelsChatPDF::where('user_id', Auth::user()->id)->first();
+        if ($chatPDFData != null) {
+            $sourceId = $chatPDFData->source_id;
+            if ($chatPDFData->content != null) {
+                return $chatPDFData->content;
+            }
+        } else {
+            $chatpdf->setPostFields(json_encode(array(
+                'url' => 'https://test-brainx.azurewebsites.net/storage/9r0spBn2dnpukWbH5TOfwz0c83GbFXvWY76xCpNY.pdf'
+                // 'url' => url('storage/' . explode('/', $path)[1])
+            )));
+            $response = $chatpdf->uploadFile();
+
+            if (isset($response->sourceId)) {
+                $sourceId = $response->sourceId;
+            }
+        }
+
+        if (isset($sourceId) && $sourceId != null) {
+
+            $chatpdf->setSourceId($sourceId);
             $chatpdf->setPostFields(json_encode([
                 "sourceId" => $chatpdf->getSourceId(),
                 "messages" => [
@@ -66,6 +88,18 @@ class CreateAiServiceChatpdf extends Component
                 ]
             ]));
             $response = $chatpdf->sendMessage();
+
+            if ($chatPDFData) {
+                $chatPDFData->content = $response->content;
+                $chatPDFData->save();
+            } else {
+                ModelsChatPDF::create([
+                    'user_id' => Auth::user()->id,
+                    'source_id' => $chatpdf->getSourceId(),
+                    'content' => $response->content
+                ]);
+            }
+
             return $response->content;
         } else {
             return 'Something went wrong ' . url($path);
