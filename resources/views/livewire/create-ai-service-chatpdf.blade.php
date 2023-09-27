@@ -1,4 +1,5 @@
 <div class="col-md-6">
+    <h3>Get AI service suggestions</h3>
     @if ($pdf && $suggestions)
         <div>
             <p>
@@ -7,7 +8,6 @@
         </div>
     @else
         <div class="card">
-            <h3>Get AI service suggestions</h3>
             <div class="drop_box">
                 <header>
                     <h4>Select File here</h4>
@@ -32,9 +32,5 @@
         </div>
     @endif
 
-    @if ($fileUploaded)
-        <p>
-            File uploaed successfully
-        </p>
-    @endif
+
 </div>

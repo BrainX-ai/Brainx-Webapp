@@ -61,7 +61,7 @@ class CreateAiServiceChatpdf extends Component
                 "messages" => [
                     [
                         "role" => "user",
-                        "content" => "What are the AI services this person can provide for businesses?"
+                        "content" => "Create AI or Data Science services that I can sell to business clients"
                     ]
                 ]
             ]));
