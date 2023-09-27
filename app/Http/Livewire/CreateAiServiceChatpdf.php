@@ -55,18 +55,20 @@ class CreateAiServiceChatpdf extends Component
 
     public function getSuggestionsFromChatpdf($path)
     {
-
+        $this->fileUploaded = true;
         $chatpdf = new ChatPDF();
         $chatPDFData = ModelsChatPDF::where('user_id', Auth::user()->id)->first();
         if ($chatPDFData != null) {
             $sourceId = $chatPDFData->source_id;
             if ($chatPDFData->content != null) {
+
+                $this->fileUploaded = false;
                 return $chatPDFData->content;
             }
         } else {
             $chatpdf->setPostFields(json_encode(array(
-                'url' => 'https://test-brainx.azurewebsites.net/storage/9r0spBn2dnpukWbH5TOfwz0c83GbFXvWY76xCpNY.pdf'
-                // 'url' => url('storage/' . explode('/', $path)[1])
+                // 'url' => 'https://test-brainx.azurewebsites.net/storage/9r0spBn2dnpukWbH5TOfwz0c83GbFXvWY76xCpNY.pdf'
+                'url' => url('storage/' . explode('/', $path)[1])
             )));
             $response = $chatpdf->uploadFile();
 
@@ -100,6 +102,7 @@ class CreateAiServiceChatpdf extends Component
                 ]);
             }
 
+            $this->fileUploaded = false;
             return $response->content;
         } else {
             return 'Something went wrong ' . url($path);
