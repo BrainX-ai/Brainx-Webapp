@@ -35,7 +35,7 @@ class CreateAiServiceChatpdf extends Component
 
 
         $this->fileUploaded = true;
-        $this->suggestions = $this->getSuggestionsFromChatpdf($this->pdf->store('resumes'));
+        $this->suggestions = $this->getSuggestionsFromChatpdf($this->pdf->store('public'));
         // Display a success message
         // TODO: Replace this with your own code to display the success message in the view
     }
@@ -48,10 +48,9 @@ class CreateAiServiceChatpdf extends Component
 
     public function getSuggestionsFromChatpdf($path)
     {
-
         $chatpdf = new ChatPDF();
         $chatpdf->setPostFields(json_encode(array(
-            'url' => url('app/resumes/' . $path)
+            'url' => url('storage/' . explode('/', $path)[1])
         )));
         $response = $chatpdf->uploadFile();
 
@@ -69,7 +68,7 @@ class CreateAiServiceChatpdf extends Component
             $response = $chatpdf->sendMessage();
             return $response->content;
         } else {
-            return 'Something went wrong ' . url('app/resumes/' . $path);
+            return 'Something went wrong ' . url($path);
         }
     }
 }
