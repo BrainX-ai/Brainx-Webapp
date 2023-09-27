@@ -46,7 +46,7 @@ class CreateAiServiceChatpdf extends Component
     {
 
         $chatPDFData = ModelsChatPDF::where('user_id', Auth::user()->id)->first();
-        if ($chatPDFData->content != null) {
+        if ($chatPDFData && $chatPDFData->content != null) {
             $this->suggestions = $chatPDFData->content;
         }
 
