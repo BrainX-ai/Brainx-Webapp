@@ -133,7 +133,9 @@
         $(document).ready(function() {
             $('#industry').select2({
                 maximumSelectionLength: 3, // Set the maximum selection limit
-                theme: 'classic' // Use the 'classic' theme for this example
+                theme: 'classic', // Use the 'classic' theme for this example
+                // placeholder: "Select industries",
+                allowClear: true, //
             });
         });
 
@@ -143,7 +145,7 @@
             $('#description').val('')
             $('#price').val('')
             $('#delivery_time').val('')
-            $('#industry').val('')
+            $('#industry').empty().trigger('change')
         }
 
         function submitForm() {
@@ -166,6 +168,7 @@
             });
             $.ajax({
                 url: '/api/add-service',
+                method: 'POST',
                 type: 'POST', // type of response data
                 data: formData,
                 timeout: 500, // timeout milliseconds
