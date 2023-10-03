@@ -1,5 +1,5 @@
 <div class="col-md-6">
-    <h3>Get AI service suggestions</h3>
+    <h3>AI services suggested by your PDF resume</h3>
     @if (($pdf && $suggestions) || $suggestions || $fileUploaded)
         <div>
 
