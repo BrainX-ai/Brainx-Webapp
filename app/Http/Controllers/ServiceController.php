@@ -18,6 +18,14 @@ class ServiceController extends Controller
         $this->middleware('auth');
     }
 
+    public function create()
+    {
+
+        $industries = ['Ecommerce', 'Finance', 'Education', 'IT', 'Media & Entertainment', 'Marketing', 'Sales', 'Others'];
+
+        return view('pages.talent.create-ai-services')->with('industries', $industries);
+    }
+
     public function addService(Request $request)
     {
 
