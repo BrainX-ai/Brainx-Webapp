@@ -148,7 +148,7 @@
             $('#industry').empty().trigger('change')
         }
 
-        function submitForm() {
+        async function submitForm() {
             let formData = new FormData();
             formData.append("image", document.getElementById('file').files[0]);
             formData.append("title", $('#title').val());
